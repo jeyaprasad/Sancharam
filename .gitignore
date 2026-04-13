@@ -1,0 +1,14 @@
+# Node backend dependencies (reinstall with: npm install)
+backend/node_modules/
+
+# Environment secrets
+backend/.env
+.env
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Editor artifacts
+.vscode/
+*.swp

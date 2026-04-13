@@ -1,0 +1,689 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sancharam - Language Converter</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/tesseract.js@4/dist/tesseract.min.js"></script>
+  <link rel="stylesheet" href="../../css/navbar.css">
+  <link rel="icon" type="image/png" href="../../assets/favicon.png">
+
+  <style>
+    :root {
+      --primary: #f43f5e;
+      --primary-dark: #f97316;
+      --bg-dark: #0f172a;
+      --bg-body: #f8fafc;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --text-light: #94a3b8;
+      --border: #e2e8f0;
+      --card-bg: #ffffff;
+      --surface: #f1f5f9;
+      --radius: 1.6rem;
+      --radius-sm: 0.8rem;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { font-size: 62.5%; scroll-behavior: smooth; }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: var(--bg-body);
+      color: var(--text-main);
+      line-height: 1.7;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* ─── Hero ─── */
+    .features-hero {
+      background: linear-gradient(135deg, rgba(11,17,32,0.92), rgba(11,17,32,0.97)),
+                  url('../../assets/images/shared/background.png') center/cover no-repeat;
+      padding: 12rem 2rem 8rem;
+      text-align: center;
+      color: #f8fafc;
+    }
+    .features-hero h1 { font-size: 4.8rem; font-weight: 700; margin-bottom: 1rem; letter-spacing: -1px; }
+    .features-hero h1 span {
+      background: linear-gradient(45deg, #f43f5e, #f97316);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .features-hero p { font-size: 1.6rem; color: #cbd5e1; max-width: 680px; margin: 0 auto; }
+
+    /* ─── Main Layout ─── */
+    .app-main {
+      flex: 1;
+      max-width: 1000px;
+      width: 100%;
+      margin: 4rem auto 8rem;
+      padding: 0 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+    }
+
+    /* ─── Section Labels ─── */
+    .section-label {
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--text-light);
+      margin-bottom: 1.2rem;
+    }
+
+    /* ─── Translator Card ─── */
+    .translator-card {
+      background: var(--bg-dark);
+      border-radius: var(--radius);
+      padding: 3rem;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+      animation: fadeUp 0.6s ease both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .translator-grid {
+      display: grid;
+      grid-template-columns: 1fr 44px 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    /* ─── Lang Panels ─── */
+    .lang-panel {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 1.2rem;
+      padding: 2rem 2rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.4rem;
+      transition: border-color 0.3s;
+    }
+    .lang-panel:focus-within { border-color: rgba(244,63,94,0.4); }
+
+    .panel-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 1.2rem;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+    .panel-top label { font-size: 1.1rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: rgba(148,163,184,0.8); }
+
+    select.lang-select {
+      appearance: none;
+      background: transparent;
+      border: none;
+      color: #f8fafc;
+      font-size: 1.4rem;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      cursor: pointer;
+      outline: none;
+    }
+    select.lang-select option { background: #1e293b; color: #fff; }
+
+    textarea.lang-ta {
+      background: transparent;
+      border: none;
+      outline: none;
+      resize: none;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.6rem;
+      line-height: 1.7;
+      color: #f8fafc;
+      width: 100%;
+      min-height: 140px;
+    }
+    textarea.lang-ta::placeholder { color: rgba(148,163,184,0.4); }
+
+    .panel-actions {
+      display: flex;
+      gap: 0.8rem;
+      padding-top: 1.2rem;
+      border-top: 1px solid rgba(255,255,255,0.07);
+    }
+    .action-btn {
+      width: 3.4rem; height: 3.4rem;
+      border-radius: 0.8rem;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: rgba(148,163,184,0.8);
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s, color 0.2s;
+      font-size: 1.5rem;
+    }
+    .action-btn:hover { background: var(--primary); color: #fff; border-color: var(--primary); }
+    .action-btn ion-icon { font-size: 1.5rem; pointer-events: none; }
+    label.action-btn { cursor: pointer; }
+
+    /* ─── Swap Button ─── */
+    .swap-col {
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding-top: 4.4rem;
+    }
+    .swap-btn {
+      width: 4.4rem; height: 4.4rem;
+      border-radius: 50%;
+      border: 1px solid rgba(244,63,94,0.35);
+      background: rgba(244,63,94,0.08);
+      color: var(--primary);
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: all 0.35s ease;
+      font-size: 2rem;
+    }
+    .swap-btn:hover { background: var(--primary); color: #fff; transform: rotate(180deg); border-color: var(--primary); }
+    .swap-btn ion-icon { font-size: 2rem; pointer-events: none; }
+
+    /* ─── Translate Button Row ─── */
+    .translate-row {
+      margin-top: 2rem;
+      display: flex;
+      gap: 1rem;
+    }
+    .translate-btn {
+      flex: 1;
+      background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+      color: #fff;
+      border: none;
+      border-radius: var(--radius-sm);
+      padding: 1.4rem 2rem;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      text-transform: uppercase;
+      display: flex; align-items: center; justify-content: center; gap: 1rem;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .translate-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(244,63,94,0.35); }
+    .translate-btn ion-icon { font-size: 1.8rem; pointer-events: none; }
+
+    .status-msg {
+      font-size: 1.3rem;
+      color: rgba(148,163,184,0.7);
+      align-self: center;
+      min-height: 2rem;
+    }
+
+    /* ─── Definition Card ─── */
+    .definition-card {
+      display: none;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 1.2rem;
+      padding: 1.6rem 2rem;
+      margin-top: 1.6rem;
+      animation: fadeUp 0.4s ease both;
+    }
+    .def-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.8rem; }
+    .def-word { font-size: 1.6rem; font-weight: 700; color: var(--primary); }
+    .def-phonetic { font-size: 1.2rem; color: rgba(148,163,184,0.7); font-style: italic; }
+    .def-type {
+      display: inline-block;
+      background: rgba(244,63,94,0.15);
+      color: var(--primary);
+      padding: 2px 8px; border-radius: 4px;
+      font-size: 1.1rem; font-weight: 600;
+      margin-right: 6px; margin-bottom: 4px;
+    }
+    .def-meaning { color: #cbd5e1; font-size: 1.3rem; line-height: 1.5; }
+
+    /* ─── Phrases & Vocab (light section) ─── */
+    .light-section { animation: fadeUp 0.6s ease 0.1s both; }
+
+    .phrases-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+    }
+    .phrase-btn {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 1.2rem 1rem;
+      cursor: pointer;
+      text-align: center;
+      transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+      display: flex; flex-direction: column; gap: 4px;
+    }
+    .phrase-btn:hover {
+      border-color: var(--primary);
+      box-shadow: 0 4px 12px rgba(244,63,94,0.1);
+      transform: translateY(-2px);
+    }
+    .phrase-en { font-size: 1.3rem; font-weight: 600; color: var(--text-main); }
+    .phrase-ta { font-size: 1.5rem; color: var(--primary); font-weight: 500; }
+    .phrase-pron { font-size: 1.1rem; color: var(--text-muted); font-style: italic; }
+
+    /* ─── Vocabulary Grid ─── */
+    .vocab-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+    }
+    .vocab-item {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 1.4rem 1.2rem;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.2s, transform 0.2s;
+      cursor: pointer;
+    }
+    .vocab-item::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+      transform: scaleX(0); transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+    .vocab-item:hover { border-color: rgba(244,63,94,0.25); transform: translateY(-2px); }
+    .vocab-item:hover::before { transform: scaleX(1); }
+    .vocab-en { font-size: 1.2rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
+    .vocab-ta { font-size: 1.7rem; color: var(--text-main); font-weight: 600; line-height: 1.3; }
+    .vocab-pron { font-size: 1.15rem; color: var(--text-light); font-style: italic; margin-top: 3px; }
+
+    /* ─── OCR Loading State ─── */
+    .ocr-loading { color: rgba(148,163,184,0.7); font-size: 1.3rem; font-style: italic; }
+
+    /* ─── Mega Footer ─── */
+    .mega-footer { background-color: #0d1117; color: #e2e8f0; padding-top: 6rem; margin-top: auto; }
+    .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 3rem; margin-bottom: 4rem; max-width: 1200px; margin-left: auto; margin-right: auto; width: 90%; }
+    .footer-col h3 { color: #f8fafc; margin-bottom: 1.5rem; text-transform: uppercase; font-size: 1.8rem; }
+    .footer-col.brand-col .footer-logo { font-size: 2.8rem; color: #f43f5e; letter-spacing: 2px; margin-bottom: 1rem; font-weight: bold; display: block; }
+    .footer-col p { font-size: 1.4rem; color: #94a3b8; margin-bottom: 1rem; line-height: 1.6; }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 0.8rem; }
+    .footer-col ul a { color: #94a3b8; font-size: 1.4rem; text-decoration: none; transition: color 0.2s, padding-left 0.2s; }
+    .footer-col ul a:hover { color: #f43f5e; padding-left: 5px; }
+    .footer-col i { margin-right: 0.8rem; color: #f43f5e; }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.05); padding: 2rem 0; }
+    .bottom-bar { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem; max-width: 1200px; margin: 0 auto; width: 90%; }
+    .bottom-bar p { font-size: 1.3rem; color: #64748b; margin: 0; }
+    .bottom-bar .social-media-links a { color: #94a3b8; margin-left: 1.5rem; font-size: 1.8rem; transition: color 0.2s, transform 0.2s; display: inline-block; }
+    .bottom-bar .social-media-links a:hover { color: #f43f5e; transform: translateY(-3px); }
+
+    /* ─── Responsive ─── */
+    @media (max-width: 768px) {
+      .translator-grid { grid-template-columns: 1fr; }
+      .swap-col { padding-top: 0; }
+      .swap-btn { transform: rotate(90deg); margin: -0.5rem auto; }
+      .swap-btn:hover { transform: rotate(270deg); }
+      .phrases-grid { grid-template-columns: repeat(2, 1fr); }
+      .vocab-grid { grid-template-columns: repeat(2, 1fr); }
+      .translator-card { padding: 2rem; }
+      .features-hero h1 { font-size: 3.4rem; }
+      .translate-row { flex-direction: column; }
+    }
+    @media (max-width: 480px) {
+      .phrases-grid { grid-template-columns: repeat(2, 1fr); }
+      .vocab-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="universal-navbar solid">
+    <div class="nav-container">
+      <a href="../../home.html" class="nav-logo">
+        <img src="../../assets/icon.png" alt="Sancharam Logo">
+      </a>
+      <ul class="nav-items">
+        <li><a href="../../home.html">Home</a></li>
+        <li><a href="../about.html">About</a></li>
+        <li><a href="../explore.html">Explore</a></li>
+        <li><a href="../bookings.html">Bookings</a></li>
+        <li><a href="../features.html" style="color:#f43f5e">Features</a></li>
+        <li><a href="../profile.html">Profile</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header class="features-hero">
+    <h1>Sancharam <span>Linguistics</span></h1>
+    <p>Break language barriers authentically. Translate text, listen to pronunciations, and scan physical signs with AI-powered OCR.</p>
+  </header>
+
+  <!-- Main App -->
+  <main class="app-main">
+
+    <!-- Translator Card (dark) -->
+    <div class="translator-card">
+      <div class="translator-grid">
+
+        <!-- Source Panel -->
+        <div class="lang-panel">
+          <div class="panel-top">
+            <label for="from-lang">From</label>
+            <select class="lang-select" id="from-lang"></select>
+          </div>
+          <textarea class="lang-ta from-text" id="from-text" placeholder="Enter text to translate..."></textarea>
+          <div class="panel-actions">
+            <button class="action-btn" id="speak-from" title="Speak"><ion-icon name="volume-high-outline"></ion-icon></button>
+            <button class="action-btn" id="copy-from" title="Copy"><ion-icon name="copy-outline"></ion-icon></button>
+            <label class="action-btn" for="ocr-upload" title="Scan image (OCR)"><ion-icon name="camera-outline"></ion-icon></label>
+            <input type="file" id="ocr-upload" accept="image/*" capture="environment" style="display:none;">
+          </div>
+        </div>
+
+        <!-- Swap -->
+        <div class="swap-col">
+          <button class="swap-btn" id="swap-btn" title="Swap languages">
+            <ion-icon name="swap-horizontal-outline"></ion-icon>
+          </button>
+        </div>
+
+        <!-- Target Panel -->
+        <div class="lang-panel">
+          <div class="panel-top">
+            <label for="to-lang">To</label>
+            <select class="lang-select" id="to-lang"></select>
+          </div>
+          <textarea class="lang-ta to-text" id="to-text" readonly placeholder="Translation appears here..."></textarea>
+          <div class="panel-actions">
+            <button class="action-btn" id="speak-to" title="Speak"><ion-icon name="volume-high-outline"></ion-icon></button>
+            <button class="action-btn" id="copy-to" title="Copy"><ion-icon name="copy-outline"></ion-icon></button>
+          </div>
+        </div>
+
+      </div><!-- /translator-grid -->
+
+      <!-- Action Row -->
+      <div class="translate-row">
+        <button class="translate-btn" id="translate-btn">
+          <span>Translate Now</span>
+          <ion-icon name="arrow-forward-circle-outline"></ion-icon>
+        </button>
+        <span class="status-msg" id="status-msg"></span>
+      </div>
+
+      <!-- Definition Card -->
+      <div class="definition-card" id="definition-card">
+        <div class="def-header">
+          <span class="def-word" id="def-word"></span>
+          <span class="def-phonetic" id="def-phonetic"></span>
+        </div>
+        <div id="def-content"></div>
+      </div>
+
+    </div><!-- /translator-card -->
+
+    <!-- Quick Phrases -->
+    <div class="light-section">
+      <p class="section-label">Quick phrases — tap to load</p>
+      <div class="phrases-grid" id="phrases-grid"></div>
+    </div>
+
+    <!-- Vocabulary -->
+    <div class="light-section">
+      <p class="section-label">Essential vocabulary</p>
+      <div class="vocab-grid" id="vocab-grid"></div>
+    </div>
+
+  </main><!-- /app-main -->
+
+  <!-- Footer -->
+  <footer class="mega-footer">
+    <div class="footer-grid">
+      <div class="footer-col brand-col">
+        <span class="footer-logo">Sancharam</span>
+        <p>Experience Tamil Nadu differently. Travel smart, travel local, and unlock hidden gems with our curated experiences.</p>
+      </div>
+      <div class="footer-col links-col">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="../../home.html">Home</a></li>
+          <li><a href="../about.html">About us</a></li>
+          <li><a href="../explore.html">Explore</a></li>
+          <li><a href="../bookings.html">Bookings</a></li>
+        </ul>
+      </div>
+      <div class="footer-col contact-col">
+        <h3>Contact Us</h3>
+        <p><i class="fas fa-envelope"></i> hello@sancharam.in</p>
+        <p><i class="fas fa-phone"></i> +91 98765 43210</p>
+        <p><i class="fas fa-map-marker-alt"></i> Chennai, Tamil Nadu</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="bottom-bar">
+        <p>&copy; 2026 Sancharam. All Rights Reserved.</p>
+        <div class="social-media-links">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    /* ─── Language Data ─── */
+    const languages = {
+      "en-GB": "English",
+      "ta-LK": "Tamil",
+      "hi-IN": "Hindi",
+      "te-IN": "Telugu",
+      "fr-FR": "French",
+      "de-DE": "German",
+      "es-ES": "Spanish",
+      "ja-JP": "Japanese",
+      "ko-KR": "Korean",
+      "ru-RU": "Russian",
+      "ar-SA": "Arabic"
+    };
+
+    const phrases = [
+      { en: "Hello",             ta: "வணக்கம்",              pron: "Vanakkam"              },
+      { en: "Thank you",         ta: "நன்றி",                pron: "Nandri"                },
+      { en: "Where is…?",        ta: "எங்கே உள்ளது?",        pron: "Engae ullathu?"        },
+      { en: "How much?",         ta: "எவ்வளவு?",             pron: "Evvalavu?"             },
+      { en: "Please help me",    ta: "தயவுசெய்து உதவுங்கள்", pron: "Thayavu seidhu utavungal" },
+      { en: "I don't understand",ta: "எனக்கு புரியவில்லை",  pron: "Enakku puriyavillai"   },
+      { en: "Good morning",      ta: "காலை வணக்கம்",         pron: "Kaalai vanakkam"       },
+      { en: "Goodbye",           ta: "விடைபெறுகிறேன்",       pron: "Vidaiperugirain"       },
+    ];
+
+    const vocab = [
+      { en: "Water",   ta: "தண்ணீர்",     pron: "Thanneer"    },
+      { en: "Food",    ta: "உணவு",        pron: "Unavu"       },
+      { en: "Temple",  ta: "கோவில்",      pron: "Kovil"       },
+      { en: "Bus",     ta: "பேருந்து",    pron: "Paerundu"    },
+      { en: "Hotel",   ta: "விடுதி",      pron: "Vidudhi"     },
+      { en: "Doctor",  ta: "மருத்துவர்",  pron: "Maruthuvar"  },
+      { en: "Market",  ta: "சந்தை",       pron: "Sandhai"     },
+      { en: "Beach",   ta: "கடற்கரை",    pron: "Katarkarai"  },
+      { en: "Train",   ta: "தொடர்வண்டி", pron: "Thodaravandi"},
+      { en: "Left",    ta: "இடது",        pron: "Idathu"      },
+      { en: "Right",   ta: "வலது",        pron: "Valathu"     },
+      { en: "Yes / No",ta: "ஆம் / இல்லை",pron: "Aam / Illai" },
+    ];
+
+    /* ─── DOM References ─── */
+    const fromText   = document.getElementById('from-text');
+    const toText     = document.getElementById('to-text');
+    const fromLang   = document.getElementById('from-lang');
+    const toLang     = document.getElementById('to-lang');
+    const statusMsg  = document.getElementById('status-msg');
+    const defCard    = document.getElementById('definition-card');
+    const defWord    = document.getElementById('def-word');
+    const defPhon    = document.getElementById('def-phonetic');
+    const defContent = document.getElementById('def-content');
+
+    /* ─── Populate Language Selects ─── */
+    Object.entries(languages).forEach(([code, name]) => {
+      const o1 = new Option(name, code, code === 'ta-LK', code === 'ta-LK');
+      const o2 = new Option(name, code, code === 'en-GB', code === 'en-GB');
+      fromLang.appendChild(o1);
+      toLang.appendChild(o2);
+    });
+
+    /* ─── Translate ─── */
+    document.getElementById('translate-btn').addEventListener('click', async () => {
+      const text = fromText.value.trim();
+      if (!text) { setStatus('Please enter some text first.'); return; }
+      setStatus('Translating…');
+      toText.value = '';
+      try {
+        const res  = await fetch(`https://api.mymemory.translated.net/get?q=${encodeURIComponent(text)}&langpair=${fromLang.value}|${toLang.value}`);
+        const data = await res.json();
+        toText.value = data.responseData?.translatedText || 'Translation unavailable.';
+        setStatus('Done');
+        setTimeout(() => setStatus(''), 2000);
+      } catch {
+        setStatus('Network error — please try again.');
+      }
+    });
+
+    /* ─── Swap ─── */
+    document.getElementById('swap-btn').addEventListener('click', () => {
+      [fromText.value, toText.value]         = [toText.value, fromText.value];
+      [fromLang.value, toLang.value]         = [toLang.value, fromLang.value];
+      defCard.style.display = 'none';
+    });
+
+    /* ─── Copy Buttons ─── */
+    document.getElementById('copy-from').addEventListener('click', () => {
+      navigator.clipboard.writeText(fromText.value);
+      setStatus('Copied source text');
+      setTimeout(() => setStatus(''), 1500);
+    });
+    document.getElementById('copy-to').addEventListener('click', () => {
+      navigator.clipboard.writeText(toText.value);
+      setStatus('Copied translation');
+      setTimeout(() => setStatus(''), 1500);
+    });
+
+    /* ─── Speak Buttons ─── */
+    document.getElementById('speak-from').addEventListener('click', () => speak(fromText.value, fromLang.value));
+    document.getElementById('speak-to').addEventListener('click',   () => speak(toText.value,   toLang.value));
+
+    function speak(text, langCode) {
+      if (!text) return;
+      const utt = new SpeechSynthesisUtterance(text);
+      utt.lang  = langCode;
+      speechSynthesis.cancel();
+      speechSynthesis.speak(utt);
+    }
+
+    /* ─── OCR ─── */
+    document.getElementById('ocr-upload').addEventListener('change', (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+      fromText.value = '';
+      fromText.placeholder = 'Scanning image… this may take a moment.';
+      setStatus('Running OCR…');
+
+      const src   = fromLang.value;
+      const tLang = src.includes('ta') ? 'tam' : 'eng';
+
+      Tesseract.recognize(file, tLang, { logger: m => console.log(m) })
+        .then(({ data: { text } }) => {
+          fromText.value = text.trim();
+          fromText.placeholder = 'Enter text to translate...';
+          setStatus('OCR complete — review and translate');
+        })
+        .catch(() => {
+          fromText.placeholder = 'OCR failed. Ensure the image is clear.';
+          setStatus('');
+        });
+    });
+
+    /* ─── Dictionary (single English words) ─── */
+    let dictTimer;
+    fromText.addEventListener('keyup', () => {
+      clearTimeout(dictTimer);
+      const word = fromText.value.trim();
+      if (!word || word.includes(' ') || !fromLang.value.startsWith('en')) {
+        defCard.style.display = 'none'; return;
+      }
+      dictTimer = setTimeout(() => fetchDefinition(word), 800);
+    });
+
+    async function fetchDefinition(word) {
+      word = word.replace(/[^a-zA-Z]/g, '');
+      if (!word) return;
+      try {
+        const res  = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`);
+        if (!res.ok) throw new Error();
+        const data = await res.json();
+        const entry = data[0];
+        defWord.textContent = entry.word;
+        defPhon.textContent = entry.phonetic || entry.phonetics?.[0]?.text || '';
+        defContent.innerHTML = entry.meanings.slice(0, 2).map(m => `
+          <div style="margin-bottom:8px;">
+            <span class="def-type">${m.partOfSpeech}</span>
+            <span class="def-meaning">${m.definitions[0].definition}</span>
+          </div>`).join('');
+        defCard.style.display = 'block';
+      } catch {
+        defCard.style.display = 'none';
+      }
+    }
+
+    /* ─── Status Helper ─── */
+    function setStatus(msg) { statusMsg.textContent = msg; }
+
+    /* ─── Build Quick Phrases ─── */
+    const phrasesGrid = document.getElementById('phrases-grid');
+    phrases.forEach(p => {
+      const btn = document.createElement('button');
+      btn.className = 'phrase-btn';
+      btn.innerHTML = `
+        <span class="phrase-en">${p.en}</span>
+        <span class="phrase-ta">${p.ta}</span>
+        <span class="phrase-pron">${p.pron}</span>`;
+      btn.addEventListener('click', () => {
+        fromText.value = p.en;
+        toText.value   = p.ta;
+        setStatus('Phrase loaded — tap speak to hear it');
+        setTimeout(() => setStatus(''), 2500);
+      });
+      phrasesGrid.appendChild(btn);
+    });
+
+    /* ─── Build Vocabulary Grid ─── */
+    const vocabGrid = document.getElementById('vocab-grid');
+    vocab.forEach(v => {
+      const div = document.createElement('div');
+      div.className = 'vocab-item';
+      div.title = 'Tap to load into translator';
+      div.innerHTML = `
+        <div class="vocab-en">${v.en}</div>
+        <div class="vocab-ta">${v.ta}</div>
+        <div class="vocab-pron">${v.pron}</div>`;
+      div.addEventListener('click', () => {
+        fromText.value = v.en;
+        toText.value   = v.ta;
+        setStatus(`"${v.en}" → ${v.ta} (${v.pron})`);
+        setTimeout(() => setStatus(''), 3000);
+      });
+      vocabGrid.appendChild(div);
+    });
+  </script>
+</body>
+</html>

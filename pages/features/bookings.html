@@ -1,0 +1,953 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BookMyRoom | Smart Workspace Management</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f9fafb;
+  --surface: #ffffff;
+  --border: #f3f4f6;
+  --text: #111827;
+  --text-soft: #4b5563;
+  --muted: #9ca3af;
+  --primary: #2563eb;
+  --primary-hover: #1d4ed8;
+  --sidebar-bg: #0f172a;
+  --sidebar-text: #94a3b8;
+  --sidebar-active: #1e293b;
+  --success: #059669;
+  --danger: #dc2626;
+  --radius: 12px;
+  --font: 'Plus Jakarta Sans', sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { 
+  font-family: var(--font); 
+  background: var(--bg); 
+  color: var(--text); 
+  height: 100vh;
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased; 
+}
+input, select, button { font-family: var(--font); }
+
+/* CUSTOM LOGO COMPONENT */
+.custom-logo { width: 64px; height: 64px; object-fit: contain; margin-right: -14px; margin-left: -8px; }
+
+/* GLOBAL APP LAYOUT */
+.app-container { position: relative; width: 100%; height: 100%; }
+.hidden { display: none !important; }
+.view-section { position: absolute; inset: 0; background: var(--bg); display: none; }
+.view-section.active { display: block; }
+@keyframes fadeZoom { from { opacity: 0; transform: scale(0.98); } to { opacity: 1; transform: scale(1); } }
+
+/* BUTTONS */
+.btn { padding: 12px 24px; border-radius: 8px; border: 1px solid transparent; font-weight: 600; font-size: 0.95rem; cursor: pointer; transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1); display: inline-flex; align-items: center; justify-content: center; gap: 8px; }
+.btn-primary { background: var(--primary); color: white; box-shadow: 0 4px 12px rgba(37,99,235,0.3); }
+.btn-primary:hover { background: var(--primary-hover); transform: translateY(-2px); box-shadow: 0 6px 16px rgba(37,99,235,0.4); }
+.btn-ghost { background: transparent; color: var(--text); border-color: var(--border); box-shadow: inset 0 0 0 2px rgba(0,0,0,0.05); }
+.btn-ghost:hover { background: #f3f4f6; }
+.btn-sm { padding: 8px 16px; font-size: 0.85rem; }
+
+/* 1. LANDING PAGE (INDEX) */
+.landing-nav { position: fixed; top: 0; left: 0; right: 0; height: 80px; display: flex; align-items: center; justify-content: space-between; padding: 0 48px; background: rgba(255,255,255,0.9); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(0,0,0,0.05); z-index: 100; }
+.landing-logo { font-size: 1.5rem; font-weight: 800; display: flex; align-items: center; gap: 4px; color: var(--text); letter-spacing: -0.03em; }
+.landing-nav-links { display: flex; gap: 16px; align-items: center; }
+
+.landing-hero { display: flex; height: 100vh; padding-top: 80px; }
+.hero-content { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 0 80px 80px; position: relative; }
+.hero-badge { display: inline-block; padding: 6px 12px; background: #eff6ff; color: var(--primary); border-radius: 20px; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 24px; border: 1px solid #dbeafe; }
+.hero-title { font-size: 4rem; font-weight: 800; line-height: 1.1; letter-spacing: -0.04em; color: var(--text); margin-bottom: 24px; }
+.hero-title span { background: linear-gradient(135deg, var(--primary), #8b5cf6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.hero-desc { font-size: 1.2rem; color: var(--text-soft); max-width: 500px; line-height: 1.6; margin-bottom: 40px; }
+.hero-features { display: flex; gap: 32px; margin-top: 60px; color: var(--text-soft); font-weight: 500; font-size: 0.9rem; }
+
+.hero-features span { display: flex; align-items: center; gap: 8px; }
+
+.hero-visual { flex: 1; background: #f3f4f6; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+.hero-visual::before { content:''; position:absolute; inset:0; background: linear-gradient(135deg, #e0e7ff 0%, #ede9fe 100%); opacity:0.5; }
+.mockup-card { position: relative; z-index: 10; width: 80%; background: #fff; border-radius: 24px; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.15); border: 1px solid rgba(255,255,255,0.8); overflow: hidden; transform: rotate(-2deg) translateY(-20px); transition: transform 0.5s ease; }
+.hero-visual:hover .mockup-card { transform: rotate(0deg) translateY(0); }
+.mockup-header { height: 40px; background: #f8fafc; border-bottom: 1px solid #f1f5f9; display: flex; align-items: center; padding: 0 16px; gap: 6px; }
+.mockup-dot { width: 10px; height: 10px; border-radius: 50%; background: #e2e8f0; }
+.mockup-img { width: 100%; height: 350px; object-fit: cover; }
+
+/* 2. SPLIT-SCREEN AUTH PAGE */
+.auth-page { display: flex; height: 100vh; background: #fff; position: relative; }
+.auth-back { position: absolute; top: 32px; left: 32px; z-index: 10; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.2); color: #fff; padding: 10px 20px; border-radius: 8px; cursor: pointer; backdrop-filter: blur(10px); display: flex; align-items: center; gap: 8px; transition: 0.2s; font-weight:500;}
+.auth-back:hover { background: rgba(0,0,0,0.5); }
+.auth-visual { flex: 1; background: url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1200') center/cover; position: relative; display: flex; padding: 60px; align-items: flex-end; }
+.auth-visual::before { content:''; position:absolute; inset:0; background: linear-gradient(0deg, rgba(15,23,42,0.9) 0%, rgba(15,23,42,0.2) 100%); }
+.auth-quote { position: relative; z-index: 1; color: #fff; max-width: 400px; }
+.auth-quote h2 { font-size: 2.5rem; font-weight: 800; margin-bottom: 16px; line-height: 1.1; letter-spacing: -0.03em; }
+.auth-quote p { font-size: 1.1rem; color: #cbd5e1; }
+
+.auth-forms-wrapper { width: 500px; position: relative; overflow: hidden; background: #fff; }
+.auth-forms-slider { display: flex; width: 200%; height: 100%; transition: transform 0.6s cubic-bezier(0.77, 0, 0.175, 1); }
+.auth-panel { width: 50%; padding: 60px; display: flex; flex-direction: column; justify-content: center; }
+
+/* Slide mode toggle */
+.register-mode .auth-forms-slider { transform: translateX(-50%); }
+
+.auth-header { margin-bottom: 32px; }
+.auth-title { font-size: 2rem; font-weight: 800; color: var(--text); letter-spacing: -0.03em; margin-bottom: 8px; }
+.auth-subtitle { color: var(--text-soft); font-size: 0.95rem; }
+
+.form-group { display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px; }
+.form-group label { font-size: 0.85rem; font-weight: 600; color: var(--text-soft); display:flex; justify-content:space-between; }
+input, select { width: 100%; padding: 12px 16px; border: 1px solid #e2e8f0; border-radius: 8px; font-size: 0.95rem; outline: none; transition: 0.2s; background: #f8fafc; }
+input:focus, select:focus { border-color: var(--primary); background: #fff; box-shadow: 0 0 0 4px rgba(37,99,235,0.1); }
+.toggle-text { text-align: center; margin-top: 24px; font-size: 0.9rem; color: var(--text-soft); }
+.toggle-text a { color: var(--primary); font-weight: 600; text-decoration: none; }
+.toggle-text a:hover { text-decoration: underline; }
+
+/* 3. DOOR ANIMATION OVERLAY */
+.door-container { position: fixed; inset: 0; z-index: 10000; display: flex; pointer-events: none; opacity: 0; transition: opacity 0s 0.9s; }
+.door-container.closing { opacity: 1; transition: opacity 0s; }
+.door { width: 50%; height: 100vh; background: #0f172a; transition: transform 0.9s cubic-bezier(0.77, 0, 0.175, 1); display: flex; align-items: center; justify-content: center; position: relative; }
+.door-left { transform: translateX(-100%); border-right: 1px solid #334155; z-index: 2; }
+.door-right { transform: translateX(100%); border-left: 1px solid #334155; z-index: 1; }
+.door-left::after { content: ''; position:absolute; right:20px; top:50%; width:8px; height:80px; background:#475569; border-radius:4px; transform:translateY(-50%); }
+.door-right::after { content: ''; position:absolute; left:20px; top:50%; width:8px; height:80px; background:#475569; border-radius:4px; transform:translateY(-50%); }
+
+/* Closing mechanism */
+.door-container.closing .door-left { transform: translateX(0); box-shadow: 10px 0 30px rgba(0,0,0,0.5); }
+.door-container.closing .door-right { transform: translateX(0); box-shadow: -10px 0 30px rgba(0,0,0,0.5); }
+
+/* 4. DASHBOARD / MAIN APP */
+.app-wrapper { display: flex; height: 100vh; }
+.sidebar { width: 260px; background: var(--sidebar-bg); border-right: 1px solid #1e293b; display: flex; flex-direction: column; }
+.nav-menu { padding: 24px 16px; flex: 1; display: flex; flex-direction: column; gap: 6px; }
+.nav-item { padding: 12px 16px; border-radius: 8px; border: none; background: transparent; color: var(--sidebar-text); font-weight: 500; text-align: left; cursor: pointer; transition: 0.2s; }
+.nav-item:hover { background: rgba(255,255,255,0.05); color: #fff; }
+.nav-item.active { background: var(--sidebar-active); color: #fff; font-weight: 600; box-shadow: inset 3px 0 0 var(--primary); }
+.sidebar-bottom { padding: 24px 16px; border-top: 1px solid #1e293b; }
+.user-profile { display: flex; align-items: center; justify-content: space-between; }
+.user-profile-info { cursor: pointer; padding: 6px; border-radius: 8px; transition: 0.2s; flex: 1; }
+.user-profile-info:hover { background: rgba(255,255,255,0.05); }
+.user-name { font-weight: 600; color: #fff; font-size: 0.85rem; display: block; }
+.user-role { font-size: 0.75rem; color: var(--sidebar-text); background: rgba(255,255,255,0.1); padding: 2px 6px; border-radius: 4px; margin-top:4px; display:inline-block; }
+.logout-btn { background: transparent; border: 1px solid #334155; color: var(--sidebar-text); padding: 6px 10px; font-size: 0.75rem; border-radius: 6px; cursor: pointer; transition:0.2s; }
+.logout-btn:hover { background: #1e293b; color:#fff; }
+
+.main-content { flex: 1; display: flex; flex-direction: column; background: #f8fafc; }
+.top-nav { height: 80px; display: flex; align-items: center; justify-content: space-between; padding: 0 40px; background: #fff; border-bottom: 1px solid var(--border); }
+.page-title { font-size: 1.5rem; font-weight: 800; color: var(--text); letter-spacing:-0.02em; }
+.view-area { flex: 1; overflow-y: auto; padding: 40px; }
+
+/* Dashboard components */
+.card { background: #fff; border: 1px solid var(--border); border-radius: var(--radius); box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); }
+.stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 32px; }
+.stat-card { padding: 24px; border-left: 4px solid var(--primary); }
+.stat-val { font-size: 2.2rem; font-weight: 800; margin-bottom: 4px; color: var(--text); }
+.stat-lbl { font-size: 0.8rem; font-weight: 600; color: var(--text-soft); text-transform: uppercase; letter-spacing: 0.05em; }
+
+.rooms-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px; }
+.room-card { overflow: hidden; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; display: flex; flex-direction: column; }
+.room-card:hover { transform: translateY(-4px); box-shadow: 0 12px 24px -5px rgba(0,0,0,0.08); border-color: #cbd5e1; }
+.room-visual { height: 180px; background: #e2e8f0; position: relative; }
+.room-visual img { width: 100%; height: 100%; object-fit: cover; }
+.badge { position: absolute; top: 16px; right: 16px; padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; letter-spacing:0.05em; }
+.badge.available { background: rgba(5,150,105,0.9); color: #fff; backdrop-filter:blur(4px); }
+.badge.booked { background: rgba(220,38,38,0.9); color: #fff; backdrop-filter:blur(4px); }
+.room-body { padding: 24px; flex: 1; display:flex; flex-direction:column; }
+.room-name { font-size: 1.2rem; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+.room-cap { color: var(--text-soft); font-size: 0.85rem; margin-bottom: 16px; display:flex; align-items:center; gap:6px;}
+.room-features { display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto; }
+.feature-tag { font-size: 0.75rem; padding: 4px 10px; background: #f1f5f9; border-radius: 6px; color: var(--text-soft); font-weight: 600; }
+
+/* Filter Bar */
+.filter-bar { padding: 24px; display: flex; gap: 20px; flex-wrap: wrap; align-items: flex-end; margin-bottom:24px;}
+.avail-list { display: flex; flex-direction: column; gap: 16px; }
+
+/* Upcoming Panel */
+.upcoming-panel { margin-bottom:40px; }
+.upcoming-card { display: flex; align-items: center; justify-content: space-between; padding: 20px 24px; background: linear-gradient(to right, #eff6ff, #fff); border-left: 4px solid var(--primary); }
+.u-title { font-size: 1.1rem; font-weight: 700; color: #1e3a8a; }
+.u-time { font-size: 0.9rem; color: #3b82f6; font-weight: 600; margin-top:4px; }
+.u-room { font-weight: 700; color: var(--text); text-align:right;}
+.u-attend { font-size: 0.8rem; color: var(--text-soft); text-align:right; margin-top:4px;}
+
+/* Table */
+table { width: 100%; border-collapse: collapse; }
+th { text-align: left; padding: 16px 24px; background: #f8fafc; color: var(--text-soft); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 700; border-bottom: 1px solid var(--border); }
+td { padding: 20px 24px; border-bottom: 1px solid var(--border); font-size: 0.95rem; color: var(--text); font-weight: 500; }
+.delete-btn { color: var(--danger); background: #fef2f2; border: none; padding: 6px 12px; border-radius: 6px; font-weight: 600; cursor: pointer; transition:0.2s;}
+.delete-btn:hover { background: #fee2e2; }
+
+/* TOAST */
+.toast-container { position: fixed; top: 32px; right: 32px; display: flex; flex-direction: column; gap: 12px; z-index: 9999; }
+.toast { background: white; border: 1px solid var(--border); border-radius: 8px; padding: 16px 24px; font-weight: 600; font-size: 0.95rem; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1); border-left: 4px solid var(--success); animation: slideIn 0.3s ease, slideOut 0.3s ease 3s both; }
+.toast.error { border-left-color: var(--danger); }
+@keyframes slideIn { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+@keyframes slideOut { to { opacity: 0; transform: translateY(-10px); } }
+
+/* Shared inner views */
+.app-view { display: none; animation: fadeZoom 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+.app-view.active { display: block; }
+</style>
+</head>
+<body>
+
+<div class="app-container">
+
+  <!-- 1. LANDING PAGE -->
+  <div class="view-section active" id="sec-landing">
+    <nav class="landing-nav">
+      <div class="landing-logo">
+        <img src="logo.jpg" alt="Logo" class="custom-logo">
+        BookMyRoom
+      </div>
+      <div class="landing-nav-links">
+        <button class="btn btn-ghost" onclick="navTo('auth')">Sign In</button>
+        <button class="btn btn-primary" onclick="navTo('auth', 'register')">Get Started</button>
+      </div>
+    </nav>
+    <div class="landing-hero">
+      <div class="hero-content">
+        <span class="hero-badge">Workspace Operating System</span>
+        <h1 class="hero-title">Intelligent Office<br><span>Collaboration.</span></h1>
+        <p class="hero-desc">Securely reserve enterprise meeting rooms, invite attendees, and prevent double-booking conflicts instantly.</p>
+        <button class="btn btn-primary" style="align-self:flex-start; padding:16px 32px; font-size:1.1rem; box-shadow: 0 10px 25px rgba(37,99,235,0.4);" onclick="navTo('auth')">Enter Platform</button>
+        <div class="hero-features">
+          <span>✔️ Centralized Admin</span>
+          <span>✔️ Real-Time Conflict Sync</span>
+          <span>✔️ Role-Based Permissions</span>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="mockup-card">
+          <div class="mockup-header">
+            <div class="mockup-dot" style="background:#f87171"></div>
+            <div class="mockup-dot" style="background:#fbbf24"></div>
+            <div class="mockup-dot" style="background:#34d399"></div>
+          </div>
+          <img class="mockup-img" src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&q=80&w=800" alt="Office App Mockup">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. SPLIT SCREEN LOGIN -->
+  <div class="view-section" id="sec-auth">
+    <div class="auth-page" id="authPage">
+      <button class="auth-back" onclick="navTo('landing')">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+        Return to Home
+      </button>
+      
+      <div class="auth-visual">
+        <div class="auth-quote">
+          <h2>Design your best work.</h2>
+          <p>BookMyRoom enables frictionless collaboration across your organization's real estate.</p>
+        </div>
+      </div>
+      
+      <div class="auth-forms-wrapper">
+        <div class="auth-forms-slider" id="authFormsSlider">
+          
+          <!-- LOGIN PANEL -->
+          <div class="auth-panel">
+            <div class="auth-header">
+              <h2 class="auth-title">Welcome Back</h2>
+              <p class="auth-subtitle">Enter your corporate credentials to continue.</p>
+            </div>
+            <div class="form-group">
+              <label>Email Address</label>
+              <input type="email" id="loginEmail" placeholder="employee@corp.com" value="admin@meto.com">
+            </div>
+            <div class="form-group">
+              <label>Password <a href="javascript:void(0)" onclick="forgotPasswordMock()" style="color:var(--primary); font-weight:600; text-decoration:none;">Forgot?</a></label>
+              <input type="password" id="loginPassword" placeholder="••••••••" value="admin123">
+            </div>
+            <button class="btn btn-primary" style="width:100%; padding:14px; font-size:1.05rem; margin-top:8px;" onclick="submitAuth('login')">Sign In</button>
+            <div class="toggle-text">Don't have an account? <a href="javascript:void(0)" onclick="toggleSlide()">Request Access</a></div>
+          </div>
+
+          <!-- REGISTER PANEL -->
+          <div class="auth-panel">
+            <div class="auth-header">
+              <h2 class="auth-title">Request Access</h2>
+              <p class="auth-subtitle">New hire or contractor registration.</p>
+            </div>
+            <div class="form-group">
+              <label>Full Legal Name</label>
+              <input type="text" id="regName" placeholder="John Doe">
+            </div>
+            <div class="form-group">
+              <label>Work Email</label>
+              <input type="email" id="regEmail" placeholder="employee@corp.com">
+            </div>
+            <div class="form-group">
+              <label>Create Password</label>
+              <input type="password" id="regPassword" placeholder="••••••••">
+            </div>
+            <button class="btn btn-primary" style="width:100%; padding:14px; font-size:1.05rem; margin-top:8px;" onclick="submitAuth('register')">Create Account</button>
+            <div class="toggle-text">Already have an account? <a href="javascript:void(0)" onclick="toggleSlide()">Sign In</a></div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEC-PAYMENT: FULL PAGE CHECKOUT -->
+  <div class="view-section" id="sec-payment" style="background:#f8fafc; z-index:1000; position:fixed; inset:0; overflow-y:auto;">
+    <div style="min-height: 100vh; display:flex; align-items:center; justify-content:center; padding: 40px;">
+      <div class="card" style="max-width:550px; width:100%; padding:60px; text-align:center; box-shadow:0 20px 40px rgba(0,0,0,0.06); border:none;">
+        <div style="width:80px; height:80px; background:#eff6ff; color:var(--primary); border-radius:24px; display:flex; align-items:center; justify-content:center; margin:0 auto 32px; box-shadow: 0 10px 20px rgba(37,99,235,0.15);">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 3.5 0 0 0 0 7h5a3.5 3.5 3.5 0 0 1 0 7H6"></path></svg>
+        </div>
+        <h2 style="font-size:2.2rem; font-weight:800; color:var(--text); letter-spacing:-0.03em; margin-bottom:12px;">Secure Checkout</h2>
+        <p style="color:var(--text-soft); font-size:1.1rem; margin-bottom:40px;">Scan the randomly generated QR code via Google Pay, PhonePe, or any UPI app to finalize your requisition.</p>
+        
+        <div style="margin: 0 auto; width:260px; height:260px; background:#fff; padding:16px; border-radius:24px; border:2px solid #e2e8f0; display:flex; align-items:center; justify-content:center; box-shadow:0 10px 25px rgba(0,0,0,0.05);">
+          <!-- Dynamic QR code API simulation -->
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=upi://pay?pa=bookmyroom@corporate&pn=BookMyRoom&cu=INR" alt="UPI QR" style="width:100%; height:100%; border-radius: 12px; mix-blend-mode:multiply;">
+        </div>
+        
+        <div style="margin-top:32px; font-weight:800; color:var(--text); font-size:3rem; letter-spacing:-0.04em;" id="paymentPageAmount">₹0</div>
+        <div style="font-size:1.1rem; color:var(--text-soft); margin-top:8px; font-weight:500;">Corporate UPI ID: <span style="font-family:monospace; font-weight:700; color:var(--primary); background:#eff6ff; padding:4px 8px; border-radius:6px;">bookmyroom@corporate</span></div>
+        
+        <div style="display:flex; gap:16px; margin-top:48px;">
+          <button class="btn btn-ghost" style="flex:1; padding:18px; font-size:1.1rem;" onclick="cancelPaymentPage()">Cancel Transaction</button>
+          <button class="btn btn-primary" style="flex:1; padding:18px; font-size:1.1rem; display:flex; justify-content:center; gap:8px;" onclick="confirmPaymentPage()">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            I have Paid
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. DOOR ANIMATION OVERLAY -->
+  <div class="door-container" id="doorOverlay">
+    <div class="door door-left">
+      <img src="logo.jpg" alt="Logo" class="custom-logo" style="width:72px; height:72px; position:absolute; right:-36px; z-index:10; background:#fff; padding:8px; box-shadow:0 0 20px rgba(0,0,0,0.5); border-radius:50%; object-fit:contain;">
+    </div>
+    <div class="door door-right"></div>
+  </div>
+
+  <!-- 4. APP DASHBOARD -->
+  <div class="view-section" id="sec-app">
+    <div class="app-wrapper">
+      
+      <aside class="sidebar">
+        <div class="logo-wrap" style="padding: 32px 24px; display: flex; align-items: center;">
+          <img src="logo.jpg" alt="Logo" class="custom-logo">
+          <div class="logo" style="font-size:1.25rem; font-weight:800; color:#fff; letter-spacing:-0.03em;">BookMyRoom</div>
+        </div>
+        <nav class="nav-menu">
+          <button class="nav-item active" onclick="switchAppTab('rooms', 'Dashboard')">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+            Dashboard
+          </button>
+          <button class="nav-item" onclick="switchAppTab('available', 'Search Spaces')">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            Search Spaces
+          </button>
+          <button class="nav-item" onclick="switchAppTab('book', 'New Reservation')">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line><line x1="12" y1="14" x2="12" y2="18"></line><line x1="10" y1="16" x2="14" y2="16"></line></svg>
+            New Reservation
+          </button>
+          <button class="nav-item" onclick="switchAppTab('bookings', 'My Schedule')">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+            My Schedule
+          </button>
+        </nav>
+        <div class="sidebar-bottom">
+          <div class="user-profile">
+            <div class="user-profile-info" onclick="switchAppTab('profile', 'My Account')">
+              <span class="user-name" id="navUserName">Loading...</span>
+              <span class="user-role" id="navUserRole">Role</span>
+            </div>
+            <button class="logout-btn" onclick="logout()">Log Out</button>
+          </div>
+        </div>
+      </aside>
+
+      <main class="main-content">
+        <div class="top-nav">
+          <div class="page-title" id="pageTitle">Dashboard</div>
+          <div class="header-date" id="headerDate"></div>
+        </div>
+        <div class="view-area">
+          
+          <!-- DASHBOARD TAB -->
+          <div class="app-view active" id="view-rooms">
+            <div class="stats-grid" id="heroStats"></div>
+            
+            <div class="upcoming-panel">
+              <h3 style="font-size:1.15rem; font-weight:800; margin-bottom:16px;">Next Up For You</h3>
+              <div class="card" id="upcomingMeetingPanel"></div>
+            </div>
+
+            <h3 style="font-size:1.15rem; font-weight:800; margin-bottom:16px;">Corporate Facilities</h3>
+            <div class="rooms-grid" id="roomsGrid"></div>
+          </div>
+
+          <!-- AVAILABILITY TAB -->
+          <div class="app-view" id="view-available">
+            <div class="card filter-bar">
+              <div class="form-group"><label>Date Limit</label><input type="date" id="availDate"></div>
+              <div class="form-group"><label>Time Window Start</label><input type="time" id="availFrom" value="09:00"></div>
+              <div class="form-group"><label>Time Window End</label><input type="time" id="availTo" value="10:00"></div>
+              <div class="form-group">
+                <label>Capacity Profile</label>
+                <select id="availCap">
+                  <option value="1">Any size</option>
+                  <option value="5">5+ personnel</option>
+                  <option value="10">10+ personnel</option>
+                  <option value="20">20+ personnel</option>
+                </select>
+              </div>
+              <button class="btn btn-primary" onclick="checkAvailability()">Run Query</button>
+            </div>
+            <div class="avail-list" id="availableList">
+              <div class="card" style="padding:60px; text-align:center; color:var(--muted)">Submit a parameters query to reveal open spaces.</div>
+            </div>
+          </div>
+
+          <!-- BOOKING TAB -->
+          <div class="app-view" id="view-book">
+            <div class="card" style="max-width: 700px; padding: 40px;">
+              <h2 style="font-size:1.5rem; font-weight:800; margin-bottom: 32px; letter-spacing:-0.03em;">Asset Requisition Form</h2>
+              <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+                <div class="form-group" style="grid-column: 1 / -1;"><label>Facility Asset</label><select id="bookRoom"></select></div>
+                <div class="form-group" style="grid-column: 1 / -1;"><label>Primary Organizer</label><input type="text" id="bookName" disabled style="background:#f1f5f9; color:var(--text-soft); font-weight:600;"></div>
+                <div class="form-group" style="grid-column: 1 / -1;"><label>Calendar Subject</label><input type="text" id="bookTitle" placeholder="e.g. Q3 Financial Review"></div>
+                <div class="form-group" style="grid-column: 1 / -1; height:1px; background:var(--border); margin:4px 0;"></div>
+                <div class="form-group"><label>Execute Date</label><input type="date" id="bookDate"></div>
+                <div class="form-group"><label>Estimated Headcount</label><input type="number" id="bookAttendees" min="1" value="1"></div>
+                <div class="form-group"><label>Window Start</label><input type="time" id="bookStart"></div>
+                <div class="form-group"><label>Window End</label><input type="time" id="bookEnd"></div>
+                <div class="form-group" style="grid-column: 1 / -1; height:1px; background:var(--border); margin:4px 0;"></div>
+                
+                <div class="form-group" style="grid-column: 1 / -1;">
+                  <label>Add-on Services & Catering</label>
+                  <div style="display:flex; gap:20px; margin-top:8px; flex-wrap:wrap;">
+                    <label style="display:flex; align-items:center; gap:8px; font-weight:500; font-size:0.9rem; cursor:pointer; white-space:nowrap;"><input type="checkbox" id="addonWater"> 💧 Bottled Water (₹50/pax)</label>
+                    <label style="display:flex; align-items:center; gap:8px; font-weight:500; font-size:0.9rem; cursor:pointer; white-space:nowrap;"><input type="checkbox" id="addonCoffee"> ☕ Coffee Service (₹200/pax)</label>
+                    <label style="display:flex; align-items:center; gap:8px; font-weight:500; font-size:0.9rem; cursor:pointer; white-space:nowrap;"><input type="checkbox" id="addonLunch"> 🍛 Executive Lunch (₹500/pax)</label>
+                  </div>
+                </div>
+              </div>
+              <div style="display:flex; gap:16px; margin-top: 40px;">
+                <button class="btn btn-primary" style="padding: 16px 32px; font-size:1.05rem;" onclick="createBooking()">Proceed to Payment</button>
+                <button class="btn btn-ghost" onclick="clearForm()">Clear Fields</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- LISTINGS TAB -->
+          <div class="app-view" id="view-bookings">
+            <div class="card table-wrap" id="bookingsContent"></div>
+          </div>
+
+          <!-- PROFILE TAB -->
+          <div class="app-view" id="view-profile">
+            <div style="max-width: 800px; margin: 0 auto; margin-top: 20px;">
+              <div style="display:flex; align-items:center; gap: 24px; margin-bottom: 40px; background:#fff; padding:32px; border-radius:var(--radius); border:1px solid var(--border); box-shadow:0 4px 10px rgba(0,0,0,0.02);">
+                <div style="width: 80px; height: 80px; border-radius: 50%; background: var(--primary); color: #fff; display:flex; align-items:center; justify-content:center; font-size: 2.5rem; font-weight:800; box-shadow: 0 10px 20px rgba(37,99,235,0.2);" id="profileAvatar">U</div>
+                <div>
+                  <h2 style="font-size: 2rem; font-weight: 800; color: var(--text); letter-spacing:-0.03em; margin:0;" id="profileName">User Name</h2>
+                  <div style="font-size: 1.1rem; color: var(--text-soft); margin-top:4px;" id="profileEmail">user@example.com</div>
+                </div>
+              </div>
+              
+              <h3 style="font-size: 1.3rem; font-weight:800; color:var(--text); letter-spacing:-0.02em; border-bottom:1px solid var(--border); padding-bottom:12px; margin-bottom: 24px;">Billing & Reservations</h3>
+              <div style="display:flex; gap:24px; margin-bottom:32px;">
+                <div class="card" style="flex:1; padding:24px; background:#fff;">
+                  <div style="font-size:0.85rem; color:var(--text-soft); font-weight:700; text-transform:uppercase; letter-spacing:0.05em;">Total Expenditure</div>
+                  <div style="font-size:2.5rem; font-weight:800; color:var(--primary); margin-top:8px; letter-spacing:-0.03em;" id="profileTotalSpent">₹0</div>
+                </div>
+                <div class="card" style="flex:1; padding:24px; background:#fff;">
+                  <div style="font-size:0.85rem; color:var(--text-soft); font-weight:700; text-transform:uppercase; letter-spacing:0.05em;">Active Reservations</div>
+                  <div style="font-size:2.5rem; font-weight:800; color:var(--text); margin-top:8px; letter-spacing:-0.03em;" id="profileTotalBookings">0</div>
+                </div>
+              </div>
+              
+              <div id="profileBookingsList" style="display:flex; flex-direction:column; gap:16px;"></div>
+            </div>
+          </div>
+
+        </div>
+      </main>
+    </div>
+  </div>
+
+</div>
+<div class="toast-container" id="toasts"></div>
+
+<script>
+const roomImages = {
+  1: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=600",
+  2: "https://images.unsplash.com/photo-1604328698692-f76ea9498e76?auto=format&fit=crop&q=80&w=600",
+  3: "https://images.unsplash.com/photo-1517502884422-41eaead166d4?auto=format&fit=crop&q=80&w=600",
+  4: "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&q=80&w=600",
+  5: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=600",
+  6: "https://images.unsplash.com/photo-1591970669426-0143eb662b78?q=80&w=600"
+};
+
+const rooms = [
+  {id:1, name:"Executive Boardroom", capacity:20, icon:"🏛️", price: 5000, features:["4K Display","Polycom System","Catering"]},
+  {id:2, name:"Alpha Lab", capacity:8, icon:"🔬", price: 1500, features:["Interactive Whiteboard","Dual Monitors"]},
+  {id:3, name:"Beta Workspace", capacity:10, icon:"📊", price: 2000, features:["Projector","Conference Phone"]},
+  {id:4, name:"Focus Pod 1", capacity:4, icon:"🎯", price: 500, features:["Soundproof","Standing Desk"]},
+  {id:5, name:"Focus Pod 2", capacity:4, icon:"🎯", price: 500, features:["Soundproof","Natural Light"]},
+  {id:6, name:"War Room", capacity:15, icon:"⚡", price: 3500, features:["Dual 4K Displays","Video Call","Whiteboards"]}
+];
+
+let bookings = [];
+let currentUser = JSON.parse(localStorage.getItem('meto_user') || 'null');
+let token = localStorage.getItem('meto_token') || null;
+let pendingBooking = null;
+
+function forgotPasswordMock() {
+  showToast('Password Reset Mail simulated. In production, a secure reset token is emailed to you seamlessly via an SMTP server.', 'success');
+}
+
+// ROUTING & VIEWS
+function navTo(sect, param = null) {
+  document.querySelectorAll('.view-section').forEach(v => v.classList.remove('active'));
+  document.getElementById(`sec-${sect}`).classList.add('active');
+  
+  if (sect === 'auth') {
+    const page = document.getElementById('authPage');
+    if (param === 'register') {
+      page.classList.add('register-mode');
+    } else {
+      page.classList.remove('register-mode');
+    }
+  }
+}
+
+function toggleSlide() {
+  document.getElementById('authPage').classList.toggle('register-mode');
+}
+
+// AUTH API
+async function submitAuth(type) {
+  const isLogin = type === 'login';
+  const email = document.getElementById(isLogin ? 'loginEmail' : 'regEmail').value;
+  const password = document.getElementById(isLogin ? 'loginPassword' : 'regPassword').value;
+  const name = isLogin ? null : document.getElementById('regName').value;
+
+  const endpoint = isLogin ? '/api/login' : '/api/register';
+  const body = isLogin ? { email, password } : { name, email, password };
+
+  try {
+    const res = await fetch(endpoint, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body)
+    });
+    
+    const data = await res.json();
+    if (res.ok) {
+      // DOOR ANIMATION TRIGGER
+      const doors = document.getElementById('doorOverlay');
+      doors.classList.add('closing');
+      
+      setTimeout(() => {
+        token = data.token;
+        currentUser = data.user;
+        localStorage.setItem('meto_token', token);
+        localStorage.setItem('meto_user', JSON.stringify(currentUser));
+        
+        checkAuthSetup(); // Inject UI behind the doors
+        navTo('app');
+        
+        setTimeout(() => {
+          doors.classList.remove('closing');
+          showToast(`Welcome to BookMyRoom, ${currentUser.name}!`, 'success');
+        }, 800); // Wait for doors to visually merge
+      }, 900); // Time to slide shut
+    } else {
+      showToast(data.error || 'Access Denied', 'error');
+    }
+  } catch (err) {
+    showToast('Network failure.', 'error');
+  }
+}
+
+function logout() {
+  token = null;
+  currentUser = null;
+  localStorage.removeItem('meto_token');
+  localStorage.removeItem('meto_user');
+  navTo('landing');
+  showToast('Session terminated.', 'success');
+}
+
+function checkAuthSetup() {
+  if (token && currentUser) {
+    document.getElementById('navUserName').innerText = currentUser.name;
+    document.getElementById('navUserRole').innerText = currentUser.role;
+    document.getElementById('bookName').value = currentUser.name;
+    fetchBookings();
+    switchAppTab('rooms', 'Dashboard');
+  } else {
+    navTo('landing');
+  }
+}
+
+// PLATFORM DATA
+function fetchBookings() {
+  if (!token) return;
+  fetch('/api/bookings', { headers: { 'Authorization': `Bearer ${token}` } })
+    .then(res => res.json())
+    .then(data => {
+      bookings = data;
+      if(document.getElementById('view-rooms').classList.contains('active')) {
+        renderHeroStats();
+        renderUpcoming();
+      }
+      renderRooms();
+      if(document.getElementById('view-bookings').classList.contains('active')) renderBookings();
+    });
+}
+
+function renderUpcoming() {
+  const today = new Date().toISOString().split('T')[0];
+  const nowTime = new Date().toTimeString().substring(0, 5);
+  
+  const myBookings = bookings.filter(b => b.userId === currentUser.id && (b.date > today || (b.date === today && b.endTime >= nowTime)))
+    .sort((a,b) => (a.date+a.startTime) > (b.date+b.startTime) ? 1 : -1);
+  
+  const panel = document.getElementById('upcomingMeetingPanel');
+  if(!myBookings.length) {
+    panel.innerHTML = `<div class="empty-upcoming">☕ Your schedule is clear. Use the New Reservation tool to acquire space.</div>`;
+  } else {
+    const next = myBookings[0];
+    panel.innerHTML = `
+      <div class="upcoming-meeting">
+        <div style="display:flex; align-items:center; gap:20px;">
+          <div style="width:48px; height:48px; background:#bfdbfe; border-radius:12px; display:flex; align-items:center; justify-content:center; color:#1e3a8a; font-size:1.5rem;">📅</div>
+          <div>
+            <div class="upcoming-title">${next.title}</div>
+            <div class="upcoming-time">${formatDate(next.date)} &bull; ${next.startTime} - ${next.endTime}</div>
+          </div>
+        </div>
+        <div>
+          <div class="upcoming-room">${next.roomName}</div>
+          <div class="upcoming-attendees">Reserved for ${next.attendees} personnel</div>
+        </div>
+      </div>
+    `;
+  }
+}
+
+function renderHeroStats() {
+  const today = new Date().toISOString().split('T')[0];
+  const busyIds = new Set(bookings.filter(b => b.date === today).map(b => b.roomId));
+  document.getElementById('heroStats').innerHTML = `
+    <div class="card stat-card"><div class="stat-val">${rooms.length}</div><div class="stat-lbl">Network Assets</div></div>
+    <div class="card stat-card"><div class="stat-val" style="color:var(--success)">${rooms.length - busyIds.size}</div><div class="stat-lbl">Active Availability</div></div>
+    <div class="card stat-card"><div class="stat-val" style="color:var(--primary)">${bookings.length}</div><div class="stat-lbl">System Load</div></div>
+  `;
+}
+
+function renderRooms() {
+  const today = new Date().toISOString().split('T')[0];
+  
+  const roomSelect = document.getElementById('bookRoom');
+  if(roomSelect) roomSelect.innerHTML = rooms.map(r => `<option value="${r.id}">${r.name}</option>`).join('');
+
+  document.getElementById('roomsGrid').innerHTML = rooms.map(r => {
+    const busy = bookings.some(b => b.roomId === r.id && b.date === today);
+    return `
+      <div class="card room-card" onclick="quickBook(${r.id})">
+        <div class="room-visual">
+          <div class="badge ${busy ? 'booked' : 'available'}">${busy ? 'BOOKED TODAY' : 'AVAILABLE'}</div>
+          <img src="${roomImages[r.id]}" alt="${r.name}">
+        </div>
+        <div class="room-body">
+          <div class="room-name">${r.name}</div>
+          <div class="room-cap">👤 Cap: ${r.capacity} Personnel &bull; ${r.icon}</div>
+          <div class="room-features">
+            ${r.features.map(f => `<span class="feature-tag">${f}</span>`).join('')}
+          </div>
+        </div>
+      </div>`;
+  }).join('');
+}
+
+function quickBook(id) {
+  const room = rooms.find(r => r.id === id);
+  document.getElementById('bookRoom').value = id;
+  switchAppTab('book', 'New Reservation');
+}
+
+// AVAILABILITY QUERY
+function checkAvailability() {
+  const date = document.getElementById('availDate').value;
+  const from = document.getElementById('availFrom').value;
+  const to = document.getElementById('availTo').value;
+  const minCap = parseInt(document.getElementById('availCap').value);
+  
+  if(!date) { showToast('Required: Date parameter.', 'error'); return; }
+  if(from >= to) { showToast('Logic Error: End time <= Start time.', 'error'); return; }
+  
+  const conflicted = new Set(bookings.filter(b => b.date === date && timeOverlap(b.startTime, b.endTime, from, to)).map(b => b.roomId));
+  const avail = rooms.filter(r => !conflicted.has(r.id) && r.capacity >= minCap);
+  
+  const list = document.getElementById('availableList');
+  if(!avail.length) {
+    list.innerHTML = `<div class="card" style="padding:40px; text-align:center; color:var(--danger); font-weight:600;">No assets match query parameters.</div>`;
+    return;
+  }
+  
+  list.innerHTML = avail.map(r => `
+    <div class="card">
+      <div style="padding:24px; display:flex; align-items:center; justify-content:space-between;">
+        <div style="display:flex; align-items:center; gap: 20px;">
+          <div style="font-size:2rem; width:60px; height:60px; background:#f1f5f9; border-radius:12px; display:flex; align-items:center; justify-content:center;">${r.icon}</div>
+          <div>
+            <div style="font-size:1.2rem; font-weight:800; color:var(--text);">${r.name}</div>
+            <div style="font-size:0.9rem; color:var(--text-soft); font-weight:500; margin-top:6px;">Cap: ${r.capacity} &bull; ${r.features.join(', ')}</div>
+          </div>
+        </div>
+        <button class="btn btn-primary" onclick="selectAndBook(${r.id}, '${date}', '${from}', '${to}')">Draft Requisition</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+function selectAndBook(id, date, start, end) {
+  document.getElementById('bookRoom').value = id;
+  document.getElementById('bookDate').value = date;
+  document.getElementById('bookStart').value = start;
+  document.getElementById('bookEnd').value = end;
+  switchAppTab('book', 'New Reservation');
+}
+
+function timeOverlap(s1, e1, s2, e2) {
+  return s1 < e2 && e1 > s2;
+}
+
+// BOOKING POST/DELETE
+function createBooking() {
+  const roomId = parseInt(document.getElementById('bookRoom').value);
+  const name = currentUser.name;
+  const title = document.getElementById('bookTitle').value.trim();
+  const date = document.getElementById('bookDate').value;
+  const start = document.getElementById('bookStart').value;
+  const end = document.getElementById('bookEnd').value;
+  const attendees = parseInt(document.getElementById('bookAttendees').value) || 1;
+  
+  if(!roomId || !title || !date || !start || !end) { showToast('Incomplete payload.', 'error'); return; }
+  if(start >= end) { showToast('Time bound parsing failure.', 'error'); return; }
+  
+  const todayStr = new Date().toISOString().split('T')[0];
+  const nowStr = new Date().toTimeString().slice(0,5);
+  if(date === todayStr && start < nowStr) { showToast('Cannot schedule reservations in the past.', 'error'); return; }
+
+  const room = rooms.find(r => r.id === roomId);
+  if(!room) { showToast('Invalid room assignment.', 'error'); return; }
+  if(attendees > room.capacity) { showToast(`Headcount exceeds maximum capacity (${room.capacity}).`, 'error'); return; }
+  
+  const overlap = bookings.find(b => b.roomId === roomId && b.date === date && timeOverlap(b.startTime, b.endTime, start, end));
+  if(overlap) { showToast('This asset is already reserved for the selected timeframe.', 'error'); return; }
+
+  const addons = [];
+  let addonCost = 0;
+  if(document.getElementById('addonWater').checked) { addons.push('Bottled Water'); addonCost += (50 * attendees); }
+  if(document.getElementById('addonCoffee').checked) { addons.push('Coffee Service'); addonCost += (200 * attendees); }
+  if(document.getElementById('addonLunch').checked) { addons.push('Executive Lunch'); addonCost += (500 * attendees); }
+
+  const totalCost = room.price + addonCost;
+
+  pendingBooking = { roomId, roomName: room.name, name, title, date, startTime: start, endTime: end, attendees, addons, paymentStatus: 'Pending', totalCost };
+
+  document.getElementById('paymentPageAmount').innerText = `₹${totalCost.toLocaleString('en-IN')}`;
+  document.getElementById('sec-payment').classList.add('active');
+}
+
+function confirmPaymentPage() {
+  if(!pendingBooking) return;
+  pendingBooking.paymentStatus = 'Paid';
+
+  fetch('/api/bookings', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
+    body: JSON.stringify(pendingBooking)
+  })
+  .then(res => {
+    if (res.ok) {
+      document.getElementById('sec-payment').classList.remove('active');
+      fetchBookings();
+      showToast(`Payment of ₹${pendingBooking.totalCost} via UPI Confirmed.`, 'success');
+      clearForm();
+      pendingBooking = null;
+      setTimeout(() => switchAppTab('bookings', 'My Schedule'), 800);
+    } else { showToast('Conflict detected or rejected', 'error'); }
+  })
+  .catch(() => showToast('Server connection reset', 'error'));
+}
+
+function cancelPaymentPage() {
+  document.getElementById('sec-payment').classList.remove('active');
+  pendingBooking = null;
+  showToast('Transaction cancelled.', 'error');
+}
+
+function getLocalToday() {
+  const d = new Date();
+  d.setMinutes(d.getMinutes() - d.getTimezoneOffset());
+  return d;
+}
+
+function clearForm() {
+  ['bookTitle','bookAttendees'].forEach(id => document.getElementById(id).value = '');
+  ['addonWater','addonCoffee','addonLunch'].forEach(id => document.getElementById(id).checked = false);
+  
+  const d = getLocalToday();
+  document.getElementById('bookDate').value = d.toISOString().split('T')[0];
+  
+  let h = new Date().getHours() + 1;
+  if(h > 23) h = 8;
+  const nx = (h+1) > 23 ? 9 : (h+1);
+  
+  document.getElementById('bookStart').value = String(h).padStart(2,'0') + ':00';
+  document.getElementById('bookEnd').value = String(nx).padStart(2,'0') + ':00';
+}
+
+function renderBookings() {
+  const el = document.getElementById('bookingsContent');
+  if(!bookings.length) {
+    el.innerHTML = `<div style="padding:60px; text-align:center; color:var(--muted); font-weight:500;">Database query returned empty.</div>`;
+    return;
+  }
+  const sorted = [...bookings].sort((a,b) => (b.createdAt) > (a.createdAt) ? 1 : -1);
+  el.innerHTML = `
+    <table>
+      <thead>
+        <tr><th>Reference ID</th><th>Asset Node</th><th>Subject Vector</th><th>Date Constraint</th><th>Time Window</th><th>Add-ons</th><th>Payment</th><th>Admin Revoke</th></tr>
+      </thead>
+      <tbody>
+        ${sorted.map(b => `
+        <tr>
+          <td><span style="font-family:monospace; color:var(--primary); font-weight:600;">${b.id}</span></td>
+          <td style="font-weight:700">${b.roomName}</td>
+          <td>${b.title}</td>
+          <td>${formatDate(b.date)}</td>
+          <td><span style="background:#f1f5f9; padding:4px 8px; border-radius:6px; font-weight:600;">${b.startTime} - ${b.endTime}</span></td>
+          <td style="font-size:0.8rem; color:var(--text-soft); max-width:150px;">${b.addons && b.addons.length ? b.addons.join(', ') : 'None'}</td>
+          <td><span style="padding:4px 8px; border-radius:12px; font-size:0.75rem; font-weight:700; background:#ecfdf5; color:var(--success);">PAID</span></td>
+          <td>${(currentUser && (currentUser.role === 'admin' || currentUser.userId === b.userId || currentUser.name === b.name)) ? `<button class="delete-btn" onclick="deleteBooking('${b.id}')">Revoke Line</button>` : ''}</td>
+        </tr>`).join('')}
+      </tbody>
+    </table>`;
+}
+
+function deleteBooking(id) {
+  fetch(`/api/bookings/${id}`, { method: 'DELETE', headers: { 'Authorization': `Bearer ${token}` } })
+    .then(res => {
+      if (res.ok) { fetchBookings(); showToast('Constraint expunged.', 'success'); } 
+      else { showToast('Operation unauthorized.', 'error'); }
+    }).catch(() => showToast('Command failed.', 'error'));
+}
+
+// EXECUTIONS
+function formatDate(d) {
+  if(!d) return '';
+  const [y, m, day] = d.split('-');
+  return `${day}/${m}/${y}`;
+}
+
+function showToast(msg, type='success') {
+  const t = document.createElement('div');
+  t.className = `toast ${type}`; t.innerHTML = `<span>${msg}</span>`;
+  document.getElementById('toasts').appendChild(t);
+  setTimeout(() => t.remove(), 3000);
+}
+
+function switchAppTab(id, titleText = '') {
+  const ids = ['rooms', 'available', 'book', 'bookings', 'profile'];
+  document.querySelectorAll('.nav-item').forEach((t, i) => { if (t) t.classList.toggle('active', ids[i] === id); });
+  document.querySelectorAll('.app-view').forEach(v => v.classList.remove('active'));
+  document.getElementById('view-' + id).classList.add('active');
+  
+  if(titleText) document.getElementById('pageTitle').innerText = titleText;
+  
+  if(id === 'rooms') { renderHeroStats(); renderUpcoming(); }
+  if(id === 'bookings') renderBookings();
+  if(id === 'book') clearForm();
+  if(id === 'profile') renderProfile();
+}
+
+function renderProfile() {
+  document.getElementById('profileAvatar').innerText = currentUser.name.charAt(0).toUpperCase();
+  document.getElementById('profileName').innerText = currentUser.name;
+  document.getElementById('profileEmail').innerText = currentUser.email || 'No email associated';
+  
+  const myBookings = bookings.filter(b => b.userId === currentUser.id);
+  
+  const getCost = (b) => {
+    let cost = b.price || 0;
+    if(b.addons && b.addons.includes('Bottled Water')) cost += (50 * b.attendees);
+    if(b.addons && b.addons.includes('Coffee Service')) cost += (200 * b.attendees);
+    if(b.addons && b.addons.includes('Executive Lunch')) cost += (500 * b.attendees);
+    return cost;
+  };
+
+  const totalSpent = myBookings.reduce((sum, b) => sum + getCost(b), 0);
+  
+  document.getElementById('profileTotalSpent').innerText = `₹${totalSpent.toLocaleString('en-IN')}`;
+  document.getElementById('profileTotalBookings').innerText = myBookings.length;
+  
+  const listEl = document.getElementById('profileBookingsList');
+  if(!myBookings.length) {
+    listEl.innerHTML = `<div style="text-align:center; color:var(--text-soft); font-weight:600; padding:40px; background:#fff; border-radius:12px; border:1px solid var(--border);">No transaction history found on your account.</div>`;
+  } else {
+    listEl.innerHTML = myBookings.sort((a,b) => b.createdAt > a.createdAt ? 1 : -1).map(b => `
+        <div style="padding:24px; border:1px solid var(--border); border-radius:12px; display:flex; justify-content:space-between; align-items:center; background:#fff; transition:0.2s;">
+          <div>
+            <div style="font-weight:800; color:var(--text); font-size:1.2rem; margin-bottom:4px;">${b.roomName} &bull; <span style="font-weight:600; color:var(--text-soft);">${b.title}</span></div>
+            <div style="font-size:0.95rem; color:var(--text-soft); font-weight:500;">
+              📅 <span style="color:var(--text);">${formatDate(b.date)}</span> | 🕒 <span style="color:var(--text);">${b.startTime} - ${b.endTime}</span> | 👤 <span style="color:var(--text);">${b.attendees}</span>
+            </div>
+            ${b.addons && b.addons.length ? `<div style="font-size:0.8rem; background:#eff6ff; color:var(--primary); margin-top:12px; padding:6px 12px; border-radius:6px; display:inline-block; font-weight:700;">+ ${b.addons.join(' • ')}</div>` : ''}
+          </div>
+          <div style="text-align:right;">
+             <div style="font-size:1.8rem; font-weight:800; color:var(--primary); letter-spacing:-0.03em;">₹${getCost(b).toLocaleString('en-IN')}</div>
+             <div style="font-size:0.75rem; font-weight:800; color:var(--success); background:#ecfdf5; padding:4px 12px; border-radius:12px; display:inline-block; margin-top:8px; letter-spacing:0.05em;">PAID IN FULL</div>
+          </div>
+        </div>
+    `).join('');
+  }
+}
+
+function init() {
+  const options = { weekday:'long', day:'numeric', month:'long', year:'numeric' };
+  document.getElementById('headerDate').textContent = new Date().toLocaleDateString('en-GB', options);
+  
+  // Date Restrictions!
+  const todayStr = getLocalToday().toISOString().split('T')[0];
+  const dateInputs = [document.getElementById('availDate'), document.getElementById('bookDate')];
+  dateInputs.forEach(el => { el.value = todayStr; el.min = todayStr; });
+  
+  const sel = document.getElementById('bookRoom');
+  sel.innerHTML = `<option value="">— Select facility —</option>` + rooms.map(r => `<option value="${r.id}">${r.name} (Capacity: ${r.capacity})</option>`).join('');
+    
+  if (token) checkAuthSetup();
+  else navTo('landing');
+}
+
+init();
+
+document.addEventListener('keydown', e => {
+  if(['INPUT', 'SELECT', 'TEXTAREA'].includes(e.target.tagName)) return;
+  if(!token || document.getElementById('sec-landing').classList.contains('active') || document.getElementById('sec-auth').classList.contains('active')) return;
+  if(e.key === '1') switchAppTab('rooms', 'Dashboard');
+  if(e.key === '2') switchAppTab('available', 'Search Spaces');
+  if(e.key === '3') switchAppTab('book', 'New Reservation');
+  if(e.key === '4') switchAppTab('bookings', 'My Schedule');
+});
+</script>
+</body>
+</html>

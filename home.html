@@ -1,0 +1,504 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://kit.fontawesome.com/7f257b9379.js" crossorigin="anonymous"></script>
+  <title>Sancharam-Home</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap');
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { font-size: 62.5%; }
+
+    body { font-family: 'Montserrat', sans-serif; line-height: 1.7; background-color: #fff; }
+
+    ul li { list-style: none; }
+
+    a { font-size: 1.6rem; letter-spacing: .1em; text-decoration: none; color: #f4f4f4; }
+
+    h1, h2, h3 { margin-bottom: .5em; letter-spacing: .1em; }
+
+    p, li { font-size: 1.6rem; margin-bottom: .5em; }
+
+    .container { max-width: 1200px; width: 90%; margin: 0 auto; }
+
+
+    .header {
+      position: relative;
+      height: 95vh;
+      background: linear-gradient(rgba(0, 0, 0, .3), rgba(0, 0, 0, .7)), url("assets/images/shared/background.png") center/cover no-repeat;
+    }
+
+
+    .site-info {
+      font-size: 5rem;
+      color: #000;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+
+    .site-desc {
+      width: 100rem;
+      text-transform: uppercase;
+      color: #FFF;
+      word-spacing: .3rem;
+    }
+
+
+    .site-desc::first-letter {
+      font-size: 2rem;
+    }
+
+
+    .more-button-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 4rem;
+      margin-bottom: .2rem;
+    }
+
+
+    button {
+      padding: 1.3em 3em;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 2.5px;
+      font-weight: 500;
+      color: #000;
+      background-color: #fff;
+      border: none;
+      border-radius: 45px;
+      box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+      transition: all .3s ease 0s;
+      cursor: pointer;
+      outline: none;
+    }
+
+
+    button:hover {
+      background-color: #e63946;
+      box-shadow: 0px 15px 20px #1a0e6466;
+      color: #fff;
+      transform: translateY(-7px);
+    }
+
+
+    .button-secondary {
+      display: inline-block;
+      text-transform: uppercase;
+      color: #e63946;
+      font-weight: bold;
+      background-color: #f4f4f4;
+      border-radius: 1em;
+      padding: .5em 1.2em;
+      margin: 1.5rem 0;
+      border: 1.5px solid #e63946;
+    }
+
+
+    .button-secondary:hover {
+      background-color: #ffe3e3;
+    }
+
+
+    .header-content {
+      position: absolute;
+      padding: 1rem;
+      text-align: center;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -60%);
+    }
+
+
+    .showcase {
+      background: #f4f7f6;
+      padding: 5rem 0;
+    }
+
+    
+    .explore-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 3rem;
+      margin-top: 3rem;
+    }
+
+    
+    .explore-card {
+      background: #fff;
+      border-radius: 1.5rem;
+      overflow: hidden;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.06);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    
+    .explore-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.12);
+    }
+
+    
+    .explore-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+
+    
+    .explore-content {
+      padding: 2.5rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    
+    .explore-content h2 {
+      font-size: 2rem;
+      color: #333;
+      margin-bottom: 1rem;
+      text-transform: capitalize;
+    }
+
+    
+    .explore-content p {
+      font-size: 1.4rem;
+      color: #666;
+      margin-bottom: 2rem;
+      flex-grow: 1;
+      line-height: 1.6;
+    }
+
+    
+    .explore-content .button-secondary {
+      align-self: center;
+      margin: 0;
+      font-size: 1.3rem;
+      padding: 0.6em 1.8em;
+    }
+
+
+    .testimonials {
+      background-color: #fff;
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+
+
+    .testimonial-slider {
+      position: relative;
+      max-width: 600px;
+      margin: auto;
+      overflow: hidden;
+    }
+
+
+    .testimonial-slide {
+      display: none;
+    }
+
+
+    .testimonial-slide.active {
+      display: block;
+    }
+
+
+    .testimonial-img {
+      max-width: 80px;
+      width: 100%;
+      height: 80px;
+      margin: 0 auto;
+      display: block;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+
+    .testimonial-text {
+      font-size: 1.4rem;
+      margin-top: 1rem;
+      color: #333;
+      font-style: italic;
+    }
+
+
+    .dot {
+      height: 15px;
+      width: 15px;
+      margin: 0 5px;
+      background-color: #bbb;
+      border-radius: 50%;
+      display: inline-block;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+
+    .dot.active {
+      background-color: #e63946;
+    }
+
+
+    .mega-footer {
+      background-color: #1a1e24;
+      color: #e2e8f0;
+      padding-top: 5rem;
+      margin-top: 4rem;
+    }
+
+    
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 3rem;
+      margin-bottom: 4rem;
+    }
+
+    
+    .footer-col h2, .footer-col h3 {
+      color: #fff;
+      margin-bottom: 1.5rem;
+      text-transform: uppercase;
+      font-size: 1.8rem;
+    }
+
+    
+    .footer-col.brand-col .footer-logo {
+      font-size: 2.8rem;
+      color: #e63946;
+      letter-spacing: 2px;
+      margin-bottom: 1rem;
+      text-transform: none;
+    }
+
+    
+    .footer-col p {
+      font-size: 1.4rem;
+      color: #94a3b8;
+      margin-bottom: 1rem;
+      line-height: 1.6;
+    }
+
+    
+    .footer-col ul {
+      list-style: none;
+    }
+
+    
+    .footer-col ul li {
+      margin-bottom: 0.8rem;
+    }
+
+    
+    .footer-col ul a {
+      color: #94a3b8;
+      font-size: 1.4rem;
+      transition: color 0.2s, padding-left 0.2s;
+    }
+
+    
+    .footer-col ul a:hover {
+      color: #e63946;
+      padding-left: 5px;
+    }
+
+    
+    .footer-col i {
+      margin-right: 0.8rem;
+      color: #e63946;
+    }
+
+    
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding: 2rem 0;
+    }
+
+    
+    .bottom-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    
+    .bottom-bar p {
+      font-size: 1.3rem;
+      color: #64748b;
+      margin: 0;
+    }
+
+    
+    .bottom-bar .social-media-links a {
+      color: #94a3b8;
+      margin-left: 1.5rem;
+      font-size: 1.8rem;
+      transition: color 0.2s, transform 0.2s;
+      display: inline-block;
+    }
+
+    
+    .bottom-bar .social-media-links a:hover {
+      color: #e63946;
+      transform: translateY(-3px);
+    }
+</style>
+<link rel="stylesheet" href="css/navbar.css">
+
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+</head>
+<body>
+  <header class="header">
+    <nav class="universal-navbar">
+  <div class="nav-container">
+    <a href="home.html" class="nav-logo">
+      <img src="assets/icon.png" alt="Sancharam Logo">
+    </a>
+    <ul class="nav-items">
+      <li><a href="home.html">Home</a></li>
+      <li><a href="pages/about.html">About</a></li>
+      <li><a href="pages/explore.html">Explore</a></li>
+      <li><a href="pages/bookings.html">Bookings</a></li>
+      <li><a href="pages/features.html">Features</a></li>
+      <li><a href="pages/profile.html">Profile</a></li>
+    </ul>
+  </div>
+</nav>
+    <div class="header-content">
+      <h1 class="site-info">Real Stories, Real Journeys!</h1>
+      <p class="site-desc">Travel Tales of Tamil Land, experience the greatness, it's the best gift given by nature</p>
+      <button onclick="window.location.href='pages/explore.html'">EXPLORE</button>
+    </div>
+  </header>
+
+  <section class="showcase" id="Explore">
+    <h1 class="site-info" style="margin-bottom: 1rem;">Explore</h1>
+    <div class="container explore-grid">
+      <article class="explore-card">
+        <img src="assets/images/shared/kanniyakumari.png" alt="Kanniyakumari">
+        <div class="explore-content">
+          <h2>Thiruvalluvar Statue</h2>
+          <p>A towering 133-feet monument dedicated to the celebrated Tamil poet and philosopher Thiruvalluvar.</p>
+          <a href='pages/explore.html' class="button-secondary">Visit</a>
+        </div>
+      </article>
+      <article class="explore-card">
+        <img src="assets/images/shared/shoretemple.png" alt="Shore Temple">
+        <div class="explore-content">
+          <h2>Shore Temple</h2>
+          <p>A stunning UNESCO World Heritage site located on the scenic Bay of Bengal coast in Mahabalipuram.</p>
+          <a href='pages/explore.html' class="button-secondary">Visit</a>
+        </div>
+      </article>
+      <article class="explore-card">
+        <!-- Reusing background image if ooty doesn't load/exist as per earlier pages it might be in different dir -->
+        <img src="assets/images/shared/ooty.jpg" alt="Scenic Hills" onerror="this.src='assets/images/index/tranquebar_fort.jpg'">
+        <div class="explore-content">
+          <h2>Ooty & Beyond</h2>
+          <p>Experience the misty mountains, lush green tea gardens, and stunning landscapes of the Nilgiris.</p>
+          <a href='pages/explore.html' class="button-secondary">Visit</a>
+        </div>
+      </article>
+    </div>
+    <div class="more-button-container" style="margin-top: 1rem;">
+      <a href='pages/explore.html' class="button-secondary" style="width:140px; font-size: 1.6rem; text-align: center;">View All</a>
+    </div>
+  </section>
+
+  <section class="testimonials">
+    <h1 class="site-info">Testimonials</h1>
+    <div class="testimonial-slider">
+      <div class="testimonial-slide active">
+        <img src="assets/images/home/testimonial1.jpg" alt="Testimonial 1" class="testimonial-img">
+        <p class="testimonial-text">"A beautiful experience exploring Tamil Nadu. The platform made everything seamless!" – Arjun R.</p>
+      </div>
+      <div class="testimonial-slide">
+        <img src="assets/images/home/testimonial2.jpg" alt="Testimonial 2" class="testimonial-img">
+        <p class="testimonial-text">"From temples to tales, Sancharam made my journey unforgettable. Truly enlightening!" – Ashika Ranganath</p>
+      </div>
+      <div class="testimonial-slide">
+        <img src="assets/images/home/testimonial3.jpg" alt="Testimonial 3" class="testimonial-img">
+        <p class="testimonial-text">"An immersive dive into the culture and history of Tamil Land. Highly recommended!" – Karthik M.</p>
+      </div>
+    </div>
+    <div class="testimonial-nav">
+      <span class="dot active"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+    </div>
+  </section>
+
+  <footer class="mega-footer">
+    <div class="container footer-grid">
+      <div class="footer-col brand-col">
+        <h2 class="footer-logo">Sancharam</h2>
+        <p>Experience Tamil Nadu differently. Travel smart, travel local, and unlock hidden gems with our AI-powered travel assistant.</p>
+      </div>
+      <div class="footer-col links-col">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="home.html">Home</a></li>
+          <li><a href="pages/about.html">About us</a></li>
+          <li><a href="pages/explore.html">Explore</a></li>
+          <li><a href="pages/bookings.html">Bookings</a></li>
+        </ul>
+      </div>
+      <div class="footer-col contact-col">
+        <h3>Contact Us</h3>
+        <p><i class="fas fa-envelope"></i> hello@sancharam.in</p>
+        <p><i class="fas fa-phone"></i> +91 98765 43210</p>
+        <p><i class="fas fa-map-marker-alt"></i> Chennai, Tamil Nadu</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container bottom-bar">
+        <p>&copy; 2025 Sancharam. All Rights Reserved.</p>
+        <div class="social-media-links">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const slides = document.querySelectorAll('.testimonial-slide');
+    const dots = document.querySelectorAll('.dot');
+    let currentIndex = 0;
+
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.classList.remove('active');
+        dots[i].classList.remove('active');
+      });
+      slides[index].classList.add('active');
+      dots[index].classList.add('active');
+    }
+
+    dots.forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        currentIndex = index;
+        showSlide(currentIndex);
+      });
+    });
+
+    setInterval(() => {
+      currentIndex = (currentIndex + 1) % slides.length;
+      showSlide(currentIndex);
+    }, 4000);
+  </script>
+</body>
+</html>

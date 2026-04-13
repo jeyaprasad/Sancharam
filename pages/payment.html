@@ -1,0 +1,263 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment- Sancharam</title>
+    <style>
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    background-color: #f8fafc;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 70px);
+    padding: 60px 20px;
+}
+
+
+.container form {
+    width: 100%;
+    max-width: 800px;
+    padding: 50px;
+    background: #ffffff;
+    border-radius: 24px;
+    border: 1px solid rgba(0,0,0,0.05);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
+    animation: rise-in 0.6s ease-out;
+}
+
+@keyframes rise-in {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+form .row {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+
+.row .column {
+    flex: 1 1 300px;
+}
+
+
+.column .title {
+    font-size: 22px;
+    color: #0f172a;
+    font-weight: 700;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #f1f5f9;
+}
+
+
+.column .input-box {
+    margin: 15px 0;
+}
+
+
+.input-box span {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #475569;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+
+.input-box input {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+    font-size: 15px;
+    color: #334155;
+    background: #f8fafc;
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+.input-box input:focus {
+    border-color: #f43f5e;
+    box-shadow: 0 0 0 3px rgba(244, 63, 94, 0.15);
+    background: #ffffff;
+}
+
+.column .flex {
+    display: flex;
+    gap: 15px;
+}
+
+
+.flex .input-box {
+    margin-top: 0px;
+    width: 100%;
+}
+
+
+.input-box img {
+    height: 38px;
+    margin-top: 5px;
+    object-fit: contain;
+}
+
+.total-price {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f1f5f9;
+    padding: 20px;
+    border-radius: 12px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+.total-price h3 {
+    color: #334155;
+    font-size: 18px;
+}
+
+.total-price span {
+    color: #0f172a;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+form .btn {
+    width: 100%;
+    padding: 18px;
+    background: linear-gradient(135deg, #f43f5e, #f97316);
+    border: none;
+    outline: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #fff;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+
+form .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(244, 63, 94, 0.3);
+}
+    </style>
+<link rel="stylesheet" href="../css/navbar.css">
+
+  <link rel="icon" type="image/png" href="../assets/favicon.png">
+</head>
+
+<body>
+    <nav class="universal-navbar solid">
+  <div class="nav-container">
+    <a href="../home.html" class="nav-logo">
+      <img src="../assets/icon.png" alt="Sancharam Logo">
+    </a>
+    <ul class="nav-items">
+      <li><a href="../home.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="explore.html">Explore</a></li>
+      <li><a href="bookings.html">Bookings</a></li>
+      <li><a href="features.html">Features</a></li>
+      <li><a href="profile.html">Profile</a></li>
+    </ul>
+  </div>
+</nav>
+
+    <div class="container">
+        <form action="">
+            <div class="row">
+                <div class="column">
+                    <h3 class="title">Billing Address</h3>
+                    <div class="input-box">
+                        <span>Full Name :</span>
+                        <input type="text" placeholder="John Doe">
+                    </div>
+                    <div class="input-box">
+                        <span>Email :</span>
+                        <input type="email" placeholder="example@example.com">
+                    </div>
+                    <div class="input-box">
+                        <span>Address :</span>
+                        <input type="text" placeholder="Room - Street - Locality">
+                    </div>
+                    <div class="input-box">
+                        <span>City :</span>
+                        <input type="text" placeholder="California">
+                    </div>
+
+                    <div class="flex">
+                        <div class="input-box">
+                            <span>State :</span>
+                            <input type="text" placeholder="USA">
+                        </div>
+                        <div class="input-box">
+                            <span>Zip Code :</span>
+                            <input type="number" placeholder="123 456">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="column">
+                    <h3 class="title">Payment</h3>
+                    <div class="input-box">
+                        <span>Cards Accepted :</span>
+                        <img src="https://cdn-icons-png.flaticon.com/512/5566/5566931.png" alt="">
+                    </div>
+                    <div class="input-box">
+                        <span>Name On Card :</span>
+                        <input type="text" placeholder="John Doe">
+                    </div>
+                    <div class="input-box">
+                        <span>Credit Card Number :</span>
+                        <input type="number" placeholder="1111 2222 3333 4444">
+                    </div>
+                    <div class="input-box">
+                        <span>Exp. Month :</span>
+                        <input type="text" placeholder="August">
+                    </div>
+                
+                    <div class="flex">
+                        <div class="input-box">
+                            <span>Exp. Year :</span>
+                            <input type="number" placeholder="2028">
+                        </div>
+                        <div class="input-box">
+                            <span>CVV :</span>
+                            <input type="number" placeholder="123">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="total-price">
+                <h3>Total Amount :</h3>
+                <span>₹100.00</span>    
+            </div>      
+            <button type="submit" class="btn" onclick="alert('Booking Completed Successfully!');">Submit</button>
+        </form>
+    </div>
+
+</body>
+
+</html>
