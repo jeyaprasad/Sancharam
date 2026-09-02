@@ -610,7 +610,7 @@ button {
     flex-direction: column;
     border-radius: 12px;
     overflow: hidden;
-    height: 100%; /* Ensures all cards in row are equal height */
+    
 }
 
 .explore-card .img-box {
