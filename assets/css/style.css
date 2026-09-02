@@ -52,7 +52,7 @@ p,li{
 
 .header{
     position: relative;
-    height: 80vh;
+    height: 95vh;
     background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7)), url("../images/background.png");
     background-position: center;
     background-size: cover;
@@ -195,7 +195,7 @@ button {
 
 .showcase{
     background: #ddd;
-    padding: 5rem 0;
+    padding: 2rem 0 5rem 0;
 }
 
 .row{
@@ -393,7 +393,7 @@ button {
 /* ######################## CONTACT FORM ####################### */
 
 .contact-form{
-    padding: 5rem 0;
+    padding: 2rem 0 5rem 0;
     background: #f4f4f4;
 }
 
