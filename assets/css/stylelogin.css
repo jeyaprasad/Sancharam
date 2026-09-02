@@ -1,19 +1,24 @@
-/* Import Google Font */
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;600&display=swap');
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
 
 /* General Styles */
-body {
-    font-family: 'Nunito', sans-serif;
+* {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
+}
+
+body {
+    font-family: 'Outfit', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    background: #000;
+    min-height: 100vh;
+    background: #0f0c29;
+    overflow: hidden;
 }
 
-/* Background Video */
+/* Background Video & Overlay */
 .background-video {
     position: fixed;
     top: 0;
@@ -21,40 +26,116 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    z-index: -2;
+}
+
+.video-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(15, 12, 41, 0.7), rgba(48, 43, 99, 0.5), rgba(36, 36, 62, 0.7));
     z-index: -1;
 }
 
-/* Form Container */
+/* Form Container (Glassmorphism) */
 .container {
-    background: rgba(0, 0, 0, 0.6);
-    padding: 30px;
-    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 30px 50px rgba(0, 0, 0, 0.3);
+    border-radius: 24px;
+    padding: 40px 40px;
+    width: 90%;
+    max-width: 420px;
     text-align: center;
     color: #fff;
+    position: relative;
+    overflow: hidden;
 }
 
-/* Logo Inside Login Box */
+/* Form Entrance Animation */
+.form-box {
+    animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Logo */
 .logo {
-    max-width: 150px; /* Adjust if needed */
+    max-width: 250px;
     height: auto;
     display: block;
-    margin: 0 auto 10px;
+    margin: 0 auto 20px;
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.4));
+    transition: transform 0.3s ease;
 }
 
-/* Highlight Color */
+.logo:hover {
+    transform: scale(1.05);
+}
+
+/* Typography */
+h2 {
+    font-size: 26px;
+    font-weight: 500;
+    margin-bottom: 30px;
+    line-height: 1.4;
+    color: #f8fafc;
+}
+
 .highlight {
-    color: #ffcc00;
-    font-weight: bold;
+    background: linear-gradient(135deg, #ffcc00, #ff5722);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 700;
+    font-size: 28px;
+    letter-spacing: 1px;
 }
 
 /* Input Fields */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.input-group {
+    position: relative;
+}
+
 input {
     width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
+    padding: 15px 18px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    font-size: 15px;
+    color: #fff;
+    outline: none;
+    font-family: inherit;
+    transition: all 0.3s ease;
+}
+
+input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+input:focus {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 204, 0, 0.8);
+    box-shadow: 0 0 15px rgba(255, 204, 0, 0.25);
 }
 
 /* Password Visibility Toggle */
@@ -64,30 +145,71 @@ input {
 
 .toggle-password {
     position: absolute;
-    right: 10px;
+    right: 16px;
     top: 50%;
     transform: translateY(-50%);
     cursor: pointer;
+    font-size: 16px;
+    color: rgba(255,255,255,0.7);
+    transition: color 0.3s, transform 0.2s;
+    user-select: none;
+}
+
+.toggle-password:hover {
+    color: #fff;
+    transform: translateY(-50%) scale(1.1);
 }
 
 /* Buttons */
 button {
     width: 100%;
-    padding: 12px;
+    padding: 15px;
     margin-top: 15px;
-    background: #ffcc00;
+    background: linear-gradient(135deg, #ff9800, #ff5722);
+    color: white;
     border: none;
-    font-size: 18px;
-    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    border-radius: 12px;
     cursor: pointer;
-    transition: 0.3s;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 10px 20px rgba(255, 87, 34, 0.35);
+    font-family: inherit;
+    text-transform: uppercase;
 }
 
 button:hover {
-    background: #e6b800;
+    transform: translateY(-3px);
+    box-shadow: 0 15px 25px rgba(255, 87, 34, 0.5);
+}
+
+button:active {
+    transform: translateY(1px);
+    box-shadow: 0 5px 15px rgba(255, 87, 34, 0.4);
+}
+
+/* Footer Links */
+p {
+    margin-top: 25px;
+    font-size: 14.5px;
+    color: rgba(255, 255, 255, 0.75);
+}
+
+p a {
+    color: #ffcc00;
+    text-decoration: none;
+    font-weight: 600;
+    margin-left: 5px;
+    transition: color 0.3s, text-shadow 0.3s;
+}
+
+p a:hover {
+    color: #fff;
+    text-shadow: 0 0 8px rgba(255, 204, 0, 0.6);
 }
 
 /* Hidden Class */
 .hidden {
-    display: none;
+    display: none !important;
 }

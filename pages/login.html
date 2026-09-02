@@ -1,58 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sancharam - Travel Guide</title>
     <link rel="stylesheet" href="../assets/css/stylelogin.css">
+    <!-- Include Font Awesome for sleek icons -->
+    <script src="https://kit.fontawesome.com/7f257b9379.js" crossorigin="anonymous"></script>
     <script defer src="../assets/js/scriptlogin.js"></script>
 </head>
-<body>
-    <div class="container">
-        <!-- Animated Background -->
-        <video autoplay loop muted playsinline class="background-video">
-            <source src="../assets/videos/travel-animation.mp4" type="video/mp4">
-        </video>
 
-        <!-- Form Box -->
-        <div class="form-box">
+<body>
+    <!-- Overlay for better text readability and premium feel -->
+    <div class="video-overlay"></div>
+
+    <!-- Animated Background -->
+    <video autoplay loop muted playsinline class="background-video">
+        <source src="../assets/videos/travel-animation.mp4" type="video/mp4">
+    </video>
+
+    <div class="container">
+        <!-- Form Box for Login -->
+        <div class="form-box" id="login-form-box">
             <!-- Circular Logo Inside Box -->
             <img src="../assets/logos/logo%20bg%20less.png" alt="Sancharam Logo" class="logo">
 
-            <h2>Sign in to have the best experience of <span class="highlight">Sancharam</span></h2>
-            
+            <h2>Sign in to explore <br><span class="highlight"></span></h2>
+
             <form id="login-form">
-                <input type="email" id="email" placeholder="Email" required>
-                <div class="password-container">
+                <div class="input-group">
+                    <input type="email" id="email" placeholder="Email Address" required>
+                </div>
+                <div class="input-group password-container">
                     <input type="password" id="password" placeholder="Password" required>
-                    <span class="toggle-password" onclick="togglePassword()">👁</span>
+                    <span class="toggle-password" onclick="togglePassword()"><i class="fas fa-eye"
+                            id="eye-icon-login"></i></span>
                 </div>
                 <button type="submit">Log In</button>
-                <a href="home.html" class="log-in"></a>
+                <div class="demo-credentials" style="margin-top: 15px; font-size: 0.9em; color: #ddd; background: rgba(0,0,0,0.3); padding: 10px; border-radius: 5px; text-align: center;">
+                    <strong>Demo Credentials:</strong><br>
+                    Email: demo@sancharam.com<br>
+                    Password: demo123
+                </div>
             </form>
 
             <p>Don't have an account? <a href="#" id="signup-link">Sign Up</a></p>
         </div>
 
-        <!-- Sign-Up Form -->
+        <!-- Form Box for Sign-Up -->
         <div class="form-box hidden" id="signup-form">
             <!-- Circular Logo Inside Box -->
             <img src="../assets/logos/logo%20bg%20less.png" alt="Sancharam Logo" class="logo">
 
-            <h2>Create Your Account</h2>
-            
+            <h2>Join <span class="highlight">Sancharam</span></h2>
+
             <form id="register-form">
-                <input type="text" id="name" placeholder="Full Name" required>
-                <input type="email" id="signup-email" placeholder="Email" required>
-                <div class="password-container">
-                    <input type="password" id="signup-password" placeholder="Create Password" required>
-                    <span class="toggle-password" onclick="toggleSignupPassword()">👁</span>
+                <div class="input-group">
+                    <input type="text" id="name" placeholder="Full Name" required>
                 </div>
-                <button type="submit">Sign Up</button>
+                <div class="input-group">
+                    <input type="email" id="signup-email" placeholder="Email Address" required>
+                </div>
+                <div class="input-group password-container">
+                    <input type="password" id="signup-password" placeholder="Create Password" required>
+                    <span class="toggle-password" onclick="toggleSignupPassword()"><i class="fas fa-eye"
+                            id="eye-icon-signup"></i></span>
+                </div>
+                <button type="submit">Create Account</button>
             </form>
 
             <p>Already have an account? <a href="#" id="login-link">Log In</a></p>
         </div>
     </div>
 </body>
+
 </html>
