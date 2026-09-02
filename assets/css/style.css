@@ -596,6 +596,7 @@ button {
 .explore-cards {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    align-items: start;
     gap: 3rem;
     max-width: 1200px;
     margin: 0 auto;
