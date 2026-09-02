@@ -1,485 +1,195 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sancharam - Profile</title>
-  
-  <link rel="icon" type="image/png" href="../assets/favicon.png">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <link rel="stylesheet" href="../css/navbar.css">
-
+  <title>Profile</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <style>
-    /* Absolute Base Resets */
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { font-size: 62.5%; scroll-behavior: smooth; }
     body {
-      font-family: 'Montserrat', sans-serif;
-      background-color: #f8fafc;
-      color: #334155;
-      line-height: 1.7;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #f5f9ff, #e6f0fa);
+      color: #2c3e50;
+      line-height: 1.6;
     }
-
-    /* Modern Hero Component */
-    .profile-hero {
-      background: linear-gradient(135deg, rgba(11, 17, 32, 0.9), rgba(11, 17, 32, 0.95)), url('../assets/images/archive/image-3.webp') center/cover no-repeat;
-      padding: 6rem 2rem 10rem;
-      text-align: center;
-      color: #f8fafc;
-      position: relative;
-    }
-    
-    .profile-hero h1 {
-      font-size: 4.8rem;
-      font-weight: 700;
-      margin-bottom: 1rem;
-      letter-spacing: -1px;
-    }
-
-    .profile-hero h1 span {
-      background: linear-gradient(45deg, #f43f5e, #f97316);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .profile-hero p {
-      font-size: 1.8rem;
-      color: #cbd5e1;
-      max-width: 600px;
-      margin: 0 auto;
-    }
-
-    /* Interactive Dashboard Area */
-    .profile-main {
-      flex: 1;
-      display: flex;
-      justify-content: center;
-      margin-top: -8rem; /* Pull up to overlap dark hero */
-      padding: 0 2rem 8rem;
-      position: relative;
-      z-index: 10;
-    }
-
-    .dashboard-container {
-      max-width: 1000px;
-      width: 100%;
-      background: #ffffff;
-      border-radius: 2rem;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
-      border: 1px solid rgba(0,0,0,0.03);
-      padding: 4rem;
-      animation: rise-in 0.6s ease-out forwards;
-    }
-
-    @keyframes rise-in {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* Header Identity Block */
-    .identity-core {
+    header {
+      background: #000;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      border-bottom: 2px solid #f1f5f9;
-      padding-bottom: 3rem;
-      margin-bottom: 3rem;
-      flex-wrap: wrap;
-      gap: 2rem;
+      padding: 0.5rem 1.5rem;
+      color: white;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
     }
+    .logo img { height: 100px; width: auto; }
+    nav a {
+      margin: 0 1.2rem;
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+      position: relative;
+      transition: color 0.3s ease;
+    }
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -5px;
+      width: 0%;
+      height: 2px;
+      background: #0077cc;
+      transition: width 0.3s ease;
+    }
+    nav a:hover { color: #0077cc; }
+    nav a:hover::after { width: 100%; }
 
-    .user-overview {
+    .profile-container {
+      max-width: 950px;
+      margin: 3rem auto;
+      background: #ffffff;
+      border-radius: 25px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      padding: 2.5rem;
+      animation: fadeIn 1s ease-in-out;
+    }
+    .profile-header {
       display: flex;
       align-items: center;
-      gap: 2.5rem;
+      justify-content: space-between;
+      border-bottom: 2px solid #e0e0e0;
+      padding-bottom: 1.5rem;
+      margin-bottom: 2rem;
     }
-
-    .avatar-wrapper {
-      position: relative;
+    .profile-info {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
     }
-
-    .avatar {
-      width: 12rem;
-      height: 12rem;
+    .profile-pic {
+      width: 140px;
+      height: 140px;
       border-radius: 50%;
-      border: 4px solid #ffffff;
-      box-shadow: 0 10px 25px rgba(244, 63, 94, 0.2);
+      border: 5px solid #0077cc;
       object-fit: cover;
+      box-shadow: 0 4px 15px rgba(0, 119, 204, 0.3);
       transition: transform 0.4s ease;
     }
+    .profile-pic:hover { transform: scale(1.08); }
+    .profile-header h2 { font-size: 2.2rem; color: #34495e; }
+    .profile-header p { color: #7f8c8d; font-size: 1.1rem; }
 
-    .avatar:hover {
-      transform: scale(1.05) rotate(2deg);
-    }
-    
-    .status-indicator {
-      position: absolute;
-      bottom: 1rem;
-      right: 0.5rem;
-      width: 2.2rem;
-      height: 2.2rem;
-      background: #10b981;
-      border: 3px solid #ffffff;
-      border-radius: 50%;
-    }
-
-    .user-details h2 { 
-      font-size: 3rem; 
-      color: #0f172a; 
-      font-weight: 700; 
-      margin-bottom: 0.5rem;
-    }
-
-    .user-details p { 
-      color: #64748b; 
-      font-size: 1.5rem; 
-      font-weight: 500;
-    }
-
-    .btn-edit {
-      background: linear-gradient(135deg, #f43f5e, #f97316);
-      color: #ffffff;
-      font-family: inherit;
-      padding: 1.4rem 3rem;
-      font-size: 1.4rem;
-      font-weight: 600;
-      border: none;
-      border-radius: 3rem;
-      cursor: pointer;
-      transition: transform 0.2s, box-shadow 0.2s;
-      letter-spacing: 0.5px;
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-
-    .btn-edit:hover { 
-      transform: translateY(-2px); 
-      box-shadow: 0 10px 20px rgba(244, 63, 94, 0.3);
-    }
-
-    .btn-logout {
-      background: #0f172a;
-      color: #ffffff;
-      font-family: inherit;
-      padding: 1.4rem 3rem;
-      font-size: 1.4rem;
-      font-weight: 600;
-      border: none;
-      border-radius: 3rem;
-      cursor: pointer;
-      transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
-      letter-spacing: 0.5px;
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-
-    .btn-logout:hover {
-      transform: translateY(-2px); 
-      box-shadow: 0 10px 20px rgba(220, 38, 38, 0.3);
-      background: #dc2626; /* Warning red on hover */
-    }
-
-    /* Grid Informational Data */
-    .data-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2.5rem;
-    }
-
-    .data-card {
-      background: #f8fafc;
-      border-radius: 1.5rem;
-      padding: 2.5rem;
-      box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
-      border: 1px solid #e2e8f0;
-      transition: transform 0.3s ease, border-color 0.3s ease;
-    }
-
-    .data-card:hover {
-      transform: translateY(-5px);
-      border-color: rgba(244, 63, 94, 0.2);
-      background: #ffffff;
-      box-shadow: 0 15px 30px rgba(0,0,0,0.04);
-    }
-
-    .data-card .card-icon {
-      font-size: 2.2rem;
-      margin-bottom: 1.5rem;
-      background: linear-gradient(45deg, #f43f5e, #f97316);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      display: inline-block;
-    }
-
-    .data-card strong { 
-      display: block; 
-      color: #0f172a; 
-      font-size: 1.6rem; 
-      margin-bottom: 0.8rem;
-    }
-    
-    .data-card span {
-      font-size: 1.4rem;
-      color: #475569;
-    }
-
-    /* Form Inputs for Profile Data */
-    .profile-input {
-      width: 100%;
-      padding: 0.8rem 1rem;
-      margin-top: 0.5rem;
-      border: 1px solid #cbd5e1;
-      border-radius: 0.8rem;
-      font-family: inherit;
-      font-size: 1.4rem;
-      color: #334155;
-      background: #ffffff;
-      outline: none;
-      transition: border-color 0.2s;
-    }
-    
-    .profile-input:focus {
-      border-color: #f43f5e;
-    }
-
-    /* Mega Footer Core Setup */
-    .mega-footer {
-      background-color: #0d1117;
-      color: #e2e8f0;
-      padding-top: 6rem;
-      margin-top: auto;
-    }
-    .footer-grid {
+    .info-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 3rem;
-      margin-bottom: 4rem;
-      max-width: 1200px;
-      margin-left: auto;
-      margin-right: auto;
-      width: 90%;
+      gap: 1.5rem;
     }
-    .footer-col h3 {
-      color: #f8fafc;
-      margin-bottom: 1.5rem;
-      text-transform: uppercase;
-      font-size: 1.8rem;
+    .info-card {
+      background: linear-gradient(135deg, #f9fcff, #eef7ff);
+      border-radius: 15px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
-    .footer-col.brand-col .footer-logo {
-      font-size: 2.8rem;
-      color: #f43f5e;
-      letter-spacing: 2px;
-      margin-bottom: 1rem;
-      text-transform: none;
-      font-weight: bold;
+    .info-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0, 119, 204, 0.15);
     }
-    .footer-col p { font-size: 1.4rem; color: #94a3b8; margin-bottom: 1rem; line-height: 1.6; }
-    .footer-col ul { list-style: none; }
-    .footer-col ul li { margin-bottom: 0.8rem; }
-    .footer-col ul a { color: #94a3b8; font-size: 1.4rem; text-decoration: none; transition: color 0.2s, padding-left 0.2s; }
-    .footer-col ul a:hover { color: #f43f5e; padding-left: 5px; }
-    .footer-col i { margin-right: 0.8rem; color: #f43f5e; }
-    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.05); padding: 2rem 0; }
-    .bottom-bar { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem; max-width: 1200px; margin: 0 auto; width: 90%; }
-    .bottom-bar p { font-size: 1.3rem; color: #64748b; margin: 0; }
-    .bottom-bar .social-media-links a { color: #94a3b8; margin-left: 1.5rem; font-size: 1.8rem; transition: color 0.2s, transform 0.2s; }
-    .bottom-bar .social-media-links a:hover { color: #f43f5e; transform: translateY(-3px); }
-    
-    @media (max-width: 768px) {
-      .identity-core { flex-direction: column; text-align: center; }
-      .user-overview { flex-direction: column; }
+    .info-card strong { display: block; color: #0077cc; margin-bottom: 0.5rem; font-size: 1rem; }
+
+    .btn {
+      margin-top: 2rem;
+      background: #0077cc;
+      color: white;
+      padding: 0.9rem 2.5rem;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0, 119, 204, 0.3);
+    }
+    .btn:hover { background: #005fa3; transform: scale(1.05); }
+
+    footer {
+      background: #2c3e50;
+      color: white;
+      text-align: center;
+      padding: 1.5rem;
+      margin-top: 3rem;
+    }
+    footer .social-icons a {
+      color: white;
+      margin: 0 15px;
+      font-size: 2.5rem;
+      transition: transform 0.3s ease, color 0.3s ease;
+    }
+    footer .social-icons a:hover {
+      transform: scale(1.3);
+      color: #0077cc;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
-
 <body>
-
-  <!-- Unified Navbar -->
-  <nav class="universal-navbar solid">
-    <div class="nav-container">
-      <a href="../home.html" class="nav-logo">
-        <img src="../assets/icon.png" alt="Sancharam Logo">
-      </a>
-      <ul class="nav-items">
-        <li><a href="../home.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="explore.html">Explore</a></li>
-        <li><a href="bookings.html">Bookings</a></li>
-        <li><a href="features.html">Features</a></li>
-        <li><a href="profile.html" style="color:#f43f5e">Profile</a></li>
-      </ul>
+  <header>
+    <div class="logo">
+      <img src="assets/logo.png" alt="Sancharam Logo" class="logo" style="width: 300px; height: 60px; position: relative; left: 30px;">
     </div>
-  </nav>
-
-  <!-- Profile Hero Background -->
-  <header class="profile-hero">
-    <h1>Your <span>Profile</span></h1>
-    <p>Manage your account, settings, and travel preferences.</p>
+    <nav>
+      <a href="home.html">HOME</a>
+      <a href="about.html">ABOUT</a>
+      <a href="explore.html">EXPLORE</a>
+      <a href="bookings.html">BOOKINGS</a>
+      <a href="features.html">FEATURES</a>
+      <a href="profile.html">PROFILE</a>
+    </nav>
   </header>
 
-  <!-- Interactive Dashboard -->
-  <main class="profile-main">
-    <div class="dashboard-container">
-      
-      <!-- Identity and Core Data -->
-      <div class="identity-core">
-        <div class="user-overview">
-          <div class="user-details">
-            <h2 id="dyn-name">Guest Traveler</h2>
-            <p id="dyn-title">Explorer | Wanderer</p>
-          </div>
-        </div>
-        <div style="display: flex; gap: 1.5rem; flex-wrap: wrap;">
-          <button class="btn-edit" onclick="editProfile()">
-            <i class="fas fa-pen"></i> Save Profile
-          </button>
-          <button class="btn-logout" onclick="logoutProfile()">
-            <i class="fas fa-sign-out-alt"></i> Log Out
-          </button>
+  <div class="profile-container">
+    <div class="profile-header">
+      <div class="profile-info">
+        <img src="../assets/images/user1.jpg" alt="Profile Picture" class="profile-pic" />
+        <div>
+          <h2>Arjun Ravi</h2>
+          <p>Travel Enthusiast | Photographer | Blogger</p>
         </div>
       </div>
-
-      <!-- Configurable Data Grid -->
-      <div class="data-grid">
-        <div class="data-card">
-          <div class="card-icon"><i class="fas fa-envelope"></i></div>
-          <strong>Registered Email</strong>
-          <span id="dyn-email">Not Logged In</span>
-        </div>
-        
-        <div class="data-card">
-          <div class="card-icon"><i class="fas fa-calendar-check"></i></div>
-          <strong>Member Since</strong>
-          <span id="dyn-date">Awaiting Login Status</span>
-        </div>
-        
-        <div class="data-card">
-          <div class="card-icon"><i class="fas fa-home"></i></div>
-          <strong>Native Hub</strong>
-          <input type="text" class="profile-input" placeholder="Enter your native city...">
-        </div>
-        
-        <div class="data-card">
-          <div class="card-icon"><i class="fas fa-heart"></i></div>
-          <strong>Primary Interest</strong>
-          <select class="profile-input">
-            <option value="" disabled selected>Select an interest...</option>
-            <option>Beaches & Coastal</option>
-            <option>Mountain Retreats</option>
-            <option>Ancient Temples</option>
-            <option>Heritage & History</option>
-            <option>City Life & Urban</option>
-            <option>Wildlife & Safaris</option>
-            <option>Trekking & Adventure</option>
-            <option>Cuisine Exploration</option>
-            <option>Street Food Hotspots</option>
-            <option>Rural Village Tours</option>
-          </select>
-        </div>
-        
-        <div class="data-card">
-          <div class="card-icon"><i class="fas fa-language"></i></div>
-          <strong>Languages Spoken</strong>
-          <input type="text" class="profile-input" placeholder="E.g. Tamil, English, Hindi...">
-        </div>
-      </div>
-
+      <button class="btn" onclick="editProfile()">Edit Profile</button>
     </div>
-  </main>
 
-  <!-- Unified Mega Footer -->
-  <footer class="mega-footer">
-    <div class="footer-grid">
-      <div class="footer-col brand-col">
-        <h2 class="footer-logo">Sancharam</h2>
-        <p>Experience Tamil Nadu differently. Travel smart, travel local, and unlock hidden gems with our curated experiences.</p>
-      </div>
-      <div class="footer-col links-col">
-        <h3>Quick Links</h3>
-        <ul>
-          <li><a href="about.html">About us</a></li>
-          <li><a href="explore.html">Destinations</a></li>
-          <li><a href="bookings.html">Bookings</a></li>
-          <li><a href="features.html">Platform Features</a></li>
-        </ul>
-      </div>
-      <div class="footer-col contact-col">
-        <h3>Contact Us</h3>
-        <p><i class="fas fa-envelope"></i> hello@sancharam.in</p>
-        <p><i class="fas fa-phone"></i> +91 98765 43210</p>
-        <p><i class="fas fa-map-marker-alt"></i> Chennai, Tamil Nadu</p>
-      </div>
+    <div class="info-grid">
+      <div class="info-card"><strong>Email:</strong> arjun.ravi@gmail.com</div>
+      <div class="info-card"><strong>Member Since:</strong> June 2024</div>
+      <div class="info-card"><strong>Recent Trips:</strong> Madurai, Ooty, Kanyakumari</div>
+      <div class="info-card"><strong>Native:</strong> Chennai, Tamil Nadu</div>
+      <div class="info-card"><strong>Interests:</strong> Cultural Tours, Street Food, Trekking</div>
+      <div class="info-card"><strong>Languages:</strong> Tamil, English, Hindi</div>
     </div>
-    <div class="footer-bottom">
-      <div class="bottom-bar">
-        <p>&copy; 2026 Sancharam. All Rights Reserved.</p>
-        <div class="social-media-links">
-          <a href="#"><i class="fab fa-facebook-f"></i></a>
-          <a href="#"><i class="fab fa-twitter"></i></a>
-          <a href="#"><i class="fab fa-instagram"></i></a>
-          <a href="#"><i class="fab fa-linkedin-in"></i></a>
-        </div>
-      </div>
+  </div>
+
+  <footer>
+    <div class="social-icons">
+      <a href="#"><i class="fab fa-facebook-f"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
     </div>
+    <p>© 2025, All Rights Reserved</p>
   </footer>
 
-  <!-- Dynamic User Interception Logic -->
   <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      // Elements that need dynamic injection
-      const nameNode = document.getElementById("dyn-name");
-      const emailNode = document.getElementById("dyn-email");
-      const titleNode = document.getElementById("dyn-title");
-      const dateNode = document.getElementById("dyn-date");
-      
-      try {
-        // Attempt to intercept active LocalStorage profile set by login.html
-        const rawUserData = localStorage.getItem("sancharam_user");
-        const token = localStorage.getItem("sancharam_token");
-
-        if (rawUserData && token) {
-          const userObj = JSON.parse(rawUserData);
-
-          if (userObj.name) nameNode.textContent = userObj.name;
-          if (userObj.email) emailNode.textContent = userObj.email;
-          
-          titleNode.textContent = "Verified Member | Sancharam Pro";
-          
-          // Generate an active date simulation
-          const currentDate = new Date();
-          const options = { month: 'long', year: 'numeric' };
-          dateNode.textContent = "Active Since " + currentDate.toLocaleDateString("en-US", options);
-          
-        } else {
-          // Graceful fallback for non-authenticated states
-          nameNode.innerHTML = "Guest Traveler <span style='font-size:1.4rem; color:#f43f5e;'>[Offline]</span>";
-          titleNode.textContent = "You are currently not logged in.";
-          emailNode.innerHTML = "<a href='../login.html' style='color:#f43f5e; text-decoration:none; font-weight:600;'>Click here to Login</a>";
-        }
-      } catch (err) {
-        console.warn("Storage intercept failure:", err);
-      }
-    });
-
     function editProfile() {
-      // In production, this would open a modal or dedicated settings applet.
-      alert("Opening Interactive Editor... (Simulated Configuration Environment)");
-    }
-
-    function logoutProfile() {
-      if (confirm("Are you sure you want to log out of Sancharam?")) {
-        // Destroy active session tokens
-        localStorage.removeItem("sancharam_user");
-        localStorage.removeItem("sancharam_token");
-        // Redirect browser to login gate
-        window.location.href = "login.html";
-      }
+      alert("Redirecting to Edit Profile page...");
+      window.location.href = "edit-profile.html";
     }
   </script>
 </body>

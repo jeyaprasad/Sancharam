@@ -1,200 +1,31 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sancharam - Your Travel Companion</title>
-    <style>
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Noto+Sans+Tamil:wght@200&display=swap');
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-}
-
-body, html {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    background: black;
-}
-
-/* ✅ Fullscreen Slideshow */
-.slideshow-container {
-    position: absolute;
-    width: 100%;
-    height: 100vh;
-}
-
-.slide {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0;
-    transition: opacity 1.5s ease-in-out;
-}
-
-/* ✅ Dark Overlay for Readability */
-.overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.6);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    text-align: center;
-    color: white;
-    padding: 20px;
-}
-
-/* ✅ Sancharam Title with Typing Effect */
-h1 {
-    font-size: 2.8rem;
-    font-weight: 600;
-    margin-bottom: 10px;
-}
-
-/* ✅ Tamil Slogan at Bottom */
-.tamil-bottom {
-    position: absolute;
-    bottom: 15px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-family: 'Noto Sans Tamil', sans-serif;
-    font-weight: 200;
-    font-size: 1.5rem;
-    background: black;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 10px;
-    text-align: center;
-}
-
-/* ✅ Description */
-p {
-    font-size: 1.2rem;
-    line-height: 1.5;
-}
-
-/* ✅ Next Button */
-.next-button {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 12px 25px;
-    font-size: 1.2rem;
-    background: #ff9800;
-    color: white;
-    border-radius: 25px;
-    text-decoration: none;
-    font-weight: 600;
-    transition: 0.3s;
-}
-
-.next-button:hover {
-    background: #ff5722;
-}
-
-</style>
-
-  <link rel="icon" type="image/png" href="assets/favicon.png">
+    <link rel="stylesheet" href="assets/css/styleindex.css">
 </head>
 <body>
     <div class="slideshow-container">
         <!-- ✅ Slideshow Images -->
-        <img src="assets/images/index/chettinad.jpg" class="slide">
-        <img src="assets/images/shared/ooty.jpg" class="slide">
-        <img src="assets/images/index/tranquebar_fort.jpg" class="slide">
-        <img src="assets/images/index/hogenakkal.jpg" class="slide">
-        <img src="assets/images/index/velankanni.jpg" class="slide">
+        <img src="assets/images/chettinad.jpg" class="slide">
+        <img src="assets/images/ooty.jpg" class="slide">
+        <img src="assets/images/tranquebar_fort.jpg" class="slide">
+        <img src="assets/images/hogenakkal.jpg" class="slide">
+        <img src="assets/images/velankanni.jpg" class="slide">
 
         <div class="overlay">
             <h1 id="typing-text"></h1>
             <p>Sancharam is a smart and intuitive travel-guide website designed to enhance your journey with amazing travel features.  
                Experience seamless travel like never before. Let Sancharam be your digital travel companion, making every trip unforgettable!</p>
-            <a href="login.html" class="next-button">Next →</a>
+            <a href="pages/login.html" class="next-button">Next →</a>
         </div>
 
         <!-- ✅ Tamil Slogan Centered at Bottom -->
         <p class="tamil-bottom">வாழ்க தமிழ் வளர்க தமிழ்</p>
     </div>
 
-    <script>
-const textElement = document.getElementById('typing-text');
-const textArray = ["Welcome to Sancharam", "Welcome to சஞ்சாரம"];
-let textIndex = 0;
-let charIndex = 0;
-let typingSpeed = 150;
-let erasingSpeed = 100;
-let delayBetween = 1500;
-
-function type() {
-    if (charIndex < textArray[textIndex].length) {
-        textElement.innerHTML += textArray[textIndex].charAt(charIndex);
-        charIndex++;
-        setTimeout(type, typingSpeed);
-    } else {
-        setTimeout(erase, delayBetween);
-    }
-}
-
-function erase() {
-    if (charIndex > 0) {
-        textElement.innerHTML = textArray[textIndex].substring(0, charIndex - 1);
-        charIndex--;
-        setTimeout(erase, erasingSpeed);
-    } else {
-        textIndex = (textIndex + 1) % textArray.length;
-        setTimeout(type, typingSpeed);
-    }
-}
-
-document.addEventListener("DOMContentLoaded", () => {
-    setTimeout(type, typingSpeed);
-});
-
-// ✅ Automatic Slideshow
-let slideIndex = 0;
-const slides = document.querySelectorAll('.slide');
-
-function showSlides() {
-    slides.forEach((slide, index) => {
-        slide.style.opacity = "0";
-    });
-    slides[slideIndex].style.opacity = "1";
-
-    slideIndex = (slideIndex + 1) % slides.length;
-    setTimeout(showSlides, 5000); // Change every 5 seconds
-}
-
-showSlides();
-
-const images = [
-    'chettinad.jpg',
-    'chennai.jpg',
-    'tranquebar_fort.jpg',
-    'ooty.jpg',
-    'hogenakkal.jpg',
-    'velankanni.jpg'
-];
-
-let currentIndex = 0;
-const body = document.body;
-
-function changeBackground() {
-    body.style.background = `url('${images[currentIndex]}') no-repeat center center/cover`;
-    currentIndex = (currentIndex + 1) % images.length;
-}
-
-setInterval(changeBackground, 4000); // Change background every 4 seconds
-changeBackground(); // Initialize first image
-
-</script>
+    <script src="assets/js/scriptindex.js"></script>
 </body>
 </html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sancharam - Travel Guide</title>
+    <link rel="stylesheet" href="../assets/css/stylelogin.css">
+    <script defer src="../assets/js/scriptlogin.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Animated Background -->
+        <video autoplay loop muted playsinline class="background-video">
+            <source src="../assets/videos/travel-animation.mp4" type="video/mp4">
+        </video>
+
+        <!-- Form Box -->
+        <div class="form-box">
+            <!-- Circular Logo Inside Box -->
+            <img src="../assets/logos/logo%20bg%20less.png" alt="Sancharam Logo" class="logo">
+
+            <h2>Sign in to have the best experience of <span class="highlight">Sancharam</span></h2>
+            
+            <form id="login-form">
+                <input type="email" id="email" placeholder="Email" required>
+                <div class="password-container">
+                    <input type="password" id="password" placeholder="Password" required>
+                    <span class="toggle-password" onclick="togglePassword()">👁</span>
+                </div>
+                <button type="submit">Log In</button>
+                <a href="home.html" class="log-in"></a>
+            </form>
+
+            <p>Don't have an account? <a href="#" id="signup-link">Sign Up</a></p>
+        </div>
+
+        <!-- Sign-Up Form -->
+        <div class="form-box hidden" id="signup-form">
+            <!-- Circular Logo Inside Box -->
+            <img src="../assets/logos/logo%20bg%20less.png" alt="Sancharam Logo" class="logo">
+
+            <h2>Create Your Account</h2>
+            
+            <form id="register-form">
+                <input type="text" id="name" placeholder="Full Name" required>
+                <input type="email" id="signup-email" placeholder="Email" required>
+                <div class="password-container">
+                    <input type="password" id="signup-password" placeholder="Create Password" required>
+                    <span class="toggle-password" onclick="toggleSignupPassword()">👁</span>
+                </div>
+                <button type="submit">Sign Up</button>
+            </form>
+
+            <p>Already have an account? <a href="#" id="login-link">Log In</a></p>
+        </div>
+    </div>
+</body>
+</html>

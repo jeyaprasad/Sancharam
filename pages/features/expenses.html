@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -18,7 +18,6 @@
       align-items: center;
       min-height: 100vh;
     }
-
     header {
       font-size: 32px;
       font-weight: 600;
@@ -28,7 +27,6 @@
       text-align: center;
       padding: 20px 0;
     }
-
     .container {
       background-color: #ffffff;
       padding: 40px;
@@ -38,12 +36,10 @@
       max-width: 480px;
       text-align: center;
     }
-
     h2 {
       color: #007bff;
       margin-bottom: 20px;
     }
-
     input, select, button {
       width: 100%;
       padding: 14px;
@@ -53,18 +49,15 @@
       font-size: 16px;
       box-shadow: 0 2px 5px rgba(0,0,0,0.05);
     }
-
     button {
       background-color: #007bff;
       color: white;
       font-weight: bold;
       transition: background 0.3s;
     }
-
     button:hover {
       background-color: #0056b3;
     }
-
     .output {
       margin-top: 20px;
       background-color: #f1f9ff;
@@ -73,13 +66,11 @@
       font-size: 16px;
       box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
     }
-
     .icon {
       font-size: 48px;
       color: #007bff;
       margin-bottom: 10px;
     }
-
     footer {
       width: 100%;
       padding: 20px;
@@ -89,128 +80,22 @@
       position: relative;
       bottom: 0;
     }
-
     .social-icons {
       margin-bottom: 10px;
     }
-
     .social-icons i {
       font-size: 24px;
       margin: 0 10px;
       color: #ffffff;
       transition: color 0.3s;
     }
-
     .social-icons i:hover {
       color: #90caf9;
     }
-
-  
-    /* -- NEW FOOTER CSS OVERRIDE -- */
-    .footer {
-      background: #111827 !important;
-      color: #94a3b8;
-      padding: 6rem 0 2rem;
-      text-align: left;
-    }
-
-
-    .footer-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 4rem;
-      margin-bottom: 4rem;
-    }
-
-    
-    .footer-col h3 {
-      color: #f8fafc;
-      font-size: 1.8rem;
-      margin-bottom: 2rem;
-      text-transform: uppercase;
-    }
-
-    
-    .footer-col p {
-      line-height: 1.6;
-    }
-
-
-    .footer-col ul {
-      list-style: none;
-    }
-
-
-    .footer-col ul li {
-      margin-bottom: 1rem;
-    }
-
-
-    .footer-col ul li a {
-      color: #94a3b8;
-      transition: color 0.3s ease;
-    }
-
-
-    .footer-col ul li a:hover {
-      color: #ef6c2f;
-    }
-
-
-    .footer .social-media-links {
-      display: flex;
-      gap: 1.5rem;
-      margin-bottom: 0;
-    }
-
-
-    .footer .social-media-links i {
-      font-size: 2.2rem;
-      color: #cbd5e1;
-      transition: all 0.3s ease;
-      cursor: pointer;
-      padding: 0;
-    }
-
-
-    .footer .social-media-links i:hover {
-      color: #ef6c2f;
-      transform: translateY(-3px);
-    }
-
-
-    .footer-bottom {
-      text-align: center;
-      padding-top: 2rem;
-      border-top: 1px solid rgba(255,255,255,0.1);
-    }
-
-    
-    .footer-bottom p {
-      font-size: 1.4rem;
-      color: #64748b;
-    }
-</style>
-<link rel="stylesheet" href="../../css/navbar.css">
-
-  <link rel="icon" type="image/png" href="../../assets/favicon.png">
+  </style>
 </head>
 <body>
-      <nav class="universal-navbar solid">
-  <div class="nav-container">
-    <a href="../../home.html" class="nav-logo">
-      <img src="../../assets/icon.png" alt="Sancharam Logo">
-    </a>
-    <ul class="nav-items">
-      <li><a href="../../home.html">Home</a></li>
-      <li><a href="../about.html">About</a></li>
-      <li><a href="../explore.html">Explore</a></li>
-      <li><a href="../bookings.html">Bookings</a></li>
-      <li><a href="../features.html">Features</a></li>
-      <li><a href="../profile.html">Profile</a></li>
-    </ul>
-  </div>
-</nav>
+  <header>Sancharam- Travel Budget Manager</header>
   <div class="container">
     <div class="icon"><i class="fas fa-wallet"></i></div>
     <h2>Fill up your trip budget</h2>
@@ -228,32 +113,13 @@
     <div class="output" id="result"></div>
   </div>
 
-    <footer class="footer">
-    <div class="container footer-grid">
-      <div class="footer-col">
-        <h3>Sancharam</h3>
-        <p>Your ultimate companion for exploring the hidden gems and rich heritage of Tamil Nadu.</p>
-      </div>
-      <div class="footer-col">
-        <h3>Quick Links</h3>
-        <ul>
-          <li><a href="about.html">About Us</a></li>
-          <li><a href="explore.html">Destinations</a></li>
-          <li><a href="bookings.html">Bookings</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h3>Connect</h3>
-        <div class="social-media-links">
-          <i class="fab fa-facebook"></i>
-          <i class="fab fa-twitter"></i>
-          <i class="fab fa-instagram"></i>
-        </div>
-      </div>
+  <footer>
+    <div class="social-icons">
+      <i class="fab fa-facebook"></i>
+      <i class="fab fa-twitter"></i>
+      <i class="fab fa-instagram"></i>
     </div>
-    <div class="footer-bottom">
-      <p>Sancharam &copy; 2026, All Rights Reserved</p>
-    </div>
+    Sancharam © 2025, All Rights Reserved
   </footer>
 
   <script>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SOS Emergency Assistance - Tamil Nadu</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Montserrat', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f7fc;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 100vh;
+    }
+
+    .header {
+      background-color: #007bff;
+      color: white;
+      padding: 20px;
+      width: 100%;
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .container {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      max-width: 400px;
+      width: 90%;
+      margin: 20px 0;
+    }
+
+    .sos-button {
+      background-color: #ff4d4d;
+      color: white;
+      font-size: 20px;
+      padding: 15px 30px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.3s;
+      width: 100%;
+    }
+
+    .sos-button:hover {
+      background-color: #cc0000;
+    }
+
+    .contacts {
+      margin-top: 20px;
+      text-align: left;
+    }
+
+    .contact-item {
+      background: #e3f2fd;
+      padding: 15px;
+      margin: 10px 0;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      display: flex;
+      align-items: center;
+      font-size: 16px;
+    }
+
+    .contact-item i {
+      margin-right: 10px;
+      color: #007bff;
+    }
+
+    .footer {
+      width: 100%;
+      background: #263238;
+      color: white;
+      text-align: center;
+      padding: 20px 0;
+    }
+
+    .footer i {
+      font-size: 24px;
+      margin: 0 15px;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">Sancharam- SOS Emergency Assistance</div>
+
+  <div class="container">
+    <button class="sos-button" onclick="sendAlert()">🚨 Send SOS Alert</button>
+
+    <div class="contacts">
+      <h3>Emergency Contacts</h3>
+      <div class="contact-item"><i class="fas fa-phone"></i> Police: 100</div>
+      <div class="contact-item"><i class="fas fa-phone"></i> Ambulance: 108</div>
+      <div class="contact-item"><i class="fas fa-phone"></i> Fire Department: 101</div>
+      <div class="contact-item"><i class="fas fa-phone"></i> Women Helpline: 1091</div>
+      <div class="contact-item"><i class="fas fa-phone"></i> Child Helpline: 1098</div>
+      <div class="contact-item"><i class="fas fa-phone"></i> Disaster Helpline: 1070</div>
+      <div class="contact-item"><i class="fas fa-phone"></i> Traffic Police: 103</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <i class="fab fa-facebook"></i>
+    <i class="fab fa-twitter"></i>
+    <i class="fab fa-instagram"></i>
+    <p>Sancharam &copy; 2025, All Rights Reserved</p>
+  </div>
+
+  <script>
+    function sendAlert() {
+      alert('🚨 Emergency Alert Sent! Stay Safe.');
+    }
+  </script>
+</body>
+</html>
