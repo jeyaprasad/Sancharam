@@ -669,25 +669,13 @@ button {
 }
 
 
-/* News Ticker */
+/* Static Banner */
 .news-ticker {
     background-color: #fff;
     color: #b30000;
-    padding: 0.5rem 0;
-    overflow: hidden;
-    white-space: nowrap;
-    font-size: 1.8rem;
+    padding: 0.2rem 0;
+    text-align: center;
+    font-size: 1.4rem;
     font-weight: bold;
     letter-spacing: 2px;
-}
-
-.ticker-text {
-    display: inline-block;
-    padding-left: 100%;
-    animation: ticker 40s linear infinite;
-}
-
-@keyframes ticker {
-    0% { transform: translate(0, 0); }
-    100% { transform: translate(-100%, 0); }
 }
