@@ -591,3 +591,32 @@ button {
         height: 90vmax;
     }
 }
+
+/* Scroll Down Arrow */
+.scroll-down-arrow {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 3rem;
+    color: #fff;
+    animation: bounce 2s infinite;
+    text-decoration: none;
+    z-index: 10;
+}
+
+.scroll-down-arrow:hover {
+    color: #f4f4f4;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0) translateX(-50%);
+    }
+    40% {
+        transform: translateY(-20px) translateX(-50%);
+    }
+    60% {
+        transform: translateY(-10px) translateX(-50%);
+    }
+}
