@@ -625,8 +625,8 @@ button {
 /* New Explore Cards Layout */
 .explore-cards {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 3rem;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem; max-width: 1050px; margin: 0 auto;
     padding: 0 1rem;
 }
 
@@ -646,18 +646,19 @@ button {
 
 .explore-card .img-box {
     width: 100%;
-    height: 250px;
+    height: 180px;
 }
 
 .explore-card .img-box img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center;
     display: block;
 }
 
 .explore-card .text-box {
-    padding: 2.5rem 2rem;
+    padding: 1.5rem 1.5rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -666,14 +667,14 @@ button {
 }
 
 .explore-card .text-box h2 {
-    font-size: 2.2rem;
+    font-size: 1.8rem;
     text-transform: uppercase;
     margin-bottom: 1.5rem;
     letter-spacing: 1px;
 }
 
 .explore-card .text-box p {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     margin-bottom: 2rem;
     line-height: 1.6;
     color: #444;
