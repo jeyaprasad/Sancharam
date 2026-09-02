@@ -650,7 +650,7 @@ button {
 }
 
 .explore-card .text-box .card-btn {
-    margin-top: auto; /* Pushes the button to the bottom so all align perfectly */
+    margin-top: 1.5rem;
     font-size: 1.5rem;
     padding: 1rem 3rem;
 }
