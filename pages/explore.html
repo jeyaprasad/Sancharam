@@ -194,35 +194,22 @@
       transform: scale(1.05);
     }
 
-    /* Footer */
-    .footer {
-      background-color: #263238;
-      height: 80px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      color: #f4f4f4;
-      text-align: center;
-      padding: 0 20px;
-    }
-    .footer .social-icons a {
-      color: #fff;
-      font-size: 1.5rem;
-      margin: 0 10px;
-      transition: color 0.3s, transform 0.3s;
-    }
-    .footer .social-icons a:hover {
-      color: #ff5c70;
-      transform: scale(1.2);
-    }
+    
+    
+    
 
     /* Animations */
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
-  </style>
+  
+  /* Uniform Footer CSS */
+  .footer { font-size: 1rem; padding: 1rem; background: #263238; color: #f4f4f4; margin-top: auto; text-align: center; width: 100%; font-family: 'Montserrat', sans-serif; display: block; height: auto; }
+  .footer .social-media-links { text-align: center; }
+  .footer .social-media-links i { padding: 1.5rem; margin-bottom: 1rem; font-size: 4rem; color: #f4f4f4; display: inline-block; }
+  .footer p { margin: 0; padding-bottom: 1rem; }
+</style>
 
 <!-- Global Nav/Footer CSS injected -->
 <style id="global-nav-footer">
@@ -235,7 +222,7 @@
     .navbar a { color: aliceblue; text-decoration: none; font-size: 1.6rem; font-weight: bold; }
     .navbar a:hover { border-bottom: 1px solid #FFF; }
     .navbar::after { content: ''; display: block; clear: both; }
-    .footer { font-size: 1rem; padding: 1rem; background: #263238; color: #f4f4f4; margin-top: auto; text-align: center; width: 100%; font-family: 'Montserrat', sans-serif; }
+    
     .footer .social-media-links i { padding: 1.5rem; margin-bottom: 1rem; font-size: 4rem; color: #f4f4f4; }
     @media (max-width: 768px) {
         .navbar .container { flex-direction: column; }
@@ -318,13 +305,14 @@
   </section>
 
   <!-- Footer -->
+    <!-- Footer -->
   <footer class="footer">
-        <div class="social-media-links">
-            <i class="fab fa-facebook fa-4x"></i>
-            <i class="fab fa-twitter fa-4x"></i>
-            <i class="fab fa-instagram fa-4x"></i>
-        </div>
-        <p>Sancharam &copy; 2025, All Rights Reserved</p>
-    </footer>
+      <div class="social-media-links">
+          <i class="fab fa-facebook fa-4x"></i>
+          <i class="fab fa-twitter fa-4x"></i>
+          <i class="fab fa-instagram fa-4x"></i>
+      </div>
+      <p>Sancharam &copy; 2025, All Rights Reserved</p>
+  </footer>
 </body>
 </html>
