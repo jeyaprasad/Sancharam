@@ -461,7 +461,7 @@ button {
 }
 
 .form-wrapper .form .form-group{
-    margin-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
 }
 
 .form-wrapper .form label::after{
@@ -596,6 +596,7 @@ button {
 .explore-cards {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    align-items: start;
     gap: 3rem;
     max-width: 1200px;
     margin: 0 auto;
@@ -604,7 +605,6 @@ button {
 
 .explore-card {
     background: #f4f4f4;
-    height: 100%;
     box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
@@ -647,7 +647,7 @@ button {
     font-size: 1.5rem;
     line-height: 1.6;
     color: #555;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
 }
 
 .explore-card .text-box .card-btn {
