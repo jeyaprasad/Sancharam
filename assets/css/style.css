@@ -299,7 +299,7 @@ button {
 
 .about-wrapper{
     text-align: center;
-    padding: 2em;
+    padding: 2em 2em 0 2em;
 }
 
 .about .left-about{
@@ -316,6 +316,10 @@ button {
     content: "";
     display: block;
     clear: both;
+}
+
+.about-wrapper li {
+    margin-bottom: 1rem;
 }
 
 .about-wrapper li::before{
@@ -353,7 +357,7 @@ button {
 /* ############### CONTACT SOON ################ */
 
 .contact-soon{
-    margin-top: 2em;
+    margin-top: 1em;
     padding: 1rem;
     color: #f4f4f4;
     background: url("../images/contact.png");
