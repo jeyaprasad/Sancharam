@@ -141,6 +141,27 @@
         color: #ff5c70;
     }
   </style>
+
+<!-- Global Nav/Footer CSS injected -->
+<style id="global-nav-footer">
+    .navbar { font-family: 'Montserrat', sans-serif; }
+    .navbar .container { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 0 1rem; }
+    .navbar.bg-dark { background-color: #000000; }
+    .navbar .logo { float: left; padding-top: 6px; }
+    .navbar .nav-items { list-style: none; margin: 0; padding: 0; display: flex; align-items: center; }
+    .navbar .nav-item { display: inline-block; padding: 1.5rem; text-transform: uppercase; }
+    .navbar a { color: aliceblue; text-decoration: none; font-size: 1.6rem; font-weight: bold; }
+    .navbar a:hover { border-bottom: 1px solid #FFF; }
+    .navbar::after { content: ''; display: block; clear: both; }
+    .footer { font-size: 1rem; padding: 1rem; background: #263238; color: #f4f4f4; margin-top: auto; text-align: center; width: 100%; font-family: 'Montserrat', sans-serif; }
+    .footer .social-media-links i { padding: 1.5rem; margin-bottom: 1rem; font-size: 4rem; color: #f4f4f4; }
+    @media (max-width: 768px) {
+        .navbar .container { flex-direction: column; }
+        .navbar .nav-items { flex-direction: column; width: 100%; text-align: center; }
+    }
+</style>
+<script src="https://kit.fontawesome.com/7f257b9379.js" crossorigin="anonymous"></script>
+
 </head>
 <body>
   <header>
@@ -148,18 +169,18 @@
         <img src="assets/logo.png" alt="Sancharam Logo">
     </div>
     <nav class="navbar bg-dark">
-            <div class="container">
-                <img src="../assets/logos/logo.png" alt="Sancharam Logo" class="logo" style="width: 300px; height: 80px; position: relative; left: -100px;">
-                <ul class="nav-items" style="position: relative; left: 100px;">
-                <li class="nav-item"><a href="./home.html">Home</a></li>
-                <li class="nav-item"><a href="../pages/about.html">About</a></li>
-                <li class="nav-item"><a href="../pages/explore.html">Explore</a></li>
-                <li class="nav-item"><a href="../pages/bookings.html">Bookings</a></li>
-                <li class="nav-item"><a href="../pages/features.html">Features</a></li>
-                <li class="nav-item"><a href="../pages/profile.html">Profile</a></li>
-            </ul>
-            </div>
-        </nav>
+    <div class="container">
+        <img src="../assets/logos/logo.png" alt="Sancharam Logo" class="logo" style="width: 300px; height: 80px;">
+        <ul class="nav-items">
+            <li class="nav-item"><a href="../home.html">Home</a></li>
+            <li class="nav-item"><a href="../pages/about.html">About</a></li>
+            <li class="nav-item"><a href="../pages/explore.html">Explore</a></li>
+            <li class="nav-item"><a href="../pages/bookings.html">Bookings</a></li>
+            <li class="nav-item"><a href="../pages/features.html">Features</a></li>
+            <li class="nav-item"><a href="../pages/profile.html">Profile</a></li>
+        </ul>
+    </div>
+</nav>
   </header>
 
   <div class="section-header">
