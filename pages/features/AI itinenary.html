@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sancharam AI Planner</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background: #f4f9ff;
+}
+
+header {
+    background: linear-gradient(90deg,#0061ff,#60efff);
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 30px auto;
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+input, select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 8px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+button {
+    margin-top: 15px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    background: #0061ff;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #004ecc;
+}
+
+.day-card {
+    margin-top: 25px;
+    padding: 15px;
+    background: #eef6ff;
+    border-radius: 8px;
+}
+
+iframe {
+    width: 100%;
+    height: 250px;
+    margin-top: 10px;
+    border-radius: 8px;
+    border: none;
+}
+
+footer {
+    text-align: center;
+    padding: 15px;
+    margin-top: 30px;
+    background: #eaf4fb;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>🤖 Sancharam AI Tamil Nadu Planner</h1>
+<p>Smart Personalized Travel Planning</p>
+</header>
+
+<div class="container">
+
+<label>Destination</label>
+<select id="destination">
+<option value="Chennai">Chennai</option>
+<option value="Ooty">Ooty</option>
+<option value="Madurai">Madurai</option>
+<option value="Kodaikanal">Kodaikanal</option>
+</select>
+
+<label>Days (1-10)</label>
+<input type="number" id="days" min="1" max="10">
+
+<label>Budget</label>
+<select id="budget">
+<option value="low">Low Budget</option>
+<option value="medium">Medium Budget</option>
+<option value="high">Luxury</option>
+</select>
+
+<button onclick="generatePlan()">Generate Plan</button>
+
+<div id="result"></div>
+
+</div>
+
+<footer>
+© 2026 Sancharam Travel Intelligence
+</footer>
+
+<script>
+
+const destinations = {
+
+Chennai: {
+places: ["Marina Beach","Kapaleeshwarar Temple","Fort St George","Mahabalipuram","Guindy National Park","Santhome Cathedral","Elliots Beach","Pulicat Lake","Valluvar Kottam","Express Avenue Mall"],
+evening: ["Marina Sunset","ECR Night Drive","Besant Nagar Walk","Rooftop Dinner","Live Music Cafe","Street Food at Sowcarpet","Cinema Night","Light House View","Shopping Night","Fine Dining"],
+transport: "Metro + Cab recommended"
+},
+
+Ooty: {
+places: ["Doddabetta Peak","Ooty Lake","Botanical Garden","Pykara Falls","Nilgiri Railway","Avalanche Lake","Tea Museum","Rose Garden","Emerald Lake","Glenmorgan Viewpoint"],
+evening: ["Lake Sunset","Campfire Night","Tea Tasting","Chocolate Shop Visit","Hilltop Sunset","Market Walk","Bonfire","Night Photography","Star Gazing","Resort Relaxation"],
+transport: "Cab or Bike rental recommended"
+},
+
+Madurai: {
+places: ["Meenakshi Temple","Thirumalai Nayakkar Palace","Gandhi Museum","Alagar Kovil","Vaigai Dam","Samanar Hills","Teppakulam","Banana Market","Pazhamudircholai","Koodal Temple"],
+evening: ["Temple Night Pooja","Street Food Walk","Market Shopping","Cultural Show","Temple Light View","Photography Walk","Local Dinner","Night Temple Visit","Vaigai Sunset","Traditional Music Night"],
+transport: "Auto + Cab recommended"
+},
+
+Kodaikanal: {
+places: ["Kodaikanal Lake","Coakers Walk","Bryant Park","Pillar Rocks","Guna Caves","Berijam Lake","Silver Cascade","Pine Forest","Green Valley View","Poombarai Village"],
+evening: ["Lake Cycling","Sunset Point","Bonfire","Cafe Visit","Night Market","Photography","Stargazing","Hilltop Walk","Resort Dinner","Local Shopping"],
+transport: "Cab preferred due to hill roads"
+}
+
+};
+
+const hotels = {
+low: ["Budget Lodge","Temple View Stay","Local Guest House"],
+medium: ["Sterling Resort","Fortune Hotel","The Residency"],
+high: ["Taj Hotel","ITC Grand","Leela Palace"]
+};
+
+const restaurants = [
+"Murugan Idli Shop",
+"Anjappar Chettinad",
+"Saravana Bhavan",
+"Junior Kuppanna",
+"Local Speciality Restaurant"
+];
+
+function generatePlan(){
+
+let destination = document.getElementById("destination").value;
+let days = parseInt(document.getElementById("days").value);
+let budget = document.getElementById("budget").value;
+
+if(!days || days < 1 || days > 10){
+alert("Please enter days between 1 and 10");
+return;
+}
+
+let data = destinations[destination];
+let resultHTML = `<h2>📍 AI Plan for ${destination}</h2>`;
+
+for(let i=0;i<days;i++){
+
+let morningPlace = data.places[i % data.places.length];
+let eveningActivity = data.evening[i % data.evening.length];
+let hotel = hotels[budget][i % hotels[budget].length];
+let food = restaurants[i % restaurants.length];
+
+resultHTML += `
+<div class="day-card">
+<h3>Day ${i+1}</h3>
+<p><strong>🌅 Morning:</strong> Visit ${morningPlace}</p>
+<p><strong>🍽 Afternoon:</strong> Lunch at ${food}</p>
+<p><strong>🌇 Evening:</strong> ${eveningActivity}</p>
+<p><strong>🏨 Stay:</strong> ${hotel}</p>
+<p><strong>🚗 Transport:</strong> ${data.transport}</p>
+
+<iframe src="https://www.google.com/maps?q=${morningPlace}&output=embed"></iframe>
+</div>
+`;
+
+}
+
+document.getElementById("result").innerHTML = resultHTML;
+
+}
+
+</script>
+
+</body>
+</html>

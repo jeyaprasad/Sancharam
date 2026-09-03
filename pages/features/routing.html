@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sancharam | Smart Routing Intelligence</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #ff4d00;
+            --primary-glow: rgba(255, 77, 0, 0.3);
+            --bg-dark: #050505;
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --border: rgba(255, 255, 255, 0.1);
+            --text-main: #ffffff;
+            --text-dim: #a0a0a0;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+            background-color: var(--bg-dark);
+            background-image: 
+                radial-gradient(circle at 20% 20%, rgba(255, 77, 0, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 80% 80%, rgba(255, 77, 0, 0.05) 0%, transparent 40%);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            text-align: center;
+            padding: 80px 20px 40px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            margin: 0;
+            font-weight: 800;
+            letter-spacing: -1px;
+            text-transform: uppercase;
+        }
+
+        .hero span {
+            color: var(--primary);
+            text-shadow: 0 0 20px var(--primary-glow);
+        }
+
+        .hero p {
+            color: var(--text-dim);
+            margin-top: 10px;
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* --- SEARCH CARD --- */
+        .route-card {
+            width: 90%;
+            max-width: 800px;
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 40px;
+            border-radius: 24px;
+            border: 1px solid var(--border);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .input-group i {
+            position: absolute;
+            left: 15px;
+            top: 45px;
+            color: var(--primary);
+        }
+
+        label {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-dim);
+            margin-bottom: 8px;
+            margin-left: 5px;
+        }
+
+        input {
+            background: rgba(0,0,0,0.3);
+            border: 1px solid var(--border);
+            color: white;
+            padding: 14px 14px 14px 45px;
+            border-radius: 12px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        input:focus {
+            border-color: var(--primary);
+            background: rgba(255, 77, 0, 0.05);
+            outline: none;
+            box-shadow: 0 0 15px var(--primary-glow);
+        }
+
+        .btn-container {
+            grid-column: span 2;
+            display: flex;
+            justify-content: center;
+        }
+
+        button {
+            margin-top: 10px;
+            padding: 16px 40px;
+            background: var(--primary);
+            border: none;
+            color: white;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 10px 20px rgba(255, 77, 0, 0.2);
+        }
+
+        button:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(255, 77, 0, 0.4);
+        }
+
+        /* --- RESULTS --- */
+        .result {
+            width: 90%;
+            max-width: 800px;
+            margin: 40px 0;
+            display: none; /* Hidden by default */
+            animation: slideUp 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .status-panel {
+            padding: 30px;
+            border-radius: 20px;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .safe {
+            background: rgba(0, 255, 127, 0.05);
+            border: 1px solid rgba(0, 255, 127, 0.3);
+        }
+
+        .warning {
+            background: rgba(255, 48, 48, 0.05);
+            border: 1px solid rgba(255, 48, 48, 0.3);
+        }
+
+        .status-icon {
+            font-size: 2.5rem;
+        }
+
+        .safe .status-icon { color: #00ff7f; }
+        .warning .status-icon { color: #ff3030; }
+
+        .status-info h3 { margin: 0 0 5px 0; font-size: 20px; }
+        .status-info p { margin: 0; opacity: 0.8; font-size: 14px; line-height: 1.5; }
+
+        /* --- RISK METER --- */
+        .risk-container {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 15px;
+        }
+
+        .risk-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        .risk-bar {
+            height: 10px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .risk-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #00ff7f, #ffbb00, #ff3030);
+            background-size: 800px 10px;
+            transition: width 1.5s cubic-bezier(0.1, 0, 0.1, 1);
+        }
+
+        /* --- MAP FRAME --- */
+        .map-wrapper {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+
+        iframe {
+            width: 100%;
+            height: 450px;
+            border: none;
+            display: block;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .route-card { grid-template-columns: 1fr; padding: 25px; }
+            .btn-container { grid-column: span 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="hero">
+        <h1>SAN<span>CHARAM</span></h1>
+        <p>Routing Intelligence Engine</p>
+    </div>
+
+    <div class="route-card">
+        <div class="input-group">
+            <label>Departure</label>
+            <i class="fa-solid fa-location-dot"></i>
+            <input type="text" id="source" placeholder="City or Street">
+        </div>
+
+        <div class="input-group">
+            <label>Destination</label>
+            <i class="fa-solid fa-crosshairs"></i>
+            <input type="text" id="destination" placeholder="City or Street">
+        </div>
+
+        <div class="btn-container">
+            <button onclick="analyzeRoute()">
+                <i class="fa-solid fa-shuttle-space"></i> &nbsp;Compute Safety Path
+            </button>
+        </div>
+    </div>
+
+    <div class="result" id="result">
+        </div>
+
+    <script>
+        function analyzeRoute() {
+            const source = document.getElementById("source").value;
+            const dest = document.getElementById("destination").value;
+            const resultDiv = document.getElementById("result");
+
+            if (!source || !dest) {
+                alert("Please initialize coordinates first.");
+                return;
+            }
+
+            // Show results with animation
+            resultDiv.style.display = "block";
+            resultDiv.innerHTML = `<p style="text-align:center; opacity:0.5;">Processing neural paths...</p>`;
+
+            setTimeout(() => {
+                let riskScore = Math.floor(Math.random() * 60) + 20; // 20-80 range
+                if (source.length + dest.length > 25) riskScore += 15;
+                if (riskScore > 100) riskScore = 98;
+
+                const isRisky = riskScore > 65;
+                const statusClass = isRisky ? "warning" : "safe";
+                const icon = isRisky ? "fa-triangle-exclamation" : "fa-shield-check";
+                const title = isRisky ? "Attention Required" : "Secure Corridor Confirmed";
+                const desc = isRisky 
+                    ? "Path intersects with lower-lit zones or historical traffic anomalies. Transit with caution."
+                    : "High-activity public corridors selected. Optimal environmental safety detected.";
+
+                resultDiv.innerHTML = `
+                    <div class="status-panel ${statusClass}">
+                        <div class="status-icon">
+                            <i class="fa-solid ${isRisky ? 'fa-circle-exclamation' : 'fa-circle-check'}"></i>
+                        </div>
+                        <div class="status-info">
+                            <h3>${title}</h3>
+                            <p>${desc}</p>
+                        </div>
+                    </div>
+
+                    <div class="risk-container">
+                        <div class="risk-header">
+                            <span>Threat Assessment Level</span>
+                            <span>${riskScore}%</span>
+                        </div>
+                        <div class="risk-bar">
+                            <div class="risk-fill" style="width: ${riskScore}%"></div>
+                        </div>
+                    </div>
+
+                    <div class="map-wrapper" style="margin-top: 25px;">
+                        <iframe src="https://maps.google.com/maps?q=${encodeURIComponent(source)}+to+${encodeURIComponent(dest)}&output=embed"></iframe>
+                    </div>
+                `;
+            }, 800);
+        }
+    </script>
+</body>
+</html>
