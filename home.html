@@ -4,93 +4,425 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://kit.fontawesome.com/7f257b9379.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="assets/css/style.css">
-    <title>Sancharam-Home</title>
+    <title>Sancharam - Your Smart Travel Companion for Tamil Nadu</title>
 
-<script src="https://kit.fontawesome.com/7f257b9379.js" crossorigin="anonymous"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
 
-</head>
+    <!-- Universal Theme & Enhanced Stylesheet -->
+    <link rel="stylesheet" href="assets/css/sancharam-theme.css">
+    </head>
 <body>
-    <header class="header">
-        <nav class="navbar">
-    <div class="container">
-        <img src="assets/logos/logo.png" alt="Sancharam Logo" class="logo" style="width: 300px; height: 80px; position: relative; left: -100px;">
-        <ul class="nav-items" style="position: relative; left: 100px;">
-            <li class="nav-item"><a href="home.html">Home</a></li>
-            <li class="nav-item"><a href="pages/about.html">About</a></li>
-            <li class="nav-item"><a href="pages/explore.html">Explore</a></li>
-            <li class="nav-item"><a href="pages/bookings.html">Bookings</a></li>
-            <li class="nav-item"><a href="pages/features.html">Features</a></li>
-            <li class="nav-item"><a href="pages/profile.html">Profile</a></li>
-        </ul>
-    </div>
-</nav>
 
-        <div class="header-content">
-            <h1 class="site-info main-heading"> Real Stories, Real Journeys!</h1>
-            <p class="site-desc">Travel Tales of Tamil Land, experience the greatness, it's the best gift given by nature</p>
-            
-            <button onclick="window.location.href='pages/explore.html'" style="margin-top: 3rem;"> EXPLORE
+    <!-- ================= NAVBAR ================= -->
+    <nav class="navbar" id="main-nav">
+        <div class="container nav-wrapper">
+            <a href="home.html" class="brand" title="Sancharam">
+                <img src="assets/logos/logo-transparent.png" alt="Sancharam Logo" class="brand-logo" onerror="this.src='assets/logos/logo.png'">
+            </a>
+
+            <ul class="nav-links">
+                <li><a href="home.html" class="nav-link active">Home</a></li>
+                <li><a href="pages/explore.html" class="nav-link">Explore</a></li>
+                <li><a href="pages/bookings.html" class="nav-link">Bookings</a></li>
+                <li><a href="pages/features.html" class="nav-link">Features</a></li>
+                <li><a href="pages/profile.html" class="nav-link">Profile</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <a href="pages/features/AI itinenary.html" class="btn-nav-ai">
+                    <i class="fas fa-wand-magic-sparkles"></i>
+                    <span>Plan with AI</span>
+                </a>
+            </div>
+
+            <button class="mobile-toggle" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
             </button>
         </div>
-    </header>
+    </nav>
 
-                <section class="showcase" id="Explore">
-        <h1 class="site-info main-heading" style="text-align: center; margin-bottom: 1.5rem;">Explore</h1>
-        <div class="container">
-            <div class="explore-cards">
-                <div class="explore-card">
-                    <div class="img-box">
-                        <div class="location-badge"><i class="fas fa-map-marker-alt"></i> Kanyakumari</div>
-                        <img src="assets/images/kanniyakumari.png" alt="Kanniyakumari">
-                    </div>
-                    <div class="text-box">
-                        <h2>Thiruvalluvar Statue</h2>
-                        <p>Standing proudly at 133 feet, this majestic monument honors the legendary Tamil poet Thiruvalluvar. A breathtaking symbol of ancient wisdom set amidst the meeting of three seas.</p>
-                        <a href="pages/explore.html" class="button-secondary card-btn">Visit</a>
+    <!-- ================= HERO SECTION ================= -->
+    <header class="hero">
+        <div class="container hero-content">
+            <div class="hero-tag">
+                <i class="fas fa-compass"></i>
+                <span>Discover the Soul of Tamil Nadu</span>
+            </div>
+
+            <h1 class="hero-title">
+                Real Stories, <span class="highlight-gold">Real Journeys!</span>
+            </h1>
+
+            <p class="hero-desc">
+                Travel tales of Tamil land — Experience the timeless greatness of monumental temples, mist-covered mountain valleys, sacred sanctuaries, and golden shores.
+            </p>
+
+            <div class="hero-cta-group">
+                <a href="#Explore" class="btn-primary">
+                    <span>Explore Destinations</span>
+                    <i class="fas fa-arrow-down"></i>
+                </a>
+                <a href="pages/features/AI itinenary.html" class="btn-secondary-glass">
+                    <i class="fas fa-wand-magic-sparkles"></i>
+                    <span>Generate AI Itinerary</span>
+                </a>
+            </div>
+
+            <!-- Interactive Trip Finder Widget -->
+            <form class="hero-search-box" id="hero-search-form">
+                <div class="search-field">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div class="search-field-content">
+                        <label for="search-dest">Destination</label>
+                        <select id="search-dest">
+                            <option value="all">All Locations</option>
+                            <option value="kanyakumari">Kanyakumari</option>
+                            <option value="mahabalipuram">Mahabalipuram</option>
+                            <option value="chennai">Chennai</option>
+                            <option value="ooty">Ooty (Nilgiris)</option>
+                            <option value="chettinad">Chettinad</option>
+                            <option value="hogenakkal">Hogenakkal</option>
+                        </select>
                     </div>
                 </div>
-                <div class="explore-card">
-                    <div class="img-box">
-                        <div class="location-badge"><i class="fas fa-map-marker-alt"></i> Mahabalipuram</div>
-                        <img src="assets/images/shoretemple.png" alt="ShoreTemple">
-                    </div>
-                    <div class="text-box">
-                        <h2>Shore Temple</h2>
-                        <p>An 8th-century architectural masterpiece intricately carved from granite. This UNESCO World Heritage site stands as a timeless testament to the artistic brilliance of the Pallava dynasty.</p>
-                        <a href="pages/explore.html" class="button-secondary card-btn">Visit</a>
+
+                <div class="search-field">
+                    <i class="fas fa-mountain-sun"></i>
+                    <div class="search-field-content">
+                        <label for="search-category">Experience</label>
+                        <select id="search-category">
+                            <option value="all">All Experiences</option>
+                            <option value="heritage">Heritage & Temples</option>
+                            <option value="nature">Hills & Nature</option>
+                            <option value="coastal">Coastal & Spiritual</option>
+                        </select>
                     </div>
                 </div>
-                <div class="explore-card">
-                    <div class="img-box">
-                        <div class="location-badge"><i class="fas fa-map-marker-alt"></i> Chennai</div>
-                        <img src="assets/images/santhome.webp" alt="Santhome Basilica">
+
+                <div class="search-field">
+                    <i class="fas fa-calendar-days"></i>
+                    <div class="search-field-content">
+                        <label for="search-duration">Duration</label>
+                        <select id="search-duration">
+                            <option value="weekend">Weekend Trip (2 Days)</option>
+                            <option value="short">3 - 5 Days</option>
+                            <option value="grand">Grand Tour (1 Week+)</option>
+                        </select>
                     </div>
-                    <div class="text-box">
-                        <h2>Santhome Basilica</h2>
-                        <p>A stunning 16th-century neo-Gothic basilica built over the tomb of an apostle. Its soaring white spires and magnificent stained glass windows offer a truly peaceful spiritual retreat.</p>
-                        <a href="pages/explore.html" class="button-secondary card-btn">Visit</a>
-                    </div>
+                </div>
+
+                <button type="submit" class="btn-search">
+                    <i class="fas fa-magnifying-glass"></i>
+                    <span>Find Trips</span>
+                </button>
+            </form>
+
+            <!-- Quick Metrics -->
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-number">50+</span>
+                    <span class="stat-label">Heritage Sites</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">38</span>
+                    <span class="stat-label">Districts Covered</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">100+</span>
+                    <span class="stat-label">Curated Itineraries</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">4.9 ★</span>
+                    <span class="stat-label">Traveler Rating</span>
                 </div>
             </div>
         </div>
-        <div class="more-button-container" style="display: flex; justify-content: center; margin-top: 1.5rem;">
-            <a href="pages/explore.html" class="button-secondary" style="width:105px; font-size: 1.8rem; text-align: center;">More</a>
-        </div>        
+    </header>
+
+    <!-- ================= CULTURAL RIBBON ================= -->
+    <section class="cultural-ribbon">
+        <div class="container ribbon-content">
+            <i class="fas fa-dharmachakra ribbon-motif"></i>
+            <div class="ribbon-text-group">
+                <h2 class="ribbon-tamil">வாழ்க தமிழ், வளர்க தமிழ்</h2>
+                <p class="ribbon-english">Honoring the timeless heritage, eternal language, and warm hospitality of Tamil Land</p>
+            </div>
+            <i class="fas fa-dharmachakra ribbon-motif"></i>
+        </div>
     </section>
 
-    <div class="news-ticker">
-        <span>வாழ்க தமிழ், வளர்க தமிழ்</span>
-    </div>
+    <!-- ================= EXPLORE DESTINATIONS SECTION ================= -->
+    <section class="section showcase-section" id="Explore">
+        <div class="container">
+            <div class="section-header-block">
+                <span class="section-badge">Handpicked Wonders</span>
+                <h2 class="section-title">Iconic Destinations of Tamil Nadu</h2>
+                <p class="section-subtitle">From centuries-old granite temples carved by ancient kings to misty hill stations and breathtaking coastal sunrises.</p>
+            </div>
 
-    <footer class="footer">
-        <div class="social-media-links">
-            <i class="fab fa-facebook fa-4x"></i>
-            <i class="fab fa-twitter fa-4x"></i>
-            <i class="fab fa-instagram fa-4x"></i>
+            <!-- Category Filter Pills -->
+            <div class="filter-pills">
+                <button class="filter-btn active" data-filter="all">All Places</button>
+                <button class="filter-btn" data-filter="heritage">Heritage & Architecture</button>
+                <button class="filter-btn" data-filter="nature">Hills & Nature</button>
+                <button class="filter-btn" data-filter="coastal">Coastal & Spiritual</button>
+            </div>
+
+            <!-- Destinations Grid -->
+            <div class="destinations-grid">
+                <!-- Card 1: Thiruvalluvar Statue -->
+                <div class="dest-card" data-category="heritage coastal">
+                    <div class="dest-card-image-wrap">
+                        <span class="dest-badge-loc"><i class="fas fa-map-marker-alt"></i> Kanyakumari</span>
+                        <span class="dest-badge-rating"><i class="fas fa-star"></i> 4.9</span>
+                        <img src="assets/images/kanniyakumari.png" alt="Thiruvalluvar Statue, Kanyakumari">
+                    </div>
+                    <div class="dest-card-body">
+                        <span class="dest-category">Monument & Coast</span>
+                        <h3 class="dest-title">Thiruvalluvar Statue</h3>
+                        <p class="dest-desc">Standing proudly at 133 feet, this majestic granite monument honors the revered philosopher Thiruvalluvar at the confluence of three oceans.</p>
+                        <div class="dest-card-footer">
+                            <span class="dest-time"><i class="far fa-clock"></i> 2-3 Hours</span>
+                            <a href="pages/explore.html" class="btn-card-visit">Visit Guide</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2: Shore Temple -->
+                <div class="dest-card" data-category="heritage">
+                    <div class="dest-card-image-wrap">
+                        <span class="dest-badge-loc"><i class="fas fa-map-marker-alt"></i> Mahabalipuram</span>
+                        <span class="dest-badge-rating"><i class="fas fa-star"></i> 4.9</span>
+                        <img src="assets/images/shoretemple.png" alt="Shore Temple, Mahabalipuram">
+                    </div>
+                    <div class="dest-card-body">
+                        <span class="dest-category">UNESCO World Heritage</span>
+                        <h3 class="dest-title">Shore Temple</h3>
+                        <p class="dest-desc">An 8th-century structural marvel carved from granite overlooking the Bay of Bengal, representing the peak of Pallava dynastic craftsmanship.</p>
+                        <div class="dest-card-footer">
+                            <span class="dest-time"><i class="far fa-clock"></i> Half Day</span>
+                            <a href="pages/explore.html" class="btn-card-visit">Visit Guide</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3: Santhome Basilica -->
+                <div class="dest-card" data-category="coastal heritage">
+                    <div class="dest-card-image-wrap">
+                        <span class="dest-badge-loc"><i class="fas fa-map-marker-alt"></i> Chennai</span>
+                        <span class="dest-badge-rating"><i class="fas fa-star"></i> 4.8</span>
+                        <img src="assets/images/santhome.webp" alt="Santhome Basilica, Chennai">
+                    </div>
+                    <div class="dest-card-body">
+                        <span class="dest-category">Spiritual & Historic</span>
+                        <h3 class="dest-title">Santhome Basilica</h3>
+                        <p class="dest-desc">A neo-Gothic cathedral built over the tomb of St. Thomas the Apostle, featuring soaring spires, pure white facades, and vibrant stained-glass artistry.</p>
+                        <div class="dest-card-footer">
+                            <span class="dest-time"><i class="far fa-clock"></i> 1-2 Hours</span>
+                            <a href="pages/explore.html" class="btn-card-visit">Visit Guide</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4: Ooty Nilgiris -->
+                <div class="dest-card" data-category="nature">
+                    <div class="dest-card-image-wrap">
+                        <span class="dest-badge-loc"><i class="fas fa-map-marker-alt"></i> Nilgiris</span>
+                        <span class="dest-badge-rating"><i class="fas fa-star"></i> 4.9</span>
+                        <img src="assets/images/ooty.jpg" alt="Ooty Nilgiri Hills">
+                    </div>
+                    <div class="dest-card-body">
+                        <span class="dest-category">Hill Station & Nature</span>
+                        <h3 class="dest-title">Ooty Queen of Hills</h3>
+                        <p class="dest-desc">Nestled among eucalyptus forests, emerald tea estates, and cascading waterfalls, Ooty offers cool mountain breezes and scenic toy train rides.</p>
+                        <div class="dest-card-footer">
+                            <span class="dest-time"><i class="far fa-clock"></i> 2-3 Days</span>
+                            <a href="pages/explore.html" class="btn-card-visit">Visit Guide</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 5: Chettinad Mansions -->
+                <div class="dest-card" data-category="heritage">
+                    <div class="dest-card-image-wrap">
+                        <span class="dest-badge-loc"><i class="fas fa-map-marker-alt"></i> Karaikudi</span>
+                        <span class="dest-badge-rating"><i class="fas fa-star"></i> 4.8</span>
+                        <img src="assets/images/chettinad.jpg" alt="Chettinad Heritage Mansion">
+                    </div>
+                    <div class="dest-card-body">
+                        <span class="dest-category">Heritage & Culinary</span>
+                        <h3 class="dest-title">Chettinad Mansions</h3>
+                        <p class="dest-desc">Step into regal courtyards featuring Burmese teak pillars, Belgian mirrors, handmade Athangudi tiles, and world-renowned spicy Chettinad cuisine.</p>
+                        <div class="dest-card-footer">
+                            <span class="dest-time"><i class="far fa-clock"></i> 1-2 Days</span>
+                            <a href="pages/explore.html" class="btn-card-visit">Visit Guide</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 6: Hogenakkal Falls -->
+                <div class="dest-card" data-category="nature">
+                    <div class="dest-card-image-wrap">
+                        <span class="dest-badge-loc"><i class="fas fa-map-marker-alt"></i> Dharmapuri</span>
+                        <span class="dest-badge-rating"><i class="fas fa-star"></i> 4.7</span>
+                        <img src="assets/images/hogenakkal.jpg" alt="Hogenakkal Waterfalls">
+                    </div>
+                    <div class="dest-card-body">
+                        <span class="dest-category">Waterfalls & Adventure</span>
+                        <h3 class="dest-title">Hogenakkal Falls</h3>
+                        <p class="dest-desc">Known as the 'Niagara of India', where the Kaveri river cuts through carbonatite rocks with roaring cascades and traditional round coracle boat rides.</p>
+                        <div class="dest-card-footer">
+                            <span class="dest-time"><i class="far fa-clock"></i> Full Day</span>
+                            <a href="pages/explore.html" class="btn-card-visit">Visit Guide</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- View All CTA -->
+            <div class="explore-more-wrap">
+                <a href="pages/explore.html" class="btn-outline-lg">
+                    <span>View All 50+ Destinations</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
         </div>
-        <p>Sancharam &copy; 2025, All Rights Reserved</p>
+    </section>
+
+    <!-- ================= SMART FEATURES SPOTLIGHT ================= -->
+    <section class="section features-section">
+        <div class="container">
+            <div class="section-header-block">
+                <span class="section-badge">Why Sancharam</span>
+                <h2 class="section-title">Your Complete Digital Travel Companion</h2>
+                <p class="section-subtitle">Everything you need to discover, plan, book, and enjoy Tamil Nadu safely and seamlessly.</p>
+            </div>
+
+            <div class="features-grid">
+                <!-- Feature 1 -->
+                <div class="feature-box">
+                    <div class="feature-icon-wrap">
+                        <i class="fas fa-wand-magic-sparkles"></i>
+                    </div>
+                    <h3>AI Trip Itinerary</h3>
+                    <p>Generate optimized, personalized travel routes and day-to-day itineraries based on your interests, budget, and travel days.</p>
+                    <a href="pages/features/AI itinenary.html" class="feature-link">
+                        <span>Try AI Planner</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="feature-box">
+                    <div class="feature-icon-wrap">
+                        <i class="fas fa-route"></i>
+                    </div>
+                    <h3>Smart Routing</h3>
+                    <p>Navigate scenic roads, bypass congestions, and uncover verified hidden gems and food stops along your travel path.</p>
+                    <a href="pages/features/routing.html" class="feature-link">
+                        <span>Explore Routes</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="feature-box">
+                    <div class="feature-icon-wrap">
+                        <i class="fas fa-shield-halved"></i>
+                    </div>
+                    <h3>Tourist Safety & SOS</h3>
+                    <p>Stay safe with 24/7 one-touch emergency SOS, verified tourist helpline access, and real-time safe zone locators.</p>
+                    <a href="pages/features/sos.html" class="feature-link">
+                        <span>Safety Features</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="feature-box">
+                    <div class="feature-icon-wrap">
+                        <i class="fas fa-receipt"></i>
+                    </div>
+                    <h3>Expense Tracker</h3>
+                    <p>Keep track of group travel expenses, split food and fuel bills automatically, and manage your holiday budget stress-free.</p>
+                    <a href="pages/features/expenses.html" class="feature-link">
+                        <span>Track Expenses</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- ================= CTA BANNER ================= -->
+    <section class="container cta-banner-section">
+        <div class="cta-banner-card">
+            <h2>Ready to Write Your Own Travel Story?</h2>
+            <p>Join thousands of travelers experiencing the magic of Tamil Nadu. Create custom routes, discover sacred heritage, and travel with ease.</p>
+            <div class="hero-cta-group" style="margin-bottom: 0;">
+                <a href="pages/features/AI itinenary.html" class="btn-primary">
+                    <i class="fas fa-wand-magic-sparkles"></i>
+                    <span>Plan Your Trip in 2 Minutes</span>
+                </a>
+                <a href="pages/explore.html" class="btn-secondary-glass">
+                    <span>Browse All Destinations</span>
+                    <i class="fas fa-compass"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <img src="assets/logos/logo-transparent.png" alt="Sancharam Logo" class="brand-logo" onerror="this.src='assets/logos/logo.png'">
+                    <p>Sancharam is your smart travel companion dedicated to celebrating the living heritage, natural wonders, and vibrant spirit of Tamil Nadu.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-btn" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-btn" title="Twitter"><i class="fab fa-x-twitter"></i></a>
+                        <a href="#" class="social-btn" title="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-btn" title="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Smart Features</h4>
+                    <ul class="footer-links">
+                        <li><a href="pages/features/AI itinenary.html">AI Itinerary Planner</a></li>
+                        <li><a href="pages/features/routing.html">Scenic Routes</a></li>
+                        <li><a href="pages/features/sos.html">Safety & SOS Helpline</a></li>
+                        <li><a href="pages/features/expenses.html">Expense Calculator</a></li>
+                        <li><a href="pages/features/checklist.html">Travel Checklist</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Cultural Pride</h4>
+                    <p style="font-size: 1.4rem; color: #FCD34D; font-weight: 700; margin-bottom: 0.8rem;">வாழ்க தமிழ் வளர்க தமிழ் பண்பாடு</p>
+                    <p style="font-size: 1.3rem; color: rgba(255,255,255,0.7); line-height: 1.6;">Dedicated to travelers who cherish art, architecture, literature, and warm Tamil hospitality.</p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 Sancharam. All Rights Reserved. Crafted with love for தமிழ்நாடு.</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Security</a>
+                </div>
+            </div>
+        </div>
     </footer>
-</body>
+
+    <!-- Interactive JS -->
+    <script src="assets/js/sancharam-theme.js"></script>
+    </body>
 </html>

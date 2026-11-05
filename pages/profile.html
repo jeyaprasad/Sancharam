@@ -3,209 +3,1564 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Profile</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <title>Traveler Profile & Bookings | Sancharam</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../assets/css/sancharam-theme.css">
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #f5f9ff, #e6f0fa);
-      color: #2c3e50;
-      line-height: 1.6;
+    /* ==========================================================================
+       SANCHARAM TRAVELER PROFILE & BOOKINGS HUB
+       Interactive Login, Registration, Onboarding, and Connected Bookings
+       ========================================================================== */
+
+    .profile-hero {
+      padding: 115px 0 25px;
+      text-align: center;
+      background: radial-gradient(circle at 50% 20%, rgba(230, 57, 70, 0.05) 0%, rgba(248, 250, 252, 0) 70%);
     }
-    header {
-      background: #000;
+    .profile-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      background: #FFE3E3;
+      color: #E63946;
+      border-radius: 9999px;
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .profile-hero h1 {
+      font-size: 3.6rem;
+      font-weight: 800;
+      color: #0F172A;
+      margin-bottom: 8px;
+      line-height: 1.2;
+    }
+    .profile-hero h1 span {
+      background: linear-gradient(135deg, #E63946 0%, #B91C1C 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .profile-hero p {
+      font-size: 1.55rem;
+      color: #475569;
+      max-width: 720px;
+      margin: 0 auto;
+      line-height: 1.55;
+    }
+
+    /* Main Container */
+    .profile-main-wrap {
+      padding: 15px 0 70px;
+    }
+    .profile-max-container {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    /* Top Session Bar */
+    .session-indicator-bar {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0.5rem 1.5rem;
-      color: white;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+      gap: 16px;
+      background: #FFFFFF;
+      padding: 12px 20px;
+      border-radius: 14px;
+      border: 1px solid #E2E8F0;
+      box-shadow: 0 4px 14px rgba(15, 23, 42, 0.04);
+      margin-bottom: 24px;
     }
-    .logo img { height: 100px; width: auto; }
-    nav a {
-      margin: 0 1.2rem;
-      color: white;
-      text-decoration: none;
+    .session-status {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.35rem;
+      color: #334155;
       font-weight: 600;
-      font-size: 1.1rem;
-      position: relative;
-      transition: color 0.3s ease;
     }
-    nav a::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: -5px;
-      width: 0%;
-      height: 2px;
-      background: #0077cc;
-      transition: width 0.3s ease;
-    }
-    nav a:hover { color: #0077cc; }
-    nav a:hover::after { width: 100%; }
-
-    .profile-container {
-      max-width: 950px;
-      margin: 3rem auto;
-      background: #ffffff;
-      border-radius: 25px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-      padding: 2.5rem;
-      animation: fadeIn 1s ease-in-out;
-    }
-    .profile-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-bottom: 2px solid #e0e0e0;
-      padding-bottom: 1.5rem;
-      margin-bottom: 2rem;
-    }
-    .profile-info {
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
-    }
-    .profile-pic {
-      width: 140px;
-      height: 140px;
+    .status-dot {
+      width: 10px;
+      height: 10px;
       border-radius: 50%;
-      border: 5px solid #0077cc;
-      object-fit: cover;
-      box-shadow: 0 4px 15px rgba(0, 119, 204, 0.3);
-      transition: transform 0.4s ease;
+      background: #16A34A;
+      box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.2);
     }
-    .profile-pic:hover { transform: scale(1.08); }
-    .profile-header h2 { font-size: 2.2rem; color: #34495e; }
-    .profile-header p { color: #7f8c8d; font-size: 1.1rem; }
+    .session-actions {
+      display: flex;
+      gap: 10px;
+    }
+    .btn-session-action {
+      padding: 7px 14px;
+      border-radius: 8px;
+      font-size: 1.25rem;
+      font-weight: 700;
+      border: 1px solid #CBD5E1;
+      background: #F8FAFC;
+      color: #475569;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+    .btn-session-action:hover {
+      background: #FFF1F2;
+      border-color: #E63946;
+      color: #E63946;
+    }
 
+    /* The Main Profile Card */
+    .profile-card {
+      background: #FFFFFF;
+      border-radius: 22px;
+      border: 1px solid #E2E8F0;
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+      overflow: hidden;
+      margin-bottom: 35px;
+    }
+    .profile-cover {
+      height: 110px;
+      background: linear-gradient(135deg, #0F172A 0%, #1E293B 50%, #B91C1C 100%);
+      position: relative;
+    }
+    .profile-card-body {
+      padding: 0 35px 32px;
+      position: relative;
+    }
+    .profile-avatar-row {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-top: -55px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .profile-avatar-wrap {
+      position: relative;
+    }
+    .profile-avatar {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      border: 4px solid #FFFFFF;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.15);
+      object-fit: cover;
+      background: #F1F5F9;
+    }
+    .avatar-badge {
+      position: absolute;
+      bottom: 4px;
+      right: 4px;
+      background: #16A34A;
+      color: #FFFFFF;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      border: 2.5px solid #FFFFFF;
+    }
+    .profile-btn-group {
+      display: flex;
+      gap: 10px;
+    }
+    .btn-edit-profile {
+      padding: 10px 22px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #E63946 0%, #C5221F 100%);
+      color: #FFFFFF;
+      border: none;
+      font-size: 1.35rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 4px 14px rgba(230, 57, 70, 0.25);
+      transition: all 0.25s;
+    }
+    .btn-edit-profile:hover {
+      background: #B91C1C;
+      transform: translateY(-2px);
+    }
+    .btn-logout-profile {
+      padding: 10px 18px;
+      border-radius: 12px;
+      background: #F8FAFC;
+      border: 1.5px solid #CBD5E1;
+      color: #475569;
+      font-size: 1.35rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+    .btn-logout-profile:hover {
+      border-color: #E63946;
+      color: #E63946;
+      background: #FFF1F2;
+    }
+
+    .profile-name-block h2 {
+      font-size: 2.4rem;
+      font-weight: 800;
+      color: #0F172A;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .profile-name-block p {
+      font-size: 1.45rem;
+      color: #64748B;
+      font-weight: 500;
+      margin-bottom: 20px;
+    }
+
+    /* Quick Stats Bar */
+    .profile-stats-bar {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      background: #F8FAFC;
+      padding: 14px 18px;
+      border-radius: 14px;
+      border: 1px solid #E2E8F0;
+      margin-bottom: 26px;
+      text-align: center;
+    }
+    .stat-item .stat-num {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: #E63946;
+      display: block;
+    }
+    .stat-item .stat-label {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: #64748B;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    /* Info Grid (6 Cards) */
     .info-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1.5rem;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
     }
     .info-card {
-      background: linear-gradient(135deg, #f9fcff, #eef7ff);
-      border-radius: 15px;
-      padding: 1.5rem;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      background: #FFFFFF;
+      border: 1.5px solid #E2E8F0;
+      border-radius: 14px;
+      padding: 16px 18px;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      transition: all 0.25s ease;
     }
     .info-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 25px rgba(0, 119, 204, 0.15);
+      border-color: rgba(230, 57, 70, 0.3);
+      box-shadow: 0 4px 14px rgba(15, 23, 42, 0.04);
+      transform: translateY(-2px);
     }
-    .info-card strong { display: block; color: #0077cc; margin-bottom: 0.5rem; font-size: 1rem; }
+    .info-icon-box {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: #FFE3E3;
+      color: #E63946;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+    .info-text-group strong {
+      display: block;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #64748B;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 2px;
+    }
+    .info-text-group span {
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: #0F172A;
+      line-height: 1.4;
+      display: block;
+    }
 
-    .btn {
-      margin-top: 2rem;
-      background: #0077cc;
-      color: white;
-      padding: 0.9rem 2.5rem;
-      font-size: 1.1rem;
-      border: none;
-      border-radius: 30px;
+    /* ==========================================================================
+       MY BOOKINGS & RECENT TRIPS SECTION
+       Direct connection with Bookings page and Payment
+       ========================================================================== */
+    .bookings-section-wrap {
+      margin-top: 40px;
+    }
+    .section-title-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .section-title-row h3 {
+      font-size: 2.1rem;
+      font-weight: 800;
+      color: #0F172A;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-title-row h3 i {
+      color: #E63946;
+    }
+    .btn-new-booking-cta {
+      padding: 9px 18px;
+      border-radius: 10px;
+      background: #E63946;
+      color: #FFFFFF;
+      font-size: 1.35rem;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+      box-shadow: 0 4px 12px rgba(230, 57, 70, 0.2);
+    }
+    .btn-new-booking-cta:hover {
+      background: #B91C1C;
+      transform: translateY(-2px);
+    }
+
+    /* Bookings Grid */
+    .trips-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+    }
+    .trip-card {
+      background: #FFFFFF;
+      border-radius: 18px;
+      border: 1px solid #E2E8F0;
+      padding: 22px 24px;
+      box-shadow: 0 4px 18px rgba(15, 23, 42, 0.05);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      transition: all 0.25s ease;
+    }
+    .trip-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+      border-color: rgba(230, 57, 70, 0.25);
+    }
+    .trip-left {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+    .trip-icon-box {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.9rem;
+      flex-shrink: 0;
+    }
+    .trip-info h4 {
+      font-size: 1.65rem;
+      font-weight: 800;
+      color: #0F172A;
+      margin-bottom: 4px;
+    }
+    .trip-info p {
+      font-size: 1.3rem;
+      color: #64748B;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .trip-info p span {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .trip-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .trip-status-badge {
+      font-size: 1.15rem;
+      font-weight: 800;
+      padding: 4px 12px;
+      border-radius: 9999px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .badge-confirmed { background: #DCFCE7; color: #16A34A; }
+    .badge-completed { background: #F1F5F9; color: #475569; }
+    .badge-reserved  { background: #FEF3C7; color: #D97706; }
+
+    .btn-view-pass {
+      padding: 8px 16px;
+      border-radius: 10px;
+      background: #FFF1F2;
+      border: 1.5px solid #FEE2E2;
+      color: #E63946;
+      font-size: 1.3rem;
+      font-weight: 700;
       cursor: pointer;
-      transition: background 0.3s ease, transform 0.3s ease;
-      box-shadow: 0 4px 15px rgba(0, 119, 204, 0.3);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
     }
-    .btn:hover { background: #005fa3; transform: scale(1.05); }
-
-    
-    footer .social-icons a {
-      color: white;
-      margin: 0 15px;
-      font-size: 2.5rem;
-      transition: transform 0.3s ease, color 0.3s ease;
-    }
-    footer .social-icons a:hover {
-      transform: scale(1.3);
-      color: #0077cc;
+    .btn-view-pass:hover {
+      background: #E63946;
+      color: #FFFFFF;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+    /* Empty Trips State */
+    .empty-trips-card {
+      background: #FFFFFF;
+      border: 1.5px dashed #CBD5E1;
+      border-radius: 18px;
+      padding: 40px 20px;
+      text-align: center;
     }
-  
-  /* Uniform Footer CSS */
-  
-  .footer .social-media-links { text-align: center; margin: 0; padding: 0; }
-  
-  .footer p { margin: 0; padding-bottom: 10px; font-size: 14px; }
-</style>
+    .empty-trips-card i {
+      font-size: 4rem;
+      color: #CBD5E1;
+      margin-bottom: 12px;
+    }
+    .empty-trips-card h4 {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: #0F172A;
+      margin-bottom: 6px;
+    }
+    .empty-trips-card p {
+      font-size: 1.4rem;
+      color: #64748B;
+      max-width: 450px;
+      margin: 0 auto 18px;
+    }
 
-<!-- Global Nav/Footer CSS injected -->
-<style id="global-nav-footer">
-    .navbar { font-family: 'Montserrat', sans-serif; }
-    .navbar .container { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 0 1rem; }
-    .navbar.bg-dark { background-color: #000000; }
-    .navbar .logo { float: left; padding-top: 6px; }
-    .navbar .nav-items { list-style: none; margin: 0; padding: 0; display: flex; align-items: center; }
-    .navbar .nav-item { display: inline-block; padding: 1.5rem; text-transform: uppercase; }
-    .navbar a { color: aliceblue; text-decoration: none; font-size: 1.6rem; font-weight: bold; }
-    .navbar a:hover { border-bottom: 1px solid #FFF; }
-    .navbar::after { content: ''; display: block; clear: both; }
-    
-    
+    /* ==========================================================================
+       MODALS (AUTH, ONBOARDING, EDIT PROFILE, DIGITAL PASS)
+       ========================================================================== */
+    .custom-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(15, 23, 42, 0.7);
+      backdrop-filter: blur(6px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      padding: 20px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .custom-modal.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .modal-box {
+      background: #FFFFFF;
+      border-radius: 24px;
+      max-width: 580px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.3);
+      border: 1px solid #E2E8F0;
+      position: relative;
+      animation: modalSlideUp 0.3s ease forwards;
+    }
+    @keyframes modalSlideUp {
+      from { transform: translateY(25px) scale(0.97); opacity: 0; }
+      to { transform: translateY(0) scale(1); opacity: 1; }
+    }
+    .modal-header {
+      padding: 24px 28px;
+      border-bottom: 1px solid #F1F5F9;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      background: #FFFFFF;
+      z-index: 10;
+    }
+    .modal-header h3 {
+      font-size: 1.9rem;
+      font-weight: 800;
+      color: #0F172A;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .modal-header h3 i {
+      color: #E63946;
+    }
+    .modal-close-btn {
+      background: #F1F5F9;
+      border: none;
+      color: #64748B;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      font-size: 1.6rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+    .modal-close-btn:hover {
+      background: #FFE3E3;
+      color: #E63946;
+    }
+    .modal-body {
+      padding: 24px 28px;
+    }
+
+    /* Modal Form Inputs */
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 16px;
+    }
+    .form-group label {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #1E293B;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .optional-tag {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #64748B;
+      background: #F1F5F9;
+      padding: 2px 8px;
+      border-radius: 6px;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1.5px solid #CBD5E1;
+      font-size: 1.4rem;
+      font-family: inherit;
+      color: #0F172A;
+      background: #F8FAFC;
+      outline: none;
+      transition: all 0.2s;
+      width: 100%;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: #E63946;
+      background: #FFFFFF;
+      box-shadow: 0 0 0 3px rgba(230, 57, 70, 0.12);
+    }
+
+    /* Quick Demo Banner */
+    .quick-demo-banner {
+      background: #FFF1F2;
+      border: 1.5px dashed #FCA5A5;
+      border-radius: 12px;
+      padding: 14px 16px;
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .quick-demo-text {
+      font-size: 1.25rem;
+      color: #991B1B;
+      line-height: 1.4;
+    }
+    .quick-demo-text strong {
+      display: block;
+      color: #E63946;
+      font-size: 1.35rem;
+    }
+    .btn-quick-fill {
+      padding: 8px 14px;
+      background: #E63946;
+      color: #FFFFFF;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.2rem;
+      font-weight: 700;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.2s;
+    }
+    .btn-quick-fill:hover {
+      background: #B91C1C;
+    }
+
+    /* Checkbox Chips */
+    .chips-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 4px;
+    }
+    .chip-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 12px;
+      border-radius: 8px;
+      background: #F1F5F9;
+      border: 1px solid #E2E8F0;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #334155;
+      cursor: pointer;
+      transition: all 0.2s;
+      user-select: none;
+    }
+    .chip-item:hover {
+      border-color: #E63946;
+    }
+    .chip-item input[type="checkbox"] {
+      display: none;
+    }
+    .chip-item.active {
+      background: #FFE3E3;
+      border-color: #E63946;
+      color: #E63946;
+      font-weight: 700;
+    }
+
+    /* Modal Submit Button */
+    .btn-modal-submit {
+      width: 100%;
+      padding: 14px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #E63946 0%, #C5221F 100%);
+      color: #FFFFFF;
+      border: none;
+      font-size: 1.5rem;
+      font-weight: 800;
+      cursor: pointer;
+      margin-top: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.25s;
+    }
+    .btn-modal-submit:hover {
+      background: #B91C1C;
+      transform: translateY(-2px);
+    }
+    .modal-toggle-link {
+      text-align: center;
+      font-size: 1.3rem;
+      color: #64748B;
+      margin-top: 16px;
+    }
+    .modal-toggle-link a {
+      color: #E63946;
+      font-weight: 700;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
     @media (max-width: 768px) {
-        .navbar .container { flex-direction: column; }
-        .navbar .nav-items { flex-direction: column; width: 100%; text-align: center; }
+      .profile-hero h1 { font-size: 2.8rem; }
+      .info-grid { grid-template-columns: 1fr; }
+      .profile-card-body { padding: 0 20px 24px; }
+      .trip-card { flex-direction: column; align-items: flex-start; }
+      .trip-right { width: 100%; justify-content: space-between; }
     }
-</style>
-<script src="https://kit.fontawesome.com/7f257b9379.js" crossorigin="anonymous"></script>
-
+  </style>
 </head>
 <body>
-  <nav class="navbar bg-dark">
-    <div class="container">
-        <img src="../assets/logos/logo.png" alt="Sancharam Logo" class="logo" style="width: 300px; height: 80px;">
-        <ul class="nav-items">
-            <li class="nav-item"><a href="../home.html">Home</a></li>
-            <li class="nav-item"><a href="../pages/about.html">About</a></li>
-            <li class="nav-item"><a href="../pages/explore.html">Explore</a></li>
-            <li class="nav-item"><a href="../pages/bookings.html">Bookings</a></li>
-            <li class="nav-item"><a href="../pages/features.html">Features</a></li>
-            <li class="nav-item"><a href="../pages/profile.html">Profile</a></li>
-        </ul>
-    </div>
-</nav>
 
-  <div class="profile-container">
-    <div class="profile-header">
-      <div class="profile-info">
-        <img src="../assets/images/user1.jpg" alt="Profile Picture" class="profile-pic" />
-        <div>
-          <h2>Arjun Ravi</h2>
-          <p>Travel Enthusiast | Photographer | Blogger</p>
+  <!-- ================= NAVBAR ================= -->
+  <nav class="navbar" id="main-nav">
+    <div class="container nav-wrapper">
+        <a href="../home.html" class="brand" title="Sancharam">
+            <img src="../assets/logos/logo-transparent.png" alt="Sancharam Logo" class="brand-logo" onerror="this.src='../assets/logos/logo.png'">
+        </a>
+
+        <ul class="nav-links">
+            <li><a href="../home.html" class="nav-link">Home</a></li>
+            <li><a href="explore.html" class="nav-link">Explore</a></li>
+            <li><a href="bookings.html" class="nav-link">Bookings</a></li>
+            <li><a href="features.html" class="nav-link">Features</a></li>
+            <li><a href="profile.html" class="nav-link active">Profile</a></li>
+        </ul>
+
+        <div class="nav-actions">
+            <a href="features/AI itinenary.html" class="btn-nav-ai">
+                <i class="fas fa-wand-magic-sparkles"></i>
+                <span>Plan with AI</span>
+            </a>
+        </div>
+
+        <button class="mobile-toggle" aria-label="Toggle navigation">
+            <i class="fas fa-bars"></i>
+        </button>
+    </div>
+  </nav>
+
+  <!-- ================= HERO ================= -->
+  <header class="profile-hero">
+    <div class="container">
+      <div class="profile-eyebrow">
+        <i class="fas fa-id-card-clip"></i> Sancharam Traveler Account
+      </div>
+      <h1>Traveler Profile & <span>Trip History</span></h1>
+      <p>Manage your personal travel preferences, native district, languages, and view all confirmed bookings and digital passes across Tamil Nadu.</p>
+    </div>
+  </header>
+
+  <!-- ================= MAIN PROFILE CONTENT ================= -->
+  <main class="profile-main-wrap">
+    <div class="container profile-max-container">
+
+      <!-- Active Session Status Bar -->
+      <div class="session-indicator-bar">
+        <div class="session-status">
+          <span class="status-dot"></span>
+          <span>Logged in as: <strong id="sessionUserName">Arjun Ravi</strong> (<span id="sessionUserEmail">demo@sancharam.com</span>)</span>
+        </div>
+        <div class="session-actions">
+          <button class="btn-session-action" onclick="openLoginModal()">
+            <i class="fas fa-arrow-right-to-bracket"></i> Switch / Login Account
+          </button>
+          <button class="btn-session-action" onclick="openRegisterModal()">
+            <i class="fas fa-user-plus"></i> Create New Account
+          </button>
         </div>
       </div>
-      <button class="btn" onclick="editProfile()">Edit Profile</button>
-    </div>
 
-    <div class="info-grid">
-      <div class="info-card"><strong>Email:</strong> arjun.ravi@gmail.com</div>
-      <div class="info-card"><strong>Member Since:</strong> June 2024</div>
-      <div class="info-card"><strong>Recent Trips:</strong> Madurai, Ooty, Kanyakumari</div>
-      <div class="info-card"><strong>Native:</strong> Chennai, Tamil Nadu</div>
-      <div class="info-card"><strong>Interests:</strong> Cultural Tours, Street Food, Trekking</div>
-      <div class="info-card"><strong>Languages:</strong> Tamil, English, Hindi</div>
+      <!-- Main Profile Card -->
+      <div class="profile-card">
+        <div class="profile-cover"></div>
+        <div class="profile-card-body">
+          
+          <div class="profile-avatar-row">
+            <div class="profile-avatar-wrap">
+              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80" alt="Traveler Avatar" class="profile-avatar" id="dispAvatar">
+              <span class="avatar-badge" title="Verified Sancharam Traveler"><i class="fas fa-check"></i></span>
+            </div>
+
+            <div class="profile-btn-group">
+              <button class="btn-edit-profile" onclick="openEditModal()">
+                <i class="fas fa-user-pen"></i> Edit Profile
+              </button>
+              <button class="btn-logout-profile" onclick="logoutToDefault()">
+                <i class="fas fa-rotate-left"></i> Reset to Demo
+              </button>
+            </div>
+          </div>
+
+          <div class="profile-name-block">
+            <h2 id="dispName">Arjun Ravi</h2>
+            <p id="dispBio">Travel Enthusiast | Heritage Photographer | Blogger</p>
+          </div>
+
+          <!-- Quick Metrics Bar -->
+          <div class="profile-stats-bar">
+            <div class="stat-item">
+              <span class="stat-num" id="statBookingsCount">3</span>
+              <span class="stat-label">Bookings & Passes</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-num" id="statDistrictsCount">5</span>
+              <span class="stat-label">Districts Explored</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-num" style="color:#16A34A;"><i class="fas fa-circle-check"></i> Verified</span>
+              <span class="stat-label">Traveler Status</span>
+            </div>
+          </div>
+
+          <!-- 6 Structured Information Cards -->
+          <div class="info-grid">
+            <div class="info-card">
+              <div class="info-icon-box"><i class="fas fa-envelope"></i></div>
+              <div class="info-text-group">
+                <strong>Email Address</strong>
+                <span id="dispEmail">demo@sancharam.com</span>
+              </div>
+            </div>
+
+            <div class="info-card">
+              <div class="info-icon-box"><i class="fas fa-calendar-check"></i></div>
+              <div class="info-text-group">
+                <strong>Member Since</strong>
+                <span id="dispMemberSince">June 2024</span>
+              </div>
+            </div>
+
+            <div class="info-card">
+              <div class="info-icon-box"><i class="fas fa-house-chimney"></i></div>
+              <div class="info-text-group">
+                <strong>Native District / Origin</strong>
+                <span id="dispNative">Chennai, Tamil Nadu</span>
+              </div>
+            </div>
+
+            <div class="info-card">
+              <div class="info-icon-box"><i class="fas fa-language"></i></div>
+              <div class="info-text-group">
+                <strong>Languages Known</strong>
+                <span id="dispLanguages">Tamil, English, Hindi</span>
+              </div>
+            </div>
+
+            <div class="info-card" style="grid-column: span 2;">
+              <div class="info-icon-box"><i class="fas fa-heart"></i></div>
+              <div class="info-text-group">
+                <strong>Travel Interests</strong>
+                <span id="dispInterests">Cultural Tours, Temple Architecture, Street Food, Hill Station Trekking</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ================= MY BOOKINGS & RECENT TRIPS ================= -->
+      <section class="bookings-section-wrap">
+        <div class="section-title-row">
+          <div>
+            <h3><i class="fas fa-ticket-alt"></i> My Bookings & Recent Trips</h3>
+            <p style="font-size: 1.35rem; color: #64748B; margin-top: 3px;">
+              All reservations, passes, and tour tokens created via Explore and Pre-Bookings.
+            </p>
+          </div>
+          <a href="bookings.html" class="btn-new-booking-cta">
+            <i class="fas fa-plus"></i> Book New Journey
+          </a>
+        </div>
+
+        <div class="trips-grid" id="tripsGrid">
+          <!-- Dynamic Trips populated from localStorage -->
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ================= AUTH MODAL: LOGIN ================= -->
+  <div class="custom-modal" id="loginModal">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3><i class="fas fa-arrow-right-to-bracket"></i> Sign In to Sancharam</h3>
+        <button class="modal-close-btn" onclick="closeModal('loginModal')">&times;</button>
+      </div>
+      <div class="modal-body">
+        
+        <!-- 1-Click Demo Login Banner -->
+        <div class="quick-demo-banner">
+          <div class="quick-demo-text">
+            <strong>⚡ Instant Demo Access</strong>
+            <span>Login as Arjun Ravi with demo credentials:</span><br>
+            <code style="background:white; padding:2px 6px; border-radius:4px; font-weight:700;">demo@sancharam.com</code> | <code style="background:white; padding:2px 6px; border-radius:4px; font-weight:700;">demo123</code>
+          </div>
+          <button class="btn-quick-fill" onclick="fillAndLoginDemo()">1-Click Login</button>
+        </div>
+
+        <form onsubmit="return handleLoginSubmit(event)">
+          <div class="form-group">
+            <label for="loginEmail">Email Address</label>
+            <input type="email" id="loginEmail" placeholder="demo@sancharam.com" required>
+          </div>
+
+          <div class="form-group">
+            <label for="loginPassword">Password</label>
+            <input type="password" id="loginPassword" placeholder="Enter password" required>
+          </div>
+
+          <button type="submit" class="btn-modal-submit">
+            <i class="fas fa-lock-open"></i> Sign In & Open Profile
+          </button>
+        </form>
+
+        <div class="modal-toggle-link">
+          New to Sancharam? <a onclick="switchToRegister()">Create New Account &rarr;</a>
+        </div>
+      </div>
     </div>
   </div>
 
-    <!-- Footer -->
-  <footer class="footer">
-      <div class="social-media-links">
-          <i class="fab fa-facebook"></i>
-          <i class="fab fa-twitter"></i>
-          <i class="fab fa-instagram"></i>
+  <!-- ================= AUTH MODAL: REGISTER & ONBOARDING ================= -->
+  <div class="custom-modal" id="registerModal">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3><i class="fas fa-user-plus"></i> Create New Profile Account</h3>
+        <button class="modal-close-btn" onclick="closeModal('registerModal')">&times;</button>
       </div>
-      <p>Sancharam &copy; 2025, All Rights Reserved</p>
+      <div class="modal-body">
+        <form onsubmit="return handleRegisterSubmit(event)">
+          
+          <!-- STEP 1: Mandatory Credentials -->
+          <div class="form-group">
+            <label for="regName">Full Name *</label>
+            <input type="text" id="regName" placeholder="e.g. Kaviya Natarajan" required>
+          </div>
+
+          <div class="form-group">
+            <label for="regEmail">Email Address *</label>
+            <input type="email" id="regEmail" placeholder="name@example.com" required>
+          </div>
+
+          <div class="form-group">
+            <label for="regPassword">Password *</label>
+            <input type="password" id="regPassword" placeholder="Minimum 6 characters" required>
+          </div>
+
+          <!-- STEP 2: Profile Customization (Optional) -->
+          <div style="margin: 22px 0 10px; border-top: 1px solid #F1F5F9; padding-top: 14px;">
+            <h4 style="font-size: 1.5rem; font-weight: 800; color: #0F172A; margin-bottom: 4px;">
+              Personalize Your Travel Profile
+            </h4>
+            <p style="font-size: 1.25rem; color: #64748B;">You can set your native district, interests, and languages now or skip and edit later.</p>
+          </div>
+
+          <!-- Native District Selection -->
+          <div class="form-group">
+            <label for="regNativeSelect">
+              <span><i class="fas fa-location-dot" style="color:#E63946;"></i> Native District / Location</span>
+              <span class="optional-tag">Optional</span>
+            </label>
+            <select id="regNativeSelect" onchange="onNativeSelectChange(this)">
+              <option value="">-- Choose Native District (Optional) --</option>
+              <optgroup label="🌟 Featured Districts">
+                <option value="Chennai, Tamil Nadu">Chennai</option>
+                <option value="Chengalpattu, Tamil Nadu">Chengalpattu</option>
+                <option value="Thanjavur, Tamil Nadu">Thanjavur</option>
+                <option value="Madurai, Tamil Nadu">Madurai</option>
+                <option value="Nilgiris, Tamil Nadu">Nilgiris (Ooty)</option>
+                <option value="Coimbatore, Tamil Nadu">Coimbatore</option>
+                <option value="Kanyakumari, Tamil Nadu">Kanyakumari</option>
+                <option value="Thoothukudi, Tamil Nadu">Thoothukudi</option>
+                <option value="Ramanathapuram, Tamil Nadu">Ramanathapuram (Rameswaram)</option>
+                <option value="Sivaganga, Tamil Nadu">Sivaganga (Chettinad)</option>
+                <option value="Dharmapuri, Tamil Nadu">Dharmapuri</option>
+                <option value="Nagapattinam, Tamil Nadu">Nagapattinam</option>
+              </optgroup>
+              <optgroup label="🏛️ All Other 38 Tamil Nadu Districts">
+                <option value="Ariyalur, Tamil Nadu">Ariyalur</option>
+                <option value="Cuddalore, Tamil Nadu">Cuddalore</option>
+                <option value="Dindigul, Tamil Nadu">Dindigul</option>
+                <option value="Erode, Tamil Nadu">Erode</option>
+                <option value="Kallakurichi, Tamil Nadu">Kallakurichi</option>
+                <option value="Kanchipuram, Tamil Nadu">Kanchipuram</option>
+                <option value="Karur, Tamil Nadu">Karur</option>
+                <option value="Krishnagiri, Tamil Nadu">Krishnagiri</option>
+                <option value="Mayiladuthurai, Tamil Nadu">Mayiladuthurai</option>
+                <option value="Namakkal, Tamil Nadu">Namakkal</option>
+                <option value="Perambalur, Tamil Nadu">Perambalur</option>
+                <option value="Pudukkottai, Tamil Nadu">Pudukkottai</option>
+                <option value="Ranipet, Tamil Nadu">Ranipet</option>
+                <option value="Salem, Tamil Nadu">Salem</option>
+                <option value="Tenkasi, Tamil Nadu">Tenkasi</option>
+                <option value="Theni, Tamil Nadu">Theni</option>
+                <option value="Tiruchirappalli, Tamil Nadu">Tiruchirappalli</option>
+                <option value="Tirunelveli, Tamil Nadu">Tirunelveli</option>
+                <option value="Tirupattur, Tamil Nadu">Tirupattur</option>
+                <option value="Tiruppur, Tamil Nadu">Tiruppur</option>
+                <option value="Tiruvallur, Tamil Nadu">Tiruvallur</option>
+                <option value="Tiruvannamalai, Tamil Nadu">Tiruvannamalai</option>
+                <option value="Tiruvarur, Tamil Nadu">Tiruvarur</option>
+                <option value="Vellore, Tamil Nadu">Vellore</option>
+                <option value="Viluppuram, Tamil Nadu">Viluppuram</option>
+                <option value="Virudhunagar, Tamil Nadu">Virudhunagar</option>
+              </optgroup>
+              <option value="OTHER">Other / Outside Tamil Nadu</option>
+            </select>
+          </div>
+
+          <!-- If Other Selected -->
+          <div class="form-group" id="otherNativeGroup" style="display: none;">
+            <label for="otherNativeInput">
+              <span>Enter State / Country Origin</span>
+              <span class="optional-tag">Optional</span>
+            </label>
+            <input type="text" id="otherNativeInput" placeholder="e.g., Bengaluru, Karnataka or California, USA">
+          </div>
+
+          <!-- Travel Interests Checkboxes -->
+          <div class="form-group">
+            <label>
+              <span><i class="fas fa-heart" style="color:#E63946;"></i> Travel Interests</span>
+              <span class="optional-tag">Optional</span>
+            </label>
+            <div class="chips-group" id="regInterestsChips">
+              <label class="chip-item active"><input type="checkbox" value="Temple Architecture" checked> 🏛️ Temple Architecture</label>
+              <label class="chip-item active"><input type="checkbox" value="Coastal Shores" checked> 🌊 Coastal Shores</label>
+              <label class="chip-item"><input type="checkbox" value="Hill Stations"> ⛰️ Hill Stations</label>
+              <label class="chip-item"><input type="checkbox" value="Tamil Nadu Cuisine"> 🍛 Tamil Cuisine</label>
+              <label class="chip-item"><input type="checkbox" value="Chettinad Mansions"> 🏰 Palaces & Mansions</label>
+              <label class="chip-item"><input type="checkbox" value="Waterfalls & Treks"> 🌿 Nature Treks</label>
+            </div>
+          </div>
+
+          <!-- Languages Known Checkboxes -->
+          <div class="form-group">
+            <label>
+              <span><i class="fas fa-language" style="color:#E63946;"></i> Languages Known</span>
+              <span class="optional-tag">Optional</span>
+            </label>
+            <div class="chips-group" id="regLanguagesChips">
+              <label class="chip-item active"><input type="checkbox" value="Tamil" checked> Tamil (தமிழ்)</label>
+              <label class="chip-item active"><input type="checkbox" value="English" checked> English</label>
+              <label class="chip-item"><input type="checkbox" value="Hindi"> Hindi</label>
+              <label class="chip-item"><input type="checkbox" value="Telugu"> Telugu</label>
+              <label class="chip-item"><input type="checkbox" value="Malayalam"> Malayalam</label>
+              <label class="chip-item"><input type="checkbox" value="Kannada"> Kannada</label>
+            </div>
+          </div>
+
+          <button type="submit" class="btn-modal-submit">
+            <i class="fas fa-check"></i> Register Account & Create Profile
+          </button>
+        </form>
+
+        <div class="modal-toggle-link">
+          Already have an account? <a onclick="switchToLogin()">Sign in with demo &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= EDIT PROFILE MODAL ================= -->
+  <div class="custom-modal" id="editModal">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3><i class="fas fa-user-pen"></i> Edit Profile Information</h3>
+        <button class="modal-close-btn" onclick="closeModal('editModal')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form onsubmit="return handleEditSubmit(event)">
+          <div class="form-group">
+            <label for="editName">Full Name</label>
+            <input type="text" id="editName" required>
+          </div>
+
+          <div class="form-group">
+            <label for="editBio">Traveler Bio / Tagline</label>
+            <input type="text" id="editBio" placeholder="e.g. Solo Backpacker | Heritage Enthusiast">
+          </div>
+
+          <div class="form-group">
+            <label for="editNative">Native District / Location</label>
+            <input type="text" id="editNative" placeholder="e.g. Chennai, Tamil Nadu">
+          </div>
+
+          <div class="form-group">
+            <label for="editLanguages">Languages Known</label>
+            <input type="text" id="editLanguages" placeholder="e.g. Tamil, English, Hindi">
+          </div>
+
+          <div class="form-group">
+            <label for="editInterests">Travel Interests</label>
+            <input type="text" id="editInterests" placeholder="e.g. Cultural Tours, Street Food, Trekking">
+          </div>
+
+          <button type="submit" class="btn-modal-submit">
+            <i class="fas fa-floppy-disk"></i> Save Profile Changes
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= DIGITAL PASS VIEW MODAL ================= -->
+  <div class="custom-modal" id="passViewModal">
+    <div class="modal-box" style="max-width: 520px;">
+      <div style="background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%); color: #fff; padding: 26px; text-align: center; border-radius: 24px 24px 0 0; position:relative;">
+        <button class="modal-close-btn" style="position:absolute; top:16px; right:16px; color:#fff; background:rgba(255,255,255,0.15);" onclick="closeModal('passViewModal')">&times;</button>
+        <span style="background:#16A34A; color:#fff; font-size:1.15rem; font-weight:800; padding:4px 12px; border-radius:999px; text-transform:uppercase;">Verified Travel Pass</span>
+        <h3 style="font-size:2rem; font-weight:800; margin:10px 0 4px; color:#fff;" id="pvTitle">Shore Temple Mahabalipuram</h3>
+        <p style="color:#F87171; font-family:monospace; font-size:1.4rem; font-weight:700;" id="pvPassId">PASS ID: SNCH-TN-78219</p>
+      </div>
+      <div style="padding: 24px 28px;">
+        <table style="width:100%; border-collapse:collapse; margin-bottom:20px;">
+          <tr style="border-bottom:1px solid #F1F5F9;">
+            <td style="padding:8px 0; color:#64748B; font-size:1.35rem; font-weight:600;">Traveler:</td>
+            <td style="padding:8px 0; color:#0F172A; font-size:1.35rem; font-weight:700; text-align:right;" id="pvTraveler">Arjun Ravi</td>
+          </tr>
+          <tr style="border-bottom:1px solid #F1F5F9;">
+            <td style="padding:8px 0; color:#64748B; font-size:1.35rem; font-weight:600;">District:</td>
+            <td style="padding:8px 0; color:#0F172A; font-size:1.35rem; font-weight:700; text-align:right;" id="pvDistrict">Chengalpattu</td>
+          </tr>
+          <tr style="border-bottom:1px solid #F1F5F9;">
+            <td style="padding:8px 0; color:#64748B; font-size:1.35rem; font-weight:600;">Visit Date:</td>
+            <td style="padding:8px 0; color:#0F172A; font-size:1.35rem; font-weight:700; text-align:right;" id="pvDate">12 Nov 2026</td>
+          </tr>
+          <tr style="border-bottom:1px solid #F1F5F9;">
+            <td style="padding:8px 0; color:#64748B; font-size:1.35rem; font-weight:600;">Status:</td>
+            <td style="padding:8px 0; color:#16A34A; font-size:1.35rem; font-weight:800; text-align:right;"><i class="fas fa-circle-check"></i> Confirmed & Active</td>
+          </tr>
+        </table>
+
+        <div style="background:#F8FAFC; border:1px dashed #CBD5E1; border-radius:12px; padding:14px; display:flex; align-items:center; gap:14px; margin-bottom:20px;">
+          <i class="fas fa-qrcode" style="font-size:4.5rem; color:#0F172A;"></i>
+          <p style="font-size:1.25rem; color:#64748B; line-height:1.4;">Show this QR code at site checkpoint or to your certified tourist guide for priority contactless admission.</p>
+        </div>
+
+        <div style="display:flex; gap:10px;">
+          <button class="btn-modal-submit" style="margin:0; flex:1;" onclick="window.print()">
+            <i class="fas fa-print"></i> Print Pass
+          </button>
+          <button class="btn-session-action" style="padding:12px 18px; font-size:1.35rem;" onclick="closeModal('passViewModal')">
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="site-footer">
+    <div class="container">
+        <div class="footer-top">
+            <div class="footer-brand">
+                <img src="../assets/logos/logo-transparent.png" alt="Sancharam Logo" class="brand-logo" onerror="this.src='../assets/logos/logo.png'">
+                <p>Sancharam is your smart travel companion dedicated to celebrating the living heritage, natural wonders, and vibrant spirit of Tamil Nadu.</p>
+                <div class="social-links">
+                    <a href="#" class="social-btn" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-btn" title="Twitter"><i class="fab fa-x-twitter"></i></a>
+                    <a href="#" class="social-btn" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-btn" title="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>Smart Features</h4>
+                <ul class="footer-links">
+                    <li><a href="features/AI itinenary.html">AI Itinerary Planner</a></li>
+                    <li><a href="features/routing.html">Scenic Routes</a></li>
+                    <li><a href="features/sos.html">Safety & SOS Helpline</a></li>
+                    <li><a href="features/expenses.html">Expense Calculator</a></li>
+                    <li><a href="features/checklist.html">Travel Checklist</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Cultural Pride</h4>
+                <p style="font-size: 1.4rem; color: #FCD34D; font-weight: 700; margin-bottom: 0.8rem;">வாழ்க தமிழ் வளர்க தமிழ் பண்பாடு</p>
+                <p style="font-size: 1.3rem; color: rgba(255,255,255,0.7); line-height: 1.6;">Dedicated to travelers who cherish art, architecture, literature, and warm Tamil hospitality.</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 Sancharam. All Rights Reserved. Crafted with love for தமிழ்நாடு.</p>
+            <div class="footer-bottom-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Security</a>
+            </div>
+        </div>
+    </div>
   </footer>
+
+  <script src="../assets/js/sancharam-theme.js"></script>
+  <script>
+    // ==========================================================================
+    // SANCHARAM PROFILE & BOOKINGS ENGINE
+    // Handles Demo user (demo@sancharam.com), new account registration,
+    // optional onboarding (native district, languages, interests),
+    // and live synchronized trips/bookings from Explore & Pre-Bookings.
+    // ==========================================================================
+
+    const DEFAULT_DEMO_USER = {
+      name: "Arjun Ravi",
+      email: "demo@sancharam.com",
+      password: "demo123",
+      bio: "Travel Enthusiast | Heritage Photographer | Blogger",
+      memberSince: "June 2024",
+      native: "Chennai, Tamil Nadu",
+      languages: "Tamil, English, Hindi",
+      interests: "Cultural Tours, Temple Architecture, Street Food, Hill Station Trekking",
+      avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80"
+    };
+
+    const INITIAL_DEMO_TRIPS = [
+      {
+        id: "SNCH-TN-78219",
+        destTitle: "Ramanathaswamy Temple Rameswaram",
+        distName: "Ramanathapuram District",
+        date: "2026-11-12",
+        guests: 2,
+        exp: "Guided Temple & Darshan Walk",
+        status: "Active Pass"
+      },
+      {
+        id: "SNCH-TN-65412",
+        destTitle: "Thiruchendur Murugan Kovil",
+        distName: "Thoothukudi District",
+        date: "2026-10-28",
+        guests: 3,
+        exp: "Arupadai Veedu Seashore Tour",
+        status: "Completed"
+      },
+      {
+        id: "SNCH-TN-43189",
+        destTitle: "Ooty & Nilgiri Mountain Toy Train",
+        distName: "Nilgiris District",
+        date: "2026-09-15",
+        guests: 4,
+        exp: "Hill Station Nature Trail",
+        status: "Completed"
+      }
+    ];
+
+    // Get Active User
+    function getCurrentUser() {
+      try {
+        const u = localStorage.getItem('sancharam_active_user');
+        if (u) return JSON.parse(u);
+      } catch(e) {}
+      // Initialize with default demo
+      localStorage.setItem('sancharam_active_user', JSON.stringify(DEFAULT_DEMO_USER));
+      return DEFAULT_DEMO_USER;
+    }
+
+    // Save Active User
+    function setCurrentUser(user) {
+      localStorage.setItem('sancharam_active_user', JSON.stringify(user));
+      renderProfileUI();
+    }
+
+    // Get Bookings List
+    function getUserTrips() {
+      try {
+        const t = localStorage.getItem('sancharam_user_bookings');
+        if (t) {
+          const parsed = JSON.parse(t);
+          if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+        }
+      } catch(e) {}
+      // Initialize with demo trips
+      localStorage.setItem('sancharam_user_bookings', JSON.stringify(INITIAL_DEMO_TRIPS));
+      return INITIAL_DEMO_TRIPS;
+    }
+
+    // Render Entire Profile Interface
+    function renderProfileUI() {
+      const user = getCurrentUser();
+
+      // Session Bar
+      document.getElementById('sessionUserName').innerText = user.name;
+      document.getElementById('sessionUserEmail').innerText = user.email;
+
+      // Profile Card
+      document.getElementById('dispName').innerText = user.name;
+      document.getElementById('dispBio').innerText = user.bio || 'Tamil Nadu Travel Enthusiast';
+      document.getElementById('dispEmail').innerText = user.email;
+      document.getElementById('dispMemberSince').innerText = user.memberSince;
+      document.getElementById('dispNative').innerText = user.native || 'Tamil Nadu';
+      document.getElementById('dispLanguages').innerText = user.languages || 'Tamil, English';
+      document.getElementById('dispInterests').innerText = user.interests || 'Heritage, Temples, Culture';
+      document.getElementById('dispAvatar').src = user.avatar || DEFAULT_DEMO_USER.avatar;
+
+      // Render Trips & Bookings
+      const trips = getUserTrips();
+      const tripsGrid = document.getElementById('tripsGrid');
+
+      // Update stat counter
+      document.getElementById('statBookingsCount').innerText = trips.length;
+
+      // Count unique districts
+      const districtsSet = new Set(trips.map(t => t.distName));
+      document.getElementById('statDistrictsCount').innerText = Math.max(1, districtsSet.size);
+
+      if (trips.length === 0) {
+        tripsGrid.innerHTML = `
+          <div class="empty-trips-card">
+            <i class="fas fa-ticket"></i>
+            <h4>No Booked Trips Yet</h4>
+            <p>You haven't reserved any destination passes yet. Explore Tamil Nadu's 38 districts to book your first journey!</p>
+            <a href="explore.html" class="btn-new-booking-cta">
+              <i class="fas fa-compass"></i> Explore Destinations
+            </a>
+          </div>
+        `;
+        return;
+      }
+
+      tripsGrid.innerHTML = trips.map((trip, idx) => {
+        let badgeClass = 'badge-confirmed';
+        if (trip.status === 'Completed') badgeClass = 'badge-completed';
+        if (trip.status === 'Reserved') badgeClass = 'badge-reserved';
+
+        const formattedDate = trip.date ? new Date(trip.date).toLocaleDateString('en-IN', { month: 'short', day: 'numeric', year: 'numeric' }) : 'Flexible Schedule';
+
+        return `
+          <div class="trip-card">
+            <div class="trip-left">
+              <div class="trip-icon-box">
+                <i class="fas fa-map-location-dot"></i>
+              </div>
+              <div class="trip-info">
+                <h4>${trip.destTitle}</h4>
+                <p>
+                  <span><i class="fas fa-map-marker-alt" style="color:#E63946;"></i> ${trip.distName}</span>
+                  <span><i class="fas fa-calendar-day"></i> ${formattedDate}</span>
+                  <span><i class="fas fa-users"></i> ${trip.guests} Guests</span>
+                  <span><i class="fas fa-ticket"></i> ${trip.id}</span>
+                </p>
+              </div>
+            </div>
+
+            <div class="trip-right">
+              <span class="trip-status-badge ${badgeClass}">${trip.status || 'Active Pass'}</span>
+              <button class="btn-view-pass" onclick="viewTripPass(${idx})">
+                <i class="fas fa-qrcode"></i> View Pass
+              </button>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    // View Trip Pass Modal
+    function viewTripPass(index) {
+      const trips = getUserTrips();
+      const trip = trips[index];
+      if (!trip) return;
+
+      const user = getCurrentUser();
+      document.getElementById('pvTitle').innerText = trip.destTitle;
+      document.getElementById('pvPassId').innerText = `PASS ID: ${trip.id}`;
+      document.getElementById('pvTraveler').innerText = user.name;
+      document.getElementById('pvDistrict').innerText = trip.distName;
+      document.getElementById('pvDate').innerText = trip.date ? new Date(trip.date).toLocaleDateString('en-IN', { month: 'short', day: 'numeric', year: 'numeric' }) : 'Tomorrow';
+
+      openModal('passViewModal');
+    }
+
+    // Edit Profile Modal Handling
+    function openEditModal() {
+      const user = getCurrentUser();
+      document.getElementById('editName').value = user.name;
+      document.getElementById('editBio').value = user.bio || '';
+      document.getElementById('editNative').value = user.native || '';
+      document.getElementById('editLanguages').value = user.languages || '';
+      document.getElementById('editInterests').value = user.interests || '';
+      openModal('editModal');
+    }
+
+    function handleEditSubmit(e) {
+      e.preventDefault();
+      const user = getCurrentUser();
+      user.name = document.getElementById('editName').value;
+      user.bio = document.getElementById('editBio').value;
+      user.native = document.getElementById('editNative').value;
+      user.languages = document.getElementById('editLanguages').value;
+      user.interests = document.getElementById('editInterests').value;
+
+      setCurrentUser(user);
+      closeModal('editModal');
+      return false;
+    }
+
+    // Chip click handler for registration
+    document.querySelectorAll('.chip-item').forEach(chip => {
+      chip.addEventListener('click', () => {
+        const chk = chip.querySelector('input[type="checkbox"]');
+        if (chk) {
+          chk.checked = !chk.checked;
+          chip.classList.toggle('active', chk.checked);
+        }
+      });
+    });
+
+    // Native dropdown change
+    function onNativeSelectChange(sel) {
+      const otherGroup = document.getElementById('otherNativeGroup');
+      if (sel.value === 'OTHER') {
+        otherGroup.style.display = 'block';
+        document.getElementById('otherNativeInput').focus();
+      } else {
+        otherGroup.style.display = 'none';
+      }
+    }
+
+    // Auth Modals Open/Close
+    function openModal(id) {
+      document.getElementById(id).classList.add('active');
+    }
+    function closeModal(id) {
+      document.getElementById(id).classList.remove('active');
+    }
+    function openLoginModal() {
+      openModal('loginModal');
+    }
+    function openRegisterModal() {
+      openModal('registerModal');
+    }
+    function switchToRegister() {
+      closeModal('loginModal');
+      openModal('registerModal');
+    }
+    function switchToLogin() {
+      closeModal('registerModal');
+      openModal('loginModal');
+    }
+
+    // 1-Click Demo Login
+    function fillAndLoginDemo() {
+      document.getElementById('loginEmail').value = 'demo@sancharam.com';
+      document.getElementById('loginPassword').value = 'demo123';
+      setTimeout(() => {
+        setCurrentUser(DEFAULT_DEMO_USER);
+        closeModal('loginModal');
+      }, 300);
+    }
+
+    // Login Form Submit
+    function handleLoginSubmit(e) {
+      e.preventDefault();
+      const email = document.getElementById('loginEmail').value.trim();
+      const pass = document.getElementById('loginPassword').value;
+
+      if (email === 'demo@sancharam.com') {
+        setCurrentUser(DEFAULT_DEMO_USER);
+        closeModal('loginModal');
+        return false;
+      }
+
+      // Check registered users in localStorage
+      try {
+        const users = JSON.parse(localStorage.getItem('sancharam_registered_users') || '[]');
+        const found = users.find(u => u.email.toLowerCase() === email.toLowerCase() && u.password === pass);
+        if (found) {
+          setCurrentUser(found);
+          closeModal('loginModal');
+          return false;
+        }
+      } catch(err) {}
+
+      alert('Invalid credentials. You can use the 1-Click Demo Login (demo@sancharam.com / demo123) or create a new account.');
+      return false;
+    }
+
+    // Register Form Submit
+    function handleRegisterSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('regName').value.trim();
+      const email = document.getElementById('regEmail').value.trim();
+      const password = document.getElementById('regPassword').value;
+
+      // Native District
+      const nativeSelect = document.getElementById('regNativeSelect').value;
+      let finalNative = nativeSelect;
+      if (nativeSelect === 'OTHER') {
+        finalNative = document.getElementById('otherNativeInput').value.trim() || 'Outside Tamil Nadu';
+      } else if (!nativeSelect) {
+        finalNative = 'Tamil Nadu';
+      }
+
+      // Interests
+      const selectedInterests = [];
+      document.querySelectorAll('#regInterestsChips .chip-item input:checked').forEach(c => selectedInterests.push(c.value));
+      const finalInterests = selectedInterests.length > 0 ? selectedInterests.join(', ') : 'Temples, Heritage & Nature';
+
+      // Languages
+      const selectedLanguages = [];
+      document.querySelectorAll('#regLanguagesChips .chip-item input:checked').forEach(c => selectedLanguages.push(c.value));
+      const finalLanguages = selectedLanguages.length > 0 ? selectedLanguages.join(', ') : 'Tamil, English';
+
+      // Member Since Month & Year
+      const now = new Date();
+      const memberSince = now.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+
+      const newUser = {
+        name,
+        email,
+        password,
+        bio: 'Tamil Nadu Explorer & Cultural Traveler',
+        memberSince: memberSince,
+        native: finalNative,
+        languages: finalLanguages,
+        interests: finalInterests,
+        avatar: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=300&q=80"
+      };
+
+      // Save to registered users list
+      try {
+        const users = JSON.parse(localStorage.getItem('sancharam_registered_users') || '[]');
+        users.push(newUser);
+        localStorage.setItem('sancharam_registered_users', JSON.stringify(users));
+      } catch(err) {}
+
+      // Log in as new user and clear previous demo bookings for clean state
+      localStorage.setItem('sancharam_user_bookings', JSON.stringify([]));
+      setCurrentUser(newUser);
+      closeModal('registerModal');
+      return false;
+    }
+
+    // Reset back to Demo User
+    function logoutToDefault() {
+      if (confirm('Reset profile back to Demo account (Arjun Ravi / demo@sancharam.com)?')) {
+        localStorage.setItem('sancharam_user_bookings', JSON.stringify(INITIAL_DEMO_TRIPS));
+        setCurrentUser(DEFAULT_DEMO_USER);
+      }
+    }
+
+    // Close modal on escape or background click
+    document.querySelectorAll('.custom-modal').forEach(m => {
+      m.addEventListener('click', (e) => {
+        if (e.target === m) m.classList.remove('active');
+      });
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        document.querySelectorAll('.custom-modal').forEach(m => m.classList.remove('active'));
+      }
+    });
+
+    // Initialize UI on load
+    window.addEventListener('DOMContentLoaded', () => {
+      renderProfileUI();
+    });
+  </script>
 </body>
 </html>

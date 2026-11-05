@@ -1,136 +1,1073 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Payment- Sancharam</title>
-    <link rel="stylesheet" href="css/stylepay.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Secure Travel Payment & Pass Issuance | Sancharam</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+  <link rel="stylesheet" href="../../assets/css/sancharam-theme.css">
+  <style>
+    /* ==========================================================================
+       SANCHARAM SECURE PAYMENT GATEWAY & PASS ISSUANCE
+       Directly Connected to Pre-Bookings & Explore Destinations
+       ========================================================================== */
 
-<script src="https://kit.fontawesome.com/7f257b9379.js" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="../../assets/css/style.css">
-
-<!-- Global Nav/Footer CSS injected -->
-<style id="global-nav-footer">
-    .navbar { font-family: 'Montserrat', sans-serif; }
-    .navbar .container { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 0 1rem; }
-    .navbar.bg-dark { background-color: #000000; }
-    .navbar .logo { float: left; padding-top: 6px; }
-    .navbar .nav-items { list-style: none; margin: 0; padding: 0; display: flex; align-items: center; }
-    .navbar .nav-item { display: inline-block; padding: 1.5rem; text-transform: uppercase; }
-    .navbar a { color: aliceblue; text-decoration: none; font-size: 1.6rem; font-weight: bold; }
-    .navbar a:hover { border-bottom: 1px solid #FFF; }
-    .navbar::after { content: ''; display: block; clear: both; }
-    .footer { font-size: 1rem; padding: 1rem; background: #263238; color: #f4f4f4; margin-top: auto; text-align: center; width: 100%; font-family: 'Montserrat', sans-serif; }
-    .footer .social-media-links i { padding: 1.5rem; margin-bottom: 1rem; font-size: 4rem; color: #f4f4f4; }
-    @media (max-width: 768px) {
-        .navbar .container { flex-direction: column; }
-        .navbar .nav-items { flex-direction: column; width: 100%; text-align: center; }
+    .payment-hero {
+      padding: 120px 0 30px;
+      text-align: center;
+      background: radial-gradient(circle at 50% 20%, rgba(230, 57, 70, 0.05) 0%, rgba(248, 250, 252, 0) 70%);
     }
-</style>
-<script src="https://kit.fontawesome.com/7f257b9379.js" crossorigin="anonymous"></script>
+    .payment-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      background: #DCFCE7;
+      color: #16A34A;
+      border-radius: 9999px;
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .payment-hero h1 {
+      font-size: 3.8rem;
+      font-weight: 800;
+      color: #0F172A;
+      margin-bottom: 10px;
+      line-height: 1.2;
+    }
+    .payment-hero h1 span {
+      background: linear-gradient(135deg, #E63946 0%, #B91C1C 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .payment-hero p {
+      font-size: 1.6rem;
+      color: #475569;
+      max-width: 720px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
 
+    /* Main Checkout Wrapper */
+    .checkout-section {
+      padding: 15px 0 80px;
+    }
+    .checkout-container {
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+
+    /* Connected Booking Banner */
+    .booking-sync-banner {
+      background: #FFFFFF;
+      border-radius: 18px;
+      border: 1.5px solid #FEE2E2;
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      box-shadow: 0 4px 16px rgba(230, 57, 70, 0.06);
+      margin-bottom: 30px;
+      transition: all 0.3s ease;
+    }
+    .sync-info-group {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .sync-icon-box {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #E63946 0%, #B91C1C 100%);
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      flex-shrink: 0;
+      box-shadow: 0 4px 12px rgba(230, 57, 70, 0.25);
+    }
+    .sync-details h3 {
+      font-size: 1.75rem;
+      font-weight: 800;
+      color: #0F172A;
+      margin-bottom: 4px;
+    }
+    .sync-details p {
+      font-size: 1.35rem;
+      color: #64748B;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .sync-details p span {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .btn-edit-booking {
+      padding: 8px 18px;
+      border-radius: 10px;
+      background: #F8FAFC;
+      border: 1.5px solid #CBD5E1;
+      color: #475569;
+      font-size: 1.3rem;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+      transition: all 0.2s;
+    }
+    .btn-edit-booking:hover {
+      background: #FFF1F2;
+      border-color: #E63946;
+      color: #E63946;
+    }
+
+    /* 2-Column Checkout Grid */
+    .checkout-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 0.9fr;
+      gap: 32px;
+      align-items: start;
+    }
+
+    /* Column 1: Payment Methods Card */
+    .checkout-card {
+      background: #FFFFFF;
+      border-radius: 20px;
+      border: 1px solid #E2E8F0;
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+      padding: 34px 36px;
+    }
+    .card-heading {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: #0F172A;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #F1F5F9;
+    }
+    .card-heading i {
+      color: #E63946;
+      font-size: 1.7rem;
+    }
+
+    /* Payment Method Tabs */
+    .payment-tabs {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 24px;
+      background: #F8FAFC;
+      padding: 6px;
+      border-radius: 14px;
+      border: 1px solid #E2E8F0;
+    }
+    .pay-tab-btn {
+      flex: 1;
+      padding: 12px 14px;
+      border-radius: 10px;
+      border: none;
+      background: transparent;
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #64748B;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.25s ease;
+    }
+    .pay-tab-btn.active {
+      background: #FFFFFF;
+      color: #0F172A;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
+    }
+    .pay-tab-btn.active i {
+      color: #E63946;
+    }
+
+    /* Tab Panels */
+    .pay-panel {
+      display: none;
+      animation: fadeIn 0.3s ease forwards;
+    }
+    .pay-panel.active {
+      display: block;
+    }
+
+    /* UPI Panel Specifics */
+    .upi-box {
+      background: #F8FAFC;
+      border: 1.5px dashed #CBD5E1;
+      border-radius: 16px;
+      padding: 24px;
+      text-align: center;
+      margin-bottom: 22px;
+    }
+    .upi-qr-wrapper {
+      width: 170px;
+      height: 170px;
+      background: #FFFFFF;
+      border-radius: 12px;
+      margin: 0 auto 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+      border: 1px solid #E2E8F0;
+      position: relative;
+    }
+    .upi-qr-wrapper i.fa-qrcode {
+      font-size: 110px;
+      color: #0F172A;
+    }
+    .upi-apps-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #475569;
+      margin-bottom: 8px;
+    }
+    .upi-apps-row i {
+      font-size: 1.6rem;
+      color: #16A34A;
+    }
+
+    /* Form Fields */
+    .input-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 16px;
+    }
+    .input-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .input-group label {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #1E293B;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .input-group label i {
+      color: #64748B;
+      font-size: 1.15rem;
+    }
+    .input-group input,
+    .input-group select {
+      padding: 12px 14px;
+      border-radius: 10px;
+      border: 1.5px solid #CBD5E1;
+      font-size: 1.4rem;
+      font-family: inherit;
+      color: #0F172A;
+      background: #F8FAFC;
+      outline: none;
+      transition: all 0.2s ease;
+      width: 100%;
+    }
+    .input-group input:focus,
+    .input-group select:focus {
+      background: #FFFFFF;
+      border-color: #E63946;
+      box-shadow: 0 0 0 3px rgba(230, 57, 70, 0.12);
+    }
+
+    /* Column 2: Order Summary Card */
+    .summary-card {
+      background: #FFFFFF;
+      border-radius: 20px;
+      border: 1px solid #E2E8F0;
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+      padding: 30px;
+      position: sticky;
+      top: 95px;
+    }
+    .summary-title {
+      font-size: 1.75rem;
+      font-weight: 800;
+      color: #0F172A;
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #F1F5F9;
+    }
+    .summary-title i {
+      color: #E63946;
+    }
+    .summary-rows {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .sum-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 1.4rem;
+    }
+    .sum-label {
+      color: #64748B;
+      font-weight: 500;
+    }
+    .sum-val {
+      color: #0F172A;
+      font-weight: 700;
+    }
+    .sum-divider {
+      height: 1px;
+      background: #E2E8F0;
+      margin: 10px 0;
+    }
+    .sum-total-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 6px;
+    }
+    .total-label {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: #0F172A;
+    }
+    .total-val {
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: #E63946;
+    }
+
+    /* Perks Checklist */
+    .perks-box {
+      background: #F8FAFC;
+      border-radius: 12px;
+      padding: 14px 16px;
+      margin: 20px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .perk-item {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #334155;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .perk-item i {
+      color: #16A34A;
+      font-size: 1.3rem;
+    }
+
+    /* Pay Button */
+    .btn-pay-now {
+      width: 100%;
+      padding: 16px 20px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #E63946 0%, #C5221F 100%);
+      color: #FFFFFF;
+      border: none;
+      font-size: 1.65rem;
+      font-weight: 800;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      box-shadow: 0 10px 24px rgba(230, 57, 70, 0.28);
+      transition: all 0.25s ease;
+    }
+    .btn-pay-now:hover {
+      background: linear-gradient(135deg, #EF4444 0%, #B91C1C 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 14px 28px rgba(230, 57, 70, 0.35);
+    }
+    .trust-gateway-text {
+      font-size: 1.2rem;
+      color: #94A3B8;
+      text-align: center;
+      margin-top: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+    .trust-gateway-text i {
+      color: #16A34A;
+    }
+
+    /* Success Pass Modal */
+    .pass-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(15, 23, 42, 0.7);
+      backdrop-filter: blur(6px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      padding: 20px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .pass-modal.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .pass-card {
+      background: #FFFFFF;
+      border-radius: 24px;
+      max-width: 600px;
+      width: 100%;
+      overflow: hidden;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.3);
+      border: 1px solid #E2E8F0;
+      position: relative;
+      animation: modalSlideUp 0.35s ease forwards;
+    }
+    @keyframes modalSlideUp {
+      from { transform: translateY(30px) scale(0.97); opacity: 0; }
+      to { transform: translateY(0) scale(1); opacity: 1; }
+    }
+    .pass-header {
+      background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+      color: #FFFFFF;
+      padding: 30px;
+      text-align: center;
+      position: relative;
+    }
+    .pass-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #16A34A;
+      color: #FFFFFF;
+      padding: 4px 14px;
+      border-radius: 9999px;
+      font-size: 1.2rem;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+    .pass-header h2 {
+      font-size: 2.3rem;
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+    .pass-ref-code {
+      font-family: monospace;
+      font-size: 1.45rem;
+      letter-spacing: 0.15em;
+      color: #F87171;
+      font-weight: 700;
+    }
+    .pass-body {
+      padding: 28px 32px;
+    }
+    .pass-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+    .pass-table tr {
+      border-bottom: 1px solid #F1F5F9;
+    }
+    .pass-table td {
+      padding: 10px 0;
+      font-size: 1.4rem;
+    }
+    .pass-table td.label {
+      color: #64748B;
+      font-weight: 600;
+      width: 40%;
+    }
+    .pass-table td.value {
+      color: #0F172A;
+      font-weight: 700;
+      text-align: right;
+    }
+    .pass-qr-box {
+      background: #F8FAFC;
+      border-radius: 14px;
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      border: 1px dashed #CBD5E1;
+      margin-bottom: 24px;
+    }
+    .pass-qr-box i.fa-qrcode {
+      font-size: 5rem;
+      color: #0F172A;
+    }
+    .pass-actions {
+      display: flex;
+      gap: 12px;
+    }
+    .btn-pass-action {
+      flex: 1;
+      padding: 12px 18px;
+      border-radius: 10px;
+      font-size: 1.4rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .btn-pass-primary {
+      background: #E63946;
+      color: #FFFFFF;
+      border: none;
+    }
+    .btn-pass-primary:hover {
+      background: #C5221F;
+    }
+    .btn-pass-outline {
+      background: #F8FAFC;
+      color: #334155;
+      border: 1px solid #CBD5E1;
+    }
+
+    @media (max-width: 860px) {
+      .checkout-grid { grid-template-columns: 1fr; }
+      .payment-hero h1 { font-size: 2.8rem; }
+      .booking-sync-banner { flex-direction: column; align-items: flex-start; }
+      .input-row { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
-
 <body>
-<nav class="navbar bg-dark">
-    <div class="container">
-        <img src="../../assets/logos/logo.png" alt="Sancharam Logo" class="logo" style="width: 300px; height: 80px;">
-        <ul class="nav-items">
-            <li class="nav-item"><a href="../../home.html">Home</a></li>
-            <li class="nav-item"><a href="../../pages/about.html">About</a></li>
-            <li class="nav-item"><a href="../../pages/explore.html">Explore</a></li>
-            <li class="nav-item"><a href="../../pages/bookings.html">Bookings</a></li>
-            <li class="nav-item"><a href="../../pages/features.html">Features</a></li>
-            <li class="nav-item"><a href="../../pages/profile.html">Profile</a></li>
+
+  <!-- ================= NAVBAR ================= -->
+  <nav class="navbar" id="main-nav">
+    <div class="container nav-wrapper">
+        <a href="../../home.html" class="brand" title="Sancharam">
+            <img src="../../assets/logos/logo-transparent.png" alt="Sancharam Logo" class="brand-logo" onerror="this.src='../../assets/logos/logo.png'">
+        </a>
+
+        <ul class="nav-links">
+            <li><a href="../../home.html" class="nav-link">Home</a></li>
+            <li><a href="../explore.html" class="nav-link">Explore</a></li>
+            <li><a href="../bookings.html" class="nav-link">Bookings</a></li>
+            <li><a href="../features.html" class="nav-link active">Features</a></li>
+            <li><a href="../profile.html" class="nav-link">Profile</a></li>
         </ul>
+
+        <div class="nav-actions">
+            <a href="AI itinenary.html" class="btn-nav-ai">
+                <i class="fas fa-wand-magic-sparkles"></i>
+                <span>Plan with AI</span>
+            </a>
+        </div>
+
+        <button class="mobile-toggle" aria-label="Toggle navigation">
+            <i class="fas fa-bars"></i>
+        </button>
     </div>
-</nav>
+  </nav>
 
-
+  <!-- ================= HERO ================= -->
+  <header class="payment-hero">
     <div class="container">
-        <form action="">
-            <div class="row">
-                <div class="column">
-                    <h3 class="title">Billing Address</h3>
-                    <div class="input-box">
-                        <span>Full Name :</span>
-                        <input type="text" placeholder="Mia Malkan">
-                    </div>
-                    <div class="input-box">
-                        <span>Email :</span>
-                        <input type="email" placeholder="example@example.com">
-                    </div>
-                    <div class="input-box">
-                        <span>Address :</span>
-                        <input type="text" placeholder="Room - Street - Locality">
-                    </div>
-                    <div class="input-box">
-                        <span>City :</span>
-                        <input type="text" placeholder="California">
-                    </div>
+      <div class="payment-eyebrow">
+        <i class="fas fa-shield-halved"></i> 256-Bit SSL Encrypted Checkout
+      </div>
+      <h1>Secure Travel <span>Payment & Pass Issuance</span></h1>
+      <p>Complete your verified payment to receive your instant digital Sancharam travel pass with QR token for seamless check-in across Tamil Nadu.</p>
+    </div>
+  </header>
 
-                    <div class="flex">
-                        <div class="input-box">
-                            <span>State :</span>
-                            <input type="text" placeholder="USA">
-                        </div>
-                        <div class="input-box">
-                            <span>Zip Code :</span>
-                            <input type="number" placeholder="123 456">
-                        </div>
-                    </div>
-                </div>
+  <!-- ================= CHECKOUT CONTENT ================= -->
+  <main class="checkout-section">
+    <div class="container checkout-container">
 
-                <div class="column">
-                    <h3 class="title">Payment</h3>
-                    <div class="input-box">
-                        <span>Cards Accepted :</span>
-                        <img src="https://cdn-icons-png.flaticon.com/512/5566/5566931.png" alt="">
-                    </div>
-                    <div class="input-box">
-                        <span>Name On Card :</span>
-                        <input type="text" placeholder="Mrs. Mia Malkan">
-                    </div>
-                    <div class="input-box">
-                        <span>Credit Card Number :</span>
-                        <input type="number" placeholder="1111 2222 3333 4444">
-                    </div>
-                    <div class="input-box">
-                        <span>Exp. Month :</span>
-                        <input type="text" placeholder="August">
-                    </div>
-                
-                    <div class="flex">
-                        <div class="input-box">
-                            <span>Exp. Year :</span>
-                            <input type="number" placeholder="2028">
-                        </div>
-                        <div class="input-box">
-                            <span>CVV :</span>
-                            <input type="number" placeholder="123">
-                        </div>
-                    </div>
+      <!-- Connected Booking Details Banner -->
+      <div class="booking-sync-banner" id="bookingSyncBanner">
+        <div class="sync-info-group">
+          <div class="sync-icon-box">
+            <i class="fas fa-map-location-dot"></i>
+          </div>
+          <div class="sync-details">
+            <h3 id="syncDestTitle">Shore Temple Mahabalipuram</h3>
+            <p>
+              <span id="syncDistrict"><i class="fas fa-map-marker-alt"></i> Chengalpattu District</span>
+              <span id="syncDate"><i class="fas fa-calendar-day"></i> Tomorrow</span>
+              <span id="syncGuests"><i class="fas fa-users"></i> 2 Guests</span>
+              <span id="syncExp"><i class="fas fa-route"></i> Guided Heritage Darshan</span>
+            </p>
+          </div>
+        </div>
+        <a href="../bookings.html" class="btn-edit-booking">
+          <i class="fas fa-pen"></i> Change Booking
+        </a>
+      </div>
+
+      <!-- Checkout 2-Column Grid -->
+      <div class="checkout-grid">
+
+        <!-- Column 1: Payment Method & Details -->
+        <div class="checkout-card">
+          <h2 class="card-heading">
+            <i class="fas fa-credit-card"></i> Select Payment Method
+          </h2>
+
+          <!-- Payment Tabs -->
+          <div class="payment-tabs">
+            <button class="pay-tab-btn active" onclick="switchPayTab('upi')">
+              <i class="fas fa-qrcode"></i> UPI & QR Code
+            </button>
+            <button class="pay-tab-btn" onclick="switchPayTab('card')">
+              <i class="fas fa-credit-card"></i> Credit / Debit Card
+            </button>
+            <button class="pay-tab-btn" onclick="switchPayTab('netbanking')">
+              <i class="fas fa-building-columns"></i> Net Banking
+            </button>
+          </div>
+
+          <!-- TAB 1: UPI & QR (Recommended) -->
+          <div class="pay-panel active" id="tab-upi">
+            <div class="upi-box">
+              <div class="upi-qr-wrapper">
+                <i class="fas fa-qrcode"></i>
+              </div>
+              <div class="upi-apps-row">
+                <span>Google Pay</span> &bull; <span>PhonePe</span> &bull; <span>Paytm</span> &bull; <span>BHIM</span>
+              </div>
+              <p style="font-size: 1.25rem; color: #64748B;">Scan this QR code with any UPI app to pay instantly</p>
+            </div>
+
+            <div class="input-group">
+              <label for="upiId"><i class="fas fa-at"></i> Or Enter Your Virtual Payment Address (UPI ID)</label>
+              <input type="text" id="upiId" placeholder="e.g. mobileNumber@upi or name@okaxis">
+            </div>
+          </div>
+
+          <!-- TAB 2: CREDIT / DEBIT CARDS -->
+          <div class="pay-panel" id="tab-card">
+            <div class="input-group">
+              <label for="cardName"><i class="fas fa-user"></i> Name on Card</label>
+              <input type="text" id="cardName" placeholder="e.g. Mia Malkan">
+            </div>
+
+            <div class="input-group">
+              <label for="cardNumber"><i class="fas fa-credit-card"></i> Card Number</label>
+              <input type="text" id="cardNumber" placeholder="4111 2222 3333 4444" maxlength="19">
+            </div>
+
+            <div class="input-row">
+              <div class="input-group">
+                <label for="cardExp"><i class="fas fa-calendar-alt"></i> Expiry (MM/YY)</label>
+                <input type="text" id="cardExp" placeholder="08/28" maxlength="5">
+              </div>
+              <div class="input-group">
+                <label for="cardCvv"><i class="fas fa-lock"></i> CVV</label>
+                <input type="password" id="cardCvv" placeholder="123" maxlength="3">
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 3: NET BANKING -->
+          <div class="pay-panel" id="tab-netbanking">
+            <div class="input-group">
+              <label for="bankSelect"><i class="fas fa-building-columns"></i> Select Your Bank</label>
+              <select id="bankSelect">
+                <option value="sbi">State Bank of India (SBI)</option>
+                <option value="hdfc">HDFC Bank</option>
+                <option value="icici">ICICI Bank</option>
+                <option value="canara">Canara Bank</option>
+                <option value="indian">Indian Bank</option>
+                <option value="axis">Axis Bank</option>
+                <option value="other">Other Indian Bank (NetBanking / NEFT)</option>
+              </select>
+            </div>
+            <p style="font-size: 1.25rem; color: #64748B; margin-top: 10px;">
+              You will be redirected securely to your bank portal to authenticate your transaction.
+            </p>
+          </div>
+
+          <!-- Billing Information -->
+          <h2 class="card-heading" style="margin-top: 30px;">
+            <i class="fas fa-address-card"></i> Billing Details
+          </h2>
+
+          <div class="input-row">
+            <div class="input-group">
+              <label for="billName">Lead Traveler Name</label>
+              <input type="text" id="billName" placeholder="Full Name" required>
+            </div>
+            <div class="input-group">
+              <label for="billEmail">Email Address</label>
+              <input type="email" id="billEmail" placeholder="name@example.com" required>
+            </div>
+          </div>
+
+          <div class="input-row">
+            <div class="input-group">
+              <label for="billPhone">Contact Mobile (+91)</label>
+              <input type="tel" id="billPhone" placeholder="+91 98765 43210" required>
+            </div>
+            <div class="input-group">
+              <label for="billState">State / Region</label>
+              <select id="billState">
+                <option value="Tamil Nadu" selected>Tamil Nadu</option>
+                <option value="Karnataka">Karnataka</option>
+                <option value="Kerala">Kerala</option>
+                <option value="Andhra Pradesh">Andhra Pradesh</option>
+                <option value="Maharashtra">Maharashtra</option>
+                <option value="Delhi">Delhi NCR</option>
+                <option value="Other">Other State / International</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Column 2: Order & Price Breakdown -->
+        <aside class="summary-card">
+          <h3 class="summary-title">
+            <i class="fas fa-receipt"></i> Booking Summary
+          </h3>
+
+          <div class="summary-rows">
+            <div class="sum-item">
+              <span class="sum-label">Destination:</span>
+              <span class="sum-val" id="sumDestText">Shore Temple</span>
+            </div>
+            <div class="sum-item">
+              <span class="sum-label">Travel District:</span>
+              <span class="sum-val" id="sumDistText">Chengalpattu</span>
+            </div>
+            <div class="sum-item">
+              <span class="sum-label">Party Size:</span>
+              <span class="sum-val" id="sumPartyText">2 Guests</span>
+            </div>
+            <div class="sum-item">
+              <span class="sum-label">Visit Date:</span>
+              <span class="sum-val" id="sumDateText">Tomorrow</span>
+            </div>
+
+            <div class="sum-divider"></div>
+
+            <div class="sum-item">
+              <span class="sum-label">Heritage Entry & Pass:</span>
+              <span class="sum-val" id="sumBaseFare">₹ 1,000.00</span>
+            </div>
+            <div class="sum-item">
+              <span class="sum-label">Guide & Add-ons:</span>
+              <span class="sum-val" id="sumAddonsFare">₹ 0.00</span>
+            </div>
+            <div class="sum-item">
+              <span class="sum-label">GST & Heritage Cess (5%):</span>
+              <span class="sum-val" id="sumGstFare">₹ 50.00</span>
+            </div>
+
+            <div class="sum-divider"></div>
+
+            <div class="sum-total-row">
+              <span class="total-label">Total Payable:</span>
+              <span class="total-val" id="sumTotalPayable">₹ 1,050.00</span>
+            </div>
+          </div>
+
+          <div class="perks-box">
+            <div class="perk-item"><i class="fas fa-check-circle"></i> Instant Sancharam QR Entry Pass</div>
+            <div class="perk-item"><i class="fas fa-shield-alt"></i> 100% Free Cancellation (up to 24h prior)</div>
+            <div class="perk-item"><i class="fas fa-headset"></i> 24/7 Helpline & SOS Coverage</div>
+          </div>
+
+          <button type="button" id="btnPayNow" class="btn-pay-now" onclick="processPayment()">
+            <i class="fas fa-lock"></i> Pay <span id="btnPayAmount">₹ 1,050.00</span> & Confirm
+          </button>
+
+          <div class="trust-gateway-text">
+            <i class="fas fa-lock"></i> RBI Certified 256-Bit SSL Encrypted Gateway
+          </div>
+        </aside>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- ================= PAYMENT SUCCESS PASS MODAL ================= -->
+  <div class="pass-modal" id="successModal">
+    <div class="pass-card">
+      <div class="pass-header">
+        <div class="pass-badge"><i class="fas fa-check"></i> PAYMENT SUCCESSFUL & VERIFIED</div>
+        <h2>Sancharam Digital Travel Pass</h2>
+        <div class="pass-ref-code" id="modalPassId">PASS ID: SNCH-TN-84920</div>
+      </div>
+      <div class="pass-body">
+        <table class="pass-table">
+          <tr>
+            <td class="label">Lead Traveler:</td>
+            <td class="value" id="modalName">Arjun Ravi</td>
+          </tr>
+          <tr>
+            <td class="label">Destination:</td>
+            <td class="value" id="modalDest">Shore Temple Mahabalipuram</td>
+          </tr>
+          <tr>
+            <td class="label">District:</td>
+            <td class="value" id="modalDist">Chengalpattu District</td>
+          </tr>
+          <tr>
+            <td class="label">Travel Date:</td>
+            <td class="value" id="modalDate">Tomorrow</td>
+          </tr>
+          <tr>
+            <td class="label">Party Size:</td>
+            <td class="value" id="modalGuests">2 Guests</td>
+          </tr>
+          <tr>
+            <td class="label">Amount Paid:</td>
+            <td class="value" style="color: #16A34A; font-weight:800;" id="modalAmount">₹ 1,050.00 (Paid via UPI)</td>
+          </tr>
+          <tr>
+            <td class="label">Transaction Ref:</td>
+            <td class="value" id="modalTxnId" style="font-family: monospace;">TXN-TN-984210</td>
+          </tr>
+        </table>
+
+        <div class="pass-qr-box">
+          <i class="fas fa-qrcode"></i>
+          <div>
+            <h5 style="font-size: 1.4rem; font-weight: 800; color: #0F172A; margin-bottom: 3px;">Verified Entry Pass</h5>
+            <p style="font-size: 1.25rem; color: #64748B;">Show this QR token at the monument gate or to your certified guide for contactless verification.</p>
+          </div>
+        </div>
+
+        <div class="pass-actions">
+          <button class="btn-pass-action btn-pass-primary" onclick="window.print()">
+            <i class="fas fa-print"></i> Print / Save Pass PDF
+          </button>
+          <a href="../explore.html" class="btn-pass-action btn-pass-outline">
+            <i class="fas fa-compass"></i> Explore More Sites
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="site-footer">
+    <div class="container">
+        <div class="footer-top">
+            <div class="footer-brand">
+                <img src="../../assets/logos/logo-transparent.png" alt="Sancharam Logo" class="brand-logo" onerror="this.src='../../assets/logos/logo.png'">
+                <p>Sancharam is your smart travel companion dedicated to celebrating the living heritage, natural wonders, and vibrant spirit of Tamil Nadu.</p>
+                <div class="social-links">
+                    <a href="#" class="social-btn" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-btn" title="Twitter"><i class="fab fa-x-twitter"></i></a>
+                    <a href="#" class="social-btn" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-btn" title="YouTube"><i class="fab fa-youtube"></i></a>
                 </div>
             </div>
-            <div class="total-price">
-                <h3>Total Amount :</h3>
-                <span>₹100.00</span>    
-            </div>      
-            <button type="submit" class="btn" onclick="alert('Booking Completed Successfully!');">Submit</button>
-        </form>
-    </div>
 
+            <div class="footer-col">
+                <h4>Smart Features</h4>
+                <ul class="footer-links">
+                    <li><a href="AI itinenary.html">AI Itinerary Planner</a></li>
+                    <li><a href="routing.html">Scenic Routes</a></li>
+                    <li><a href="sos.html">Safety & SOS Helpline</a></li>
+                    <li><a href="expenses.html">Expense Calculator</a></li>
+                    <li><a href="pages/features/checklist.html">Travel Checklist</a></li>
+                </ul>
+            </div>
 
-<footer class="footer">
-        <div class="social-media-links">
-            <i class="fab fa-facebook fa-4x"></i>
-            <i class="fab fa-twitter fa-4x"></i>
-            <i class="fab fa-instagram fa-4x"></i>
+            <div class="footer-col">
+                <h4>Cultural Pride</h4>
+                <p style="font-size: 1.4rem; color: #FCD34D; font-weight: 700; margin-bottom: 0.8rem;">வாழ்க தமிழ் வளர்க தமிழ் பண்பாடு</p>
+                <p style="font-size: 1.3rem; color: rgba(255,255,255,0.7); line-height: 1.6;">Dedicated to travelers who cherish art, architecture, literature, and warm Tamil hospitality.</p>
+            </div>
         </div>
-        <p>Sancharam &copy; 2025, All Rights Reserved</p>
-    </footer>
-</body>
 
+        <div class="footer-bottom">
+            <p>&copy; 2026 Sancharam. All Rights Reserved. Crafted with love for தமிழ்நாடு.</p>
+            <div class="footer-bottom-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Security</a>
+            </div>
+        </div>
+    </div>
+  </footer>
+
+  <script src="../../assets/js/sancharam-theme.js"></script>
+  <script>
+    // ==========================================================================
+    // SANCHARAM CONNECTED PAYMENT & PASS LOGIC
+    // Reads booking query params or sessionStorage from Bookings Page
+    // ==========================================================================
+
+    const destinationTitles = {
+      'mahabalipuram': 'Shore Temple Mahabalipuram',
+      'chennai': 'San Thome Basilica & Marina',
+      'rameshwaram': 'Ramanathaswamy Temple Rameswaram',
+      'madurai': 'Meenakshi Sundareswarar Temple',
+      'nilgiris': 'Ooty & Nilgiri Mountain Toy Train',
+      'kanyakumari': 'Thiruvalluvar Statue & Memorial',
+      'sivaganga': 'Chettinad Palatial Mansions',
+      'dharmapuri': 'Hogenakkal River Waterfalls',
+      'dhanushkodi': 'Dhanushkodi Land’s End & Pamban',
+      'nagapattinam': 'Velankanni Marian Basilica',
+      'thanjavur': 'Brihadeeswarar Periya Kovil',
+      'thiruchendur': 'Thiruchendur Murugan Kovil',
+      'custom': 'Custom Tamil Nadu Landmark Tour'
+    };
+
+    let totalAmount = 1050;
+    let currentBooking = {};
+
+    function switchPayTab(tabName) {
+      document.querySelectorAll('.pay-tab-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.pay-panel').forEach(panel => panel.classList.remove('active'));
+
+      event.currentTarget.classList.add('active');
+      document.getElementById(`tab-${tabName}`).classList.add('active');
+    }
+
+    // Auto-Populate from URL parameters or sessionStorage
+    window.addEventListener('DOMContentLoaded', () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const sessionData = sessionStorage.getItem('sancharam_active_booking');
+      let data = {};
+
+      if (sessionData) {
+        try { data = JSON.parse(sessionData); } catch(e){}
+      }
+
+      // Query params take priority
+      const name = urlParams.get('name') || data.name || 'Arjun Ravi';
+      const email = urlParams.get('email') || data.email || 'traveler@sancharam.in';
+      const phone = urlParams.get('phone') || data.phone || '+91 98765 43210';
+      const destKey = (urlParams.get('dest') || data.dest || 'mahabalipuram').toLowerCase();
+      const district = urlParams.get('district') || data.district || 'Chengalpattu';
+      const date = urlParams.get('date') || data.date || '';
+      const guests = parseInt(urlParams.get('guests') || data.guests || '2');
+      const exp = urlParams.get('exp') || data.exp || 'Guided Heritage Darshan';
+      const hasGuide = urlParams.get('guide') === '1' || data.guide === true;
+      const hasPriority = urlParams.get('priority') === '1' || data.priority === true;
+      const hasTransport = urlParams.get('transport') === '1' || data.transport === true;
+
+      const destTitle = destinationTitles[destKey] || (destKey.charAt(0).toUpperCase() + destKey.slice(1));
+      const distName = district.charAt(0).toUpperCase() + district.slice(1);
+
+      currentBooking = {
+        name, email, phone, destTitle, distName, date, guests, exp, hasGuide, hasPriority, hasTransport
+      };
+
+      // Populate Banner & Bill Inputs
+      document.getElementById('syncDestTitle').innerText = destTitle;
+      document.getElementById('syncDistrict').innerHTML = `<i class="fas fa-map-marker-alt"></i> ${distName} District`;
+      document.getElementById('syncDate').innerHTML = `<i class="fas fa-calendar-day"></i> ${date ? new Date(date).toLocaleDateString('en-IN', {month:'short', day:'numeric', year:'numeric'}) : 'Tomorrow'}`;
+      document.getElementById('syncGuests').innerHTML = `<i class="fas fa-users"></i> ${guests} Guest${guests > 1 ? 's' : ''}`;
+      document.getElementById('syncExp').innerHTML = `<i class="fas fa-route"></i> ${exp.length > 25 ? exp.substring(0, 22) + '...' : exp}`;
+
+      document.getElementById('billName').value = name;
+      document.getElementById('billEmail').value = email;
+      document.getElementById('billPhone').value = phone;
+
+      // Populate Summary
+      document.getElementById('sumDestText').innerText = destTitle.length > 20 ? destTitle.substring(0, 18) + '...' : destTitle;
+      document.getElementById('sumDistText').innerText = distName;
+      document.getElementById('sumPartyText').innerText = `${guests} Guest${guests > 1 ? 's' : ''}`;
+      document.getElementById('sumDateText').innerText = date ? new Date(date).toLocaleDateString('en-IN', {month:'short', day:'numeric'}) : 'Tomorrow';
+
+      // Fare Calculation
+      const baseFare = guests * 500;
+      let addonFare = 0;
+      if (hasGuide) addonFare += 350;
+      if (hasPriority) addonFare += (guests * 100);
+      if (hasTransport) addonFare += 400;
+
+      const subtotal = baseFare + addonFare;
+      const gst = Math.round(subtotal * 0.05);
+      totalAmount = subtotal + gst;
+
+      document.getElementById('sumBaseFare').innerText = `₹ ${baseFare.toLocaleString('en-IN')}.00`;
+      document.getElementById('sumAddonsFare').innerText = `₹ ${addonFare.toLocaleString('en-IN')}.00`;
+      document.getElementById('sumGstFare').innerText = `₹ ${gst.toLocaleString('en-IN')}.00`;
+      document.getElementById('sumTotalPayable').innerText = `₹ ${totalAmount.toLocaleString('en-IN')}.00`;
+      document.getElementById('btnPayAmount').innerText = `₹ ${totalAmount.toLocaleString('en-IN')}.00`;
+    });
+
+    // Process Payment
+    function processPayment() {
+      const btn = document.getElementById('btnPayNow');
+      btn.innerHTML = `<i class="fas fa-circle-notch fa-spin"></i> Processing Secure Payment...`;
+      btn.disabled = true;
+
+      setTimeout(() => {
+        btn.innerHTML = `<i class="fas fa-check"></i> Payment Completed!`;
+        btn.style.background = '#16A34A';
+
+        // Populate Modal
+        const randPass = Math.floor(10000 + Math.random() * 90000);
+        const randTxn = Math.floor(100000 + Math.random() * 900000);
+
+        document.getElementById('modalPassId').innerText = `PASS ID: SNCH-TN-${randPass}`;
+        document.getElementById('modalTxnId').innerText = `TXN-TN-${randTxn}`;
+
+        // Save confirmed trip to sancharam_user_bookings for Profile display
+        try {
+          const confirmedTrip = {
+            id: `SNCH-TN-${randPass}`,
+            txnId: `TXN-TN-${randTxn}`,
+            destTitle: currentBooking.destTitle,
+            distName: `${currentBooking.distName} District`,
+            date: currentBooking.date,
+            time: currentBooking.time,
+            guests: currentBooking.guests,
+            exp: currentBooking.exp,
+            amount: totalAmount,
+            status: 'Confirmed Pass',
+            bookedAt: new Date().toISOString()
+          };
+          const allTrips = JSON.parse(localStorage.getItem('sancharam_user_bookings') || '[]');
+          allTrips.unshift(confirmedTrip);
+          localStorage.setItem('sancharam_user_bookings', JSON.stringify(allTrips));
+        } catch(e) {}
+        document.getElementById('modalName').innerText = document.getElementById('billName').value || currentBooking.name;
+        document.getElementById('modalDest').innerText = currentBooking.destTitle;
+        document.getElementById('modalDist').innerText = `${currentBooking.distName} District`;
+        document.getElementById('modalDate').innerText = currentBooking.date ? new Date(currentBooking.date).toLocaleDateString('en-IN', {month:'short', day:'numeric', year:'numeric'}) : 'Tomorrow';
+        document.getElementById('modalGuests').innerText = `${currentBooking.guests} Traveler${currentBooking.guests > 1 ? 's' : ''}`;
+        document.getElementById('modalAmount').innerText = `₹ ${totalAmount.toLocaleString('en-IN')}.00 (Paid & Verified)`;
+
+        // Show Modal
+        document.getElementById('successModal').classList.add('active');
+      }, 1200);
+    }
+  </script>
+</body>
 </html>

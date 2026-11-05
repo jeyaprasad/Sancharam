@@ -1,123 +1,262 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Payment- Sancharam</title>
-    <link rel="stylesheet" href="../assets/css/stylepay.css">
-
-<!-- Global Nav/Footer CSS injected -->
-<style id="global-nav-footer">
-    .navbar { font-family: 'Montserrat', sans-serif; }
-    .navbar .container { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 0 1rem; }
-    .navbar.bg-dark { background-color: #000000; }
-    .navbar .logo { float: left; padding-top: 6px; }
-    .navbar .nav-items { list-style: none; margin: 0; padding: 0; display: flex; align-items: center; }
-    .navbar .nav-item { display: inline-block; padding: 1.5rem; text-transform: uppercase; }
-    .navbar a { color: aliceblue; text-decoration: none; font-size: 1.6rem; font-weight: bold; }
-    .navbar a:hover { border-bottom: 1px solid #FFF; }
-    .navbar::after { content: ''; display: block; clear: both; }
-    .footer { font-size: 1rem; padding: 1rem; background: #263238; color: #f4f4f4; margin-top: auto; text-align: center; width: 100%; font-family: 'Montserrat', sans-serif; }
-    .footer .social-media-links i { padding: 1.5rem; margin-bottom: 1rem; font-size: 4rem; color: #f4f4f4; }
-    @media (max-width: 768px) {
-        .navbar .container { flex-direction: column; }
-        .navbar .nav-items { flex-direction: column; width: 100%; text-align: center; }
-    }
-</style>
-<script src="https://kit.fontawesome.com/7f257b9379.js" crossorigin="anonymous"></script>
-
+    <title>Payment - Sancharam</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/sancharam-theme.css">
+    <style>
+        .payment-section {
+            padding: 100px 0 50px;
+        }
+        .payment-card {
+            max-width: 850px;
+            margin: 0 auto;
+            background: #FFFFFF;
+            border-radius: 20px;
+            padding: 35px;
+            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.05);
+            border: 1px solid #E2E8F0;
+        }
+        .payment-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 35px;
+        }
+        .column .title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #0F172A;
+            margin-bottom: 20px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #FFE3E3;
+        }
+        .input-box {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 15px;
+        }
+        .input-box span {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #1E293B;
+            margin-bottom: 6px;
+        }
+        .input-box input {
+            padding: 11px 14px;
+            border-radius: 10px;
+            border: 1px solid #CBD5E1;
+            font-size: 1.5rem;
+            font-family: inherit;
+            box-sizing: border-box;
+            background: #FFFFFF;
+        }
+        .flex {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        .total-price {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #F8FAFC;
+            padding: 18px 24px;
+            border-radius: 12px;
+            border: 1px solid #E2E8F0;
+            margin-top: 25px;
+        }
+        .total-price h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #1E293B;
+            margin: 0;
+        }
+        .total-price span {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #E63946;
+        }
+        .btn-submit {
+            width: 100%;
+            margin-top: 25px;
+            padding: 14px;
+            background: linear-gradient(135deg, #E63946 0%, #C1121F 100%);
+            color: white;
+            font-size: 1.6rem;
+            font-weight: 700;
+            border: none;
+            border-radius: 9999px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 18px rgba(230, 57, 70, 0.35);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(230, 57, 70, 0.55);
+        }
+        @media(max-width: 768px) {
+            .payment-grid { grid-template-columns: 1fr; }
+            .payment-card { padding: 25px; }
+        }
+    </style>
 </head>
-
 <body>
-<nav class="navbar bg-dark">
-    <div class="container">
-        <img src="../assets/logos/logo.png" alt="Sancharam Logo" class="logo" style="width: 300px; height: 80px;">
-        <ul class="nav-items">
-            <li class="nav-item"><a href="../home.html">Home</a></li>
-            <li class="nav-item"><a href="../pages/about.html">About</a></li>
-            <li class="nav-item"><a href="../pages/explore.html">Explore</a></li>
-            <li class="nav-item"><a href="../pages/bookings.html">Bookings</a></li>
-            <li class="nav-item"><a href="../pages/features.html">Features</a></li>
-            <li class="nav-item"><a href="../pages/profile.html">Profile</a></li>
-        </ul>
-    </div>
-</nav>
+    <!-- ================= NAVBAR ================= -->
+    <nav class="navbar" id="main-nav">
+        <div class="container nav-wrapper">
+            <a href="../home.html" class="brand" title="Sancharam">
+                <img src="../assets/logos/logo-transparent.png" alt="Sancharam Logo" class="brand-logo" onerror="this.src='../assets/logos/logo.png'">
+            </a>
 
-    <div class="container">
-        <form action="">
-            <div class="row">
-                <div class="column">
-                    <h3 class="title">Billing Address</h3>
-                    <div class="input-box">
-                        <span>Full Name :</span>
-                        <input type="text" placeholder="Mia Malkan">
-                    </div>
-                    <div class="input-box">
-                        <span>Email :</span>
-                        <input type="email" placeholder="example@example.com">
-                    </div>
-                    <div class="input-box">
-                        <span>Address :</span>
-                        <input type="text" placeholder="Room - Street - Locality">
-                    </div>
-                    <div class="input-box">
-                        <span>City :</span>
-                        <input type="text" placeholder="California">
+            <ul class="nav-links">
+                <li><a href="../home.html" class="nav-link">Home</a></li>
+                <li><a href="explore.html" class="nav-link">Explore</a></li>
+                <li><a href="bookings.html" class="nav-link active">Bookings</a></li>
+                <li><a href="features.html" class="nav-link">Features</a></li>
+                <li><a href="profile.html" class="nav-link">Profile</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <a href="features/AI itinenary.html" class="btn-nav-ai">
+                    <i class="fas fa-wand-magic-sparkles"></i>
+                    <span>Plan with AI</span>
+                </a>
+            </div>
+
+            <button class="mobile-toggle" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Payment Section (Exact Original Content) -->
+    <section class="payment-section">
+        <div class="container">
+            <div class="payment-card">
+                <form action="" onsubmit="alert('Booking Completed Successfully!'); return false;">
+                    <div class="payment-grid">
+                        <div class="column">
+                            <h3 class="title">Billing Address</h3>
+                            <div class="input-box">
+                                <span>Full Name :</span>
+                                <input type="text" placeholder="Mia Malkan" required>
+                            </div>
+                            <div class="input-box">
+                                <span>Email :</span>
+                                <input type="email" placeholder="example@example.com" required>
+                            </div>
+                            <div class="input-box">
+                                <span>Address :</span>
+                                <input type="text" placeholder="Room - Street - Locality" required>
+                            </div>
+                            <div class="input-box">
+                                <span>City :</span>
+                                <input type="text" placeholder="California" required>
+                            </div>
+
+                            <div class="flex">
+                                <div class="input-box">
+                                    <span>State :</span>
+                                    <input type="text" placeholder="USA" required>
+                                </div>
+                                <div class="input-box">
+                                    <span>Zip Code :</span>
+                                    <input type="number" placeholder="123 456" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="column">
+                            <h3 class="title">Payment</h3>
+                            <div class="input-box">
+                                <span>Cards Accepted :</span>
+                                <img src="https://cdn-icons-png.flaticon.com/512/5566/5566931.png" alt="Cards Accepted" style="height: 35px; width: auto; object-fit: contain;">
+                            </div>
+                            <div class="input-box">
+                                <span>Name On Card :</span>
+                                <input type="text" placeholder="Mrs. Mia Malkan" required>
+                            </div>
+                            <div class="input-box">
+                                <span>Credit Card Number :</span>
+                                <input type="number" placeholder="1111 2222 3333 4444" required>
+                            </div>
+                            <div class="input-box">
+                                <span>Exp. Month :</span>
+                                <input type="text" placeholder="August" required>
+                            </div>
+                        
+                            <div class="flex">
+                                <div class="input-box">
+                                    <span>Exp. Year :</span>
+                                    <input type="number" placeholder="2028" required>
+                                </div>
+                                <div class="input-box">
+                                    <span>CVV :</span>
+                                    <input type="number" placeholder="123" required>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="flex">
-                        <div class="input-box">
-                            <span>State :</span>
-                            <input type="text" placeholder="USA">
-                        </div>
-                        <div class="input-box">
-                            <span>Zip Code :</span>
-                            <input type="number" placeholder="123 456">
-                        </div>
+                    <div class="total-price">
+                        <h3>Total Amount :</h3>
+                        <span>₹100.00</span>    
+                    </div>      
+                    <button type="submit" class="btn-submit">Submit</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <img src="../assets/logos/logo-transparent.png" alt="Sancharam Logo" class="brand-logo" onerror="this.src='../assets/logos/logo.png'">
+                    <p>Sancharam is your smart travel companion dedicated to celebrating the living heritage, natural wonders, and vibrant spirit of Tamil Nadu.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-btn" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-btn" title="Twitter"><i class="fab fa-x-twitter"></i></a>
+                        <a href="#" class="social-btn" title="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-btn" title="YouTube"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
 
-                <div class="column">
-                    <h3 class="title">Payment</h3>
-                    <div class="input-box">
-                        <span>Cards Accepted :</span>
-                        <img src="https://cdn-icons-png.flaticon.com/512/5566/5566931.png" alt="">
-                    </div>
-                    <div class="input-box">
-                        <span>Name On Card :</span>
-                        <input type="text" placeholder="Mrs. Mia Malkan">
-                    </div>
-                    <div class="input-box">
-                        <span>Credit Card Number :</span>
-                        <input type="number" placeholder="1111 2222 3333 4444">
-                    </div>
-                    <div class="input-box">
-                        <span>Exp. Month :</span>
-                        <input type="text" placeholder="August">
-                    </div>
-                
-                    <div class="flex">
-                        <div class="input-box">
-                            <span>Exp. Year :</span>
-                            <input type="number" placeholder="2028">
-                        </div>
-                        <div class="input-box">
-                            <span>CVV :</span>
-                            <input type="number" placeholder="123">
-                        </div>
-                    </div>
+                <div class="footer-col">
+                    <h4>Smart Features</h4>
+                    <ul class="footer-links">
+                        <li><a href="features/AI itinenary.html">AI Itinerary Planner</a></li>
+                        <li><a href="features/routing.html">Scenic Routes</a></li>
+                        <li><a href="features/sos.html">Safety & SOS Helpline</a></li>
+                        <li><a href="features/expenses.html">Expense Calculator</a></li>
+                        <li><a href="features/checklist.html">Travel Checklist</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Cultural Pride</h4>
+                    <p style="font-size: 1.4rem; color: #FCD34D; font-weight: 700; margin-bottom: 0.8rem;">வாழ்க தமிழ் வளர்க தமிழ்</p>
+                    <p style="font-size: 1.3rem; color: rgba(255,255,255,0.7); line-height: 1.6;">Dedicated to travelers who cherish art, architecture, literature, and warm Tamil hospitality.</p>
                 </div>
             </div>
-            <div class="total-price">
-                <h3>Total Amount :</h3>
-                <span>₹100.00</span>    
-            </div>      
-            <button type="submit" class="btn" onclick="alert('Booking Completed Successfully!');">Submit</button>
-        </form>
-    </div>
 
+            <div class="footer-bottom">
+                <p>&copy; 2025 Sancharam. All Rights Reserved. Crafted with love for தமிழ்நாடு.</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="contact.html">Support</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../assets/js/sancharam-theme.js"></script>
 </body>
-
 </html>

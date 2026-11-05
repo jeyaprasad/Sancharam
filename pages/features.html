@@ -3,269 +3,707 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Features</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-ZhCNL5s0z3BrHdQ2mEaIik7sKChlguB2MNyAS+zyPpPRw4wTk6B0HRH+1kW+G8Ug1aX9G4m2Rcvzn+z/FJww6g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>Smart Travel Features | Sancharam</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+  <link rel="stylesheet" href="../assets/css/sancharam-theme.css">
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+    /* ==========================================================================
+       SANCHARAM FEATURES HUB - REVAMPED MODERN SUITE
+       Unified Theme, Card Symmetry, and Interactive Utility Tools
+       ========================================================================== */
+
+    .features-hero {
+      padding: 120px 0 35px;
+      text-align: center;
+      background: radial-gradient(circle at 50% 20%, rgba(230, 57, 70, 0.05) 0%, rgba(248, 250, 252, 0) 70%);
     }
-    body {
-      font-family: 'Montserrat', sans-serif;
-      background: url('assets/images/bg.jpg') no-repeat center center fixed; /* <-- Put your image here */
-      background-size: cover;
-      color: #333;
-      min-height: 100vh;
-    }
-    header {
-      background-color: rgba(0, 0, 0, 0.8);
-      color: white;
-      padding: 0 60px;
-      display: flex;
+    .features-eyebrow {
+      display: inline-flex;
       align-items: center;
-      justify-content: space-between;
-      height: 80px;
+      gap: 8px;
+      padding: 6px 16px;
+      background: #FFE3E3;
+      color: #E63946;
+      border-radius: 9999px;
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
     }
-    .logo img {
-      height: 70px;
-      width: 300px;
+    .features-hero h1 {
+      font-size: 3.8rem;
+      font-weight: 800;
+      color: #0F172A;
+      margin-bottom: 12px;
+      line-height: 1.2;
     }
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin-left: 1.5rem;
-      font-weight: 600;
+    .features-hero h1 span {
+      background: linear-gradient(135deg, #E63946 0%, #B91C1C 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
-    nav a:hover {
-      color: #ff5c6f;
+    .features-hero p {
+      font-size: 1.65rem;
+      color: #475569;
+      max-width: 780px;
+      margin: 0 auto;
+      line-height: 1.6;
     }
-    .section-header {
-      max-width: 1400px;
-      margin: 2rem auto 1rem auto;
-      padding: 0 1rem;
-      text-align: left;
+
+    /* Features Grid */
+    .features-main-wrap {
+      padding: 0 0 80px;
     }
-    .section-header h1 {
-      font-size: 2.3rem;
-      color: #fff;
-      text-shadow: 2px 2px 6px rgba(0,0,0,0.5);
-      margin-bottom: 0.8rem;
-    }
-    .section-header .red-line {
-      border: none;
-      height: 5px;
-      background-color: #ff5c70;
-      width: 1300px;
-      margin-left: 0;
-    }
-    .container {
+    .features-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.25rem;
-      max-width: 1200px;
-      margin: 2rem auto;
-      padding: 1rem;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 28px;
     }
-    .feature {
-      background-color: rgba(255,255,255,0.9);
-      padding: 1.5rem;
-      border-radius: 16px;
-      box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+
+    /* Feature Card Base */
+    .feature-card {
+      background: #FFFFFF;
+      border-radius: 20px;
+      border: 1px solid #E2E8F0;
+      box-shadow: 0 4px 20px rgba(15, 23, 42, 0.04);
+      padding: 30px 28px;
       display: flex;
       flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      font-size: 1rem;
-      min-height: 300px;
-      transition: transform 0.3s ease, background-color 0.3s ease;
-    }
-    .feature:hover {
-      transform: translateY(-5px);
-      background-color: rgba(255, 245, 245, 0.95);
-    }
-    .feature h2 {
-      color: #0077cc;
-      font-size: 1.2rem;
-      margin-bottom: 0.75rem;
-    }
-    .feature i {
-      font-size: 2rem;
-      margin-bottom: 0.5rem;
-      color: #ff5c70;
-    }
-    .feature input, .feature select, .feature button {
-      margin: 0.25rem 0;
-      padding: 0.5rem;
-      font-size: 0.95rem;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      width: 100%;
-      max-width: 200px;
-    }
-    .feature button {
-      background-color: #0077cc;
-      color: white;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-    .feature button:hover {
-      background-color: #005fa3;
-    }
-    .feature-link {
+      justify-content: space-between;
+      position: relative;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
       text-decoration: none;
       color: inherit;
     }
-    
-    .social-media-links {
-        display: flex;
-        justify-content: center;
-        gap: 30px;
-        margin-bottom: 1rem;
+    .feature-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 36px rgba(230, 57, 70, 0.1);
+      border-color: rgba(230, 57, 70, 0.3);
     }
-    .social-media-links i {
-        font-size: 2rem;
-        color: white;
-        transition: transform 0.3s ease;
-    }
-    .social-media-links i:hover {
-        transform: scale(1.1);
-        color: #ff5c70;
-    }
-  
-  /* Uniform Footer CSS */
-  
-  .footer .social-media-links { text-align: center; margin: 0; padding: 0; }
-  
-  .footer p { margin: 0; padding-bottom: 10px; font-size: 14px; }
-</style>
 
-<!-- Global Nav/Footer CSS injected -->
-<style id="global-nav-footer">
-    .navbar { font-family: 'Montserrat', sans-serif; }
-    .navbar .container { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 0 1rem; }
-    .navbar.bg-dark { background-color: #000000; }
-    .navbar .logo { float: left; padding-top: 6px; }
-    .navbar .nav-items { list-style: none; margin: 0; padding: 0; display: flex; align-items: center; }
-    .navbar .nav-item { display: inline-block; padding: 1.5rem; text-transform: uppercase; }
-    .navbar a { color: aliceblue; text-decoration: none; font-size: 1.6rem; font-weight: bold; }
-    .navbar a:hover { border-bottom: 1px solid #FFF; }
-    .navbar::after { content: ''; display: block; clear: both; }
+    /* Card Header */
+    .card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+    .card-icon-box {
+      width: 58px;
+      height: 58px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.2rem;
+      color: #FFFFFF;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+      transition: transform 0.3s ease;
+    }
+    .feature-card:hover .card-icon-box {
+      transform: scale(1.08) rotate(3deg);
+    }
+    .icon-coral   { background: linear-gradient(135deg, #E63946 0%, #B91C1C 100%); }
+    .icon-emerald { background: linear-gradient(135deg, #10B981 0%, #047857 100%); }
+    .icon-indigo  { background: linear-gradient(135deg, #6366F1 0%, #4338CA 100%); }
+    .icon-amber   { background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%); }
+    .icon-cyan    { background: linear-gradient(135deg, #06B6D4 0%, #0891B2 100%); }
+    .icon-violet  { background: linear-gradient(135deg, #8B5CF6 0%, #6D28D9 100%); }
+    .icon-rose    { background: linear-gradient(135deg, #F43F5E 0%, #BE123C 100%); }
+    .icon-slate   { background: linear-gradient(135deg, #475569 0%, #1E293B 100%); }
+
+    .card-badge {
+      font-size: 1.15rem;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 9999px;
+      background: #F1F5F9;
+      color: #475569;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+    .card-badge.badge-ai { background: #FFE4E6; color: #E11D48; }
+    .card-badge.badge-sos { background: #FEE2E2; color: #DC2626; }
     
-    
+
+    /* Card Middle Content */
+    .card-content h3 {
+      font-size: 1.9rem;
+      font-weight: 800;
+      color: #0F172A;
+      margin-bottom: 10px;
+      line-height: 1.3;
+    }
+    .card-content p {
+      font-size: 1.4rem;
+      color: #64748B;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    /* Tags */
+    .card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 24px;
+    }
+    .tag-pill {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: #475569;
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      padding: 3px 10px;
+      border-radius: 6px;
+    }
+
+    /* Card Footer / Action */
+    .card-footer {
+      border-top: 1px solid #F1F5F9;
+      padding-top: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .btn-action-text {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #E63946;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: gap 0.2s ease;
+    }
+    .feature-card:hover .btn-action-text {
+      gap: 12px;
+    }
+    .feature-meta-note {
+      font-size: 1.2rem;
+      color: #94A3B8;
+      font-weight: 500;
+    }
+
+    /* Currency Converter Interactive Card Specifics */
+    .converter-card {
+      grid-column: span 1;
+    }
+    .converter-widget {
+      background: #F8FAFC;
+      border-radius: 14px;
+      border: 1px solid #E2E8F0;
+      padding: 16px;
+      margin: 14px 0 16px;
+    }
+    .conv-input-row {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+    .conv-input-row input {
+      flex: 1.2;
+      padding: 10px 12px;
+      border-radius: 10px;
+      border: 1.5px solid #CBD5E1;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #0F172A;
+      outline: none;
+      background: #FFFFFF;
+    }
+    .conv-input-row input:focus {
+      border-color: #E63946;
+      box-shadow: 0 0 0 3px rgba(230, 57, 70, 0.15);
+    }
+    .conv-select-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+    .conv-select-row select {
+      flex: 1;
+      padding: 9px 10px;
+      border-radius: 10px;
+      border: 1.5px solid #CBD5E1;
+      font-size: 1.3rem;
+      font-weight: 600;
+      background: #FFFFFF;
+      color: #0F172A;
+      cursor: pointer;
+    }
+    .conv-arrow {
+      color: #E63946;
+      font-size: 1.4rem;
+      font-weight: 800;
+    }
+    .btn-convert-quick {
+      width: 100%;
+      padding: 10px 14px;
+      background: #E63946;
+      color: #FFFFFF;
+      border: none;
+      border-radius: 10px;
+      font-size: 1.35rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: background 0.2s;
+    }
+    .btn-convert-quick:hover {
+      background: #C5221F;
+    }
+    .conv-result-box {
+      margin-top: 10px;
+      padding: 8px 12px;
+      background: #FFFFFF;
+      border-radius: 8px;
+      border: 1px dashed #CBD5E1;
+      text-align: center;
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: #0F172A;
+      min-height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .conv-result-box span.converted-val {
+      color: #E63946;
+      margin-left: 5px;
+    }
+
+    /* Bottom CTA Banner */
+    .features-cta-banner {
+      background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+      border-radius: 24px;
+      padding: 50px 40px;
+      text-align: center;
+      color: #FFFFFF;
+      margin-top: 50px;
+      position: relative;
+      overflow: hidden;
+    }
+    .features-cta-banner h2 {
+      font-size: 2.8rem;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+    .features-cta-banner p {
+      font-size: 1.55rem;
+      color: #94A3B8;
+      max-width: 650px;
+      margin: 0 auto 28px;
+      line-height: 1.6;
+    }
+    .cta-buttons-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .btn-cta-primary {
+      padding: 14px 28px;
+      border-radius: 12px;
+      background: #E63946;
+      color: #FFFFFF;
+      font-size: 1.45rem;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.25s;
+    }
+    .btn-cta-primary:hover {
+      background: #C5221F;
+      transform: translateY(-2px);
+    }
+    .btn-cta-secondary {
+      padding: 14px 28px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.1);
+      color: #FFFFFF;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      font-size: 1.45rem;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.25s;
+    }
+    .btn-cta-secondary:hover {
+      background: rgba(255, 255, 255, 0.18);
+      transform: translateY(-2px);
+    }
+
     @media (max-width: 768px) {
-        .navbar .container { flex-direction: column; }
-        .navbar .nav-items { flex-direction: column; width: 100%; text-align: center; }
+      .features-hero h1 { font-size: 2.8rem; }
+      .features-grid { grid-template-columns: 1fr; }
+      .features-cta-banner { padding: 35px 20px; }
+      .features-cta-banner h2 { font-size: 2.2rem; }
     }
-</style>
-<script src="https://kit.fontawesome.com/7f257b9379.js" crossorigin="anonymous"></script>
-
+  </style>
 </head>
 <body>
-  <nav class="navbar bg-dark">
-    <div class="container">
-        <img src="../assets/logos/logo.png" alt="Sancharam Logo" class="logo" style="width: 300px; height: 80px;">
-        <ul class="nav-items">
-            <li class="nav-item"><a href="../home.html">Home</a></li>
-            <li class="nav-item"><a href="../pages/about.html">About</a></li>
-            <li class="nav-item"><a href="../pages/explore.html">Explore</a></li>
-            <li class="nav-item"><a href="../pages/bookings.html">Bookings</a></li>
-            <li class="nav-item"><a href="../pages/features.html">Features</a></li>
-            <li class="nav-item"><a href="../pages/profile.html">Profile</a></li>
+
+  <!-- ================= NAVBAR ================= -->
+  <nav class="navbar" id="main-nav">
+    <div class="container nav-wrapper">
+        <a href="../home.html" class="brand" title="Sancharam">
+            <img src="../assets/logos/logo-transparent.png" alt="Sancharam Logo" class="brand-logo" onerror="this.src='../assets/logos/logo.png'">
+        </a>
+
+        <ul class="nav-links">
+            <li><a href="../home.html" class="nav-link">Home</a></li>
+            <li><a href="explore.html" class="nav-link">Explore</a></li>
+            <li><a href="bookings.html" class="nav-link">Bookings</a></li>
+            <li><a href="features.html" class="nav-link active">Features</a></li>
+            <li><a href="profile.html" class="nav-link">Profile</a></li>
         </ul>
+
+        <div class="nav-actions">
+            <a href="features/AI itinenary.html" class="btn-nav-ai">
+                <i class="fas fa-wand-magic-sparkles"></i>
+                <span>Plan with AI</span>
+            </a>
+        </div>
+
+        <button class="mobile-toggle" aria-label="Toggle navigation">
+            <i class="fas fa-bars"></i>
+        </button>
     </div>
-</nav>
+  </nav>
 
-  <div class="section-header">
-    <h1>Features</h1>
-    <hr class="red-line">
-  </div>
-
-  <div class="container">
-    <a class="feature-link" href="features/itinerary.html">
-      <div class="feature">
-        <i class="fas fa-map-marked-alt"></i>
-        <h2>Itinerary Planning</h2>
-        <p>Tailored travel plan for your perfect trip.</p>
+  <!-- ================= HERO SECTION ================= -->
+  <section class="features-hero">
+    <div class="container">
+      <div class="features-eyebrow">
+        <i class="fas fa-microchip"></i> Smart Travel Companion Technology
       </div>
-    </a>
-    <a class="feature-link" href="features/hidden-gems.html">
-      <div class="feature">
-        <i class="fas fa-gem"></i>
-        <h2>Discover Hidden Gems</h2>
-        <p>Discover lesser-known attractions and experiences.</p>
-      </div>
-    </a>
-    <div class="feature">
-      <i class="fas fa-coins"></i>
-      <h2>Currency Converter</h2>
-      <input type="number" id="amount" placeholder="Amount">
+      <h1>Intelligent Features for <span>Tamil Nadu Journeys</span></h1>
+      <p>From scenic coastal road intelligence and offline safety SOS beacons to real-time currency conversion and custom packing checklists—tailored for every traveler across all 38 districts.</p>
 
-      <label for="from">From:</label>
-      <select id="from">
-        <option value="USD">USD</option>
-        <option value="EUR">EUR</option>
-        <option value="INR" selected>INR</option>
-      </select>
-
-      <label for="to">To:</label>
-      <select id="to">
-        <option value="USD">USD</option>
-        <option value="EUR">EUR</option>
-        <option value="INR">INR</option>
-      </select>
-
-      <button onclick="convertCurrency()">Convert</button>
-      <p id="converted"></p>
-      <a href="https://www.xe.com/currencyconverter/" target="_blank">More rates</a>
+      
     </div>
-    <a class="feature-link" href="features/expenses.html">
-      <div class="feature">
-        <i class="fas fa-wallet"></i>
-        <h2>Budget Tracker with Gamification</h2>
-        <p>Real-time budget management tool that tracks expenses and rewards you.</p>
-      </div>
-    </a>
-    <a class="feature-link" href="features/forum.html">
-      <div class="feature">
-        <i class="fas fa-users"></i>
-        <h2>Crowdsourced Tips</h2>
-        <p>Verified recommendations from locals (e.g., secret beaches or eateries).</p>
-      </div>
-    </a>
-    <a class="feature-link" href="features/chatbot.html">
-      <div class="feature">
-        <i class="fas fa-robot"></i>
-        <h2>Voice Chatbot</h2>
-        <p>AI-powered chatbot offering real-time Tamil voice translation.</p>
-      </div>
-    </a>
-    <a class="feature-link" href="features/unknown.html">
-      <div class="feature">
-        <i class="fas fa-question-circle"></i>
-        <h2>UNKNOWN</h2>
-        <p>Need to be Filled.</p>
-      </div>
-    </a>
-    <a class="feature-link" href="features/checklist.html">
-      <div class="feature">
-        <i class="fas fa-check-square"></i>
-        <h2>Travel Checklist</h2>
-        <p>Personalized packing and task lists for smooth trips.</p>
-      </div>
-    </a>
-  </div>
+  </section>
 
-    <!-- Footer -->
-  <footer class="footer">
-      <div class="social-media-links">
-          <i class="fab fa-facebook"></i>
-          <i class="fab fa-twitter"></i>
-          <i class="fab fa-instagram"></i>
+  <!-- ================= MAIN FEATURES GRID ================= -->
+  <main class="features-main-wrap">
+    <div class="container">
+      <div class="features-grid" id="featuresGrid">
+
+        <!-- 1. COMBINED: SMART SCENIC ROUTING & TRAVEL SAFETY -->
+        <a href="features/routing.html" class="feature-card" data-category="routing-safety">
+          <div>
+            <div class="card-top">
+              <div class="card-icon-box icon-emerald">
+                <i class="fas fa-map-location-dot"></i>
+              </div>
+              <span class="card-badge">Transit & Safety Hub</span>
+            </div>
+            <div class="card-content">
+              <h3>Smart Scenic Routing & Travel Safety</h3>
+              <p>Discover picturesque East Coast Road routes and Nilgiri hill ghats with live road safety corridor scores, weather alerts, and temple cultural protocols.</p>
+              <div class="card-tags">
+                <span class="tag-pill">ECR Coastal Drive</span>
+                <span class="tag-pill">Nilgiri Ghat Roads</span>
+                <span class="tag-pill">Safe Corridor Score</span>
+                <span class="tag-pill">Temple Dress Codes</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer">
+            <span class="btn-action-text">Explore Routes & Safety <i class="fas fa-arrow-right"></i></span>
+            <span class="feature-meta-note">GPS & Safety Protocols</span>
+          </div>
+        </a>
+
+        <!-- 2. SANGAM DYNASTIES & TAMIL PERUMAI -->
+        <a href="features/heritage.html" class="feature-card" data-category="heritage">
+          <div>
+            <div class="card-top">
+              <div class="card-icon-box icon-amber">
+                <i class="fas fa-crown"></i>
+              </div>
+              <span class="card-badge" style="background: #FEF3C7; color: #B45309;">Classical Heritage</span>
+            </div>
+            <div class="card-content">
+              <h3>Tamil Dynasties & Eelam History</h3>
+              <p>Explore the golden legacy of the Muvendhar (Cholas, Pandyas, Cheras) and the comprehensive history of Eelam Tamils from ancient Sangam roots to the Jaffna Kingdom and 2009.</p>
+              <div class="card-tags">
+                <span class="tag-pill">Cholas &bull; Pandyas &bull; Cheras</span>
+                <span class="tag-pill">ஈழத் தமிழ் வரலாறு</span>
+                <span class="tag-pill">தமிழ் பெருமை</span>
+                <span class="tag-pill">Audio Quotes</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer">
+            <span class="btn-action-text">Explore Tamil Heritage & Eelam <i class="fas fa-arrow-right"></i></span>
+            <span class="feature-meta-note">Interactive Monarchs</span>
+          </div>
+        </a>
+
+        <!-- 3. EMERGENCY SOS & TOURIST HELPLINE -->
+        <a href="features/sos.html" class="feature-card" data-category="safety">
+          <div>
+            <div class="card-top">
+              <div class="card-icon-box icon-rose">
+                <i class="fas fa-triangle-exclamation"></i>
+              </div>
+              <span class="card-badge badge-sos">Emergency SOS</span>
+            </div>
+            <div class="card-content">
+              <h3>SOS Emergency & Tourist Helpline</h3>
+              <p>Immediate 1-tap connection to Tamil Nadu Tourist Police (1363), highway patrol, local ambulance dispatch, and live broadcast GPS emergency beacons.</p>
+              <div class="card-tags">
+                <span class="tag-pill">1363 Tourist Police</span>
+                <span class="tag-pill">Live GPS Beacon</span>
+                <span class="tag-pill">Offline Fallback</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer">
+            <span class="btn-action-text">Open SOS Toolkit <i class="fas fa-arrow-right"></i></span>
+            <span class="feature-meta-note" style="color:#DC2626; font-weight:700;">24/7 Active</span>
+          </div>
+        </a>
+
+        <!-- 5. TRAVEL BUDGET & EXPENSE TRACKER -->
+        <a href="features/expenses.html" class="feature-card" data-category="finance">
+          <div>
+            <div class="card-top">
+              <div class="card-icon-box icon-amber">
+                <i class="fas fa-wallet"></i>
+              </div>
+              <span class="card-badge">Financial Tool</span>
+            </div>
+            <div class="card-content">
+              <h3>Budget Tracker with Gamification</h3>
+              <p>Real-time budget management tool that tracks expenses, logs dining and stay costs, splits shared tabs with travel companions, and rewards smart savings.</p>
+              <div class="card-tags">
+                <span class="tag-pill">Split with Friends</span>
+                <span class="tag-pill">Daily Budget Caps</span>
+                <span class="tag-pill">Reward Badges</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer">
+            <span class="btn-action-text">Open Budget Manager <i class="fas fa-arrow-right"></i></span>
+            <span class="feature-meta-note">Multi-Traveler</span>
+          </div>
+        </a>
+
+        <!-- 6. LIVE CURRENCY CONVERTER (Interactive Card) -->
+        <div class="feature-card converter-card" data-category="finance">
+          <div>
+            <div class="card-top">
+              <div class="card-icon-box icon-cyan">
+                <i class="fas fa-coins"></i>
+              </div>
+              <span class="card-badge">Live Forex Tool</span>
+            </div>
+            <div class="card-content">
+              <h3>Interactive Currency Converter</h3>
+              <p>Real-time currency exchange rates for international pilgrims and NRI travelers visiting Tamil Nadu.</p>
+              
+              <!-- Sleek Converter Widget -->
+              <div class="converter-widget">
+                <div class="conv-input-row">
+                  <input type="number" id="convAmount" value="100" min="1" placeholder="Amount" oninput="convertCurrency()">
+                </div>
+                <div class="conv-select-row">
+                  <select id="convFrom" onchange="convertCurrency()">
+                    <option value="USD" selected>USD ($)</option>
+                    <option value="EUR">EUR (€)</option>
+                    <option value="GBP">GBP (£)</option>
+                    <option value="SGD">SGD (S$)</option>
+                    <option value="AED">AED (د.إ)</option>
+                    <option value="MYR">MYR (RM)</option>
+                    <option value="INR">INR (₹)</option>
+                  </select>
+                  <span class="conv-arrow"><i class="fas fa-arrow-right-arrow-left"></i></span>
+                  <select id="convTo" onchange="convertCurrency()">
+                    <option value="INR" selected>INR (₹)</option>
+                    <option value="USD">USD ($)</option>
+                    <option value="EUR">EUR (€)</option>
+                    <option value="GBP">GBP (£)</option>
+                    <option value="SGD">SGD (S$)</option>
+                    <option value="AED">AED (د.إ)</option>
+                  </select>
+                </div>
+                <button class="btn-convert-quick" onclick="convertCurrency()">
+                  <i class="fas fa-rotate"></i> Convert Rates
+                </button>
+                <div class="conv-result-box" id="convResult">
+                  100 USD = <span class="converted-val">₹ 8,650.00 INR</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer">
+            <span class="btn-action-text" style="color:#64748B; font-weight:600; font-size:1.25rem;">
+              <i class="fas fa-chart-line"></i> Live Indicative FX Rates
+            </span>
+            <span class="feature-meta-note">Instant Calc</span>
+          </div>
+        </div>
+
+        
+
+        <!-- 8. PACKING & TRAVEL CHECKLIST -->
+        <a href="features/checklist.html" class="feature-card" data-category="essentials">
+          <div>
+            <div class="card-top">
+              <div class="card-icon-box icon-slate">
+                <i class="fas fa-list-check"></i>
+              </div>
+              <span class="card-badge">Preparation</span>
+            </div>
+            <div class="card-content">
+              <h3>Interactive Travel Checklist</h3>
+              <p>Customized packing checklists tailored for Tamil Nadu: mountain winter gear for Ooty, traditional temple dhotis/saris, and Coromandel beach kits.</p>
+              <div class="card-tags">
+                <span class="tag-pill">Temple Essentials</span>
+                <span class="tag-pill">Hill Station Gear</span>
+                <span class="tag-pill">Auto-Save Progress</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer">
+            <span class="btn-action-text">Open Checklist <i class="fas fa-arrow-right"></i></span>
+            <span class="feature-meta-note">Interactive</span>
+          </div>
+        </a>
+
+        
+
       </div>
-      <p>Sancharam &copy; 2025, All Rights Reserved</p>
+
+      <!-- Bottom Promotional CTA Banner -->
+      <div class="features-cta-banner">
+        <h2>Ready to Explore Tamil Nadu?</h2>
+        <p>Use our smart suite together with verified itineraries, all 38 revenue districts, and instant pre-booked passes for a hassle-free cultural journey.</p>
+        <div class="cta-buttons-wrap">
+          <a href="explore.html" class="btn-cta-primary">
+            <i class="fas fa-map-location-dot"></i> Explore 38 Districts
+          </a>
+          <a href="bookings.html" class="btn-cta-secondary">
+            <i class="fas fa-ticket-alt"></i> Reserve Travel Passes
+          </a>
+          <a href="features/AI itinenary.html" class="btn-cta-secondary">
+            <i class="fas fa-wand-magic-sparkles"></i> Plan with AI
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+    <!-- ================= FOOTER ================= -->
+  <footer class="site-footer">
+    <div class="container">
+        <div class="footer-top">
+            <div class="footer-brand">
+                <img src="../assets/logos/logo-transparent.png" alt="Sancharam Logo" class="brand-logo" onerror="this.src='../assets/logos/logo.png'">
+                <p>Sancharam is your smart travel companion dedicated to celebrating the living heritage, natural wonders, and vibrant spirit of Tamil Nadu.</p>
+                <div class="social-links">
+                    <a href="#" class="social-btn" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-btn" title="Twitter"><i class="fab fa-x-twitter"></i></a>
+                    <a href="#" class="social-btn" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-btn" title="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>Smart Features</h4>
+                <ul class="footer-links">
+                    <li><a href="features/AI itinenary.html">AI Itinerary Planner</a></li>
+                    <li><a href="features/routing.html">Scenic Routes</a></li>
+                    <li><a href="features/sos.html">Safety & SOS Helpline</a></li>
+                    <li><a href="features/expenses.html">Expense Calculator</a></li>
+                    <li><a href="features/checklist.html">Travel Checklist</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Cultural Pride</h4>
+                <p style="font-size: 1.4rem; color: #FCD34D; font-weight: 700; margin-bottom: 0.8rem;">வாழ்க தமிழ் வளர்க தமிழ் பண்பாடு</p>
+                <p style="font-size: 1.3rem; color: rgba(255,255,255,0.7); line-height: 1.6;">Dedicated to travelers who cherish art, architecture, literature, and warm Tamil hospitality.</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 Sancharam. All Rights Reserved. Crafted with love for தமிழ்நாடு.</p>
+            <div class="footer-bottom-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Security</a>
+            </div>
+        </div>
+    </div>
   </footer>
+
+  <script src="../assets/js/sancharam-theme.js"></script>
+  <script>
+    // ==========================================================================
+    // SANCHARAM FEATURES HUB LOGIC
+    // Dynamic Filter Tabs & Interactive Currency Converter
+    // ==========================================================================
+
+    // Real-Time Currency Converter
+    const exchangeRates = {
+      USD: 86.50,
+      EUR: 93.80,
+      GBP: 110.20,
+      SGD: 64.50,
+      AED: 23.55,
+      MYR: 19.45,
+      INR: 1.00
+    };
+
+    function convertCurrency() {
+      const amountInput = document.getElementById('convAmount');
+      const fromSelect = document.getElementById('convFrom');
+      const toSelect = document.getElementById('convTo');
+      const resultDiv = document.getElementById('convResult');
+
+      const amount = parseFloat(amountInput.value) || 0;
+      const from = fromSelect.value;
+      const to = toSelect.value;
+
+      // Base conversion to INR, then to target
+      const inINR = amount * exchangeRates[from];
+      const targetVal = inINR / exchangeRates[to];
+
+      // Currency Symbols
+      const symbols = {
+        INR: '₹', USD: '$', EUR: '€', GBP: '£', SGD: 'S$', AED: 'AED ', MYR: 'RM '
+      };
+
+      const fromSym = symbols[from] || '';
+      const toSym = symbols[to] || '';
+
+      const formatted = targetVal.toLocaleString('en-IN', {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+      });
+
+      resultDiv.innerHTML = `${amount} ${from} = <span class="converted-val">${toSym} ${formatted} ${to}</span>`;
+    }
+
+    // Initialize converter on load
+    window.addEventListener('DOMContentLoaded', () => {
+      convertCurrency();
+    });
+  </script>
 </body>
 </html>

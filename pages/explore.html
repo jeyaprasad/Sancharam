@@ -3,316 +3,1585 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Explore</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <title>Explore Destinations - All 38 Districts of Tamil Nadu | Sancharam</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../assets/css/sancharam-theme.css">
   <style>
-    body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background: #f5f5f5;
-      color: #2c3e50;
+    /* ==========================================================================
+       SANCHARAM DESTINATIONS & DISTRICTS OF TAMIL NADU
+       Uniform Symmetrical Layout across All Cards | Official 38 TN Districts
+       ========================================================================== */
+
+    /* 1. Hero Header Banner */
+    .atlas-hero {
+      position: relative;
+      padding: 125px 0 55px;
+      background: linear-gradient(135deg, rgba(11, 19, 43, 0.95) 0%, rgba(28, 37, 65, 0.9) 100%), 
+                  url('../assets/images/background.png') center/cover no-repeat;
+      color: #FFFFFF;
+      text-align: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(230, 57, 70, 0.22);
+      border: 1px solid rgba(230, 57, 70, 0.45);
+      color: #FFB4B4;
+      padding: 6px 18px;
+      border-radius: 9999px;
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+      backdrop-filter: blur(8px);
+    }
+    .atlas-hero h1 {
+      font-size: 4.2rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 15px;
+      letter-spacing: -0.02em;
+    }
+    .atlas-hero h1 span {
+      background: linear-gradient(135deg, #F59E0B 0%, #E63946 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .atlas-hero p {
+      font-size: 1.65rem;
+      color: rgba(255, 255, 255, 0.85);
+      max-width: 800px;
+      margin: 0 auto 35px;
+      line-height: 1.65;
     }
 
-    /* Navbar */
-    .navbar {
-      background-color: #000;
-      height: 80px;
+    /* Floating Search & District Selector Console */
+    .hero-search-wrapper {
+      max-width: 920px;
+      margin: 0 auto 25px;
+      background: #FFFFFF;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      border-radius: 18px;
+      padding: 10px;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      padding: 0 40px;
+      gap: 12px;
+      flex-wrap: wrap;
     }
-    .navbar .logo img {
-      height: 60px;
-      width: auto;
-      transition: transform 0.3s ease;
+    .search-field {
+      flex: 1;
+      min-width: 270px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 8px 16px;
     }
-    .navbar .logo img:hover {
-      transform: scale(1.05);
+    .search-field i {
+      color: #E63946;
+      font-size: 1.7rem;
     }
-    .navbar nav a {
-      color: #fff;
-      text-decoration: none;
-      font-weight: 600;
-      margin: 0 1rem;
-      position: relative;
-      transition: color 0.3s ease;
-    }
-    .navbar nav a:hover,
-    .navbar nav a.active {
-      color: #ff5c70;
-    }
-    .navbar nav a::after {
-      content: "";
-      position: absolute;
-      width: 0;
-      height: 2px;
-      bottom: -5px;
-      left: 0;
-      background-color: #ff5c70;
-      transition: width 0.3s;
-    }
-    .navbar nav a:hover::after {
+    .search-field input {
+      border: none;
+      background: transparent;
+      outline: none;
+      font-family: inherit;
+      font-size: 1.5rem;
+      color: #0F172A;
       width: 100%;
     }
-
-    /* Hero Section */
-    .hero {
-      height: 60vh;
-      background: url('assets/images/hero-bg.jpg') center/cover no-repeat;
+    .search-field input::placeholder {
+      color: #94A3B8;
+    }
+    .search-clear-btn {
+      background: none;
+      border: none;
+      color: #94A3B8;
+      cursor: pointer;
+      font-size: 1.6rem;
+      display: none;
+      padding: 4px;
+    }
+    .search-clear-btn:hover {
+      color: #E63946;
+    }
+    .hero-search-divider {
+      width: 1px;
+      height: 36px;
+      background: #E2E8F0;
+    }
+    .district-select-wrap {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      border-radius: 12px;
+      background: #F8FAFC;
+      border: 1.5px solid #E2E8F0;
+      min-width: 280px;
       position: relative;
+    }
+    .district-select-wrap i {
+      color: #E63946;
+      font-size: 1.5rem;
+    }
+    .district-select-wrap select {
+      border: none;
+      background: transparent;
+      outline: none;
+      font-family: inherit;
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #1E293B;
+      cursor: pointer;
+      width: 100%;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+    .district-select-wrap .dropdown-arrow {
+      color: #94A3B8;
+      font-size: 1.2rem;
+      pointer-events: none;
+      position: absolute;
+      right: 14px;
+    }
+
+    /* 2. Main Body & Controls */
+    .atlas-content-wrap {
+      padding: 40px 0 70px;
+    }
+    .atlas-toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+    .atlas-categories {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .cat-tab {
+      padding: 8px 18px;
+      border-radius: 12px;
+      border: 1px solid #E2E8F0;
+      background: #FFFFFF;
+      color: #475569;
+      font-size: 1.35rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .cat-tab:hover {
+      background: #F1F5F9;
+      color: #0F172A;
+    }
+    .cat-tab.active {
+      background: #0B132B;
+      color: #FFFFFF;
+      border-color: #0B132B;
+      box-shadow: 0 4px 12px rgba(11, 19, 43, 0.15);
+    }
+    .atlas-view-controls {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .atlas-counter-pill {
+      font-size: 1.35rem;
+      color: #64748B;
+      font-weight: 600;
+    }
+    .atlas-counter-pill strong {
+      color: #0F172A;
+    }
+    .btn-atlas-reset {
+      background: #FFE3E3;
+      border: 1px solid rgba(230, 57, 70, 0.3);
+      color: #E63946;
+      padding: 6px 14px;
+      border-radius: 9999px;
+      font-size: 1.25rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: none;
+      align-items: center;
+      gap: 5px;
+      transition: all 0.2s ease;
+    }
+    .btn-atlas-reset:hover {
+      background: #E63946;
+      color: #FFFFFF;
+    }
+
+    /* ==========================================================================
+       3. EXACT UNIFORM GRID & IDENTICAL CARD LAYOUT FOR ALL CARDS
+       ========================================================================== */
+    .atlas-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+
+    /* All cards have the EXACT same dimensions, height and structure */
+    .atlas-card {
+      background: #FFFFFF;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid #E2E8F0;
+      box-shadow: 0 4px 20px rgba(15, 23, 42, 0.05);
+      display: flex;
+      flex-direction: column;
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+    }
+    .atlas-card:hover {
+      transform: translateY(-7px);
+      box-shadow: 0 18px 36px rgba(15, 23, 42, 0.1);
+      border-color: rgba(230, 57, 70, 0.35);
+    }
+
+    /* Uniform Media Area (Exact same 240px height for all cards) */
+    .card-media-wrap {
+      position: relative;
+      width: 100%;
+      height: 240px;
+      overflow: hidden;
+      background: #0B132B;
+      cursor: pointer;
+    }
+    .card-media-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .atlas-card:hover .card-media-wrap img {
+      transform: scale(1.08);
+    }
+
+    /* Verified District Badge on Top Left */
+    .card-floating-loc {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      background: rgba(11, 19, 43, 0.88);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      color: #FFFFFF;
+      padding: 6px 14px;
+      border-radius: 9999px;
+      font-size: 1.25rem;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+      z-index: 2;
+    }
+    .card-floating-loc i {
+      color: #E63946;
+    }
+
+    /* Category Pill on Top Right */
+    .card-floating-cat {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      color: #0F172A;
+      padding: 5px 12px;
+      border-radius: 9999px;
+      font-size: 1.15rem;
+      font-weight: 700;
+      z-index: 2;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+
+    /* Uniform Card Details Body */
+    .card-info-wrap {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .card-info-wrap h3 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #0F172A;
+      margin-bottom: 5px;
+      line-height: 1.3;
+    }
+    .card-loc-subtitle {
+      font-size: 1.35rem;
+      color: #E63946;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 12px;
+    }
+    .card-loc-subtitle i {
+      color: #E63946;
+    }
+
+    .card-info-wrap p {
+      font-size: 1.45rem;
+      color: #475569;
+      line-height: 1.65;
+      margin-bottom: 18px;
+      flex-grow: 1;
+    }
+
+    /* Uniform Fast Facts Strip */
+    .card-fast-facts {
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      border-radius: 12px;
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+    .fast-fact-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 1.25rem;
+      color: #475569;
+      font-weight: 600;
+    }
+    .fast-fact-item i {
+      color: #E63946;
+    }
+
+    /* Card Action Row */
+    .card-action-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding-top: 16px;
+      border-top: 1px solid #F1F5F9;
+    }
+    .btn-view-story {
+      flex: 1;
+      padding: 10px 16px;
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #E63946;
+      background: #FFE3E3;
+      border-radius: 9999px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+    .btn-view-story:hover {
+      background: #E63946;
+      color: #FFFFFF;
+      box-shadow: 0 4px 12px rgba(230, 57, 70, 0.3);
+    }
+    .btn-book-dest {
+      padding: 10px 20px;
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #FFFFFF;
+      background: linear-gradient(135deg, #0B132B 0%, #1C2541 100%);
+      border-radius: 9999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+    .btn-book-dest:hover {
+      background: #E63946;
+      color: #FFFFFF;
+      box-shadow: 0 4px 12px rgba(230, 57, 70, 0.4);
+    }
+
+    /* Empty Filter State */
+    .atlas-empty-box {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 70px 20px;
+      background: #FFFFFF;
+      border-radius: 20px;
+      border: 1px dashed #CBD5E1;
+      display: none;
+    }
+    .atlas-empty-box i {
+      font-size: 4rem;
+      color: #94A3B8;
+      margin-bottom: 16px;
+    }
+    .atlas-empty-box h3 {
+      font-size: 2.2rem;
+      color: #0F172A;
+      margin-bottom: 8px;
+      font-weight: 700;
+    }
+    .atlas-empty-box p {
+      font-size: 1.5rem;
+      color: #64748B;
+      margin-bottom: 22px;
+    }
+
+    /* 4. Details Lightbox Modal */
+    .atlas-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(11, 19, 43, 0.95);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      z-index: 2500;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .atlas-modal.active {
+      display: flex;
+    }
+    .modal-dialog {
+      background: #FFFFFF;
+      border-radius: 24px;
+      max-width: 900px;
+      width: 100%;
+      max-height: 90vh;
+      display: flex;
+      overflow: hidden;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.6);
+      position: relative;
+      animation: modalScale 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .modal-close-btn {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      background: rgba(0, 0, 0, 0.6);
+      color: #FFFFFF;
+      border: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1.8rem;
       display: flex;
       align-items: center;
       justify-content: center;
-      text-align: center;
-      color: #fff;
-      padding: 0 1rem;
+      z-index: 20;
+      transition: all 0.2s ease;
     }
-    .hero::before {
-      content: "";
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0, 0, 0, 0.4);
-    }
-    .hero-text {
-      position: relative;
-      z-index: 1;
-      animation: fadeIn 1.5s ease-in-out;
-    }
-    .hero-text h1 {
-      font-size: 2.8rem;
-      margin-bottom: 1rem;
-      text-shadow: 2px 2px 6px rgba(0,0,0,0.5);
-    }
-    .hero-text p {
-      font-size: 1.2rem;
-      max-width: 600px;
-      margin: 0 auto;
+    .modal-close-btn:hover {
+      background: #E63946;
+      transform: scale(1.1);
     }
 
-    /* Destinations Grid */
-    .destinations {
-      padding: 3rem 2rem;
-      text-align: center;
-    }
-    .section-title {
-      font-size: 2rem;
-      color: #ff5c6f;
-      margin-bottom: 2rem;
+    .modal-photo-panel {
+      flex: 1.1;
+      background: #0B132B;
       position: relative;
-      display: inline-block;
-    }
-    .section-title::after {
-      content: "";
-      position: absolute;
-      width: 50%;
-      height: 3px;
-      background: #ff5c6f;
-      bottom: -10px;
-      left: 25%;
-    }
-    .destination-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-    }
-    .destination-card {
-      border-radius: 10px;
+      min-height: 380px;
       overflow: hidden;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      background: #fff;
     }
-    .destination-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-    }
-    .destination-card img {
+    .modal-photo-panel img {
       width: 100%;
-      height: 200px;
+      height: 100%;
       object-fit: cover;
     }
-    .card-content {
-      padding: 1rem;
-    }
-    .card-content h3 {
-      color: #c73636;
-      margin-bottom: 0.5rem;
-    }
 
-    /* Gallery Section */
-    .gallery-section {
-      padding: 3rem 2rem;
-      text-align: center;
+    .modal-info-panel {
+      flex: 1;
+      padding: 35px 30px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
     }
-    .gallery-title {
-      font-size: 2rem;
-      color: #ff5c6f;
-      margin-bottom: 2rem;
+    .modal-badge-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
     }
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1rem;
+    .modal-loc-pill {
+      background: #FFE3E3;
+      color: #E63946;
+      font-size: 1.3rem;
+      font-weight: 700;
+      padding: 5px 14px;
+      border-radius: 9999px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
     }
-    .gallery-grid img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      border-radius: 8px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    .modal-info-panel h2 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: #0F172A;
+      margin-bottom: 6px;
+      line-height: 1.25;
     }
-    .gallery-grid img:hover {
-      transform: scale(1.05);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-    }
-
-    /* Call to Action */
-    .cta {
-      background: #ff5c6f;
-      color: #fff;
-      text-align: center;
-      padding: 2rem 1rem;
-      background: linear-gradient(135deg, #ff5c6f, #005fa3);
-    }
-    .cta h2 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-    }
-    .cta .btn {
-      background: #fff;
-      color: #c73636;
-      padding: 1rem 2rem;
-      border-radius: 30px;
-      text-decoration: none;
+    .modal-district-sub {
+      font-size: 1.4rem;
+      color: #64748B;
       font-weight: 600;
-      transition: background 0.3s, transform 0.3s;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
     }
-    .cta .btn:hover {
-      background: #e6e6e6;
-      transform: scale(1.05);
+    .modal-info-panel p {
+      font-size: 1.5rem;
+      color: #475569;
+      line-height: 1.7;
+      margin-bottom: 22px;
     }
 
-    
-    
-    
-
-    /* Animations */
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+    .modal-facts-grid {
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      border-radius: 14px;
+      padding: 14px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-bottom: 25px;
     }
-  
-  /* Uniform Footer CSS */
-  
-  .footer .social-media-links { text-align: center; margin: 0; padding: 0; }
-  
-  .footer p { margin: 0; padding-bottom: 10px; font-size: 14px; }
-</style>
-
-<!-- Global Nav/Footer CSS injected -->
-<style id="global-nav-footer">
-    .navbar { font-family: 'Montserrat', sans-serif; }
-    .navbar .container { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 0 1rem; }
-    .navbar.bg-dark { background-color: #000000; }
-    .navbar .logo { float: left; padding-top: 6px; }
-    .navbar .nav-items { list-style: none; margin: 0; padding: 0; display: flex; align-items: center; }
-    .navbar .nav-item { display: inline-block; padding: 1.5rem; text-transform: uppercase; }
-    .navbar a { color: aliceblue; text-decoration: none; font-size: 1.6rem; font-weight: bold; }
-    .navbar a:hover { border-bottom: 1px solid #FFF; }
-    .navbar::after { content: ''; display: block; clear: both; }
-    
-    
-    @media (max-width: 768px) {
-        .navbar .container { flex-direction: column; }
-        .navbar .nav-items { flex-direction: column; width: 100%; text-align: center; }
+    .modal-fact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
     }
-</style>
-<script src="https://kit.fontawesome.com/7f257b9379.js" crossorigin="anonymous"></script>
+    .modal-fact-item i {
+      color: #E63946;
+      font-size: 1.5rem;
+      margin-top: 3px;
+    }
+    .modal-fact-label {
+      font-size: 1.15rem;
+      color: #64748B;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+    .modal-fact-val {
+      font-size: 1.35rem;
+      color: #0F172A;
+      font-weight: 700;
+    }
 
+    .modal-action-bar {
+      margin-top: auto;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    /* 5. Cultural CTA Box */
+    .atlas-cta-box {
+      margin-top: 50px;
+      background: linear-gradient(135deg, #0B132B 0%, #1C2541 100%);
+      border-radius: 22px;
+      padding: 50px 35px;
+      color: #FFFFFF;
+      text-align: center;
+      box-shadow: 0 15px 40px rgba(11, 19, 43, 0.2);
+    }
+    .atlas-cta-box h2 {
+      font-size: 3rem;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+    .atlas-cta-box p {
+      font-size: 1.6rem;
+      color: rgba(255, 255, 255, 0.85);
+      max-width: 650px;
+      margin: 0 auto 28px;
+      line-height: 1.6;
+    }
+
+    @keyframes modalScale {
+      from { opacity: 0; transform: scale(0.94); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    /* Responsive */
+    @media(max-width: 1024px) {
+      .atlas-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media(max-width: 820px) {
+      .modal-dialog { flex-direction: column; max-height: 92vh; }
+      .modal-photo-panel { min-height: 250px; }
+      .modal-info-panel { padding: 22px; }
+    }
+    @media(max-width: 768px) {
+      .atlas-grid { grid-template-columns: 1fr; }
+      .atlas-hero h1 { font-size: 3rem; }
+      .hero-search-wrapper { flex-direction: column; align-items: stretch; }
+      .hero-search-divider { display: none; }
+      .district-select-wrap { width: 100%; }
+      .atlas-toolbar { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
 </head>
 <body>
-  <!-- Header -->
-  <nav class="navbar bg-dark">
-    <div class="container">
-        <img src="../assets/logos/logo.png" alt="Sancharam Logo" class="logo" style="width: 300px; height: 80px;">
-        <ul class="nav-items">
-            <li class="nav-item"><a href="../home.html">Home</a></li>
-            <li class="nav-item"><a href="../pages/about.html">About</a></li>
-            <li class="nav-item"><a href="../pages/explore.html">Explore</a></li>
-            <li class="nav-item"><a href="../pages/bookings.html">Bookings</a></li>
-            <li class="nav-item"><a href="../pages/features.html">Features</a></li>
-            <li class="nav-item"><a href="../pages/profile.html">Profile</a></li>
+
+  <!-- ================= NAVBAR ================= -->
+  <nav class="navbar" id="main-nav">
+    <div class="container nav-wrapper">
+        <a href="../home.html" class="brand" title="Sancharam">
+            <img src="../assets/logos/logo-transparent.png" alt="Sancharam Logo" class="brand-logo" onerror="this.src='../assets/logos/logo.png'">
+        </a>
+
+        <ul class="nav-links">
+            <li><a href="../home.html" class="nav-link">Home</a></li>
+            <li><a href="explore.html" class="nav-link active">Explore</a></li>
+            <li><a href="bookings.html" class="nav-link">Bookings</a></li>
+            <li><a href="features.html" class="nav-link">Features</a></li>
+            <li><a href="profile.html" class="nav-link">Profile</a></li>
         </ul>
-    </div>
-</nav>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="hero-text">
-      <h1>Explore the World with Sancharam</h1>
-      <p>Discover breathtaking destinations, hidden gems, and unforgettable adventures curated just for you.</p>
-    </div>
-  </section>
+        <div class="nav-actions">
+            <a href="features/AI itinenary.html" class="btn-nav-ai">
+                <i class="fas fa-wand-magic-sparkles"></i>
+                <span>Plan with AI</span>
+            </a>
+        </div>
 
-  <!-- Destinations Section -->
-  <section class="destinations">
-    <h2 class="section-title">Popular Destinations</h2>
-    <div class="destination-grid">
-      <div class="destination-card">
-        <img src="../assets/images/santhome.webp" alt="Santhome Basilica Church">
-        <div class="card-content">
-          <h3>San Thome Basilica Church</h3>
-          <p>Santhome Church in Chennai is one of the oldest churches in India. The Basilica of Saint Thomas Cathedral Basilica, sits on the tomb built over the mortal remains of one of the twelve Apostles of Jesus Christ.</p>
+        <button class="mobile-toggle" aria-label="Toggle navigation">
+            <i class="fas fa-bars"></i>
+        </button>
+    </div>
+  </nav>
+
+  <!-- ================= CINEMATIC HERO ATLAS ================= -->
+  <header class="atlas-hero">
+    <div class="container">
+      <div class="hero-eyebrow">
+        <i class="fas fa-map-location-dot"></i> Official 38 Districts of Tamil Nadu
+      </div>
+      <h1>Explore Tamil Nadu, <span>District by District</span></h1>
+      <p>Discover historic stone temples, serene coastlines, mist-shrouded mountain peaks, and living cultural heritage across all 38 verified revenue districts of Tamil Nadu.</p>
+
+      <!-- Integrated Search & Verified 38 District Selector -->
+      <div class="hero-search-wrapper">
+        <div class="search-field">
+          <i class="fas fa-search"></i>
+          <input type="text" id="atlasSearchInput" placeholder="Search by district, destination, temple, beach, or landmark..." autocomplete="off">
+          <button class="search-clear-btn" id="searchClearBtn" title="Clear">&times;</button>
+        </div>
+        <div class="hero-search-divider"></div>
+        <div class="district-select-wrap">
+          <i class="fas fa-map-marker-alt"></i>
+          <select id="atlasDistrictSelect">
+            <option value="all">📍 All Districts of Tamil Nadu (38 Districts)</option>
+            <optgroup label="🌟 Featured Travel Districts">
+              <option value="chengalpattu">Chengalpattu (Mahabalipuram Shore)</option>
+              <option value="chennai">Chennai (Capital, Marina & Mylapore)</option>
+              <option value="thanjavur">Thanjavur (Brihadeeswarar Chola Temple)</option>
+              <option value="madurai">Madurai (Meenakshi Amman Temple)</option>
+              <option value="nilgiris">Nilgiris (Ooty & Toy Train)</option>
+              <option value="kanyakumari">Kanyakumari (Cape Comorin & Sangam)</option>
+              <option value="sivaganga">Sivaganga (Chettinad & Karaikudi)</option>
+              <option value="dharmapuri">Dharmapuri (Hogenakkal Falls)</option>
+              <option value="ramanathapuram">Ramanathapuram (Rameswaram & Dhanushkodi)</option>
+              <option value="nagapattinam">Nagapattinam (Velankanni Basilica)</option>
+              <option value="thoothukudi">Thoothukudi (Thiruchendur Murugan Kovil)</option>
+            </optgroup>
+            <optgroup label="🏛️ All Other Tamil Nadu Districts (Official)">
+              <option value="ariyalur">Ariyalur (Gangaikonda Cholapuram)</option>
+              <option value="coimbatore">Coimbatore (Siruvani & Western Ghats)</option>
+              <option value="cuddalore">Cuddalore (Pichavaram Mangroves)</option>
+              <option value="dindigul">Dindigul (Kodaikanal Hill Station)</option>
+              <option value="erode">Erode (Bhavanisagar & Periyar Memorial)</option>
+              <option value="kallakurichi">Kallakurichi (Kalvarayan Hills)</option>
+              <option value="kanchipuram">Kanchipuram (City of 1000 Temples)</option>
+              <option value="karur">Karur (Pasupatheeswarar & Amaravathi)</option>
+              <option value="krishnagiri">Krishnagiri (KRP Dam & Syed Basha Fort)</option>
+              <option value="mayiladuthurai">Mayiladuthurai (Navagraha Shrines)</option>
+              <option value="namakkal">Namakkal (Kolli Hills & Anjaneyar)</option>
+              <option value="perambalur">Perambalur (Ranjankudi Fort)</option>
+              <option value="pudukkottai">Pudukkottai (Sittanavasal Cave Paintings)</option>
+              <option value="ranipet">Ranipet (Palavanthangal Heritage)</option>
+              <option value="salem">Salem (Yercaud Shevaroy Hills)</option>
+              <option value="tenkasi">Tenkasi (Courtallam Spa Waterfalls)</option>
+              <option value="theni">Theni (Suruli Falls & Meghamalai)</option>
+              <option value="tiruchirappalli">Tiruchirappalli (Srirangam & Rockfort)</option>
+              <option value="tirunelveli">Tirunelveli (Nellaiyappar Temple)</option>
+              <option value="tirupathur">Tirupathur (Yelagiri Hills)</option>
+              <option value="tiruppur">Tiruppur (Tiruppur Kumaran & Amaravathi)</option>
+              <option value="tiruvallur">Tiruvallur (Veeraraghava Swamy Temple)</option>
+              <option value="tiruvannamalai">Tiruvannamalai (Annamalaiyar Fire Temple)</option>
+              <option value="tiruvarur">Tiruvarur (Thyagaraja Temple Chariot)</option>
+              <option value="vellore">Vellore (Vellore Fort & Sripuram Gold Temple)</option>
+              <option value="viluppuram">Viluppuram (Historic Gingee Fort)</option>
+              <option value="virudhunagar">Virudhunagar (Andal Temple Srivilliputhur)</option>
+            </optgroup>
+          </select>
+          <i class="fas fa-chevron-down dropdown-arrow"></i>
         </div>
       </div>
-      <div class="destination-card">
-        <img src="assets/images/victoriahall.jpg" alt="Victoria Public Hall">
-        <div class="card-content">
-          <h3>Victoria Public Hall</h3>
-          <p>Victoria Public Hall, also known as Town Hall, is a historical landmark built in honor of Queen Victoria’s Golden Jubilee, showcasing Indo-Saracenic architecture.</p>
+    </div>
+  </header>
+
+  <!-- ================= UNIFORM DESTINATIONS GRID ================= -->
+  <main class="atlas-content-wrap">
+    <div class="container">
+      
+      <!-- Toolbar: Categories & Results Counter -->
+      <div class="atlas-toolbar">
+        <div class="atlas-categories">
+          <button class="cat-tab active" data-cat="all"><i class="fas fa-border-all"></i> All Experiences</button>
+          <button class="cat-tab" data-cat="heritage"><i class="fas fa-landmark"></i> Temples & Heritage</button>
+          <button class="cat-tab" data-cat="coastal"><i class="fas fa-water"></i> Coastal & Shores</button>
+          <button class="cat-tab" data-cat="hills"><i class="fas fa-mountain"></i> Hill Stations</button>
+          <button class="cat-tab" data-cat="nature"><i class="fas fa-tree"></i> Falls & Nature</button>
+          <button class="cat-tab" data-cat="palaces"><i class="fas fa-archway"></i> Palaces & Culture</button>
+        </div>
+
+        <div class="atlas-view-controls">
+          <span class="atlas-counter-pill" id="atlasCounter">Showing <strong>12</strong> destinations across Tamil Nadu</span>
+          <button class="btn-atlas-reset" id="atlasResetBtn"><i class="fas fa-rotate-left"></i> Reset Filters</button>
         </div>
       </div>
-      <div class="destination-card">
-        <img src="../assets/images/periyakovil.jpg" alt="Thanjavur Brihadeeswarar Temple">
-        <div class="card-content">
-          <h3>Thanjavur Periya Kovil</h3>
-          <p>The Thanjavur Periya Kovil, officially known as the Brihadeeswarar Temple, is a UNESCO World Heritage Site and a masterpiece of Dravidian architecture.</p>
+
+      <!-- Symmetrical 3-Column Grid (Identical Layout for All 12 Cards) -->
+      <div class="atlas-grid" id="atlasGrid">
+
+        <!-- Card 1: Chengalpattu District - Shore Temple -->
+        <article class="atlas-card" data-location="chengalpattu" data-category="heritage coastal" data-name="Shore Temple Mahabalipuram Mamallapuram Chengalpattu District">
+          <div class="card-media-wrap" onclick="openStory('mahabalipuram')">
+            <div class="card-floating-loc">
+              <i class="fas fa-map-marker-alt"></i> Chengalpattu District
+            </div>
+            <div class="card-floating-cat">UNESCO Heritage</div>
+            <img src="../assets/images/shoretemple.png" alt="Shore Temple Mahabalipuram">
+          </div>
+          <div class="card-info-wrap">
+            <h3>Shore Temple Mahabalipuram</h3>
+            <div class="card-loc-subtitle"><i class="fas fa-compass"></i> Bay of Bengal Coast, Chengalpattu District</div>
+            <p>Carved from monolithic granite blocks in 700–728 AD by Pallava King Narasimhavarman II. Stands as a timeless testament to Dravidian structural stone masonry over the sea.</p>
+            <div class="card-fast-facts">
+              <div class="fast-fact-item"><i class="fas fa-calendar-alt"></i> Best: Nov – Feb</div>
+              <div class="fast-fact-item"><i class="fas fa-ticket"></i> Entry: ₹40 (ASI)</div>
+            </div>
+            <div class="card-action-row">
+              <button class="btn-view-story" onclick="openStory('mahabalipuram')">
+                <i class="fas fa-circle-info"></i> View Details
+              </button>
+              <a href="bookings.html?dest=mahabalipuram&district=chengalpattu" class="btn-book-dest">
+                <i class="fas fa-calendar-check"></i> Book Visit
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 2: Chennai District - San Thome Basilica -->
+        <article class="atlas-card" data-location="chennai" data-category="heritage coastal" data-name="San Thome Basilica Cathedral Mylapore Chennai District">
+          <div class="card-media-wrap" onclick="openStory('chennai')">
+            <div class="card-floating-loc">
+              <i class="fas fa-map-marker-alt"></i> Chennai District
+            </div>
+            <div class="card-floating-cat">Apostolic Shrine</div>
+            <img src="../assets/images/santhome.webp" alt="San Thome Basilica">
+          </div>
+          <div class="card-info-wrap">
+            <h3>San Thome Basilica Cathedral</h3>
+            <div class="card-loc-subtitle"><i class="fas fa-compass"></i> Mylapore, Chennai District</div>
+            <p>One of only three basilicas in the world built over the tomb of an apostle of Jesus Christ. Features soaring 183-foot white neo-Gothic spires and tranquil seaside halls.</p>
+            <div class="card-fast-facts">
+              <div class="fast-fact-item"><i class="fas fa-calendar-alt"></i> Best: Year-Round</div>
+              <div class="fast-fact-item"><i class="fas fa-ticket"></i> Entry: Free</div>
+            </div>
+            <div class="card-action-row">
+              <button class="btn-view-story" onclick="openStory('chennai')">
+                <i class="fas fa-circle-info"></i> View Details
+              </button>
+              <a href="bookings.html?dest=chennai&district=chennai" class="btn-book-dest">
+                <i class="fas fa-calendar-check"></i> Book Visit
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 3: Ramanathapuram District - Ramanathaswamy Temple Rameswaram -->
+        <article class="atlas-card" data-location="ramanathapuram" data-category="heritage coastal" data-name="Ramanathaswamy Temple Rameswaram Ramanathapuram District Agni Theertham Jyotirlinga">
+          <div class="card-media-wrap" onclick="openStory('rameshwaram')">
+            <div class="card-floating-loc">
+              <i class="fas fa-map-marker-alt"></i> Ramanathapuram District
+            </div>
+            <div class="card-floating-cat">Char Dham & Jyotirlinga</div>
+            <img src="../assets/images/image-2.webp" alt="Ramanathaswamy Temple Rameswaram">
+          </div>
+          <div class="card-info-wrap">
+            <h3>Ramanathaswamy Temple Rameswaram</h3>
+            <div class="card-loc-subtitle"><i class="fas fa-compass"></i> Rameswaram Island, Ramanathapuram District</div>
+            <p>One of India's twelve sacred Jyotirlingas, revered for its soaring yellow gopuram overlooking the Agni Theertham sea, 22 holy wells, and the world's longest corridor with 1,212 carved granite pillars.</p>
+            <div class="card-fast-facts">
+              <div class="fast-fact-item"><i class="fas fa-calendar-alt"></i> Best: Oct – Mar</div>
+              <div class="fast-fact-item"><i class="fas fa-ticket"></i> Entry: Free / Darshan</div>
+            </div>
+            <div class="card-action-row">
+              <button class="btn-view-story" onclick="openStory('rameshwaram')">
+                <i class="fas fa-circle-info"></i> View Details
+              </button>
+              <a href="bookings.html?dest=rameshwaram&district=ramanathapuram" class="btn-book-dest">
+                <i class="fas fa-calendar-check"></i> Book Visit
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 4: Madurai District - Meenakshi Amman Temple -->
+        <article class="atlas-card" data-location="madurai" data-category="heritage palaces" data-name="Meenakshi Amman Temple Madurai District Vaigai">
+          <div class="card-media-wrap" onclick="openStory('madurai')">
+            <div class="card-floating-loc">
+              <i class="fas fa-map-marker-alt"></i> Madurai District
+            </div>
+            <div class="card-floating-cat">Temple City</div>
+            <img src="../assets/images/image-3.webp" alt="Meenakshi Temple">
+          </div>
+          <div class="card-info-wrap">
+            <h3>Meenakshi Sundareswarar Temple</h3>
+            <div class="card-loc-subtitle"><i class="fas fa-compass"></i> Vaigai River Valley, Madurai District</div>
+            <p>Over 2,500 years of living cultural heritage. Adorned with 14 soaring multi-tiered gopurams reaching 52 meters, encrusted with thousands of hand-sculpted stone deities.</p>
+            <div class="card-fast-facts">
+              <div class="fast-fact-item"><i class="fas fa-calendar-alt"></i> Best: Oct – Mar</div>
+              <div class="fast-fact-item"><i class="fas fa-ticket"></i> Entry: Free</div>
+            </div>
+            <div class="card-action-row">
+              <button class="btn-view-story" onclick="openStory('madurai')">
+                <i class="fas fa-circle-info"></i> View Details
+              </button>
+              <a href="bookings.html?dest=madurai&district=madurai" class="btn-book-dest">
+                <i class="fas fa-calendar-check"></i> Book Visit
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 5: Nilgiris District - Ooty & Mountain Railway -->
+        <article class="atlas-card" data-location="nilgiris" data-category="hills nature" data-name="Ooty Nilgiris District Mountain Railway Udhagamandalam Toy Train">
+          <div class="card-media-wrap" onclick="openStory('nilgiris')">
+            <div class="card-floating-loc">
+              <i class="fas fa-map-marker-alt"></i> Nilgiris District
+            </div>
+            <div class="card-floating-cat">Hill Station</div>
+            <img src="../assets/images/ooty.jpg" alt="Nilgiri Mountain Railway">
+          </div>
+          <div class="card-info-wrap">
+            <h3>Ooty & Nilgiri Mountain Railway</h3>
+            <div class="card-loc-subtitle"><i class="fas fa-compass"></i> Udhagamandalam, Nilgiris District</div>
+            <p>Perched 2,240m high amidst rolling emerald tea slopes, pine groves, and the UNESCO heritage Nilgiri Mountain Toy Train chugging through mist-clad valleys and viaducts.</p>
+            <div class="card-fast-facts">
+              <div class="fast-fact-item"><i class="fas fa-calendar-alt"></i> Best: Mar – Jun</div>
+              <div class="fast-fact-item"><i class="fas fa-ticket"></i> Train: ₹205</div>
+            </div>
+            <div class="card-action-row">
+              <button class="btn-view-story" onclick="openStory('nilgiris')">
+                <i class="fas fa-circle-info"></i> View Details
+              </button>
+              <a href="bookings.html?dest=nilgiris&district=nilgiris" class="btn-book-dest">
+                <i class="fas fa-calendar-check"></i> Book Visit
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 6: Kanyakumari District - Thiruvalluvar Statue -->
+        <article class="atlas-card" data-location="kanyakumari" data-category="heritage coastal" data-name="Thiruvalluvar Statue Kanyakumari District Cape Comorin Vivekananda Rock">
+          <div class="card-media-wrap" onclick="openStory('kanyakumari')">
+            <div class="card-floating-loc">
+              <i class="fas fa-map-marker-alt"></i> Kanyakumari District
+            </div>
+            <div class="card-floating-cat">Ocean Confluence</div>
+            <img src="../assets/images/kanniyakumari.png" alt="Thiruvalluvar Statue">
+          </div>
+          <div class="card-info-wrap">
+            <h3>Thiruvalluvar Statue & Memorial</h3>
+            <div class="card-loc-subtitle"><i class="fas fa-compass"></i> Cape Comorin, Kanyakumari District</div>
+            <p>Rising 133 feet above sea level honoring 133 chapters of Thirukkural. Positioned at the monumental confluence where the Arabian Sea, Bay of Bengal, and Indian Ocean meet.</p>
+            <div class="card-fast-facts">
+              <div class="fast-fact-item"><i class="fas fa-calendar-alt"></i> Best: Nov – Feb</div>
+              <div class="fast-fact-item"><i class="fas fa-ticket"></i> Ferry: ₹50</div>
+            </div>
+            <div class="card-action-row">
+              <button class="btn-view-story" onclick="openStory('kanyakumari')">
+                <i class="fas fa-circle-info"></i> View Details
+              </button>
+              <a href="bookings.html?dest=kanyakumari&district=kanyakumari" class="btn-book-dest">
+                <i class="fas fa-calendar-check"></i> Book Visit
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 7: Sivaganga District - Chettinad Mansions -->
+        <article class="atlas-card" data-location="sivaganga" data-category="palaces heritage" data-name="Chettinad Heritage Mansions Karaikudi Sivaganga District Athangudi">
+          <div class="card-media-wrap" onclick="openStory('sivaganga')">
+            <div class="card-floating-loc">
+              <i class="fas fa-map-marker-alt"></i> Sivaganga District
+            </div>
+            <div class="card-floating-cat">Palaces & Cuisine</div>
+            <img src="../assets/images/chettinad.jpg" alt="Chettinad Mansions">
+          </div>
+          <div class="card-info-wrap">
+            <h3>Chettinad Palatial Mansions</h3>
+            <div class="card-loc-subtitle"><i class="fas fa-compass"></i> Karaikudi, Sivaganga District</div>
+            <p>Grand architectural palatial mansions built by merchant bankers featuring pillars of imported Burmese teak, Italian marble, handmade Athangudi tiles, and royal courtyards.</p>
+            <div class="card-fast-facts">
+              <div class="fast-fact-item"><i class="fas fa-calendar-alt"></i> Best: Oct – Mar</div>
+              <div class="fast-fact-item"><i class="fas fa-ticket"></i> Tour: ₹100</div>
+            </div>
+            <div class="card-action-row">
+              <button class="btn-view-story" onclick="openStory('sivaganga')">
+                <i class="fas fa-circle-info"></i> View Details
+              </button>
+              <a href="bookings.html?dest=sivaganga&district=sivaganga" class="btn-book-dest">
+                <i class="fas fa-calendar-check"></i> Book Visit
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 8: Dharmapuri District - Hogenakkal Falls -->
+        <article class="atlas-card" data-location="dharmapuri" data-category="nature" data-name="Hogenakkal Waterfalls Dharmapuri District Kaveri Gorge Coracle">
+          <div class="card-media-wrap" onclick="openStory('dharmapuri')">
+            <div class="card-floating-loc">
+              <i class="fas fa-map-marker-alt"></i> Dharmapuri District
+            </div>
+            <div class="card-floating-cat">River Waterfalls</div>
+            <img src="../assets/images/hogenakkal.jpg" alt="Hogenakkal Falls">
+          </div>
+          <div class="card-info-wrap">
+            <h3>Hogenakkal River Waterfalls</h3>
+            <div class="card-loc-subtitle"><i class="fas fa-compass"></i> Pennagaram, Dharmapuri District</div>
+            <p>Known as the 'Niagara of India' where the mighty Kaveri river cascades through carbonatite rock canyons. Celebrated for mineral baths and spinning bamboo coracle rides.</p>
+            <div class="card-fast-facts">
+              <div class="fast-fact-item"><i class="fas fa-calendar-alt"></i> Best: Aug – Feb</div>
+              <div class="fast-fact-item"><i class="fas fa-ticket"></i> Coracle: ₹750</div>
+            </div>
+            <div class="card-action-row">
+              <button class="btn-view-story" onclick="openStory('dharmapuri')">
+                <i class="fas fa-circle-info"></i> View Details
+              </button>
+              <a href="bookings.html?dest=dharmapuri&district=dharmapuri" class="btn-book-dest">
+                <i class="fas fa-calendar-check"></i> Book Visit
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 9: Ramanathapuram District - Dhanushkodi -->
+        <article class="atlas-card" data-location="ramanathapuram" data-category="coastal heritage" data-name="Dhanushkodi Rameswaram Ramanathapuram District Ghost Town Pamban Island">
+          <div class="card-media-wrap" onclick="openStory('ramanathapuram')">
+            <div class="card-floating-loc">
+              <i class="fas fa-map-marker-alt"></i> Ramanathapuram District
+            </div>
+            <div class="card-floating-cat">Lands End</div>
+            <img src="../assets/images/dhanushkodi.png" alt="Dhanushkodi Ruins">
+          </div>
+          <div class="card-info-wrap">
+            <h3>Dhanushkodi & Pamban Island</h3>
+            <div class="card-loc-subtitle"><i class="fas fa-compass"></i> Pamban Island, Ramanathapuram District</div>
+            <p>The poignant ghost town resting on white sand shores at India's southern tip. Where the tranquil Gulf of Mannar meets the roaring Bay of Bengal across the historic Palk Strait.</p>
+            <div class="card-fast-facts">
+              <div class="fast-fact-item"><i class="fas fa-calendar-alt"></i> Best: Oct – Mar</div>
+              <div class="fast-fact-item"><i class="fas fa-ticket"></i> Entry: Free</div>
+            </div>
+            <div class="card-action-row">
+              <button class="btn-view-story" onclick="openStory('ramanathapuram')">
+                <i class="fas fa-circle-info"></i> View Details
+              </button>
+              <a href="bookings.html?dest=dhanushkodi&district=ramanathapuram" class="btn-book-dest">
+                <i class="fas fa-calendar-check"></i> Book Visit
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 10: Nagapattinam District - Velankanni Basilica -->
+        <article class="atlas-card" data-location="nagapattinam" data-category="heritage coastal" data-name="Velankanni Basilica Our Lady Good Health Nagapattinam District Coromandel">
+          <div class="card-media-wrap" onclick="openStory('nagapattinam')">
+            <div class="card-floating-loc">
+              <i class="fas fa-map-marker-alt"></i> Nagapattinam District
+            </div>
+            <div class="card-floating-cat">Coromandel Shrine</div>
+            <img src="../assets/images/velankanni.jpg" alt="Velankanni Basilica">
+          </div>
+          <div class="card-info-wrap">
+            <h3>Velankanni Marian Basilica</h3>
+            <div class="card-loc-subtitle"><i class="fas fa-compass"></i> Velankanni, Nagapattinam District</div>
+            <p>Known as the 'Lourdes of the East'. An awe-inspiring white neo-Gothic sanctuary resting beside the sea, welcoming millions of multi-faith pilgrims from around the world.</p>
+            <div class="card-fast-facts">
+              <div class="fast-fact-item"><i class="fas fa-calendar-alt"></i> Best: Aug – Mar</div>
+              <div class="fast-fact-item"><i class="fas fa-ticket"></i> Entry: Free</div>
+            </div>
+            <div class="card-action-row">
+              <button class="btn-view-story" onclick="openStory('nagapattinam')">
+                <i class="fas fa-circle-info"></i> View Details
+              </button>
+              <a href="bookings.html?dest=nagapattinam&district=nagapattinam" class="btn-book-dest">
+                <i class="fas fa-calendar-check"></i> Book Visit
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 11: Thanjavur District - Brihadeeswarar Temple -->
+        <article class="atlas-card" data-location="thanjavur" data-category="heritage" data-name="Brihadeeswarar Temple Periya Kovil Thanjavur District Chola">
+          <div class="card-media-wrap" onclick="openStory('thanjavur')">
+            <div class="card-floating-loc">
+              <i class="fas fa-map-marker-alt"></i> Thanjavur District
+            </div>
+            <div class="card-floating-cat">Great Living Chola</div>
+            <img src="../assets/images/background.png" alt="Brihadeeswarar Temple Periya Kovil">
+          </div>
+          <div class="card-info-wrap">
+            <h3>Brihadeeswarar Periya Kovil</h3>
+            <div class="card-loc-subtitle"><i class="fas fa-compass"></i> Kaveri River Delta, Thanjavur District</div>
+            <p>Consecrated in 1010 CE by Chola Emperor Raja Raja I. Built completely of granite with a colossal 216-foot vimanam and covered in 1,000-year-old Tamil stone inscriptions.</p>
+            <div class="card-fast-facts">
+              <div class="fast-fact-item"><i class="fas fa-calendar-alt"></i> Best: Oct – Mar</div>
+              <div class="fast-fact-item"><i class="fas fa-ticket"></i> Entry: Free</div>
+            </div>
+            <div class="card-action-row">
+              <button class="btn-view-story" onclick="openStory('thanjavur')">
+                <i class="fas fa-circle-info"></i> View Details
+              </button>
+              <a href="bookings.html?dest=thanjavur&district=thanjavur" class="btn-book-dest">
+                <i class="fas fa-calendar-check"></i> Book Visit
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 12: Thoothukudi District - Thiruchendur Murugan Kovil -->
+        <article class="atlas-card" data-location="thoothukudi" data-category="heritage coastal" data-name="Thiruchendur Murugan Kovil Temple Subramaniya Swamy Thoothukudi Tuticorin District Seashore Arupadai Veedu">
+          <div class="card-media-wrap" onclick="openStory('thiruchendur')">
+            <div class="card-floating-loc">
+              <i class="fas fa-map-marker-alt"></i> Thoothukudi District
+            </div>
+            <div class="card-floating-cat">Arupadai Veedu</div>
+            <img src="../assets/images/image-1.webp" alt="Thiruchendur Murugan Kovil">
+          </div>
+          <div class="card-info-wrap">
+            <h3>Thiruchendur Murugan Kovil</h3>
+            <div class="card-loc-subtitle"><i class="fas fa-compass"></i> Seashore, Thoothukudi District</div>
+            <p>The sacred second abode among the Six Abodes (Arupadai Veedu) of Lord Murugan and the only one situated on the seashore, famous for its 157-foot Raja Gopuram rising directly over the ocean waves.</p>
+            <div class="card-fast-facts">
+              <div class="fast-fact-item"><i class="fas fa-calendar-alt"></i> Best: Year-Round</div>
+              <div class="fast-fact-item"><i class="fas fa-ticket"></i> Entry: Free / Darshan</div>
+            </div>
+            <div class="card-action-row">
+              <button class="btn-view-story" onclick="openStory('thiruchendur')">
+                <i class="fas fa-circle-info"></i> View Details
+              </button>
+              <a href="bookings.html?dest=thiruchendur&district=thoothukudi" class="btn-book-dest">
+                <i class="fas fa-calendar-check"></i> Book Visit
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Empty State -->
+        <div class="atlas-empty-box" id="atlasEmptyBox">
+          <i class="fas fa-map-location-dot"></i>
+          <h3>No destinations found for this filter</h3>
+          <p>Try searching for another district or keyword, or reset your filters to view all 38 districts.</p>
+          <button class="btn-atlas-reset" style="display:inline-flex;" onclick="resetAtlasFilters()"><i class="fas fa-rotate-left"></i> View All Districts</button>
+        </div>
+
+      </div>
+
+      <!-- Cultural Call to Action Box -->
+      <div class="atlas-cta-box">
+        <h2>Experience Tamil Nadu’s Living Heritage Firsthand</h2>
+        <p>From centuries-old temple sanctums to cool mountain tea gardens, let Sancharam’s AI craft your perfect custom travel itinerary across all 38 districts.</p>
+        <div style="display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap;">
+          <a href="bookings.html" class="btn-primary" style="padding: 13px 32px; font-size: 1.5rem;">
+            <i class="fas fa-calendar-check" style="margin-right: 8px;"></i> Pre-Book a Destination
+          </a>
+          <a href="features/AI itinenary.html" class="btn-secondary" style="padding: 13px 28px; font-size: 1.5rem; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); color: #FFF;">
+            <i class="fas fa-wand-magic-sparkles" style="margin-right: 8px;"></i> Generate AI Route
+          </a>
         </div>
       </div>
+
     </div>
-  </section>
+  </main>
 
-  <!-- Gallery Section -->
-  <section class="gallery-section">
-    <h2 class="gallery-title">Photo Gallery</h2>
-    <div class="gallery-grid">
-      <img src="../assets/images/image-1.webp" alt="Gallery 1">
-      <img src="../assets/images/image-2.webp" alt="Gallery 2">
-      <img src="../assets/images/image-3.webp" alt="Gallery 3">
-      <img src="assets/images/image-4.webp" alt="Gallery 4">
-      <img src="../assets/images/image-5.webp" alt="Gallery 5">
-      <img src="../assets/images/image-6.webp" alt="Gallery 6">
-    </div>
-  </section>
-
-  <!-- Call to Action -->
-  <section class="cta">
-    <h2>Plan Your Next Adventure</h2>
-    <p>Book your dream vacation with Sancharam and create unforgettable memories.</p>
-    <a href="bookings.html" class="btn">Book Now</a>
-  </section>
-
-  <!-- Footer -->
-    <!-- Footer -->
-  <footer class="footer">
-      <div class="social-media-links">
-          <i class="fab fa-facebook"></i>
-          <i class="fab fa-twitter"></i>
-          <i class="fab fa-instagram"></i>
+  <!-- ================= DETAILS LIGHTBOX MODAL ================= -->
+  <div class="atlas-modal" id="atlasModal" onclick="closeStoryModal(event)">
+    <div class="modal-dialog" onclick="event.stopPropagation()">
+      <button class="modal-close-btn" onclick="closeStoryModal()" title="Close">&times;</button>
+      
+      <!-- Left Photo Panel -->
+      <div class="modal-photo-panel">
+        <img id="modalMainImg" src="" alt="Destination Visual">
       </div>
-      <p>Sancharam &copy; 2025, All Rights Reserved</p>
+
+      <!-- Right Lore & Booking Panel -->
+      <div class="modal-info-panel">
+        <div class="modal-badge-row">
+          <div class="modal-loc-pill" id="modalLocBadge">
+            <i class="fas fa-map-marker-alt"></i> Official District
+          </div>
+          <span style="font-size: 1.25rem; font-weight: 700; color: #64748B;" id="modalCategoryBadge">
+            Heritage
+          </span>
+        </div>
+
+        <h2 id="modalTitle">Destination Title</h2>
+        <div class="modal-district-sub" id="modalDistrictSub">
+          <i class="fas fa-compass"></i> District
+        </div>
+
+        <p id="modalStoryDesc">Full narrative backstory will appear here.</p>
+
+        <!-- Travel Facts -->
+        <div class="modal-facts-grid">
+          <div class="modal-fact-item">
+            <i class="fas fa-calendar-alt"></i>
+            <div>
+              <div class="modal-fact-label">Best Season</div>
+              <div class="modal-fact-val" id="modalFactSeason">Oct – Mar</div>
+            </div>
+          </div>
+          <div class="modal-fact-item">
+            <i class="fas fa-camera"></i>
+            <div>
+              <div class="modal-fact-label">Photography</div>
+              <div class="modal-fact-val" id="modalFactPhoto">Sunrise / Golden Hour</div>
+            </div>
+          </div>
+          <div class="modal-fact-item">
+            <i class="fas fa-ticket"></i>
+            <div>
+              <div class="modal-fact-label">Entry / Access</div>
+              <div class="modal-fact-val" id="modalFactEntry">Free / ASI Passes</div>
+            </div>
+          </div>
+          <div class="modal-fact-item">
+            <i class="fas fa-route"></i>
+            <div>
+              <div class="modal-fact-label">Nearest Hub</div>
+              <div class="modal-fact-val" id="modalFactHub">Major Airport / Rail</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-action-bar">
+          <a href="bookings.html" id="modalBookBtn" class="btn-primary" style="flex: 1; padding: 12px 20px; font-size: 1.4rem; justify-content: center;">
+            <i class="fas fa-calendar-check" style="margin-right: 6px;"></i> Book Trip to this Destination
+          </a>
+          <button class="btn-view-story" onclick="closeStoryModal()" style="padding: 12px 18px; background: #F1F5F9; color: #475569;">
+            Back to Explore
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ================= FOOTER ================= -->
+    <!-- ================= FOOTER ================= -->
+  <footer class="site-footer">
+    <div class="container">
+        <div class="footer-top">
+            <div class="footer-brand">
+                <img src="../assets/logos/logo-transparent.png" alt="Sancharam Logo" class="brand-logo" onerror="this.src='../assets/logos/logo.png'">
+                <p>Sancharam is your smart travel companion dedicated to celebrating the living heritage, natural wonders, and vibrant spirit of Tamil Nadu.</p>
+                <div class="social-links">
+                    <a href="#" class="social-btn" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-btn" title="Twitter"><i class="fab fa-x-twitter"></i></a>
+                    <a href="#" class="social-btn" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-btn" title="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>Smart Features</h4>
+                <ul class="footer-links">
+                    <li><a href="features/AI itinenary.html">AI Itinerary Planner</a></li>
+                    <li><a href="features/routing.html">Scenic Routes</a></li>
+                    <li><a href="features/sos.html">Safety & SOS Helpline</a></li>
+                    <li><a href="features/expenses.html">Expense Calculator</a></li>
+                    <li><a href="features/checklist.html">Travel Checklist</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Cultural Pride</h4>
+                <p style="font-size: 1.4rem; color: #FCD34D; font-weight: 700; margin-bottom: 0.8rem;">வாழ்க தமிழ் வளர்க தமிழ் பண்பாடு</p>
+                <p style="font-size: 1.3rem; color: rgba(255,255,255,0.7); line-height: 1.6;">Dedicated to travelers who cherish art, architecture, literature, and warm Tamil hospitality.</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 Sancharam. All Rights Reserved. Crafted with love for தமிழ்நாடு.</p>
+            <div class="footer-bottom-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Security</a>
+            </div>
+        </div>
+    </div>
   </footer>
+
+  <script src="../assets/js/sancharam-theme.js"></script>
+  <script>
+    // ==========================================================================
+    // SANCHARAM DESTINATIONS DATA & VERIFIED DISTRICT LOGIC
+    // ==========================================================================
+
+    const destinationData = {
+      'mahabalipuram': {
+        distSlug: 'chengalpattu',
+        title: 'Shore Temple Mahabalipuram',
+        district: 'Chengalpattu District, Tamil Nadu',
+        sub: 'Bay of Bengal Coastline, Chengalpattu',
+        category: 'UNESCO World Heritage',
+        desc: 'Built in the early 8th century (700–728 AD) during the reign of Pallava King Narasimhavarman II. Features structural stone sanctuaries facing the Bay of Bengal ocean tides, celebrating over 1,300 years of Dravidian architectural genius.',
+        season: 'Nov – Feb',
+        photoTip: 'Sunrise over ocean waves',
+        entry: '₹40 (ASI) / Foreigners ₹600',
+        hub: 'Chennai Airport (55 km)',
+        photo: '../assets/images/shoretemple.png'
+      },
+      'chennai': {
+        title: 'San Thome Basilica Cathedral',
+        district: 'Chennai District, Tamil Nadu',
+        sub: 'Mylapore, Chennai Metropolitan District',
+        category: 'Apostolic Shrine',
+        desc: 'One of only three basilicas in the world built over the tomb of an apostle of Jesus Christ (St. Thomas). Built originally by Portuguese explorers in the 16th century and rebuilt in neo-Gothic majesty with 183-ft soaring white spires.',
+        season: 'Year-Round',
+        photoTip: 'Late afternoon spires & stained glass',
+        entry: 'Free Admission',
+        hub: 'Chennai Central / Airport (14 km)',
+        photo: '../assets/images/santhome.webp'
+      },
+      'rameshwaram': {
+        distSlug: 'ramanathapuram',
+        title: 'Ramanathaswamy Temple Rameswaram',
+        district: 'Ramanathapuram District, Tamil Nadu',
+        sub: 'Rameswaram Island, Ramanathapuram District',
+        category: 'Char Dham & Jyotirlinga',
+        desc: 'One of India’s twelve sacred Jyotirlingas, revered for its towering yellow gopuram overlooking the Agni Theertham sea, 22 sacred wells, and the world’s longest carved pillared corridor with 1,212 granite pillars.',
+        season: 'Oct – Mar',
+        photoTip: 'Aerial view of gopuram and fishing harbor',
+        entry: 'Free / Special Darshan',
+        hub: 'Madurai Airport (170 km) / Rameswaram Rail',
+        photo: '../assets/images/image-2.webp'
+      },
+      'thanjavur': {
+        title: 'Brihadeeswarar Periya Kovil',
+        district: 'Thanjavur District, Tamil Nadu',
+        sub: 'Kaveri River Delta, Thanjavur District',
+        category: 'Great Living Chola Temple',
+        desc: 'Consecrated in 1010 CE by Emperor Raja Raja Chola I. Built completely out of granite, its 216-foot vimanam is topped with an 80-tonne monolithic stone kumbam capstone carved with astronomical precision.',
+        season: 'Oct – Mar',
+        photoTip: 'Sunset golden granite glow',
+        entry: 'Free Admission',
+        hub: 'Tiruchirappalli Airport (55 km)',
+        photo: '../assets/images/background.png'
+      },
+      'madurai': {
+        title: 'Meenakshi Sundareswarar Temple',
+        district: 'Madurai District, Tamil Nadu',
+        sub: 'Vaigai River Valley, Madurai District',
+        category: 'Historic Temple City',
+        desc: 'Over 2,500 years of living cultural heritage. Celebrated for its soaring 14 multi-colored gopurams reaching up to 52 meters, encrusted with thousands of hand-carved stone deities and the Hall of a Thousand Pillars.',
+        season: 'Oct – Mar',
+        photoTip: 'Morning temple processions',
+        entry: 'Free / Pillar Hall ₹50',
+        hub: 'Madurai Airport (12 km)',
+        photo: '../assets/images/image-3.webp'
+      },
+      'nilgiris': {
+        title: 'Ooty & Nilgiri Mountain Railway',
+        district: 'Nilgiris District, Tamil Nadu',
+        sub: 'Udhagamandalam, Nilgiris District (Western Ghats)',
+        category: 'Hill Station & Nature',
+        desc: 'Perched 2,240m high amidst rolling emerald tea slopes, pine groves, and the UNESCO heritage Nilgiri Mountain Toy Train chugging gracefully over century-old arched viaducts, tunnels, and deep gorges.',
+        season: 'Mar – Jun',
+        photoTip: 'Early morning mountain mist',
+        entry: 'Toy Train Ticket ₹205',
+        hub: 'Coimbatore Airport (88 km)',
+        photo: '../assets/images/ooty.jpg'
+      },
+      'kanyakumari': {
+        title: 'Thiruvalluvar Statue & Memorial',
+        district: 'Kanyakumari District, Tamil Nadu',
+        sub: 'Cape Comorin, Kanyakumari District',
+        category: 'Ocean Confluence',
+        desc: 'Rising 133 feet above sea level to honor the 133 chapters of Thirukkural. Positioned at the monumental confluence where the Arabian Sea, Bay of Bengal, and Indian Ocean meet.',
+        season: 'Nov – Feb',
+        photoTip: 'Sunrise over Triveni Sangam',
+        entry: 'Ferry ₹50 / Rock ₹20',
+        hub: 'Trivandrum Airport (90 km)',
+        photo: '../assets/images/kanniyakumari.png'
+      },
+      'sivaganga': {
+        distSlug: 'sivaganga',
+        title: 'Chettinad Palatial Mansions',
+        district: 'Sivaganga District, Tamil Nadu',
+        sub: 'Karaikudi, Sivaganga District',
+        category: 'Palaces & Culinary Arts',
+        desc: 'Grand architectural masterpieces built by merchant bankers featuring Burmese teak pillars, Belgian crystal chandeliers, hand-crafted Athangudi tiles, and world-celebrated cuisine with 40-room courtyards.',
+        season: 'Oct – Mar',
+        photoTip: 'Sunlit interior courtyards',
+        entry: 'Mansion Tour ₹100',
+        hub: 'Madurai Airport (85 km)',
+        photo: '../assets/images/chettinad.jpg'
+      },
+      'dharmapuri': {
+        title: 'Hogenakkal River Waterfalls',
+        district: 'Dharmapuri District, Tamil Nadu',
+        sub: 'Pennagaram, Dharmapuri District',
+        category: 'River Waterfalls',
+        desc: 'Known as the Niagara of India where the mighty Kaveri river violently plunges through carbonatite rock canyons. Celebrated for medicinal mineral water baths and spinning bamboo coracle adventures.',
+        season: 'Aug – Feb',
+        photoTip: 'Gorge mist from coracle',
+        entry: 'Coracle Ride ₹750/boat',
+        hub: 'Bengaluru Airport (160 km)',
+        photo: '../assets/images/hogenakkal.jpg'
+      },
+      'ramanathapuram': {
+        title: 'Dhanushkodi & Pamban Island',
+        district: 'Ramanathapuram District, Tamil Nadu',
+        sub: 'Pamban Island, Ramanathapuram District',
+        category: 'Lands End & Ghost Town',
+        desc: 'The poignant ghost town resting on powdery white sands at India’s southern tip. Where the tranquil Gulf of Mannar meets the turbulent Bay of Bengal across the historic Palk Strait.',
+        season: 'Oct – Mar',
+        photoTip: 'Dunes & church ruins at dawn',
+        entry: 'Free Admission',
+        hub: 'Madurai Airport (170 km)',
+        photo: '../assets/images/dhanushkodi.png'
+      },
+      'nagapattinam': {
+        title: 'Velankanni Marian Basilica',
+        district: 'Nagapattinam District, Tamil Nadu',
+        sub: 'Coromandel Coast, Nagapattinam District',
+        category: 'Coromandel Shrine',
+        desc: 'A glorious white neo-Gothic sanctuary perched on the Coromandel coast, welcoming millions of multi-faith pilgrims from around the world in harmony and peace along the sacred Bay of Bengal waters.',
+        season: 'Aug – Mar',
+        photoTip: 'Gothic towers against blue sea',
+        entry: 'Free Admission',
+        hub: 'Tiruchirappalli Airport (150 km)',
+        photo: '../assets/images/velankanni.jpg'
+      },
+      'pancharathas': {
+        title: 'Pancha Rathas Monolithic Reliefs',
+        district: 'Chengalpattu District, Tamil Nadu',
+        sub: 'Mamallapuram, Chengalpattu District',
+        category: 'Granite Monoliths',
+        desc: 'Five monolithic rock-cut shrines carved out of solid pink granite boulders, each named after the Pandavas and Draupadi, exemplifying 7th-century Pallava sculptural genius.',
+        season: 'Nov – Feb',
+        photoTip: 'Morning sunlight on chariot relief',
+        entry: '₹40 (ASI)',
+        hub: 'Chennai Airport (55 km)',
+        photo: '../assets/images/image-5.webp'
+      },
+      'thiruchendur': {
+        distSlug: 'thoothukudi',
+        title: 'Thiruchendur Murugan Kovil',
+        district: 'Thoothukudi District, Tamil Nadu',
+        sub: 'Gulf of Mannar Coast, Thoothukudi District',
+        category: 'Arupadai Veedu Seashore Temple',
+        desc: 'Arulmigu Subramaniya Swamy Temple in Thiruchendur is the sacred second abode among the Six Abodes (Arupadai Veedu) of Lord Murugan and the only one situated right on the seashore. Famous for its monumental 157-foot nine-tiered Raja Gopuram rising directly beside the ocean surf, the sacred Nazhi Kinaru freshwater spring, and grand Soorasamharam celebrations.',
+        season: 'Year-Round (Best: Oct – Mar)',
+        photoTip: 'Aerial view of Raja Gopuram & breaking waves',
+        entry: 'Free Admission / Special Darshan ₹20–₹100',
+        hub: 'Tuticorin Airport (40 km) / Tirunelveli Rail (60 km)',
+        photo: '../assets/images/image-1.webp'
+      }
+    };
+
+    // Filter State
+    let currentFilter = {
+      district: 'all',
+      category: 'all',
+      query: ''
+    };
+
+    // DOM Elements
+    const atlasSearchInput = document.getElementById('atlasSearchInput');
+    const searchClearBtn = document.getElementById('searchClearBtn');
+    const atlasDistrictSelect = document.getElementById('atlasDistrictSelect');
+    const catTabs = document.querySelectorAll('.cat-tab');
+    const atlasCards = document.querySelectorAll('.atlas-card');
+    const atlasCounter = document.getElementById('atlasCounter');
+    const atlasResetBtn = document.getElementById('atlasResetBtn');
+    const atlasEmptyBox = document.getElementById('atlasEmptyBox');
+
+    // Modal Elements
+    const atlasModal = document.getElementById('atlasModal');
+    const modalMainImg = document.getElementById('modalMainImg');
+    const modalLocBadge = document.getElementById('modalLocBadge');
+    const modalCategoryBadge = document.getElementById('modalCategoryBadge');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalDistrictSub = document.getElementById('modalDistrictSub');
+    const modalStoryDesc = document.getElementById('modalStoryDesc');
+    const modalFactSeason = document.getElementById('modalFactSeason');
+    const modalFactPhoto = document.getElementById('modalFactPhoto');
+    const modalFactEntry = document.getElementById('modalFactEntry');
+    const modalFactHub = document.getElementById('modalFactHub');
+
+    // Filtering Engine
+    function applyFilters() {
+      let visibleCount = 0;
+      const q = currentFilter.query.toLowerCase().trim();
+      const dist = currentFilter.district;
+      const cat = currentFilter.category;
+
+      atlasCards.forEach(card => {
+        const cardDist = card.getAttribute('data-location');
+        const cardCat = card.getAttribute('data-category');
+        const cardName = (card.getAttribute('data-name') || '').toLowerCase();
+
+        const matchesDist = (dist === 'all' || cardDist === dist);
+        const matchesCat = (cat === 'all' || cardCat.includes(cat));
+        const matchesSearch = (!q || cardName.includes(q) || card.innerText.toLowerCase().includes(q));
+
+        if (matchesDist && matchesCat && matchesSearch) {
+          card.style.display = 'flex';
+          visibleCount++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      // Update counter
+      atlasCounter.innerHTML = `Showing <strong>${visibleCount}</strong> destination${visibleCount === 1 ? '' : 's'} across Tamil Nadu`;
+
+      // Show/hide empty state
+      atlasEmptyBox.style.display = visibleCount === 0 ? 'block' : 'none';
+
+      // Show/hide reset button
+      const isFiltered = (dist !== 'all' || cat !== 'all' || q !== '');
+      atlasResetBtn.style.display = isFiltered ? 'inline-flex' : 'none';
+    }
+
+    // Sync District Selection
+    function syncDistrictUI(distVal) {
+      atlasDistrictSelect.value = distVal;
+    }
+
+    // Dropdown change
+    atlasDistrictSelect.addEventListener('change', (e) => {
+      const dist = e.target.value;
+      currentFilter.district = dist;
+      syncDistrictUI(dist);
+      applyFilters();
+    });
+
+    // Category Tabs click
+    catTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        catTabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        currentFilter.category = tab.getAttribute('data-cat');
+        applyFilters();
+      });
+    });
+
+    // Search input with debounce
+    let searchDebounce = null;
+    atlasSearchInput.addEventListener('input', (e) => {
+      const val = e.target.value;
+      searchClearBtn.style.display = val ? 'block' : 'none';
+      clearTimeout(searchDebounce);
+      searchDebounce = setTimeout(() => {
+        currentFilter.query = val;
+        applyFilters();
+      }, 200);
+    });
+
+    searchClearBtn.addEventListener('click', () => {
+      atlasSearchInput.value = '';
+      currentFilter.query = '';
+      searchClearBtn.style.display = 'none';
+      applyFilters();
+      atlasSearchInput.focus();
+    });
+
+    function resetAtlasFilters() {
+      currentFilter = { district: 'all', category: 'all', query: '' };
+      atlasSearchInput.value = '';
+      searchClearBtn.style.display = 'none';
+      syncDistrictUI('all');
+      catTabs.forEach(t => {
+        if (t.getAttribute('data-cat') === 'all') t.classList.add('active');
+        else t.classList.remove('active');
+      });
+      applyFilters();
+    }
+    atlasResetBtn.addEventListener('click', resetAtlasFilters);
+
+    // Lightbox Details Modal Logic
+    function openStory(destKey) {
+      const data = destinationData[destKey];
+      if (!data) return;
+
+      modalMainImg.src = data.photo;
+      modalTitle.innerText = data.title;
+      modalLocBadge.innerHTML = `<i class="fas fa-map-marker-alt"></i> ${data.district}`;
+      modalDistrictSub.innerHTML = `<i class="fas fa-compass"></i> ${data.sub}`;
+      modalCategoryBadge.innerText = data.category;
+      modalStoryDesc.innerText = data.desc;
+      modalFactSeason.innerText = data.season;
+      modalFactPhoto.innerText = data.photoTip;
+      modalFactEntry.innerText = data.entry;
+      modalFactHub.innerText = data.hub;
+
+      const modalBookBtn = document.getElementById('modalBookBtn');
+      if (modalBookBtn) {
+        modalBookBtn.href = `bookings.html?dest=${destKey}&district=${data.distSlug || destKey}`;
+      }
+      atlasModal.classList.add('active');
+    }
+
+    function closeStoryModal(e) {
+      if (!e || e.target === atlasModal) {
+        atlasModal.classList.remove('active');
+      }
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && atlasModal.classList.contains('active')) {
+        closeStoryModal();
+      }
+    });
+
+    // Direct URL parameter support (?district=chennai)
+    window.addEventListener('DOMContentLoaded', () => {
+      const params = new URLSearchParams(window.location.search);
+      const distParam = params.get('district') || params.get('location');
+      if (distParam) {
+        currentFilter.district = distParam.toLowerCase();
+        syncDistrictUI(currentFilter.district);
+      }
+      applyFilters();
+    });
+  </script>
 </body>
 </html>

@@ -1,174 +1,1046 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SOS Emergency Assistance - Tamil Nadu</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Emergency SOS & Tourist Helpline | Sancharam</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+  <link rel="stylesheet" href="../../assets/css/sancharam-theme.css">
   <style>
-    body {
-      font-family: 'Montserrat', sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f4f7fc;
+    /* ==========================================================================
+       SANCHARAM EMERGENCY SOS & TOURIST HELPLINE
+       ========================================================================== */
+
+    .sos-hero {
+      padding: 120px 0 35px;
+      text-align: center;
+      background: radial-gradient(circle at 50% 20%, rgba(220, 38, 38, 0.06) 0%, rgba(248, 250, 252, 0) 70%);
+    }
+    .sos-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      background: #FEE2E2;
+      color: #DC2626;
+      border-radius: 9999px;
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .sos-hero h1 {
+      font-size: 3.8rem;
+      font-weight: 800;
+      color: #0F172A;
+      margin-bottom: 10px;
+      line-height: 1.2;
+    }
+    .sos-hero h1 span {
+      background: linear-gradient(135deg, #DC2626 0%, #991B1B 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .sos-hero p {
+      font-size: 1.6rem;
+      color: #475569;
+      max-width: 760px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* Main Container */
+    .sos-section {
+      padding: 15px 0 80px;
+    }
+    .sos-container {
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+
+    /* SOS Big Beacon Card */
+    .sos-beacon-card {
+      background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+      border-radius: 24px;
+      padding: 40px;
+      color: #FFFFFF;
+      box-shadow: 0 10px 30px rgba(220, 38, 38, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      margin-bottom: 35px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .beacon-pulse-ring {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 320px;
+      height: 320px;
+      border-radius: 50%;
+      background: rgba(220, 38, 38, 0.08);
+      animation: pulseAnim 2.5s infinite;
+      pointer-events: none;
+    }
+    @keyframes pulseAnim {
+      0% { transform: translate(-50%, -50%) scale(0.8); opacity: 0.8; }
+      50% { transform: translate(-50%, -50%) scale(1.3); opacity: 0.3; }
+      100% { transform: translate(-50%, -50%) scale(1.6); opacity: 0; }
+    }
+
+    .btn-sos-trigger {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #EF4444 0%, #B91C1C 100%);
+      border: 6px solid rgba(255, 255, 255, 0.25);
+      color: #FFFFFF;
+      font-size: 3.5rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 40px rgba(239, 68, 68, 0.6);
+      transition: all 0.25s ease;
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 2;
+    }
+    .btn-sos-trigger:hover {
+      transform: scale(1.08);
+      box-shadow: 0 0 60px rgba(239, 68, 68, 0.8);
+    }
+    .btn-sos-trigger:active {
+      transform: scale(0.95);
+    }
+
+    .beacon-title {
+      font-size: 2.4rem;
+      font-weight: 800;
+      color: #FFFFFF;
+      margin-bottom: 8px;
+      position: relative;
+      z-index: 2;
+    }
+    .beacon-sub {
+      font-size: 1.45rem;
+      color: #CBD5E1;
+      max-width: 600px;
+      margin: 0 auto 24px;
+      line-height: 1.5;
+      position: relative;
+      z-index: 2;
+    }
+
+    .beacon-quick-actions {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 2;
+    }
+    .btn-quick-hotline {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      color: #FFFFFF;
+      padding: 12px 22px;
+      border-radius: 12px;
+      font-size: 1.35rem;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.2s;
+    }
+    .btn-quick-hotline:hover {
+      background: #EF4444;
+      border-color: #EF4444;
+      transform: translateY(-2px);
+    }
+    .btn-quick-hotline.btn-whatsapp-guard {
+      background: #25D366;
+      border-color: #25D366;
+    }
+    .btn-quick-hotline.btn-whatsapp-guard:hover {
+      background: #1EBE5D;
+    }
+
+    /* Live Coordinates Banner */
+    .gps-status-banner {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 12px;
+      padding: 12px 20px;
+      margin-top: 25px;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 1.25rem;
+      color: #94A3B8;
+      position: relative;
+      z-index: 2;
+    }
+    .gps-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #10B981;
+      box-shadow: 0 0 10px #10B981;
+      display: inline-block;
+    }
+
+    /* Emergency Contacts Hub Grid */
+    .contacts-section-title {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #0F172A;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .contacts-section-title i { color: #DC2626; }
+    .contacts-subtitle {
+      font-size: 1.4rem;
+      color: #64748B;
+      margin-bottom: 24px;
+    }
+
+    .contacts-category-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-bottom: 35px;
+    }
+    .category-group-card {
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      border-radius: 20px;
+      padding: 24px;
+      box-shadow: 0 4px 15px rgba(15, 23, 42, 0.03);
       display: flex;
       flex-direction: column;
-      align-items: center;
-      justify-content: space-between;
-      min-height: 100vh;
+      gap: 16px;
     }
-
-    .header {
-      background-color: #007bff;
-      color: white;
-      padding: 20px;
-      width: 100%;
-      text-align: center;
-      font-size: 24px;
-      font-weight: bold;
-      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    }
-
-    .feature-container {
-      background: white;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
-      text-align: center;
-      max-width: 400px;
-      width: 90%;
-      margin: 20px 0;
-    }
-
-    .sos-button {
-      background-color: #ff4d4d;
-      color: white;
-      font-size: 20px;
-      padding: 15px 30px;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: 0.3s;
-      width: 100%;
-    }
-
-    .sos-button:hover {
-      background-color: #cc0000;
-    }
-
-    .contacts {
-      margin-top: 20px;
-      text-align: left;
-    }
-
-    .contact-item {
-      background: #e3f2fd;
-      padding: 15px;
-      margin: 10px 0;
-      border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    .cat-group-header {
       display: flex;
       align-items: center;
-      font-size: 16px;
+      gap: 12px;
+      padding-bottom: 12px;
+      border-bottom: 1.5px solid #F1F5F9;
+    }
+    .cat-icon-badge {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+    }
+    .badge-police { background: #DBEAFE; color: #2563EB; }
+    .badge-med    { background: #FEE2E2; color: #DC2626; }
+    .badge-women  { background: #FCE7F3; color: #DB2777; }
+    .badge-disaster { background: #FEF3C7; color: #D97706; }
+    .badge-marine { background: #E0E7FF; color: #4F46E5; }
+    .badge-transit{ background: #DCFCE7; color: #16A34A; }
+
+    .cat-group-title {
+      font-size: 1.55rem;
+      font-weight: 800;
+      color: #0F172A;
     }
 
-    .contact-item i {
-      margin-right: 10px;
-      color: #007bff;
+    .contact-item-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 12px;
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      border-radius: 12px;
+      transition: all 0.2s;
+    }
+    .contact-item-row:hover {
+      background: #FFFFFF;
+      border-color: #CBD5E1;
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+    }
+    .contact-info-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .contact-name {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #1E293B;
+    }
+    .contact-note {
+      font-size: 1.15rem;
+      color: #64748B;
+    }
+    .btn-dial-hotline {
+      background: #FFFFFF;
+      border: 1.5px solid #CBD5E1;
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: #0F172A;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+    .btn-dial-hotline:hover {
+      background: #EF4444;
+      border-color: #EF4444;
+      color: #FFFFFF;
     }
 
-    .footer {
-      width: 100%;
-      background: #263238;
-      color: white;
-      text-align: center;
-      padding: 20px 0;
+    /* District Emergency Lookup Card */
+    .district-lookup-card {
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      border-radius: 20px;
+      padding: 28px;
+      box-shadow: 0 4px 20px rgba(15, 23, 42, 0.04);
+      margin-bottom: 35px;
+    }
+    .lookup-header-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+    .district-select-ctrl {
+      padding: 10px 16px;
+      border-radius: 12px;
+      border: 1.5px solid #CBD5E1;
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #0F172A;
+      background: #F8FAFC;
+      outline: none;
+      cursor: pointer;
+      min-width: 260px;
+    }
+    .district-select-ctrl:focus {
+      border-color: #DC2626;
     }
 
-    .footer i {
-      font-size: 24px;
-      margin: 0 15px;
-      color: white;
+    .district-contacts-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .dist-unit-card {
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      border-radius: 14px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .unit-label {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #64748B;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .unit-title {
+      font-size: 1.45rem;
+      font-weight: 800;
+      color: #0F172A;
+    }
+    .unit-phone-link {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: #DC2626;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .unit-phone-link:hover {
+      text-decoration: underline;
+    }
+
+    /* Safety Tips Checklist */
+    .safety-tips-card {
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      border-radius: 20px;
+      padding: 28px;
+      box-shadow: 0 4px 20px rgba(15, 23, 42, 0.04);
+    }
+    .tips-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 16px;
+    }
+    .tip-box {
+      padding: 16px;
+      border-radius: 14px;
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+    }
+    .tip-title {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: #0F172A;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .tip-title i { color: #DC2626; }
+    .tip-desc {
+      font-size: 1.25rem;
+      color: #64748B;
+      line-height: 1.5;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .contacts-category-grid { grid-template-columns: 1fr 1fr; }
+      .district-contacts-grid { grid-template-columns: 1fr; }
+      .tips-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .sos-hero h1 { font-size: 2.8rem; }
+      .contacts-category-grid { grid-template-columns: 1fr; }
+      .sos-beacon-card { padding: 30px 18px; }
+      .btn-sos-trigger { width: 110px; height: 110px; font-size: 2.8rem; }
     }
   </style>
-
-<script src="https://kit.fontawesome.com/7f257b9379.js" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="../../assets/css/style.css">
-
-<!-- Global Nav/Footer CSS injected -->
-<style id="global-nav-footer">
-    .navbar { font-family: 'Montserrat', sans-serif; }
-    .navbar .container { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 0 1rem; }
-    .navbar.bg-dark { background-color: #000000; }
-    .navbar .logo { float: left; padding-top: 6px; }
-    .navbar .nav-items { list-style: none; margin: 0; padding: 0; display: flex; align-items: center; }
-    .navbar .nav-item { display: inline-block; padding: 1.5rem; text-transform: uppercase; }
-    .navbar a { color: aliceblue; text-decoration: none; font-size: 1.6rem; font-weight: bold; }
-    .navbar a:hover { border-bottom: 1px solid #FFF; }
-    .navbar::after { content: ''; display: block; clear: both; }
-    .footer { font-size: 1rem; padding: 1rem; background: #263238; color: #f4f4f4; margin-top: auto; text-align: center; width: 100%; font-family: 'Montserrat', sans-serif; }
-    .footer .social-media-links i { padding: 1.5rem; margin-bottom: 1rem; font-size: 4rem; color: #f4f4f4; }
-    @media (max-width: 768px) {
-        .navbar .container { flex-direction: column; }
-        .navbar .nav-items { flex-direction: column; width: 100%; text-align: center; }
-    }
-</style>
-<script src="https://kit.fontawesome.com/7f257b9379.js" crossorigin="anonymous"></script>
-
 </head>
 <body>
-<nav class="navbar bg-dark">
-    <div class="container">
-        <img src="../../assets/logos/logo.png" alt="Sancharam Logo" class="logo" style="width: 300px; height: 80px;">
-        <ul class="nav-items">
-            <li class="nav-item"><a href="../../home.html">Home</a></li>
-            <li class="nav-item"><a href="../../pages/about.html">About</a></li>
-            <li class="nav-item"><a href="../../pages/explore.html">Explore</a></li>
-            <li class="nav-item"><a href="../../pages/bookings.html">Bookings</a></li>
-            <li class="nav-item"><a href="../../pages/features.html">Features</a></li>
-            <li class="nav-item"><a href="../../pages/profile.html">Profile</a></li>
+
+  <!-- ================= NAVBAR ================= -->
+  <nav class="navbar" id="main-nav">
+    <div class="container nav-wrapper">
+        <a href="../../home.html" class="brand" title="Sancharam">
+            <img src="../../assets/logos/logo-transparent.png" alt="Sancharam Logo" class="brand-logo" onerror="this.src='../../assets/logos/logo.png'">
+        </a>
+
+        <ul class="nav-links">
+            <li><a href="../../home.html" class="nav-link">Home</a></li>
+            <li><a href="../explore.html" class="nav-link">Explore</a></li>
+            <li><a href="../bookings.html" class="nav-link">Bookings</a></li>
+            <li><a href="../features.html" class="nav-link active">Features</a></li>
+            <li><a href="../profile.html" class="nav-link">Profile</a></li>
         </ul>
+
+        <div class="nav-actions">
+            <a href="AI itinenary.html" class="btn-nav-ai">
+                <i class="fas fa-wand-magic-sparkles"></i>
+                <span>Plan with AI</span>
+            </a>
+        </div>
+
+        <button class="mobile-toggle" aria-label="Toggle navigation">
+            <i class="fas fa-bars"></i>
+        </button>
     </div>
-</nav>
+  </nav>
 
-  <div class="header">Sancharam- SOS Emergency Assistance</div>
-
-  <div class="feature-container">
-    <button class="sos-button" onclick="sendAlert()">🚨 Send SOS Alert</button>
-
-    <div class="contacts">
-      <h3>Emergency Contacts</h3>
-      <div class="contact-item"><i class="fas fa-phone"></i> Police: 100</div>
-      <div class="contact-item"><i class="fas fa-phone"></i> Ambulance: 108</div>
-      <div class="contact-item"><i class="fas fa-phone"></i> Fire Department: 101</div>
-      <div class="contact-item"><i class="fas fa-phone"></i> Women Helpline: 1091</div>
-      <div class="contact-item"><i class="fas fa-phone"></i> Child Helpline: 1098</div>
-      <div class="contact-item"><i class="fas fa-phone"></i> Disaster Helpline: 1070</div>
-      <div class="contact-item"><i class="fas fa-phone"></i> Traffic Police: 103</div>
+  <!-- ================= HERO ================= -->
+  <header class="sos-hero">
+    <div class="container">
+      <div class="sos-eyebrow">
+        <i class="fas fa-triangle-exclamation"></i> Emergency Safety Beacon
+      </div>
+      <h1>SOS Emergency <span>& Tourist Helpline</span></h1>
+      <p>Immediate 24/7 one-tap emergency assistance, Tamil Nadu Tourist Police (1363), highway medical dispatch, and official emergency contacts across all 38 districts.</p>
     </div>
-  </div>
+  </header>
 
-  <div class="footer">
-    <i class="fab fa-facebook"></i>
-    <i class="fab fa-twitter"></i>
-    <i class="fab fa-instagram"></i>
-    <p>Sancharam &copy; 2025, All Rights Reserved</p>
-  </div>
+  <!-- ================= MAIN SECTION ================= -->
+  <main class="sos-section">
+    <div class="container sos-container">
+
+      <!-- Beacon Action Card -->
+      <div class="sos-beacon-card">
+        <div class="beacon-pulse-ring"></div>
+        
+        <button class="btn-sos-trigger" onclick="triggerSosBeacon()" title="Broadcast Emergency Beacon">
+          <i class="fas fa-bell"></i>
+        </button>
+
+        <div class="beacon-title">Broadcast SOS Emergency Beacon</div>
+        <p class="beacon-sub">
+          Tap the beacon to generate an instant GPS emergency dispatch with live coordinates, nearest police station routing, and automated guardian alert.
+        </p>
+
+        <div class="beacon-quick-actions">
+          <a href="tel:1363" class="btn-quick-hotline" style="background:#DC2626; border-color:#DC2626;">
+            <i class="fas fa-phone"></i> Tourist Police: 1363
+          </a>
+          <a href="tel:108" class="btn-quick-hotline">
+            <i class="fas fa-truck-medical"></i> Ambulance: 108
+          </a>
+          <a href="tel:112" class="btn-quick-hotline">
+            <i class="fas fa-shield-halved"></i> National SOS: 112
+          </a>
+          <button class="btn-quick-hotline btn-whatsapp-guard" onclick="dispatchSosWhatsApp()">
+            <i class="fab fa-whatsapp"></i> WhatsApp Live Location
+          </button>
+        </div>
+
+        <div class="gps-status-banner">
+          <span class="gps-dot"></span>
+          <span id="gpsText">GPS Active: Tamil Nadu Transit Corridor &bull; Accuracy &plusmn;8 meters</span>
+        </div>
+      </div>
+
+      <!-- Emergency Hotlines Directory Grid -->
+      <div class="contacts-section-title">
+        <i class="fas fa-phone-volume"></i> Verified Tamil Nadu Emergency Hotlines
+      </div>
+      <div class="contacts-subtitle">
+        Toll-free, 24/7 emergency dispatch services operated by the Government of Tamil Nadu and National Emergency Authorities.
+      </div>
+
+      <div class="contacts-category-grid">
+
+        <!-- 1. Police & Tourist Security -->
+        <div class="category-group-card">
+          <div class="cat-group-header">
+            <div class="cat-icon-badge badge-police"><i class="fas fa-shield-halved"></i></div>
+            <div class="cat-group-title">Police & Tourist Security</div>
+          </div>
+
+          <div class="contact-item-row">
+            <div class="contact-info-wrap">
+              <span class="contact-name">TN Tourist Police Helpline</span>
+              <span class="contact-note">Multilingual assistance (24/7)</span>
+            </div>
+            <a href="tel:1363" class="btn-dial-hotline"><i class="fas fa-phone"></i> 1363</a>
+          </div>
+
+          <div class="contact-item-row">
+            <div class="contact-info-wrap">
+              <span class="contact-name">Police Emergency Control</span>
+              <span class="contact-note">Immediate local patrol dispatch</span>
+            </div>
+            <a href="tel:100" class="btn-dial-hotline"><i class="fas fa-phone"></i> 100</a>
+          </div>
+
+          <div class="contact-item-row">
+            <div class="contact-info-wrap">
+              <span class="contact-name">Coastal Security Police</span>
+              <span class="contact-note">Marina, ECR & coastal emergencies</span>
+            </div>
+            <a href="tel:1093" class="btn-dial-hotline"><i class="fas fa-phone"></i> 1093</a>
+          </div>
+
+          <div class="contact-item-row">
+            <div class="contact-info-wrap">
+              <span class="contact-name">Traffic Helpline & Patrol</span>
+              <span class="contact-note">Highway clearance & traffic jams</span>
+            </div>
+            <a href="tel:103" class="btn-dial-hotline"><i class="fas fa-phone"></i> 103</a>
+          </div>
+        </div>
+
+        <!-- 2. Medical & Rescue -->
+        <div class="category-group-card">
+          <div class="cat-group-header">
+            <div class="cat-icon-badge badge-med"><i class="fas fa-truck-medical"></i></div>
+            <div class="cat-group-title">Medical & Fire Rescue</div>
+          </div>
+
+          <div class="contact-item-row">
+            <div class="contact-info-wrap">
+              <span class="contact-name">Emergency Medical Ambulance</span>
+              <span class="contact-note">GPS-tracked emergency dispatch</span>
+            </div>
+            <a href="tel:108" class="btn-dial-hotline"><i class="fas fa-phone"></i> 108</a>
+          </div>
+
+          <div class="contact-item-row">
+            <div class="contact-info-wrap">
+              <span class="contact-name">Fire & Rescue Services</span>
+              <span class="contact-note">Fire safety, water & hill rescue</span>
+            </div>
+            <a href="tel:101" class="btn-dial-hotline"><i class="fas fa-phone"></i> 101</a>
+          </div>
+
+          <div class="contact-item-row">
+            <div class="contact-info-wrap">
+              <span class="contact-name">State Health Helpline</span>
+              <span class="contact-note">Doctor advice & hospital bed lookup</span>
+            </div>
+            <a href="tel:104" class="btn-dial-hotline"><i class="fas fa-phone"></i> 104</a>
+          </div>
+
+          <div class="contact-item-row">
+            <div class="contact-info-wrap">
+              <span class="contact-name">Emergency Blood Bank</span>
+              <span class="contact-note">24/7 blood availability helpline</span>
+            </div>
+            <a href="tel:1910" class="btn-dial-hotline"><i class="fas fa-phone"></i> 1910</a>
+          </div>
+        </div>
+
+        <!-- 3. Women & Vulnerable Safety -->
+        <div class="category-group-card">
+          <div class="cat-group-header">
+            <div class="cat-icon-badge badge-women"><i class="fas fa-person-shelter"></i></div>
+            <div class="cat-group-title">Women & Child Safety</div>
+          </div>
+
+          <div class="contact-item-row">
+            <div class="contact-info-wrap">
+              <span class="contact-name">Women Helpline (Kavalan)</span>
+              <span class="contact-note">Dedicated women's safety SOS</span>
+            </div>
+            <a href="tel:1091" class="btn-dial-hotline"><i class="fas fa-phone"></i> 1091</a>
+          </div>
+
+          <div class="contact-item-row">
+            <div class="contact-info-wrap">
+              <span class="contact-name">State Women Support Center</span>
+              <span class="contact-note">24/7 counseling & safe escort</span>
+            </div>
+            <a href="tel:181" class="btn-dial-hotline"><i class="fas fa-phone"></i> 181</a>
+          </div>
+
+          <div class="contact-item-row">
+            <div class="contact-info-wrap">
+              <span class="contact-name">Childline Tamil Nadu</span>
+              <span class="contact-note">Child protection & lost children</span>
+            </div>
+            <a href="tel:1098" class="btn-dial-hotline"><i class="fas fa-phone"></i> 1098</a>
+          </div>
+
+          <div class="contact-item-row">
+            <div class="contact-info-wrap">
+              <span class="contact-name">Senior Citizen Support</span>
+              <span class="contact-note">Elder pilgrims care helpline</span>
+            </div>
+            <a href="tel:14567" class="btn-dial-hotline"><i class="fas fa-phone"></i> 14567</a>
+          </div>
+        </div>
+
+        <!-- 4. Disaster & Weather -->
+        <div class="category-group-card">
+          <div class="cat-group-header">
+            <div class="cat-icon-badge badge-disaster"><i class="fas fa-cloud-bolt"></i></div>
+            <div class="cat-group-title">Disaster & Storm Alerts</div>
+          </div>
+
+          <div class="contact-item-row">
+            <div class="contact-info-wrap">
+              <span class="contact-name">State Disaster Management</span>
+              <span class="contact-note">Cyclone, flood & storm alerts</span>
+            </div>
+            <a href="tel:1070" class="btn-dial-hotline"><i class="fas fa-phone"></i> 1070</a>
+          </div>
+
+          <div class="contact-item-row">
+            <div class="contact-info-wrap">
+              <span class="contact-name">District Disaster Control</span>
+              <span class="contact-note">Local collectorate flood response</span>
+            </div>
+            <a href="tel:1077" class="btn-dial-hotline"><i class="fas fa-phone"></i> 1077</a>
+          </div>
+        </div>
+
+        <!-- 5. Highways & Transit Assistance -->
+        <div class="category-group-card">
+          <div class="cat-group-header">
+            <div class="cat-icon-badge badge-transit"><i class="fas fa-car-burst"></i></div>
+            <div class="cat-group-title">Highways & Roadside Breakdown</div>
+          </div>
+
+          <div class="contact-item-row">
+            <div class="contact-info-wrap">
+              <span class="contact-name">NHAI Highway Emergency</span>
+              <span class="contact-note">Towing & crane on national highways</span>
+            </div>
+            <a href="tel:1033" class="btn-dial-hotline"><i class="fas fa-phone"></i> 1033</a>
+          </div>
+
+          <div class="contact-item-row">
+            <div class="contact-info-wrap">
+              <span class="contact-name">Railway Security (RPF)</span>
+              <span class="contact-note">Station & train traveler security</span>
+            </div>
+            <a href="tel:139" class="btn-dial-hotline"><i class="fas fa-phone"></i> 139</a>
+          </div>
+        </div>
+
+        <!-- 6. National Unified Emergency -->
+        <div class="category-group-card">
+          <div class="cat-group-header">
+            <div class="cat-icon-badge badge-marine"><i class="fas fa-earth-asia"></i></div>
+            <div class="cat-group-title">All-India Emergency Relay</div>
+          </div>
+
+          <div class="contact-item-row">
+            <div class="contact-info-wrap">
+              <span class="contact-name">Unified Emergency Response</span>
+              <span class="contact-note">All-in-one nationwide SOS (112)</span>
+            </div>
+            <a href="tel:112" class="btn-dial-hotline"><i class="fas fa-phone"></i> 112</a>
+          </div>
+
+          <div class="contact-item-row">
+            <div class="contact-info-wrap">
+              <span class="contact-name">Foreign Pilgrims Helpline</span>
+              <span class="contact-note">Ministry of Tourism NRI cell</span>
+            </div>
+            <a href="tel:1800111363" class="btn-dial-hotline"><i class="fas fa-phone"></i> 1800-11-1363</a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- District Emergency Contacts Lookup -->
+      <div class="district-lookup-card">
+        <div class="lookup-header-row">
+          <div>
+            <div class="contacts-section-title" style="margin-bottom: 4px;">
+              <i class="fas fa-building-shield"></i> District Police & General Hospital Lookup
+            </div>
+            <div style="font-size: 1.35rem; color: #64748B;">Select your travel district to view local SP office and District Government Hospital emergency desks.</div>
+          </div>
+          <div>
+            <select id="districtSelect" class="district-select-ctrl" onchange="updateDistrictContacts()">
+              <option value="Chennai">Chennai District (Capital)</option>
+              <option value="Madurai" selected>Madurai District (Temple City)</option>
+              <option value="Coimbatore">Coimbatore District (Kongu Region)</option>
+              <option value="Nilgiris">Nilgiris District (Ooty / Coonoor)</option>
+              <option value="Dindigul">Dindigul District (Kodaikanal)</option>
+              <option value="Thanjavur">Thanjavur District (Delta Heritage)</option>
+              <option value="Ramanathapuram">Ramanathapuram (Rameshwaram)</option>
+              <option value="Kanyakumari">Kanyakumari (Cape Comorin)</option>
+              <option value="Tiruchirappalli">Tiruchirappalli (Trichy)</option>
+              <option value="Tirunelveli">Tirunelveli District</option>
+              <option value="Kanchipuram">Kanchipuram (Silk City)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="district-contacts-grid">
+          <div class="dist-unit-card">
+            <span class="unit-label"><i class="fas fa-user-shield"></i> Police Headquarters</span>
+            <div class="unit-title" id="distPoliceName">Madurai City Police Commissionerate</div>
+            <a href="tel:04522346300" class="unit-phone-link" id="distPolicePhone">
+              <i class="fas fa-phone"></i> 0452-2346300
+            </a>
+          </div>
+
+          <div class="dist-unit-card">
+            <span class="unit-label"><i class="fas fa-hospital"></i> Government General Hospital</span>
+            <div class="unit-title" id="distHospitalName">Government Rajaji Hospital (GRH) Madurai</div>
+            <a href="tel:04522532535" class="unit-phone-link" id="distHospitalPhone">
+              <i class="fas fa-phone"></i> 0452-2532535
+            </a>
+          </div>
+
+          <div class="dist-unit-card">
+            <span class="unit-label"><i class="fas fa-landmark"></i> District Collectorate Helpline</span>
+            <div class="unit-title" id="distCollectorName">Madurai District Collectorate Control Room</div>
+            <a href="tel:04522531110" class="unit-phone-link" id="distCollectorPhone">
+              <i class="fas fa-phone"></i> 0452-2531110
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Offline Safety Guidelines -->
+      <div class="safety-tips-card">
+        <div class="contacts-section-title">
+          <i class="fas fa-kit-medical"></i> Quick Emergency Travel Guidelines
+        </div>
+        <div class="tips-grid">
+          <div class="tip-box">
+            <div class="tip-title"><i class="fas fa-users-rays"></i> Temple Crowd Safety</div>
+            <div class="tip-desc">During Chithirai or Brahmotsavam festivals, agree on an outdoor landmark meeting point with your family before entering the temple corridors.</div>
+          </div>
+          <div class="tip-box">
+            <div class="tip-title"><i class="fas fa-sun"></i> Heatstroke & Hydration</div>
+            <div class="tip-desc">Carry Tender Coconut water (Elaneer) and electrolyte sachets during coastal summer pilgrimage visits to Madurai, Trichy, and Rameshwaram.</div>
+          </div>
+          <div class="tip-box">
+            <div class="tip-title"><i class="fas fa-water"></i> Rip Currents at Coast</div>
+            <div class="tip-desc">Never swim alone along Marina, Kovalam, or Dhanushkodi beaches where warning flags are active. In an emergency, swim parallel to the shore.</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="site-footer">
+    <div class="container">
+        <div class="footer-top">
+            <div class="footer-brand">
+                <img src="../../assets/logos/logo-transparent.png" alt="Sancharam Logo" class="brand-logo" onerror="this.src='../../assets/logos/logo.png'">
+                <p>Sancharam is your smart travel companion dedicated to celebrating the living heritage, natural wonders, and vibrant spirit of Tamil Nadu.</p>
+                <div class="social-links">
+                    <a href="#" class="social-btn" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-btn" title="Twitter"><i class="fab fa-x-twitter"></i></a>
+                    <a href="#" class="social-btn" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-btn" title="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>Smart Features</h4>
+                <ul class="footer-links">
+                    <li><a href="AI itinenary.html">AI Itinerary Planner</a></li>
+                    <li><a href="routing.html">Scenic Routes & Safety</a></li>
+                    <li><a href="sos.html">Safety & SOS Helpline</a></li>
+                    <li><a href="expenses.html">Expense Calculator</a></li>
+                    <li><a href="checklist.html">Travel Checklist</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Cultural Pride</h4>
+                <p style="font-size: 1.4rem; color: #FCD34D; font-weight: 700; margin-bottom: 0.8rem;">வாழ்க தமிழ் வளர்க தமிழ் பண்பாடு</p>
+                <p style="font-size: 1.3rem; color: rgba(255,255,255,0.7); line-height: 1.6;">Dedicated to travelers who cherish art, architecture, literature, and warm Tamil hospitality.</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 Sancharam. All Rights Reserved. Crafted with love for தமிழ்நாடு.</p>
+            <div class="footer-bottom-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="../contact.html">Support</a>
+            </div>
+        </div>
+    </div>
+  </footer>
+
+  <script src="../../assets/js/sancharam-theme.js"></script>
 
   <script>
-    function sendAlert() {
-      alert('🚨 Emergency Alert Sent! Stay Safe.');
-    }
-  </script>
+    /* ==========================================================================
+       DISTRICT EMERGENCY DATA
+       ========================================================================== */
 
-<footer class="footer">
-        <div class="social-media-links">
-            <i class="fab fa-facebook fa-4x"></i>
-            <i class="fab fa-twitter fa-4x"></i>
-            <i class="fab fa-instagram fa-4x"></i>
-        </div>
-        <p>Sancharam &copy; 2025, All Rights Reserved</p>
-    </footer>
+    const DISTRICT_DATA = {
+      Chennai: {
+        police: 'Greater Chennai Police Commissionerate',
+        policeNum: '04428447000',
+        policeDisplay: '044-28447000',
+        hosp: 'Rajiv Gandhi Government General Hospital (RGGGH)',
+        hospNum: '04425305000',
+        hospDisplay: '044-25305000',
+        col: 'Chennai District Collectorate Control Desk',
+        colNum: '04425268344',
+        colDisplay: '044-25268344'
+      },
+      Madurai: {
+        police: 'Madurai City Police Commissionerate',
+        policeNum: '04522346300',
+        policeDisplay: '0452-2346300',
+        hosp: 'Government Rajaji Hospital (GRH) Madurai',
+        hospNum: '04522532535',
+        hospDisplay: '0452-2532535',
+        col: 'Madurai District Collectorate Control Room',
+        colNum: '04522531110',
+        colDisplay: '0452-2531110'
+      },
+      Coimbatore: {
+        police: 'Coimbatore City Police Commissioner Office',
+        policeNum: '04222300250',
+        policeDisplay: '0422-2300250',
+        hosp: 'Coimbatore Medical College Hospital (CMCH)',
+        hospNum: '04222301393',
+        hospDisplay: '0422-2301393',
+        col: 'Coimbatore Collectorate Disaster Helpline',
+        colNum: '04222301114',
+        colDisplay: '0422-2301114'
+      },
+      Nilgiris: {
+        police: 'Superintendent of Police Office Ooty (Nilgiris)',
+        policeNum: '04232444014',
+        policeDisplay: '0423-2444014',
+        hosp: 'Government District Headquarters Hospital Ooty',
+        hospNum: '04232442212',
+        hospDisplay: '0423-2442212',
+        col: 'Nilgiris District Hill Disaster Emergency Desk',
+        colNum: '04232445577',
+        colDisplay: '0423-2445577'
+      },
+      Dindigul: {
+        police: 'Dindigul District Police / Kodaikanal Sub-Division',
+        policeNum: '04512460100',
+        policeDisplay: '0451-2460100',
+        hosp: 'Kodaikanal Government Hospital Emergency Unit',
+        hospNum: '04542241253',
+        hospDisplay: '04542-241253',
+        col: 'Dindigul Collectorate Control Room',
+        colNum: '04512461111',
+        colDisplay: '0451-2461111'
+      },
+      Thanjavur: {
+        police: 'Thanjavur District Police Control Room',
+        policeNum: '04362230100',
+        policeDisplay: '04362-230100',
+        hosp: 'Thanjavur Medical College Hospital (TMCH)',
+        hospNum: '04362240024',
+        hospDisplay: '04362-240024',
+        col: 'Thanjavur District Collectorate Office',
+        colNum: '04362230121',
+        colDisplay: '04362-230121'
+      },
+      Ramanathapuram: {
+        police: 'Ramanathapuram Police & Rameshwaram Island Unit',
+        policeNum: '04567220021',
+        policeDisplay: '04567-220021',
+        hosp: 'Rameshwaram Government Hospital Emergency Unit',
+        hospNum: '04573221233',
+        hospDisplay: '04573-221233',
+        col: 'Ramanathapuram Coastal Disaster Control Room',
+        colNum: '04567230009',
+        colDisplay: '04567-230009'
+      },
+      Kanyakumari: {
+        police: 'Kanyakumari District Police Control (Nagercoil)',
+        policeNum: '04652220100',
+        policeDisplay: '04652-220100',
+        hosp: 'Kanyakumari Government Medical College Hospital',
+        hospNum: '04652223201',
+        hospDisplay: '04652-223201',
+        col: 'Kanyakumari Collectorate Emergency Cell',
+        colNum: '04652231077',
+        colDisplay: '04652-231077'
+      },
+      Tiruchirappalli: {
+        police: 'Trichy City Police Commissionerate',
+        policeNum: '04312415100',
+        policeDisplay: '0431-2415100',
+        hosp: 'Mahatma Gandhi Memorial Government Hospital Trichy',
+        hospNum: '04312415555',
+        hospDisplay: '0431-2415555',
+        col: 'Trichy District Collectorate Control Room',
+        colNum: '04312411995',
+        colDisplay: '0431-2411995'
+      },
+      Tirunelveli: {
+        police: 'Tirunelveli City Police Control Room',
+        policeNum: '04622501000',
+        policeDisplay: '0462-2501000',
+        hosp: 'Tirunelveli Medical College Hospital (TVMCH)',
+        hospNum: '04622572721',
+        hospDisplay: '0462-2572721',
+        col: 'Tirunelveli Collectorate Emergency Helpdesk',
+        colNum: '04622501070',
+        colDisplay: '0462-2501070'
+      },
+      Kanchipuram: {
+        police: 'Kanchipuram District Police Headquarters',
+        policeNum: '04427238100',
+        policeDisplay: '044-27238100',
+        hosp: 'Kanchipuram District Headquarters Hospital',
+        hospNum: '04427222442',
+        hospDisplay: '044-27222442',
+        col: 'Kanchipuram Collectorate Disaster Control Cell',
+        colNum: '04427237477',
+        colDisplay: '044-27237477'
+      }
+    };
+
+    function updateDistrictContacts() {
+      const dist = document.getElementById('districtSelect').value;
+      const data = DISTRICT_DATA[dist];
+      if (!data) return;
+
+      document.getElementById('distPoliceName').textContent = data.police;
+      document.getElementById('distPolicePhone').href = `tel:${data.policeNum}`;
+      document.getElementById('distPolicePhone').innerHTML = `<i class="fas fa-phone"></i> ${data.policeDisplay}`;
+
+      document.getElementById('distHospitalName').textContent = data.hosp;
+      document.getElementById('distHospitalPhone').href = `tel:${data.hospNum}`;
+      document.getElementById('distHospitalPhone').innerHTML = `<i class="fas fa-phone"></i> ${data.hospDisplay}`;
+
+      document.getElementById('distCollectorName').textContent = data.col;
+      document.getElementById('distCollectorPhone').href = `tel:${data.colNum}`;
+      document.getElementById('distCollectorPhone').innerHTML = `<i class="fas fa-phone"></i> ${data.colDisplay}`;
+    }
+
+    function triggerSosBeacon() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          (pos) => {
+            const lat = pos.coords.latitude.toFixed(4);
+            const lng = pos.coords.longitude.toFixed(4);
+            document.getElementById('gpsText').innerHTML = `<strong>Live GPS Beacon Dispatched:</strong> ${lat}&deg; N, ${lng}&deg; E &bull; Accuracy &plusmn;${Math.round(pos.coords.accuracy)}m`;
+            alert(`🚨 SOS EMERGENCY BEACON BROADCASTED!
+
+Live Coordinates: ${lat}° N, ${lng}° E
+Tourist Police: 1363
+Medical Ambulance: 108
+
+Stay calm. Emergency services and guardians can trace your broadcast.`);
+          },
+          () => {
+            document.getElementById('gpsText').innerHTML = `<strong>Live GPS Beacon Dispatched:</strong> Tamil Nadu Transit Corridor &bull; Emergency Broadcast Active`;
+            alert(`🚨 SOS EMERGENCY BEACON BROADCASTED!
+
+Tourist Police: 1363
+Medical Ambulance: 108
+National Helpline: 112
+
+Stay calm. Emergency hotlines have been alerted.`);
+          }
+        );
+      } else {
+        alert(`🚨 SOS EMERGENCY BEACON BROADCASTED!
+
+Tourist Police: 1363
+Medical Ambulance: 108
+National Helpline: 112
+
+Stay calm. Emergency hotlines have been alerted.`);
+      }
+    }
+
+    function dispatchSosWhatsApp() {
+      const dist = document.getElementById('districtSelect').value || 'Tamil Nadu';
+      const text = encodeURIComponent(
+        `🚨 *EMERGENCY SOS BROADCAST - SANCHARAM*
+` +
+        `I need immediate assistance!
+` +
+        `Current Region: ${dist}, Tamil Nadu
+` +
+        `Emergency Hotlines:
+` +
+        `• Tourist Police: 1363
+` +
+        `• Medical Ambulance: 108
+` +
+        `• All-India Emergency: 112
+
+` +
+        `Please call me or send assistance immediately!`
+      );
+      window.open(`https://api.whatsapp.com/send?text=${text}`, '_blank');
+    }
+
+    // Initialize
+    window.addEventListener('DOMContentLoaded', updateDistrictContacts);
+  </script>
 </body>
 </html>

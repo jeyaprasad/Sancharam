@@ -1,188 +1,1400 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Travel Budget Manager - Tamil Nadu</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Travel Budget & Expense Tracker | Sancharam</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+  <link rel="stylesheet" href="../../assets/css/sancharam-theme.css">
   <style>
-    body {
-      font-family: 'Montserrat', sans-serif;
-      background: linear-gradient(to right, #e3f2fd, #ffffff);
-      margin: 0;
-      padding: 0;
+    /* ==========================================================================
+       SANCHARAM TRAVEL BUDGET & EXPENSE TRACKER
+       ========================================================================== */
+
+    .expense-hero {
+      padding: 120px 0 35px;
+      text-align: center;
+      background: radial-gradient(circle at 50% 20%, rgba(230, 57, 70, 0.05) 0%, rgba(248, 250, 252, 0) 70%);
+    }
+    .expense-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      background: #FFE3E3;
+      color: #E63946;
+      border-radius: 9999px;
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .expense-hero h1 {
+      font-size: 3.8rem;
+      font-weight: 800;
+      color: #0F172A;
+      margin-bottom: 10px;
+      line-height: 1.2;
+    }
+    .expense-hero h1 span {
+      background: linear-gradient(135deg, #E63946 0%, #B91C1C 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .expense-hero p {
+      font-size: 1.6rem;
+      color: #475569;
+      max-width: 740px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* Main Section */
+    .expense-section {
+      padding: 15px 0 80px;
+    }
+    .expense-container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    /* Top Stats Grid */
+    .budget-stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      margin-bottom: 25px;
+    }
+    .stat-card {
+      background: #FFFFFF;
+      border-radius: 18px;
+      border: 1px solid #E2E8F0;
+      padding: 20px 22px;
+      box-shadow: 0 4px 15px rgba(15, 23, 42, 0.03);
+      position: relative;
+      transition: all 0.2s ease;
+    }
+    .stat-card:hover {
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.07);
+      transform: translateY(-2px);
+    }
+    .stat-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+    .stat-label {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #64748B;
+    }
+    .stat-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+    }
+    .icon-budget { background: #EEF2FF; color: #4F46E5; }
+    .icon-spent { background: #FEE2E2; color: #E63946; }
+    .icon-remaining { background: #DCFCE7; color: #16A34A; }
+    .icon-daily { background: #FEF3C7; color: #D97706; }
+
+    .stat-value {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: #0F172A;
+      line-height: 1.1;
+      margin-bottom: 4px;
+    }
+    .stat-sub {
+      font-size: 1.2rem;
+      color: #64748B;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    /* Progress & Health Bar */
+    .budget-progress-card {
+      background: #FFFFFF;
+      border-radius: 20px;
+      border: 1px solid #E2E8F0;
+      padding: 22px 28px;
+      box-shadow: 0 4px 20px rgba(15, 23, 42, 0.04);
+      margin-bottom: 25px;
+    }
+    .progress-top-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .progress-title-text {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #0F172A;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .progress-title-text i { color: #E63946; }
+    .budget-edit-btn {
+      background: #F1F5F9;
+      border: 1px solid #CBD5E1;
+      color: #334155;
+      font-size: 1.25rem;
+      font-weight: 700;
+      padding: 6px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+    .budget-edit-btn:hover {
+      background: #E2E8F0;
+      color: #0F172A;
+    }
+    .budget-meter-track {
+      width: 100%;
+      height: 14px;
+      background: #F1F5F9;
+      border-radius: 9999px;
+      overflow: hidden;
+      margin-bottom: 12px;
+      position: relative;
+    }
+    .budget-meter-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #10B981 0%, #3B82F6 60%, #F59E0B 85%, #E63946 100%);
+      width: 45%;
+      border-radius: 9999px;
+      transition: width 0.4s ease;
+    }
+    .budget-status-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 1.25rem;
+      color: #64748B;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .badge-status {
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-weight: 700;
+    }
+    .status-safe { background: #DCFCE7; color: #166534; }
+    .status-warn { background: #FEF3C7; color: #92400E; }
+    .status-alert { background: #FEE2E2; color: #991B1B; }
+
+    /* Tool Tabs (Expense Log, Split Bill, Currency) */
+    .expense-nav-tabs {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 25px;
+      border-bottom: 1.5px solid #E2E8F0;
+      padding-bottom: 12px;
+    }
+    .tab-btn {
+      padding: 10px 20px;
+      border-radius: 12px;
+      font-size: 1.4rem;
+      font-weight: 700;
+      border: none;
+      background: transparent;
+      color: #64748B;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+    }
+    .tab-btn:hover {
+      background: #F1F5F9;
+      color: #0F172A;
+    }
+    .tab-btn.active {
+      background: #E63946;
+      color: #FFFFFF;
+      box-shadow: 0 4px 12px rgba(230, 57, 70, 0.25);
+    }
+
+    /* Main Grid: Form + Ledger */
+    .expense-main-grid {
+      display: grid;
+      grid-template-columns: 380px 1fr;
+      gap: 25px;
+      align-items: start;
+    }
+
+    /* Add Expense Form Card */
+    .add-expense-card {
+      background: #FFFFFF;
+      border-radius: 20px;
+      border: 1px solid #E2E8F0;
+      padding: 24px;
+      box-shadow: 0 4px 20px rgba(15, 23, 42, 0.04);
+      position: sticky;
+      top: 105px;
+    }
+    .card-title {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: #0F172A;
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .card-title i { color: #E63946; }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+    .form-label {
+      display: block;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #334155;
+      margin-bottom: 6px;
+    }
+    .form-input, .form-select {
+      width: 100%;
+      padding: 11px 14px;
+      border-radius: 10px;
+      border: 1.5px solid #CBD5E1;
+      font-size: 1.35rem;
+      color: #0F172A;
+      outline: none;
+      font-family: inherit;
+      background: #FFFFFF;
+      transition: border-color 0.2s;
+    }
+    .form-input:focus, .form-select:focus {
+      border-color: #E63946;
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    /* Quick Preset Chips */
+    .preset-label {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: #64748B;
+      margin-bottom: 6px;
+      display: block;
+    }
+    .preset-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 16px;
+    }
+    .chip-btn {
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      border-radius: 8px;
+      padding: 5px 10px;
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: #475569;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .chip-btn:hover {
+      background: #FFE3E3;
+      border-color: #E63946;
+      color: #E63946;
+    }
+
+    .btn-submit-expense {
+      width: 100%;
+      padding: 13px;
+      border-radius: 12px;
+      background: #E63946;
+      color: #FFFFFF;
+      border: none;
+      font-size: 1.45rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 14px rgba(230, 57, 70, 0.3);
+    }
+    .btn-submit-expense:hover {
+      background: #B91C1C;
+      transform: translateY(-1px);
+    }
+
+    /* Ledger Card */
+    .ledger-card {
+      background: #FFFFFF;
+      border-radius: 20px;
+      border: 1px solid #E2E8F0;
+      padding: 24px;
+      box-shadow: 0 4px 20px rgba(15, 23, 42, 0.04);
+    }
+    .ledger-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .ledger-actions {
+      display: flex;
+      gap: 8px;
+    }
+    .btn-ledger-action {
+      background: #F8FAFC;
+      border: 1.5px solid #CBD5E1;
+      padding: 7px 12px;
+      border-radius: 8px;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #475569;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: all 0.2s;
+    }
+    .btn-ledger-action:hover {
+      background: #FFF1F2;
+      border-color: #E63946;
+      color: #E63946;
+    }
+
+    /* Category Pill Filters */
+    .category-filter-bar {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 12px;
+      margin-bottom: 15px;
+    }
+    .cat-filter-btn {
+      padding: 6px 14px;
+      border-radius: 9999px;
+      border: 1px solid #CBD5E1;
+      background: #FFFFFF;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #475569;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .cat-filter-btn:hover {
+      border-color: #E63946;
+      color: #E63946;
+    }
+    .cat-filter-btn.active {
+      background: #0F172A;
+      color: #FFFFFF;
+      border-color: #0F172A;
+    }
+
+    /* Transactions List */
+    .transactions-list {
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      gap: 10px;
+    }
+    .tx-item {
+      display: flex;
       align-items: center;
-      min-height: 100vh;
+      justify-content: space-between;
+      padding: 14px 16px;
+      border-radius: 14px;
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      transition: all 0.2s ease;
     }
-    header {
-      font-size: 32px;
+    .tx-item:hover {
+      background: #FFFFFF;
+      border-color: #CBD5E1;
+      box-shadow: 0 3px 10px rgba(15, 23, 42, 0.04);
+    }
+    .tx-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .tx-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.7rem;
+      flex-shrink: 0;
+    }
+    .icon-food { background: #FFEDD5; color: #EA580C; }
+    .icon-stay { background: #E0E7FF; color: #4338CA; }
+    .icon-transport { background: #DCFCE7; color: #15803D; }
+    .icon-sight { background: #FCE7F3; color: #BE185D; }
+    .icon-shopping { background: #FEF3C7; color: #B45309; }
+    .icon-misc { background: #F1F5F9; color: #475569; }
+
+    .tx-details {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .tx-title {
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: #0F172A;
+    }
+    .tx-meta {
+      font-size: 1.2rem;
+      color: #64748B;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .tx-split-badge {
+      background: #EDE9FE;
+      color: #6D28D9;
+      padding: 2px 8px;
+      border-radius: 6px;
+      font-size: 1.1rem;
       font-weight: 600;
-      color: white;
-      background-color: #007bff;
-      width: 100%;
-      text-align: center;
-      padding: 20px 0;
     }
-    .feature-container {
-      background-color: #ffffff;
-      padding: 40px;
-      border-radius: 16px;
-      box-shadow: 0 8px 20px rgba(0, 123, 255, 0.2);
-      width: 100%;
-      max-width: 480px;
+    .tx-right {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .tx-amount {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: #0F172A;
+      text-align: right;
+    }
+    .tx-delete-btn {
+      background: transparent;
+      border: none;
+      color: #94A3B8;
+      font-size: 1.4rem;
+      cursor: pointer;
+      padding: 6px;
+      border-radius: 6px;
+      transition: all 0.2s;
+    }
+    .tx-delete-btn:hover {
+      color: #DC2626;
+      background: #FEE2E2;
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 40px 20px;
+      color: #94A3B8;
+    }
+    .empty-state i {
+      font-size: 3.5rem;
+      margin-bottom: 12px;
+      color: #CBD5E1;
+    }
+    .empty-state p {
+      font-size: 1.4rem;
+      margin-bottom: 12px;
+    }
+
+    /* Category Breakdown Mini-Cards */
+    .breakdown-row {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+      margin-top: 25px;
+    }
+    .breakdown-card {
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      border-radius: 12px;
+      padding: 12px;
       text-align: center;
     }
-    h2 {
-      color: #007bff;
+    .bd-title {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: #64748B;
+      margin-bottom: 4px;
+    }
+    .bd-val {
+      font-size: 1.45rem;
+      font-weight: 800;
+      color: #0F172A;
+    }
+
+    /* Bill Splitter Section */
+    .split-calculator-box {
+      background: #FFFFFF;
+      border-radius: 20px;
+      border: 1px solid #E2E8F0;
+      padding: 30px;
+      box-shadow: 0 4px 20px rgba(15, 23, 42, 0.04);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      align-items: center;
+    }
+    .split-result-card {
+      background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+      color: #FFFFFF;
+      border-radius: 18px;
+      padding: 28px;
+      text-align: center;
+      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.2);
+    }
+    .result-lead {
+      font-size: 1.3rem;
+      color: #94A3B8;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .result-amount {
+      font-size: 3.8rem;
+      font-weight: 800;
+      color: #38BDF8;
+      margin-bottom: 10px;
+    }
+    .result-subnote {
+      font-size: 1.3rem;
+      color: #CBD5E1;
       margin-bottom: 20px;
+      line-height: 1.5;
     }
-    input, select, button {
-      width: 100%;
-      padding: 14px;
-      margin: 12px 0;
-      border: 1px solid #ccc;
+    .btn-share-split {
+      background: #25D366;
+      color: #FFFFFF;
+      border: none;
+      padding: 10px 18px;
       border-radius: 10px;
-      font-size: 16px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      font-size: 1.3rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s;
     }
-    button {
-      background-color: #007bff;
-      color: white;
-      font-weight: bold;
-      transition: background 0.3s;
+    .btn-share-split:hover {
+      background: #1EBE5D;
     }
-    button:hover {
-      background-color: #0056b3;
-    }
-    .output {
+
+    /* Currency Converter Widget */
+    .currency-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
       margin-top: 20px;
-      background-color: #f1f9ff;
-      padding: 20px;
-      border-radius: 10px;
-      font-size: 16px;
-      box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
     }
-    .icon {
-      font-size: 48px;
-      color: #007bff;
-      margin-bottom: 10px;
-    }
-    footer {
-      width: 100%;
-      padding: 20px;
-      background-color: #263238;
-      color: #ffffff;
+    .curr-card {
+      background: #F8FAFC;
+      border: 1.5px solid #E2E8F0;
+      border-radius: 14px;
+      padding: 16px;
       text-align: center;
-      position: relative;
-      bottom: 0;
+      transition: all 0.2s;
     }
-    .social-icons {
-      margin-bottom: 10px;
+    .curr-card:hover {
+      border-color: #E63946;
+      background: #FFFFFF;
     }
-    .social-icons i {
-      font-size: 24px;
-      margin: 0 10px;
-      color: #ffffff;
-      transition: color 0.3s;
+    .curr-flag {
+      font-size: 2rem;
+      margin-bottom: 4px;
     }
-    .social-icons i:hover {
-      color: #90caf9;
+    .curr-code {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: #0F172A;
+    }
+    .curr-rate {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #E63946;
+      margin-top: 4px;
+    }
+    .curr-label {
+      font-size: 1.15rem;
+      color: #64748B;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .budget-stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .expense-main-grid { grid-template-columns: 1fr; }
+      .add-expense-card { position: static; }
+      .breakdown-row { grid-template-columns: repeat(3, 1fr); }
+      .split-calculator-box { grid-template-columns: 1fr; }
+      .currency-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 600px) {
+      .budget-stats-grid { grid-template-columns: 1fr; }
+      .expense-hero h1 { font-size: 2.8rem; }
+      .breakdown-row { grid-template-columns: 1fr 1fr; }
+      .currency-grid { grid-template-columns: 1fr; }
     }
   </style>
-
-<script src="https://kit.fontawesome.com/7f257b9379.js" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="../../assets/css/style.css">
-
-<!-- Global Nav/Footer CSS injected -->
-<style id="global-nav-footer">
-    .navbar { font-family: 'Montserrat', sans-serif; }
-    .navbar .container { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 0 1rem; }
-    .navbar.bg-dark { background-color: #000000; }
-    .navbar .logo { float: left; padding-top: 6px; }
-    .navbar .nav-items { list-style: none; margin: 0; padding: 0; display: flex; align-items: center; }
-    .navbar .nav-item { display: inline-block; padding: 1.5rem; text-transform: uppercase; }
-    .navbar a { color: aliceblue; text-decoration: none; font-size: 1.6rem; font-weight: bold; }
-    .navbar a:hover { border-bottom: 1px solid #FFF; }
-    .navbar::after { content: ''; display: block; clear: both; }
-    .footer { font-size: 1rem; padding: 1rem; background: #263238; color: #f4f4f4; margin-top: auto; text-align: center; width: 100%; font-family: 'Montserrat', sans-serif; }
-    .footer .social-media-links i { padding: 1.5rem; margin-bottom: 1rem; font-size: 4rem; color: #f4f4f4; }
-    @media (max-width: 768px) {
-        .navbar .container { flex-direction: column; }
-        .navbar .nav-items { flex-direction: column; width: 100%; text-align: center; }
-    }
-</style>
-<script src="https://kit.fontawesome.com/7f257b9379.js" crossorigin="anonymous"></script>
-
 </head>
 <body>
-<nav class="navbar bg-dark">
-    <div class="container">
-        <img src="../../assets/logos/logo.png" alt="Sancharam Logo" class="logo" style="width: 300px; height: 80px;">
-        <ul class="nav-items">
-            <li class="nav-item"><a href="../../home.html">Home</a></li>
-            <li class="nav-item"><a href="../../pages/about.html">About</a></li>
-            <li class="nav-item"><a href="../../pages/explore.html">Explore</a></li>
-            <li class="nav-item"><a href="../../pages/bookings.html">Bookings</a></li>
-            <li class="nav-item"><a href="../../pages/features.html">Features</a></li>
-            <li class="nav-item"><a href="../../pages/profile.html">Profile</a></li>
+
+  <!-- ================= NAVBAR ================= -->
+  <nav class="navbar" id="main-nav">
+    <div class="container nav-wrapper">
+        <a href="../../home.html" class="brand" title="Sancharam">
+            <img src="../../assets/logos/logo-transparent.png" alt="Sancharam Logo" class="brand-logo" onerror="this.src='../../assets/logos/logo.png'">
+        </a>
+
+        <ul class="nav-links">
+            <li><a href="../../home.html" class="nav-link">Home</a></li>
+            <li><a href="../explore.html" class="nav-link">Explore</a></li>
+            <li><a href="../bookings.html" class="nav-link">Bookings</a></li>
+            <li><a href="../features.html" class="nav-link active">Features</a></li>
+            <li><a href="../profile.html" class="nav-link">Profile</a></li>
         </ul>
-    </div>
-</nav>
 
-  <header>Sancharam- Travel Budget Manager</header>
-  <div class="feature-container">
-    <div class="icon"><i class="fas fa-wallet"></i></div>
-    <h2>Fill up your trip budget</h2>
-    <input type="number" id="income" placeholder="Enter your total trip budget (INR)" />
-    <input type="number" id="expenses" placeholder="Enter your estimated trip expenses (INR)" />
-    <select id="category">
-      <option value="Accommodation">Accommodation</option>
-      <option value="Food & Dining">Food & Dining</option>
-      <option value="Transport">Transport</option>
-      <option value="Sightseeing">Sightseeing</option>
-      <option value="Shopping">Shopping</option>
-      <option value="Miscellaneous">Miscellaneous</option>
-    </select>
-    <button onclick="calculateBudget()">Check Budget Balance</button>
-    <div class="output" id="result"></div>
-  </div>
-
-  <footer class="footer">
-        <div class="social-media-links">
-            <i class="fab fa-facebook fa-4x"></i>
-            <i class="fab fa-twitter fa-4x"></i>
-            <i class="fab fa-instagram fa-4x"></i>
+        <div class="nav-actions">
+            <a href="AI itinenary.html" class="btn-nav-ai">
+                <i class="fas fa-wand-magic-sparkles"></i>
+                <span>Plan with AI</span>
+            </a>
         </div>
-        <p>Sancharam &copy; 2025, All Rights Reserved</p>
-    </footer>
+
+        <button class="mobile-toggle" aria-label="Toggle navigation">
+            <i class="fas fa-bars"></i>
+        </button>
+    </div>
+  </nav>
+
+  <!-- ================= HERO ================= -->
+  <header class="expense-hero">
+    <div class="container">
+      <div class="expense-eyebrow">
+        <i class="fas fa-wallet"></i> Travel Finance Suite
+      </div>
+      <h1>Smart Travel <span>Budget & Expense Tracker</span></h1>
+      <p>Real-time group expense splitting, daily budget caps, dining and darshan expense tracking, and instant foreign currency conversions across Tamil Nadu.</p>
+    </div>
+  </header>
+
+  <!-- ================= MAIN CONTENT ================= -->
+  <main class="expense-section">
+    <div class="container expense-container">
+
+      <!-- 4 Top Stat Cards -->
+      <div class="budget-stats-grid">
+        <div class="stat-card">
+          <div class="stat-header">
+            <span class="stat-label">Total Trip Budget</span>
+            <div class="stat-icon icon-budget"><i class="fas fa-wallet"></i></div>
+          </div>
+          <div class="stat-value" id="statBudgetDisplay">₹25,000</div>
+          <div class="stat-sub"><i class="fas fa-pen"></i> Click to change budget</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-header">
+            <span class="stat-label">Total Spent</span>
+            <div class="stat-icon icon-spent"><i class="fas fa-receipt"></i></div>
+          </div>
+          <div class="stat-value" id="statSpentDisplay">₹0</div>
+          <div class="stat-sub" id="statSpentCount">0 expenses logged</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-header">
+            <span class="stat-label">Remaining Balance</span>
+            <div class="stat-icon icon-remaining"><i class="fas fa-piggy-bank"></i></div>
+          </div>
+          <div class="stat-value" id="statBalanceDisplay">₹25,000</div>
+          <div class="stat-sub" id="statBalanceStatus">Within safe limits</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-header">
+            <span class="stat-label">Daily Avg (5 Days)</span>
+            <div class="stat-icon icon-daily"><i class="fas fa-calendar-day"></i></div>
+          </div>
+          <div class="stat-value" id="statDailyDisplay">₹0</div>
+          <div class="stat-sub" id="statDailyCap">Target: ₹5,000/day</div>
+        </div>
+      </div>
+
+      <!-- Budget Progress & Health Card -->
+      <div class="budget-progress-card">
+        <div class="progress-top-row">
+          <div class="progress-title-text">
+            <i class="fas fa-chart-line"></i> Budget Utilization & Trip Health
+          </div>
+          <div style="display: flex; gap: 10px;">
+            <button class="budget-edit-btn" onclick="promptEditBudget()">
+              <i class="fas fa-sliders"></i> Adjust Budget
+            </button>
+            <button class="budget-edit-btn" onclick="promptEditDays()">
+              <i class="fas fa-clock"></i> <span id="daysCountLabel">5 Days Trip</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="budget-meter-track">
+          <div class="budget-meter-fill" id="budgetMeterFill" style="width: 0%;"></div>
+        </div>
+
+        <div class="budget-status-row">
+          <div><span id="budgetPercentLabel">0%</span> of trip budget utilized</div>
+          <div><span class="badge-status status-safe" id="healthBadge"><i class="fas fa-check-circle"></i> Healthy Budget Pace</span></div>
+        </div>
+      </div>
+
+      <!-- Navigation Tabs (Tracker, Bill Splitter, Forex) -->
+      <div class="expense-nav-tabs">
+        <button class="tab-btn active" id="tabExpenseLog" onclick="switchTab('expenseLog')">
+          <i class="fas fa-list-check"></i> Expense Logger & Ledger
+        </button>
+        <button class="tab-btn" id="tabBillSplitter" onclick="switchTab('billSplitter')">
+          <i class="fas fa-users"></i> Group Bill Splitter
+        </button>
+        <button class="tab-btn" id="tabForex" onclick="switchTab('forex')">
+          <i class="fas fa-money-bill-transfer"></i> Pilgrim Forex & Rates
+        </button>
+      </div>
+
+      <!-- TAB 1: EXPENSE LOG & LEDGER -->
+      <div id="viewExpenseLog">
+        <div class="expense-main-grid">
+
+          <!-- Left: Add Expense Form -->
+          <div class="add-expense-card">
+            <div class="card-title">
+              <i class="fas fa-plus-circle"></i> Log New Expense
+            </div>
+
+            <form id="addExpenseForm" onsubmit="handleAddExpense(event)">
+              <div class="form-group">
+                <label class="form-label">Expense Description</label>
+                <input type="text" id="expTitle" class="form-input" placeholder="e.g. Murugan Idli Breakfast" required>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label">Amount (₹ INR)</label>
+                  <input type="number" id="expAmount" class="form-input" placeholder="e.g. 450" min="1" step="any" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Category</label>
+                  <select id="expCategory" class="form-select">
+                    <option value="Food & Dining">🍲 Food & Dining</option>
+                    <option value="Stay & Hotels">🏨 Stay & Hotels</option>
+                    <option value="Transport & Fuel">🚗 Transport & Fuel</option>
+                    <option value="Sightseeing & Entry">🏛️ Sightseeing & Entry</option>
+                    <option value="Shopping & Crafts">🛍️ Shopping & Crafts</option>
+                    <option value="Miscellaneous">✨ Miscellaneous</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label">Split With Friends?</label>
+                  <select id="expSplit" class="form-select">
+                    <option value="1">Solo / Personal (1)</option>
+                    <option value="2">Split 2 Ways</option>
+                    <option value="3">Split 3 Ways</option>
+                    <option value="4">Split 4 Ways</option>
+                    <option value="5">Split 5+ Ways</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Trip Day</label>
+                  <select id="expDay" class="form-select">
+                    <option value="Day 1">Day 1</option>
+                    <option value="Day 2">Day 2</option>
+                    <option value="Day 3">Day 3</option>
+                    <option value="Day 4">Day 4</option>
+                    <option value="Day 5">Day 5</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Quick TN Presets -->
+              <span class="preset-label">Quick TN Presets:</span>
+              <div class="preset-chips">
+                <button type="button" class="chip-btn" onclick="fillPreset('Degree Coffee & Tiffin', 180, 'Food & Dining')">☕ Filter Coffee ₹180</button>
+                <button type="button" class="chip-btn" onclick="fillPreset('Temple Special Darshan Pass', 500, 'Sightseeing & Entry')">🛕 Special Darshan ₹500</button>
+                <button type="button" class="chip-btn" onclick="fillPreset('Highway Toll & Fastag', 320, 'Transport & Fuel')">🛣️ Toll & Fuel ₹320</button>
+                <button type="button" class="chip-btn" onclick="fillPreset('Chettinad Meals Lunch', 650, 'Food & Dining')">🍛 Chettinad Meals ₹650</button>
+              </div>
+
+              <button type="submit" class="btn-submit-expense">
+                <i class="fas fa-plus"></i> Add to Trip Ledger
+              </button>
+            </form>
+          </div>
+
+          <!-- Right: Ledger Transactions -->
+          <div class="ledger-card">
+            <div class="ledger-header">
+              <div class="card-title" style="margin-bottom: 0;">
+                <i class="fas fa-receipt"></i> Trip Transactions Ledger
+              </div>
+              <div class="ledger-actions">
+                <button class="btn-ledger-action" onclick="loadSampleData()">
+                  <i class="fas fa-wand-magic-sparkles"></i> Load Demo Data
+                </button>
+                <button class="btn-ledger-action" onclick="clearAllExpenses()">
+                  <i class="fas fa-trash-can"></i> Clear All
+                </button>
+                <button class="btn-ledger-action" onclick="window.print()">
+                  <i class="fas fa-print"></i> Print
+                </button>
+              </div>
+            </div>
+
+            <!-- Filter Buttons -->
+            <div class="category-filter-bar">
+              <button class="cat-filter-btn active" onclick="filterTransactions('All', this)">All Categories</button>
+              <button class="cat-filter-btn" onclick="filterTransactions('Food & Dining', this)">🍲 Food</button>
+              <button class="cat-filter-btn" onclick="filterTransactions('Stay & Hotels', this)">🏨 Stays</button>
+              <button class="cat-filter-btn" onclick="filterTransactions('Transport & Fuel', this)">🚗 Transport</button>
+              <button class="cat-filter-btn" onclick="filterTransactions('Sightseeing & Entry', this)">🏛️ Sightseeing</button>
+              <button class="cat-filter-btn" onclick="filterTransactions('Shopping & Crafts', this)">🛍️ Shopping</button>
+            </div>
+
+            <!-- Transactions Container -->
+            <div class="transactions-list" id="txContainer">
+              <!-- Rendered via JS -->
+            </div>
+
+            <!-- Category Breakdown Summary -->
+            <div class="breakdown-row">
+              <div class="breakdown-card">
+                <div class="bd-title">🍲 Food</div>
+                <div class="bd-val" id="bdFood">₹0</div>
+              </div>
+              <div class="breakdown-card">
+                <div class="bd-title">🏨 Stay</div>
+                <div class="bd-val" id="bdStay">₹0</div>
+              </div>
+              <div class="breakdown-card">
+                <div class="bd-title">🚗 Transport</div>
+                <div class="bd-val" id="bdTransport">₹0</div>
+              </div>
+              <div class="breakdown-card">
+                <div class="bd-title">🏛️ Darshan</div>
+                <div class="bd-val" id="bdSight">₹0</div>
+              </div>
+              <div class="breakdown-card">
+                <div class="bd-title">🛍️ Shopping</div>
+                <div class="bd-val" id="bdShopping">₹0</div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+      <!-- TAB 2: GROUP BILL SPLITTER -->
+      <div id="viewBillSplitter" style="display: none;">
+        <div class="split-calculator-box">
+          <div>
+            <div class="card-title">
+              <i class="fas fa-calculator"></i> Fair Share Group Splitter
+            </div>
+            <p style="font-size: 1.35rem; color: #64748B; margin-bottom: 20px;">
+              Easily divide joint dining bills, auto-rickshaw fares, villa rentals, and entry tickets with friends.
+            </p>
+
+            <div class="form-group">
+              <label class="form-label">Total Bill Amount (₹ INR)</label>
+              <input type="number" id="splitTotalAmount" class="form-input" placeholder="e.g. 3600" value="3600" oninput="calculateSplit()">
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">Number of People</label>
+                <input type="number" id="splitPeopleCount" class="form-input" min="1" max="25" value="4" oninput="calculateSplit()">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Tip / Server Gratuity</label>
+                <select id="splitTipSelect" class="form-select" onchange="calculateSplit()">
+                  <option value="0">0% (Standard Bill)</option>
+                  <option value="5">5% Service Tip</option>
+                  <option value="10" selected>10% Generous Tip</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Trip Note / Purpose</label>
+              <input type="text" id="splitBillPurpose" class="form-input" value="Dinner at Madurai Amma Mess" placeholder="What is this bill for?">
+            </div>
+          </div>
+
+          <!-- Result Card -->
+          <div class="split-result-card">
+            <div class="result-lead">Each Person Pays</div>
+            <div class="result-amount" id="splitShareDisplay">₹990</div>
+            <div class="result-subnote" id="splitBreakdownText">
+              Total bill ₹3,600 + ₹360 tip (10%) = ₹3,960 divided equally among 4 friends.
+            </div>
+            <button class="btn-share-split" onclick="shareWhatsAppSplit()">
+              <i class="fab fa-whatsapp"></i> Share Breakdown on WhatsApp
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 3: PILGRIM FOREX & CONVERTER -->
+      <div id="viewForex" style="display: none;">
+        <div class="budget-progress-card" style="margin-bottom: 25px;">
+          <div class="card-title">
+            <i class="fas fa-coins"></i> Live NRI & International Pilgrim Exchange Rates
+          </div>
+          <p style="font-size: 1.4rem; color: #64748B;">
+            Indicative reference exchange rates for international tourists, Singapore/Malaysia diaspora pilgrims, and global visitors entering Tamil Nadu.
+          </p>
+
+          <div class="currency-grid">
+            <div class="curr-card">
+              <div class="curr-flag">🇺🇸</div>
+              <div class="curr-code">1 USD ($)</div>
+              <div class="curr-rate">≈ ₹86.50 INR</div>
+              <div class="curr-label">United States Dollar</div>
+            </div>
+            <div class="curr-card">
+              <div class="curr-flag">🇸🇬</div>
+              <div class="curr-code">1 SGD (S$)</div>
+              <div class="curr-rate">≈ ₹64.20 INR</div>
+              <div class="curr-label">Singapore Dollar</div>
+            </div>
+            <div class="curr-card">
+              <div class="curr-flag">🇲🇾</div>
+              <div class="curr-code">1 MYR (RM)</div>
+              <div class="curr-rate">≈ ₹19.45 INR</div>
+              <div class="curr-label">Malaysian Ringgit</div>
+            </div>
+            <div class="curr-card">
+              <div class="curr-flag">🇪🇺</div>
+              <div class="curr-code">1 EUR (€)</div>
+              <div class="curr-rate">≈ ₹92.80 INR</div>
+              <div class="curr-label">Eurozone Euro</div>
+            </div>
+            <div class="curr-card">
+              <div class="curr-flag">🇬🇧</div>
+              <div class="curr-code">1 GBP (£)</div>
+              <div class="curr-rate">≈ ₹110.15 INR</div>
+              <div class="curr-label">British Pound Sterling</div>
+            </div>
+            <div class="curr-card">
+              <div class="curr-flag">🇦🇪</div>
+              <div class="curr-code">1 AED (د.إ)</div>
+              <div class="curr-rate">≈ ₹23.55 INR</div>
+              <div class="curr-label">UAE Dirham</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="site-footer">
+    <div class="container">
+        <div class="footer-top">
+            <div class="footer-brand">
+                <img src="../../assets/logos/logo-transparent.png" alt="Sancharam Logo" class="brand-logo" onerror="this.src='../../assets/logos/logo.png'">
+                <p>Sancharam is your smart travel companion dedicated to celebrating the living heritage, natural wonders, and vibrant spirit of Tamil Nadu.</p>
+                <div class="social-links">
+                    <a href="#" class="social-btn" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-btn" title="Twitter"><i class="fab fa-x-twitter"></i></a>
+                    <a href="#" class="social-btn" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-btn" title="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>Smart Features</h4>
+                <ul class="footer-links">
+                    <li><a href="AI itinenary.html">AI Itinerary Planner</a></li>
+                    <li><a href="routing.html">Scenic Routes</a></li>
+                    <li><a href="sos.html">Safety & SOS Helpline</a></li>
+                    <li><a href="expenses.html">Expense Calculator</a></li>
+                    <li><a href="checklist.html">Travel Checklist</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Cultural Pride</h4>
+                <p style="font-size: 1.4rem; color: #FCD34D; font-weight: 700; margin-bottom: 0.8rem;">வாழ்க தமிழ் வளர்க தமிழ் பண்பாடு</p>
+                <p style="font-size: 1.3rem; color: rgba(255,255,255,0.7); line-height: 1.6;">Dedicated to travelers who cherish art, architecture, literature, and warm Tamil hospitality.</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 Sancharam. All Rights Reserved. Crafted with love for தமிழ்நாடு.</p>
+            <div class="footer-bottom-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="../contact.html">Support</a>
+            </div>
+        </div>
+    </div>
+  </footer>
+
+  <script src="../../assets/js/sancharam-theme.js"></script>
 
   <script>
-    function calculateBudget() {
-      const income = parseFloat(document.getElementById('income').value);
-      const expenses = parseFloat(document.getElementById('expenses').value);
-      const category = document.getElementById('category').value;
-      const result = document.getElementById('result');
+    /* ==========================================================================
+       SANCHARAM EXPENSE & BUDGET MANAGER LOGIC
+       ========================================================================== */
 
-      if (isNaN(income) || isNaN(expenses)) {
-        result.innerHTML = "Please enter valid numbers for budget and expenses.";
+    let tripBudget = 25000;
+    let tripDays = 5;
+    let currentFilter = 'All';
+
+    const SAMPLE_EXPENSES = [
+      { id: 1, title: 'Madurai Murugan Idli Shop Breakfast', amount: 380, category: 'Food & Dining', split: 2, day: 'Day 1', date: 'Nov 05' },
+      { id: 2, title: 'Meenakshi Amman Temple Special Darshan', amount: 500, category: 'Sightseeing & Entry', split: 1, day: 'Day 1', date: 'Nov 05' },
+      { id: 3, title: 'Madurai to Kodaikanal Cab Toll & Fuel', amount: 2400, category: 'Transport & Fuel', split: 3, day: 'Day 2', date: 'Nov 06' },
+      { id: 4, title: 'Heritage Resort Stay in Kodaikanal', amount: 4800, category: 'Stay & Hotels', split: 2, day: 'Day 2', date: 'Nov 06' },
+      { id: 5, title: 'Handmade Spices & Eucalyptus Oil Souvenir', amount: 1100, category: 'Shopping & Crafts', split: 1, day: 'Day 3', date: 'Nov 07' }
+    ];
+
+    let expenses = [];
+
+    // Initialize
+    function init() {
+      const savedBudget = localStorage.getItem('sancharam_trip_budget');
+      if (savedBudget) tripBudget = parseFloat(savedBudget);
+
+      const savedDays = localStorage.getItem('sancharam_trip_days');
+      if (savedDays) tripDays = parseInt(savedDays);
+
+      const savedExp = localStorage.getItem('sancharam_trip_expenses');
+      if (savedExp) {
+        try {
+          expenses = JSON.parse(savedExp);
+        } catch(e) {
+          expenses = [...SAMPLE_EXPENSES];
+        }
+      } else {
+        expenses = [...SAMPLE_EXPENSES];
+        saveExpenses();
+      }
+
+      renderAll();
+      calculateSplit();
+    }
+
+    function saveExpenses() {
+      localStorage.setItem('sancharam_trip_expenses', JSON.stringify(expenses));
+      localStorage.setItem('sancharam_trip_budget', tripBudget.toString());
+      localStorage.setItem('sancharam_trip_days', tripDays.toString());
+    }
+
+    function renderAll() {
+      renderStats();
+      renderTransactions();
+      renderBreakdown();
+    }
+
+    function renderStats() {
+      const totalSpent = expenses.reduce((sum, item) => sum + item.amount, 0);
+      const balance = tripBudget - totalSpent;
+      const percentUsed = Math.min(100, Math.round((totalSpent / tripBudget) * 100)) || 0;
+      const dailyCap = Math.round(tripBudget / tripDays);
+      const dailyAvg = Math.round(totalSpent / Math.max(1, tripDays));
+
+      // Stats Cards
+      document.getElementById('statBudgetDisplay').textContent = `₹${tripBudget.toLocaleString('en-IN')}`;
+      document.getElementById('statSpentDisplay').textContent = `₹${totalSpent.toLocaleString('en-IN')}`;
+      document.getElementById('statSpentCount').textContent = `${expenses.length} expense${expenses.length === 1 ? '' : 's'} logged`;
+      
+      const balEl = document.getElementById('statBalanceDisplay');
+      const balStatus = document.getElementById('statBalanceStatus');
+      balEl.textContent = `₹${balance.toLocaleString('en-IN')}`;
+      
+      if (balance >= 0) {
+        balEl.style.color = '#0F172A';
+        balStatus.textContent = 'Within safe limits';
+        balStatus.style.color = '#16A34A';
+      } else {
+        balEl.style.color = '#DC2626';
+        balStatus.textContent = `Over budget by ₹${Math.abs(balance).toLocaleString('en-IN')}`;
+        balStatus.style.color = '#DC2626';
+      }
+
+      document.getElementById('statDailyDisplay').textContent = `₹${dailyAvg.toLocaleString('en-IN')}`;
+      document.getElementById('statDailyCap').textContent = `Target: ₹${dailyCap.toLocaleString('en-IN')}/day`;
+      document.getElementById('daysCountLabel').textContent = `${tripDays} Days Trip`;
+
+      // Progress Meter
+      const meterFill = document.getElementById('budgetMeterFill');
+      meterFill.style.width = `${Math.min(100, (totalSpent / tripBudget) * 100)}%`;
+      document.getElementById('budgetPercentLabel').textContent = `${((totalSpent / tripBudget) * 100).toFixed(1)}%`;
+
+      const healthBadge = document.getElementById('healthBadge');
+      if (percentUsed < 75) {
+        meterFill.style.background = 'linear-gradient(90deg, #10B981 0%, #3B82F6 100%)';
+        healthBadge.className = 'badge-status status-safe';
+        healthBadge.innerHTML = '<i class="fas fa-check-circle"></i> Healthy Budget Pace';
+      } else if (percentUsed <= 100) {
+        meterFill.style.background = 'linear-gradient(90deg, #F59E0B 0%, #D97706 100%)';
+        healthBadge.className = 'badge-status status-warn';
+        healthBadge.innerHTML = '<i class="fas fa-triangle-exclamation"></i> Approaching Budget Limit';
+      } else {
+        meterFill.style.background = '#DC2626';
+        healthBadge.className = 'badge-status status-alert';
+        healthBadge.innerHTML = '<i class="fas fa-circle-exclamation"></i> Trip Budget Exceeded!';
+      }
+    }
+
+    function renderTransactions() {
+      const container = document.getElementById('txContainer');
+      const filtered = currentFilter === 'All' 
+        ? expenses 
+        : expenses.filter(e => e.category === currentFilter);
+
+      if (filtered.length === 0) {
+        container.innerHTML = `
+          <div class="empty-state">
+            <i class="fas fa-receipt"></i>
+            <p>No expenses logged in this category yet.</p>
+            <button class="chip-btn" onclick="filterTransactions('All', document.querySelector('.cat-filter-btn'))">Show All Expenses</button>
+          </div>
+        `;
         return;
       }
 
-      const balance = income - expenses;
-      let message = `<strong>Remaining Budget:</strong> ₹${balance.toFixed(2)}<br>`;
+      container.innerHTML = filtered.map(item => {
+        let iconClass = 'icon-food';
+        let icon = 'fa-utensils';
+        if (item.category.includes('Stay')) { iconClass = 'icon-stay'; icon = 'fa-hotel'; }
+        else if (item.category.includes('Transport')) { iconClass = 'icon-transport'; icon = 'fa-car'; }
+        else if (item.category.includes('Sightseeing')) { iconClass = 'icon-sight'; icon = 'fa-gopuram'; }
+        else if (item.category.includes('Shopping')) { iconClass = 'icon-shopping'; icon = 'fa-bag-shopping'; }
+        else if (item.category.includes('Misc')) { iconClass = 'icon-misc'; icon = 'fa-coins'; }
 
-      if (balance > 0) {
-        message += `You can still enjoy some ${category}. Great planning!`;
-      } else {
-        message += `You're over budget by ₹${Math.abs(balance).toFixed(2)}. Consider reducing ${category} costs.`;
-      }
+        const splitText = item.split > 1 
+          ? `<span class="tx-split-badge"><i class="fas fa-users"></i> Split ${item.split}: ₹${Math.round(item.amount / item.split)}/ea</span>` 
+          : '';
 
-      result.innerHTML = message;
+        return `
+          <div class="tx-item">
+            <div class="tx-left">
+              <div class="tx-icon ${iconClass}">
+                <i class="fas ${icon}"></i>
+              </div>
+              <div class="tx-details">
+                <div class="tx-title">${escapeHtml(item.title)}</div>
+                <div class="tx-meta">
+                  <span>${item.category}</span>
+                  <span>&bull;</span>
+                  <span>${item.day || 'Day 1'}</span>
+                  ${splitText}
+                </div>
+              </div>
+            </div>
+            <div class="tx-right">
+              <div class="tx-amount">₹${item.amount.toLocaleString('en-IN')}</div>
+              <button class="tx-delete-btn" title="Delete expense" onclick="deleteExpense(${item.id})">
+                <i class="fas fa-trash-can"></i>
+              </button>
+            </div>
+          </div>
+        `;
+      }).join('');
     }
+
+    function renderBreakdown() {
+      let catSums = { 'Food': 0, 'Stay': 0, 'Transport': 0, 'Sight': 0, 'Shopping': 0 };
+
+      expenses.forEach(e => {
+        if (e.category.includes('Food')) catSums.Food += e.amount;
+        else if (e.category.includes('Stay')) catSums.Stay += e.amount;
+        else if (e.category.includes('Transport')) catSums.Transport += e.amount;
+        else if (e.category.includes('Sightseeing')) catSums.Sight += e.amount;
+        else if (e.category.includes('Shopping')) catSums.Shopping += e.amount;
+      });
+
+      document.getElementById('bdFood').textContent = `₹${catSums.Food.toLocaleString('en-IN')}`;
+      document.getElementById('bdStay').textContent = `₹${catSums.Stay.toLocaleString('en-IN')}`;
+      document.getElementById('bdTransport').textContent = `₹${catSums.Transport.toLocaleString('en-IN')}`;
+      document.getElementById('bdSight').textContent = `₹${catSums.Sight.toLocaleString('en-IN')}`;
+      document.getElementById('bdShopping').textContent = `₹${catSums.Shopping.toLocaleString('en-IN')}`;
+    }
+
+    function handleAddExpense(e) {
+      e.preventDefault();
+      const title = document.getElementById('expTitle').value.trim();
+      const amount = parseFloat(document.getElementById('expAmount').value);
+      const category = document.getElementById('expCategory').value;
+      const split = parseInt(document.getElementById('expSplit').value);
+      const day = document.getElementById('expDay').value;
+
+      if (!title || isNaN(amount) || amount <= 0) return;
+
+      const newExpense = {
+        id: Date.now(),
+        title: title,
+        amount: amount,
+        category: category,
+        split: split,
+        day: day,
+        date: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric' })
+      };
+
+      expenses.unshift(newExpense);
+      saveExpenses();
+      renderAll();
+
+      document.getElementById('addExpenseForm').reset();
+      document.getElementById('expSplit').value = '1';
+    }
+
+    function fillPreset(title, amount, category) {
+      document.getElementById('expTitle').value = title;
+      document.getElementById('expAmount').value = amount;
+      document.getElementById('expCategory').value = category;
+    }
+
+    function deleteExpense(id) {
+      expenses = expenses.filter(e => e.id !== id);
+      saveExpenses();
+      renderAll();
+    }
+
+    function clearAllExpenses() {
+      if (confirm("Are you sure you want to clear all logged expenses?")) {
+        expenses = [];
+        saveExpenses();
+        renderAll();
+      }
+    }
+
+    function loadSampleData() {
+      expenses = [...SAMPLE_EXPENSES];
+      saveExpenses();
+      renderAll();
+    }
+
+    function filterTransactions(cat, btn) {
+      currentFilter = cat;
+      document.querySelectorAll('.cat-filter-btn').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+      renderTransactions();
+    }
+
+    function promptEditBudget() {
+      const res = prompt("Enter your new total trip budget (in INR):", tripBudget);
+      if (res !== null) {
+        const parsed = parseFloat(res);
+        if (!isNaN(parsed) && parsed > 0) {
+          tripBudget = parsed;
+          saveExpenses();
+          renderAll();
+        }
+      }
+    }
+
+    function promptEditDays() {
+      const res = prompt("Enter total number of travel days:", tripDays);
+      if (res !== null) {
+        const parsed = parseInt(res);
+        if (!isNaN(parsed) && parsed > 0 && parsed <= 60) {
+          tripDays = parsed;
+          saveExpenses();
+          renderAll();
+        }
+      }
+    }
+
+    // Tab Switching
+    function switchTab(tab) {
+      document.getElementById('viewExpenseLog').style.display = (tab === 'expenseLog') ? 'block' : 'none';
+      document.getElementById('viewBillSplitter').style.display = (tab === 'billSplitter') ? 'block' : 'none';
+      document.getElementById('viewForex').style.display = (tab === 'forex') ? 'block' : 'none';
+
+      document.getElementById('tabExpenseLog').classList.toggle('active', tab === 'expenseLog');
+      document.getElementById('tabBillSplitter').classList.toggle('active', tab === 'billSplitter');
+      document.getElementById('tabForex').classList.toggle('active', tab === 'forex');
+    }
+
+    // Bill Splitter Calculation
+    function calculateSplit() {
+      const total = parseFloat(document.getElementById('splitTotalAmount').value) || 0;
+      const people = parseInt(document.getElementById('splitPeopleCount').value) || 1;
+      const tipPercent = parseFloat(document.getElementById('splitTipSelect').value) || 0;
+      const purpose = document.getElementById('splitBillPurpose').value || 'Trip Bill';
+
+      const tipAmt = (total * tipPercent) / 100;
+      const grandTotal = total + tipAmt;
+      const perHead = Math.round(grandTotal / Math.max(1, people));
+
+      document.getElementById('splitShareDisplay').textContent = `₹${perHead.toLocaleString('en-IN')}`;
+      document.getElementById('splitBreakdownText').textContent = 
+        `Total bill ₹${total.toLocaleString('en-IN')}` + 
+        (tipPercent > 0 ? ` + ₹${tipAmt.toLocaleString('en-IN')} tip (${tipPercent}%)` : '') +
+        ` = ₹${grandTotal.toLocaleString('en-IN')} divided among ${people} traveler${people === 1 ? '' : 's'}.`;
+    }
+
+    function shareWhatsAppSplit() {
+      const total = parseFloat(document.getElementById('splitTotalAmount').value) || 0;
+      const people = parseInt(document.getElementById('splitPeopleCount').value) || 1;
+      const purpose = document.getElementById('splitBillPurpose').value || 'Trip Bill';
+      const perHead = document.getElementById('splitShareDisplay').textContent;
+
+      const text = encodeURIComponent(
+        `*Sancharam Trip Bill Split: ${purpose}*
+` +
+        `Total Amount: ₹${total.toLocaleString('en-IN')}
+` +
+        `Shared with: ${people} friends
+` +
+        `*Each Person Pays: ${perHead}*
+
+` +
+        `Calculated via Sancharam Travel Finance Companion.`
+      );
+      window.open(`https://api.whatsapp.com/send?text=${text}`, '_blank');
+    }
+
+    function escapeHtml(str) {
+      if (!str) return '';
+      return str.replace(/[&<>"']/g, function(m) {
+        return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[m];
+      });
+    }
+
+    // On Load
+    window.addEventListener('DOMContentLoaded', init);
   </script>
 </body>
 </html>

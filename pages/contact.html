@@ -4,80 +4,188 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://kit.fontawesome.com/7f257b9379.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../assets/css/style.css">
-    <title>Contact</title>
-
-<!-- Global Nav/Footer CSS injected -->
-<style id="global-nav-footer">
-    .navbar { font-family: 'Montserrat', sans-serif; }
-    .navbar .container { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 0 1rem; }
-    .navbar.bg-dark { background-color: #000000; }
-    .navbar .logo { float: left; padding-top: 6px; }
-    .navbar .nav-items { list-style: none; margin: 0; padding: 0; display: flex; align-items: center; }
-    .navbar .nav-item { display: inline-block; padding: 1.5rem; text-transform: uppercase; }
-    .navbar a { color: aliceblue; text-decoration: none; font-size: 1.6rem; font-weight: bold; }
-    .navbar a:hover { border-bottom: 1px solid #FFF; }
-    .navbar::after { content: ''; display: block; clear: both; }
-    .footer { font-size: 1rem; padding: 1rem; background: #263238; color: #f4f4f4; margin-top: auto; text-align: center; width: 100%; font-family: 'Montserrat', sans-serif; }
-    .footer .social-media-links i { padding: 1.5rem; margin-bottom: 1rem; font-size: 4rem; color: #f4f4f4; }
-    @media (max-width: 768px) {
-        .navbar .container { flex-direction: column; }
-        .navbar .nav-items { flex-direction: column; width: 100%; text-align: center; }
-    }
-</style>
-<script src="https://kit.fontawesome.com/7f257b9379.js" crossorigin="anonymous"></script>
-
+    <title>Contact - Sancharam</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/sancharam-theme.css">
+    <style>
+        .contact-section {
+            padding: 100px 0 50px;
+        }
+        .container-contact {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .form-wrapper {
+            background: #FFFFFF;
+            border-radius: 20px;
+            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.05);
+            border: 1px solid #E2E8F0;
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 1fr 1.4fr;
+        }
+        .company-address {
+            background: linear-gradient(135deg, #0B132B 0%, #1C2541 100%);
+            padding: 40px;
+            color: #FFFFFF;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .company-address i {
+            color: #E63946 !important;
+            font-size: 2.4rem;
+            margin-top: 15px;
+            margin-bottom: 5px;
+        }
+        .company-address i:first-child {
+            margin-top: 0;
+        }
+        .company-address h2 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #FCD34D;
+            margin-bottom: 4px;
+            letter-spacing: 0.05em;
+        }
+        .company-address p {
+            font-size: 1.5rem;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 10px;
+        }
+        .form {
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+        }
+        .form h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: #0F172A;
+            margin-bottom: 8px;
+        }
+        .form > p {
+            font-size: 1.45rem;
+            color: #64748B;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 16px;
+        }
+        .form-group label {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #1E293B;
+            margin-bottom: 6px;
+        }
+        .form-group input,
+        .form-group textarea {
+            padding: 12px 14px;
+            border-radius: 10px;
+            border: 1px solid #CBD5E1;
+            font-size: 1.5rem;
+            font-family: inherit;
+            box-sizing: border-box;
+            background: #FFFFFF;
+        }
+        .form-group textarea {
+            height: 100px;
+            resize: vertical;
+        }
+        .form-btn {
+            margin-top: 10px;
+            padding: 14px 28px;
+            background: linear-gradient(135deg, #E63946 0%, #C1121F 100%);
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 700;
+            border: none;
+            border-radius: 9999px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 18px rgba(230, 57, 70, 0.35);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .form-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(230, 57, 70, 0.55);
+        }
+        @media(max-width: 768px) {
+            .form-wrapper { grid-template-columns: 1fr; }
+            .company-address, .form { padding: 25px; }
+        }
+    </style>
 </head>
 <body>
-    <nav class="navbar bg-dark">
-    <div class="container">
-        <img src="../assets/logos/logo.png" alt="Sancharam Logo" class="logo" style="width: 300px; height: 80px;">
-        <ul class="nav-items">
-            <li class="nav-item"><a href="../home.html">Home</a></li>
-            <li class="nav-item"><a href="../pages/about.html">About</a></li>
-            <li class="nav-item"><a href="../pages/explore.html">Explore</a></li>
-            <li class="nav-item"><a href="../pages/bookings.html">Bookings</a></li>
-            <li class="nav-item"><a href="../pages/features.html">Features</a></li>
-            <li class="nav-item"><a href="../pages/profile.html">Profile</a></li>
-        </ul>
-    </div>
-</nav>
+    <!-- ================= NAVBAR ================= -->
+    <nav class="navbar" id="main-nav">
+        <div class="container nav-wrapper">
+            <a href="../home.html" class="brand" title="Sancharam">
+                <img src="../assets/logos/logo-transparent.png" alt="Sancharam Logo" class="brand-logo" onerror="this.src='../assets/logos/logo.png'">
+            </a>
 
-    <section class="contact-form">
+            <ul class="nav-links">
+                <li><a href="../home.html" class="nav-link">Home</a></li>
+                <li><a href="explore.html" class="nav-link">Explore</a></li>
+                <li><a href="bookings.html" class="nav-link">Bookings</a></li>
+                <li><a href="features.html" class="nav-link">Features</a></li>
+                <li><a href="profile.html" class="nav-link">Profile</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <a href="features/AI itinenary.html" class="btn-nav-ai">
+                    <i class="fas fa-wand-magic-sparkles"></i>
+                    <span>Plan with AI</span>
+                </a>
+            </div>
+
+            <button class="mobile-toggle" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Contact Section (Exact Original Content) -->
+    <section class="contact-section">
         <div class="container-contact">
             <div class="form-wrapper">
                 <div class="company-address">
-                    <i class="fas fa-map-marker-alt fa-3x" style="color: #00008B;"></i>
+                    <i class="fas fa-map-marker-alt"></i>
                     <h2>LOCATION</h2>
                     <p>Anna Salai, Chennai</p>
-                    <i class="fas fa-envelope fa-3x" style="color: #00008B;"></i>
+
+                    <i class="fas fa-envelope"></i>
                     <h2>E-MAIL</h2>
                     <p>sancharam@gmail.com</p>
-                    <i class="fas fa-phone-square-alt fa-3x" style="color: #00008B;"></i>
+
+                    <i class="fas fa-phone-square-alt"></i>
                     <h2>CALL</h2>
                     <p>+91-9876543219</p>
-
                 </div>
-                <form action="" class="form">
+
+                <form action="" class="form" onsubmit="alert('Thank you! Your message has been submitted.'); return false;">
                     <h1>Contact Us</h1>
                     <p>Let us know your questions and suggestions by filling out the contact form below</p>
 
                     <div class="form-group">
                         <label for="username">Name</label>
-                        <input type="text" name="" id="username" required>
+                        <input type="text" name="" id="username" placeholder="Your name" required>
                     </div>
                     <div class="form-group">
                         <label for="phone">Phone</label>
-                        <input type="text" name="" id="phone" required>
+                        <input type="text" name="" id="phone" placeholder="Your phone" required>
                     </div>
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input type="text" name="" id="email" required>
+                        <input type="text" name="" id="email" placeholder="Your email" required>
                     </div>
                     <div class="form-group">
                         <label for="message">Message</label>
-                        <textarea name="" id="message" required></textarea>
+                        <textarea name="" id="message" placeholder="Your message..." required></textarea>
                     </div>
                     <button type="submit" class="form-btn">Submit</button>
                 </form>
@@ -85,14 +193,50 @@
         </div>
     </section>
 
-    <footer class="footer">
-        <div class="social-media-links">
-            <i class="fab fa-facebook fa-4x"></i>
-            <i class="fab fa-twitter fa-4x"></i>
-            <i class="fab fa-instagram fa-4x"></i>
+    <!-- ================= FOOTER ================= -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <img src="../assets/logos/logo-transparent.png" alt="Sancharam Logo" class="brand-logo" onerror="this.src='../assets/logos/logo.png'">
+                    <p>Sancharam is your smart travel companion dedicated to celebrating the living heritage, natural wonders, and vibrant spirit of Tamil Nadu.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-btn" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-btn" title="Twitter"><i class="fab fa-x-twitter"></i></a>
+                        <a href="#" class="social-btn" title="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-btn" title="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Smart Features</h4>
+                    <ul class="footer-links">
+                        <li><a href="features/AI itinenary.html">AI Itinerary Planner</a></li>
+                        <li><a href="features/routing.html">Scenic Routes</a></li>
+                        <li><a href="features/sos.html">Safety & SOS Helpline</a></li>
+                        <li><a href="features/expenses.html">Expense Calculator</a></li>
+                        <li><a href="features/checklist.html">Travel Checklist</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Cultural Pride</h4>
+                    <p style="font-size: 1.4rem; color: #FCD34D; font-weight: 700; margin-bottom: 0.8rem;">வாழ்க தமிழ் வளர்க தமிழ்</p>
+                    <p style="font-size: 1.3rem; color: rgba(255,255,255,0.7); line-height: 1.6;">Dedicated to travelers who cherish art, architecture, literature, and warm Tamil hospitality.</p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 Sancharam. All Rights Reserved. Crafted with love for தமிழ்நாடு.</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="contact.html">Support</a>
+                </div>
+            </div>
         </div>
-        <p>Sancharam &copy; 2025, All Rights Reserved</p>
     </footer>
+
+    <script src="../assets/js/sancharam-theme.js"></script>
 </body>
 </html>
-

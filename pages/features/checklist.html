@@ -1,133 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Travel Packing Checklist | Sancharam</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+  <link rel="stylesheet" href="../../assets/css/sancharam-theme.css">
+  <style>
+    /* ==========================================================================
+       SANCHARAM TRAVEL PACKING CHECKLIST
+       Interactive, Categorized, and Auto-Saving Packing Companion
+       ========================================================================== */
 
-<!-- Global Nav/Footer CSS injected -->
-<style id="global-nav-footer">
-    .navbar { font-family: 'Montserrat', sans-serif; }
-    .navbar .container { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 0 1rem; }
-    .navbar.bg-dark { background-color: #000000; }
-    .navbar .logo { float: left; padding-top: 6px; }
-    .navbar .nav-items { list-style: none; margin: 0; padding: 0; display: flex; align-items: center; }
-    .navbar .nav-item { display: inline-block; padding: 1.5rem; text-transform: uppercase; }
-    .navbar a { color: aliceblue; text-decoration: none; font-size: 1.6rem; font-weight: bold; }
-    .navbar a:hover { border-bottom: 1px solid #FFF; }
-    .navbar::after { content: ''; display: block; clear: both; }
-    .footer { font-size: 1rem; padding: 1rem; background: #263238; color: #f4f4f4; margin-top: auto; text-align: center; width: 100%; font-family: 'Montserrat', sans-serif; }
-    .footer .social-media-links i { padding: 1.5rem; margin-bottom: 1rem; font-size: 4rem; color: #f4f4f4; }
-    @media (max-width: 768px) {
-        .navbar .container { flex-direction: column; }
-        .navbar .nav-items { flex-direction: column; width: 100%; text-align: center; }
+    .checklist-hero {
+      padding: 120px 0 35px;
+      text-align: center;
+      background: radial-gradient(circle at 50% 20%, rgba(230, 57, 70, 0.05) 0%, rgba(248, 250, 252, 0) 70%);
     }
-</style>
-<script src="https://kit.fontawesome.com/7f257b9379.js" crossorigin="anonymous"></script>
+    .checklist-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      background: #FFE3E3;
+      color: #E63946;
+      border-radius: 9999px;
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .checklist-hero h1 {
+      font-size: 3.8rem;
+      font-weight: 800;
+      color: #0F172A;
+      margin-bottom: 10px;
+      line-height: 1.2;
+    }
+    .checklist-hero h1 span {
+      background: linear-gradient(135deg, #E63946 0%, #B91C1C 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .checklist-hero p {
+      font-size: 1.6rem;
+      color: #475569;
+      max-width: 740px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
 
-<div class="wrapper">
-	<article class="todo__container">
-		<header class="header">
-<nav class="navbar bg-dark">
-    <div class="container">
-        <img src="../../assets/logos/logo.png" alt="Sancharam Logo" class="logo" style="width: 300px; height: 80px;">
-        <ul class="nav-items">
-            <li class="nav-item"><a href="../../home.html">Home</a></li>
-            <li class="nav-item"><a href="../../pages/about.html">About</a></li>
-            <li class="nav-item"><a href="../../pages/explore.html">Explore</a></li>
-            <li class="nav-item"><a href="../../pages/bookings.html">Bookings</a></li>
-            <li class="nav-item"><a href="../../pages/features.html">Features</a></li>
-            <li class="nav-item"><a href="../../pages/profile.html">Profile</a></li>
+        /* Main Container */
+    .checklist-section {
+      padding: 15px 0 80px;
+    }
+    .checklist-container {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    /* Progress & Quick Actions Card */
+    .progress-card {
+      background: #FFFFFF;
+      border-radius: 20px;
+      border: 1px solid #E2E8F0;
+      padding: 24px 28px;
+      box-shadow: 0 4px 20px rgba(15, 23, 42, 0.04);
+      margin-bottom: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .progress-left {
+      flex: 1;
+      min-width: 280px;
+    }
+    .progress-label-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+    .progress-title {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #0F172A;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .progress-title i {
+      color: #E63946;
+    }
+    .progress-counter {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #E63946;
+    }
+    .progress-bar-bg {
+      width: 100%;
+      height: 12px;
+      background: #F1F5F9;
+      border-radius: 9999px;
+      overflow: hidden;
+      position: relative;
+    }
+    .progress-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #E63946 0%, #16A34A 100%);
+      border-radius: 9999px;
+      width: 0%;
+      transition: width 0.4s ease;
+    }
+    .progress-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .btn-action-tool {
+      padding: 9px 16px;
+      border-radius: 10px;
+      font-size: 1.3rem;
+      font-weight: 700;
+      border: 1.5px solid #CBD5E1;
+      background: #F8FAFC;
+      color: #475569;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+    .btn-action-tool:hover {
+      background: #FFF1F2;
+      border-color: #E63946;
+      color: #E63946;
+    }
+
+    /* Mode / Category Selector Tabs */
+    .mode-tabs-bar {
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+      padding-bottom: 10px;
+      margin-bottom: 25px;
+      scrollbar-width: none;
+    }
+    .mode-tabs-bar::-webkit-scrollbar {
+      display: none;
+    }
+    .mode-tab-btn {
+      padding: 11px 20px;
+      border-radius: 12px;
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #475569;
+      background: #FFFFFF;
+      border: 1.5px solid #E2E8F0;
+      cursor: pointer;
+      white-space: nowrap;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.25s ease;
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.03);
+    }
+    .mode-tab-btn:hover {
+      border-color: #E63946;
+      color: #E63946;
+    }
+    .mode-tab-btn.active {
+      background: #E63946;
+      color: #FFFFFF;
+      border-color: #E63946;
+      box-shadow: 0 4px 14px rgba(230, 57, 70, 0.25);
+    }
+
+    /* Category Section Card */
+    .checklist-group-card {
+      background: #FFFFFF;
+      border-radius: 20px;
+      border: 1px solid #E2E8F0;
+      box-shadow: 0 4px 20px rgba(15, 23, 42, 0.04);
+      padding: 28px 32px;
+      margin-bottom: 24px;
+      transition: all 0.3s ease;
+    }
+    .group-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #F1F5F9;
+    }
+    .group-title {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: #0F172A;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .group-title i {
+      color: #E63946;
+      font-size: 1.7rem;
+    }
+    .group-badge {
+      font-size: 1.15rem;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 9999px;
+      background: #F1F5F9;
+      color: #475569;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    /* Checklist Items */
+    .checklist-items-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .check-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 18px;
+      border-radius: 12px;
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      user-select: none;
+    }
+    .check-item:hover {
+      background: #FFFFFF;
+      border-color: #CBD5E1;
+      transform: translateX(4px);
+    }
+    .check-item.checked {
+      background: #F0FDF4;
+      border-color: #BBF7D0;
+    }
+    .check-item-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex: 1;
+    }
+    .custom-checkbox {
+      width: 22px;
+      height: 22px;
+      border-radius: 6px;
+      border: 2px solid #CBD5E1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      color: #FFFFFF;
+      background: #FFFFFF;
+      transition: all 0.2s ease;
+      flex-shrink: 0;
+    }
+    .check-item.checked .custom-checkbox {
+      background: #16A34A;
+      border-color: #16A34A;
+    }
+    .item-label-group {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .item-title {
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: #1E293B;
+      transition: all 0.2s;
+    }
+    .check-item.checked .item-title {
+      color: #64748B;
+      text-decoration: line-through;
+    }
+    .item-desc {
+      font-size: 1.25rem;
+      color: #64748B;
+      line-height: 1.4;
+    }
+    .item-tag {
+      font-size: 1.15rem;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 6px;
+      background: #F1F5F9;
+      color: #475569;
+      white-space: nowrap;
+    }
+    .tag-mandatory { background: #FEE2E2; color: #DC2626; }
+    .tag-temple    { background: #FEF3C7; color: #D97706; }
+    .tag-health    { background: #E0E7FF; color: #4338CA; }
+
+    /* Add Custom Item Box */
+    .add-custom-box {
+      background: #FFFFFF;
+      border-radius: 16px;
+      border: 1.5px dashed #CBD5E1;
+      padding: 20px 24px;
+      margin-top: 30px;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .add-custom-box input {
+      flex: 1;
+      min-width: 240px;
+      padding: 12px 16px;
+      border-radius: 10px;
+      border: 1.5px solid #CBD5E1;
+      font-size: 1.4rem;
+      font-family: inherit;
+      outline: none;
+    }
+    .add-custom-box input:focus {
+      border-color: #E63946;
+      box-shadow: 0 0 0 3px rgba(230, 57, 70, 0.12);
+    }
+    .btn-add-item {
+      padding: 12px 22px;
+      border-radius: 10px;
+      background: #E63946;
+      color: #FFFFFF;
+      border: none;
+      font-size: 1.4rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+    .btn-add-item:hover {
+      background: #B91C1C;
+    }
+
+    @media (max-width: 768px) {
+      .checklist-hero h1 { font-size: 2.8rem; }
+      .progress-card { flex-direction: column; align-items: flex-start; }
+      .checklist-group-card { padding: 20px 18px; }
+      .check-item { flex-direction: column; align-items: flex-start; gap: 8px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ================= NAVBAR ================= -->
+  <nav class="navbar" id="main-nav">
+    <div class="container nav-wrapper">
+        <a href="../../home.html" class="brand" title="Sancharam">
+            <img src="../../assets/logos/logo-transparent.png" alt="Sancharam Logo" class="brand-logo" onerror="this.src='../../assets/logos/logo.png'">
+        </a>
+
+        <ul class="nav-links">
+            <li><a href="../../home.html" class="nav-link">Home</a></li>
+            <li><a href="../explore.html" class="nav-link">Explore</a></li>
+            <li><a href="../bookings.html" class="nav-link">Bookings</a></li>
+            <li><a href="../features.html" class="nav-link active">Features</a></li>
+            <li><a href="../profile.html" class="nav-link">Profile</a></li>
         </ul>
+
+        <div class="nav-actions">
+            <a href="AI itinenary.html" class="btn-nav-ai">
+                <i class="fas fa-wand-magic-sparkles"></i>
+                <span>Plan with AI</span>
+            </a>
+        </div>
+
+        <button class="mobile-toggle" aria-label="Toggle navigation">
+            <i class="fas fa-bars"></i>
+        </button>
     </div>
-</nav>
-			<figure class="figure">
-				<img src="https://media.istockphoto.com/photos/spiral-bound-notebook-with-todo-list-on-white-wooden-table-with-and-picture-id1193498585?b=1&k=20&m=1193498585&s=170667a&w=0&h=fqPhCl9SoRJPWI9Knz800Ctg7cxc0GCbSREAf3oV03A=" alt="">
-				<figcaption class="title__caption">
-					<h1 class="title title--primary">Todo's</h1>
-					<h2 class="title title--secondary">to-do list</h2>
-				</figcaption>
-			</figure>
-		</header>
-		<section class="content">
-			<ul class="list__container list__container--primary">
-				<li class="list__item list__item--primary">
-					<input type="checkbox" id="list-input1" class="list-input1">
-					<label for="list-input1" class="list-input-label">
-						<span class="text--primary">Groceries
-							<span>+</span>
-						</span>
-						<span class="icon"><i class="fas fa-check"></i></span>
-					</label>
+  </nav>
 
-					<ul class="list__container list__container--secondary">
-						<li class="list__item list__item--secondary">
-							<span class="text--secondary">3 tomatoes</span>
-						</li>
-						<li class="list__item list__item--secondary">
-							<span class="text--secondary">1 bunch of cherries</span>
-						</li>
-						<li class="list__item list__item--secondary">
-							<span class="text--secondary">6 onions</span>
-						</li>
-						<li class="list__item list__item--secondary">
-							<span class="text--secondary">3 heads of garlic</span>
-						</li>
-						<li class="list__item list__item--secondary">
-							<span class="text--secondary">1 bag spring mix</span>
-						</li>
-					</ul>
-				</li>
-				<li class="list__item list__item--primary">
-					<input type="checkbox" id="list-input2" class="list-input2">
-					<label for="list-input2" class="list-input-label">
-						<span class="text--primary">Cancel gym membership</span>
-						<span class="icon"><i class="fas fa-check"></i></span>
-					</label>
+  <!-- ================= HERO ================= -->
+  <header class="checklist-hero">
+    <div class="container">
+      <div class="checklist-eyebrow">
+        <i class="fas fa-list-check"></i> Smart Packing Companion
+      </div>
+      <h1>Travel Packing <span>Checklist & Essentials</span></h1>
+      <p>Interactive, customized packing checklists tailored for Tamil Nadu journeys: ancient temple darshans, misty Nilgiri hill treks, Coromandel coastal shores, and monsoon travel.</p>
+    </div>
+  </header>
 
-				</li>
-				<li class="list__item list__item--primary">
-					<input type="checkbox" id="list-input3" class="list-input3">
-					<label for="list-input3" class="list-input-label">
-						<span class="text--primary">Code todo list
-							<span>+</span>
-						</span>
-						<span class="icon"><i class="fas fa-check"></i></span>
-					</label>
-					<ul class="list__container list__container--secondary">
-						<li class="list__item list__item--secondary">
-							<span class="text--secondary">modern CSS</span>
-						</li>
-						<li class="list__item list__item--secondary">
-							<span class="text--secondary">Flex or Grid</span>
-						</li>
-						<li class="list__item list__item--secondary">
-							<span class="text--secondary">maybe some JS</span>
-						</li>
-						<li class="list__item list__item--secondary">
-							<span class="text--secondary">variables</span>
-						</li>
-						<li class="list__item list__item--secondary">
-							<span class="text--secondary">and logical properties</span>
-						</li>
-					</ul>
-				</li>
-				<li class="list__item list__item--primary">
-					<input type="checkbox" id="list-input4" class="list-input4">
-					<label for="list-input4" class="list-input-label">
-						<span class="text--primary">Take package to the post office</span>
-						<span class="icon"><i class="fas fa-check"></i></span>
-					</label>
-				</li>
-				<li class="list__item list__item--primary">
-					<input type="checkbox" id="list-input5" class="list-input5">
-					<label for="list-input5" class="list-input-label">
-						<span class="text--primary">Call avery about Ali's party (afternoon)</span>
-						<span class="icon"><i class="fas fa-check"></i></span>
-					</label>
-				</li>
-				<li class="list__item list__item--primary">
-					<input type="checkbox" id="list-input6" class="list-input6">
-					<label for="list-input6" class="list-input-label">
-						<span class="text--primary">Sort recycling & put out trash</span>
-						<span class="icon"><i class="fas fa-check"></i></span>
-					</label>
-				</li>
-			</ul>
-		</section>
-	</article>
-</div>
+  <!-- ================= CHECKLIST CONTENT ================= -->
+  <main class="checklist-section">
+    <div class="container checklist-container">
+
+      <!-- Progress & Quick Actions Card -->
+      <div class="progress-card">
+        <div class="progress-left">
+          <div class="progress-label-row">
+            <span class="progress-title"><i class="fas fa-clipboard-check"></i> Packing Progress</span>
+            <span class="progress-counter" id="progressCounter">0 of 20 items packed (0%)</span>
+          </div>
+          <div class="progress-bar-bg">
+            <div class="progress-bar-fill" id="progressBarFill"></div>
+          </div>
+        </div>
+
+        <div class="progress-actions">
+          <button class="btn-action-tool" onclick="checkAllItems()">
+            <i class="fas fa-check-double"></i> Check All
+          </button>
+          <button class="btn-action-tool" onclick="resetAllItems()">
+            <i class="fas fa-rotate-left"></i> Reset List
+          </button>
+          <button class="btn-action-tool" onclick="window.print()">
+            <i class="fas fa-print"></i> Print List
+          </button>
+        </div>
+      </div>
+
+      <!-- Mode / Category Selector Tabs -->
+      <div class="mode-tabs-bar">
+        <button class="mode-tab-btn active" onclick="filterCategory('all', this)">
+          <i class="fas fa-border-all"></i> All Packing Categories
+        </button>
+        <button class="mode-tab-btn" onclick="filterCategory('temple', this)">
+          <i class="fas fa-place-of-worship"></i> Sacred Temples
+        </button>
+        <button class="mode-tab-btn" onclick="filterCategory('hills', this)">
+          <i class="fas fa-mountain"></i> Hill Stations & Treks
+        </button>
+        <button class="mode-tab-btn" onclick="filterCategory('coastal', this)">
+          <i class="fas fa-water"></i> Beaches & Coast
+        </button>
+        <button class="mode-tab-btn" onclick="filterCategory('documents', this)">
+          <i class="fas fa-id-card"></i> Passes & Essentials
+        </button>
+      </div>
+
+      <!-- Checklist Groups Container -->
+      <div id="checklistGroupsWrapper">
+
+        <!-- GROUP 1: TEMPLE VISITS & DARSHAN -->
+        <div class="checklist-group-card" data-cat="temple">
+          <div class="group-header">
+            <h3 class="group-title"><i class="fas fa-gopuram"></i> Sacred Temple Visits & Darshan</h3>
+            <span class="group-badge">Temple Guidelines</span>
+          </div>
+          <div class="checklist-items-list">
+            <div class="check-item" data-id="temple-1" onclick="toggleItem(this)">
+              <div class="check-item-left">
+                <div class="custom-checkbox"><i class="fas fa-check"></i></div>
+                <div class="item-label-group">
+                  <span class="item-title">Traditional Temple Attire (Dhoti / Saree / Churidar)</span>
+                  <span class="item-desc">Modest clothing compliant with Tamil Nadu HR&CE temple dress code rules.</span>
+                </div>
+              </div>
+              <span class="item-tag tag-temple">Mandatory</span>
+            </div>
+
+            <div class="check-item" data-id="temple-2" onclick="toggleItem(this)">
+              <div class="check-item-left">
+                <div class="custom-checkbox"><i class="fas fa-check"></i></div>
+                <div class="item-label-group">
+                  <span class="item-title">Easy Slip-On Footwear</span>
+                  <span class="item-desc">Shoes must be deposited outside praharam gates; slip-on sandals save time.</span>
+                </div>
+              </div>
+              <span class="item-tag">Convenience</span>
+            </div>
+
+            <div class="check-item" data-id="temple-3" onclick="toggleItem(this)">
+              <div class="check-item-left">
+                <div class="custom-checkbox"><i class="fas fa-check"></i></div>
+                <div class="item-label-group">
+                  <span class="item-title">Small Cash Currency (₹10, ₹20, ₹50 notes)</span>
+                  <span class="item-desc">For temple archana tokens, footwear stand fee, and prasadam offerings.</span>
+                </div>
+              </div>
+              <span class="item-tag tag-mandatory">Essential</span>
+            </div>
+
+            <div class="check-item" data-id="temple-4" onclick="toggleItem(this)">
+              <div class="check-item-left">
+                <div class="custom-checkbox"><i class="fas fa-check"></i></div>
+                <div class="item-label-group">
+                  <span class="item-title">Cotton Carry Bag / Jute Bag</span>
+                  <span class="item-desc">Eco-friendly bag for holy sacred ash (vibuthi), kumkum, and prasadam.</span>
+                </div>
+              </div>
+              <span class="item-tag">Eco-Friendly</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- GROUP 2: HILL STATIONS & TREKS (OOTY, KODAIKANAL, KOLLI HILLS) -->
+        <div class="checklist-group-card" data-cat="hills">
+          <div class="group-header">
+            <h3 class="group-title"><i class="fas fa-mountain"></i> Hill Stations & Misty Treks</h3>
+            <span class="group-badge">High Altitude</span>
+          </div>
+          <div class="checklist-items-list">
+            <div class="check-item" data-id="hills-1" onclick="toggleItem(this)">
+              <div class="check-item-left">
+                <div class="custom-checkbox"><i class="fas fa-check"></i></div>
+                <div class="item-label-group">
+                  <span class="item-title">Warm Fleece Jacket / Woolen Shawl</span>
+                  <span class="item-desc">Nilgiris & Kodaikanal night temperatures frequently drop below 10°C.</span>
+                </div>
+              </div>
+              <span class="item-tag tag-mandatory">Cold Weather</span>
+            </div>
+
+            <div class="check-item" data-id="hills-2" onclick="toggleItem(this)">
+              <div class="check-item-left">
+                <div class="custom-checkbox"><i class="fas fa-check"></i></div>
+                <div class="item-label-group">
+                  <span class="item-title">Sturdy Grip Walking / Hiking Shoes</span>
+                  <span class="item-desc">Essential for wet stone paths, tea gardens, and Doddabetta trails.</span>
+                </div>
+              </div>
+              <span class="item-tag">Footwear</span>
+            </div>
+
+            <div class="check-item" data-id="hills-3" onclick="toggleItem(this)">
+              <div class="check-item-left">
+                <div class="custom-checkbox"><i class="fas fa-check"></i></div>
+                <div class="item-label-group">
+                  <span class="item-title">Compact Rain Poncho / Umbrella</span>
+                  <span class="item-desc">Unpredictable sudden mountain showers occur year-round in Western Ghats.</span>
+                </div>
+              </div>
+              <span class="item-tag">Monsoon Ready</span>
+            </div>
+
+            <div class="check-item" data-id="hills-4" onclick="toggleItem(this)">
+              <div class="check-item-left">
+                <div class="custom-checkbox"><i class="fas fa-check"></i></div>
+                <div class="item-label-group">
+                  <span class="item-title">Ghat Road Motion Sickness Pills & Balm</span>
+                  <span class="item-desc">Nilgiri toy train or 36 hairpin bend ghat roads can induce dizziness.</span>
+                </div>
+              </div>
+              <span class="item-tag tag-health">Medical</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- GROUP 3: COASTAL SHORES & BEACHES -->
+        <div class="checklist-group-card" data-cat="coastal">
+          <div class="group-header">
+            <h3 class="group-title"><i class="fas fa-umbrella-beach"></i> Coastal Shores & Beach Treks</h3>
+            <span class="group-badge">Tropical Sun</span>
+          </div>
+          <div class="checklist-items-list">
+            <div class="check-item" data-id="coastal-1" onclick="toggleItem(this)">
+              <div class="check-item-left">
+                <div class="custom-checkbox"><i class="fas fa-check"></i></div>
+                <div class="item-label-group">
+                  <span class="item-title">Broad Spectrum Sunscreen (SPF 50+)</span>
+                  <span class="item-desc">Intense coastal humidity and tropical UV rays across Marina & Dhanushkodi.</span>
+                </div>
+              </div>
+              <span class="item-tag tag-mandatory">Skincare</span>
+            </div>
+
+            <div class="check-item" data-id="coastal-2" onclick="toggleItem(this)">
+              <div class="check-item-left">
+                <div class="custom-checkbox"><i class="fas fa-check"></i></div>
+                <div class="item-label-group">
+                  <span class="item-title">Polarized Sunglasses & Wide-Brim Sun Hat</span>
+                  <span class="item-desc">Shield eyes from bright sea surface reflection during daytime explorations.</span>
+                </div>
+              </div>
+              <span class="item-tag">Sun Protection</span>
+            </div>
+
+            <div class="check-item" data-id="coastal-3" onclick="toggleItem(this)">
+              <div class="check-item-left">
+                <div class="custom-checkbox"><i class="fas fa-check"></i></div>
+                <div class="item-label-group">
+                  <span class="item-title">Waterproof Dry Bag for Phone & Electronics</span>
+                  <span class="item-desc">Crucial protection during Coracle boat rides at Hogenakkal or coastal strolls.</span>
+                </div>
+              </div>
+              <span class="item-tag">Device Safety</span>
+            </div>
+
+            <div class="check-item" data-id="coastal-4" onclick="toggleItem(this)">
+              <div class="check-item-left">
+                <div class="custom-checkbox"><i class="fas fa-check"></i></div>
+                <div class="item-label-group">
+                  <span class="item-title">Quick-Dry Microfibre Towel</span>
+                  <span class="item-desc">Handy after Agni Theertham sea bath in Rameswaram or Triveni Sangam dip.</span>
+                </div>
+              </div>
+              <span class="item-tag">Hygiene</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- GROUP 4: PASSES, DOCUMENTS & ESSENTIAL ELECTRONICS -->
+        <div class="checklist-group-card" data-cat="documents">
+          <div class="group-header">
+            <h3 class="group-title"><i class="fas fa-passport"></i> Passes, Documents & Electronics</h3>
+            <span class="group-badge">Universal</span>
+          </div>
+          <div class="checklist-items-list">
+            <div class="check-item" data-id="doc-1" onclick="toggleItem(this)">
+              <div class="check-item-left">
+                <div class="custom-checkbox"><i class="fas fa-check"></i></div>
+                <div class="item-label-group">
+                  <span class="item-title">Sancharam Digital Travel Pass (Saved PDF / QR)</span>
+                  <span class="item-desc">Saved offline on phone or printed for contactless entry verification.</span>
+                </div>
+              </div>
+              <span class="item-tag tag-mandatory">Entry Pass</span>
+            </div>
+
+            <div class="check-item" data-id="doc-2" onclick="toggleItem(this)">
+              <div class="check-item-left">
+                <div class="custom-checkbox"><i class="fas fa-check"></i></div>
+                <div class="item-label-group">
+                  <span class="item-title">Government Photo ID (Aadhaar / Voter ID / Passport)</span>
+                  <span class="item-desc">Required for hotel check-ins, ASI monument gates, and hill station permits.</span>
+                </div>
+              </div>
+              <span class="item-tag tag-mandatory">Identification</span>
+            </div>
+
+            <div class="check-item" data-id="doc-3" onclick="toggleItem(this)">
+              <div class="check-item-left">
+                <div class="custom-checkbox"><i class="fas fa-check"></i></div>
+                <div class="item-label-group">
+                  <span class="item-title">Portable Power Bank (10,000mAh+)</span>
+                  <span class="item-desc">Keep your smartphone charged for GPS scenic navigation, photos, and UPI.</span>
+                </div>
+              </div>
+              <span class="item-tag">Electronics</span>
+            </div>
+
+            <div class="check-item" data-id="doc-4" onclick="toggleItem(this)">
+              <div class="check-item-left">
+                <div class="custom-checkbox"><i class="fas fa-check"></i></div>
+                <div class="item-label-group">
+                  <span class="item-title">Personal Medical Kit & ORS Rehydration Salts</span>
+                  <span class="item-desc">Electrolytes for hot delta afternoons, bandages, antiseptic, and prescribed medicines.</span>
+                </div>
+              </div>
+              <span class="item-tag tag-health">Medical</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Add Custom Item Box -->
+      <div class="add-custom-box">
+        <input type="text" id="customItemInput" placeholder="Add custom item (e.g. Camera tripod, Kids snacks, Binoculars...)" onkeypress="if(event.key==='Enter') addCustomItem()">
+        <button class="btn-add-item" onclick="addCustomItem()">
+          <i class="fas fa-plus"></i> Add Item
+        </button>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="site-footer">
+    <div class="container">
+        <div class="footer-top">
+            <div class="footer-brand">
+                <img src="../../assets/logos/logo-transparent.png" alt="Sancharam Logo" class="brand-logo" onerror="this.src='../../assets/logos/logo.png'">
+                <p>Sancharam is your smart travel companion dedicated to celebrating the living heritage, natural wonders, and vibrant spirit of Tamil Nadu.</p>
+                <div class="social-links">
+                    <a href="#" class="social-btn" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-btn" title="Twitter"><i class="fab fa-x-twitter"></i></a>
+                    <a href="#" class="social-btn" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-btn" title="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>Smart Features</h4>
+                <ul class="footer-links">
+                    <li><a href="AI itinenary.html">AI Itinerary Planner</a></li>
+                    <li><a href="routing.html">Scenic Routes</a></li>
+                    <li><a href="sos.html">Safety & SOS Helpline</a></li>
+                    <li><a href="expenses.html">Expense Calculator</a></li>
+                    <li><a href="checklist.html">Travel Checklist</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Cultural Pride</h4>
+                <p style="font-size: 1.4rem; color: #FCD34D; font-weight: 700; margin-bottom: 0.8rem;">வாழ்க தமிழ் வளர்க தமிழ் பண்பாடு</p>
+                <p style="font-size: 1.3rem; color: rgba(255,255,255,0.7); line-height: 1.6;">Dedicated to travelers who cherish art, architecture, literature, and warm Tamil hospitality.</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 Sancharam. All Rights Reserved. Crafted with love for தமிழ்நாடு.</p>
+            <div class="footer-bottom-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Security</a>
+            </div>
+        </div>
+    </div>
+  </footer>
+
+  <script src="../../assets/js/sancharam-theme.js"></script>
+  <script>
+    // ==========================================================================
+    // SANCHARAM CHECKLIST ENGINE
+    // Persistent state in localStorage, category filters & custom items
+    // ==========================================================================
+
+    const STORAGE_KEY = 'sancharam_checklist_packed';
+    const CUSTOM_ITEMS_KEY = 'sancharam_checklist_custom';
+
+    function getPackedState() {
+      try {
+        const s = localStorage.getItem(STORAGE_KEY);
+        if (s) return JSON.parse(s);
+      } catch(e) {}
+      return {};
+    }
+
+    function savePackedState(state) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    }
+
+    function toggleItem(elem) {
+      elem.classList.toggle('checked');
+      const id = elem.getAttribute('data-id');
+      const state = getPackedState();
+      state[id] = elem.classList.contains('checked');
+      savePackedState(state);
+      updateProgress();
+    }
+
+    function updateProgress() {
+      const items = document.querySelectorAll('.check-item');
+      let packed = 0;
+      items.forEach(it => {
+        if (it.classList.contains('checked')) packed++;
+      });
+
+      const total = items.length;
+      const pct = total === 0 ? 0 : Math.round((packed / total) * 100);
+
+      document.getElementById('progressCounter').innerText = `${packed} of ${total} items packed (${pct}%)`;
+      document.getElementById('progressBarFill').style.width = `${pct}%`;
+    }
+
+    function checkAllItems() {
+      const state = getPackedState();
+      document.querySelectorAll('.check-item').forEach(it => {
+        it.classList.add('checked');
+        const id = it.getAttribute('data-id');
+        state[id] = true;
+      });
+      savePackedState(state);
+      updateProgress();
+    }
+
+    function resetAllItems() {
+      if (confirm('Reset your packing progress?')) {
+        localStorage.removeItem(STORAGE_KEY);
+        document.querySelectorAll('.check-item').forEach(it => {
+          it.classList.remove('checked');
+        });
+        updateProgress();
+      }
+    }
+
+    // Category Filter
+    function filterCategory(cat, btn) {
+      document.querySelectorAll('.mode-tab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      document.querySelectorAll('.checklist-group-card').forEach(card => {
+        if (cat === 'all' || card.getAttribute('data-cat') === cat) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    // Custom Items Handling
+    function addCustomItem() {
+      const input = document.getElementById('customItemInput');
+      const text = input.value.trim();
+      if (!text) return;
+
+      const customId = 'custom-' + Date.now();
+      const customItem = { id: customId, text: text };
+
+      // Save custom item
+      let customList = [];
+      try {
+        customList = JSON.parse(localStorage.getItem(CUSTOM_ITEMS_KEY) || '[]');
+      } catch(e) {}
+      customList.push(customItem);
+      localStorage.setItem(CUSTOM_ITEMS_KEY, JSON.stringify(customList));
+
+      renderCustomItem(customItem);
+      input.value = '';
+      updateProgress();
+    }
+
+    function renderCustomItem(item) {
+      let customGroup = document.getElementById('customItemsGroup');
+      if (!customGroup) {
+        customGroup = document.createElement('div');
+        customGroup.className = 'checklist-group-card';
+        customGroup.id = 'customItemsGroup';
+        customGroup.setAttribute('data-cat', 'custom');
+        customGroup.innerHTML = `
+          <div class="group-header">
+            <h3 class="group-title"><i class="fas fa-star" style="color:#F59E0B;"></i> My Personal Custom Items</h3>
+            <span class="group-badge">Custom</span>
+          </div>
+          <div class="checklist-items-list" id="customItemsList"></div>
+        `;
+        document.getElementById('checklistGroupsWrapper').appendChild(customGroup);
+      }
+
+      const list = document.getElementById('customItemsList');
+      const itemDiv = document.createElement('div');
+      itemDiv.className = 'check-item';
+      itemDiv.setAttribute('data-id', item.id);
+      itemDiv.onclick = function() { toggleItem(this); };
+      itemDiv.innerHTML = `
+        <div class="check-item-left">
+          <div class="custom-checkbox"><i class="fas fa-check"></i></div>
+          <div class="item-label-group">
+            <span class="item-title">${item.text}</span>
+            <span class="item-desc">Added by traveler</span>
+          </div>
+        </div>
+        <span class="item-tag">Personal</span>
+      `;
+      list.appendChild(itemDiv);
+    }
+
+    // Load saved state on page ready
+    window.addEventListener('DOMContentLoaded', () => {
+      // Restore custom items
+      try {
+        const customList = JSON.parse(localStorage.getItem(CUSTOM_ITEMS_KEY) || '[]');
+        customList.forEach(item => renderCustomItem(item));
+      } catch(e) {}
+
+      // Restore checked state
+      const state = getPackedState();
+      document.querySelectorAll('.check-item').forEach(it => {
+        const id = it.getAttribute('data-id');
+        if (state[id] === true) {
+          it.classList.add('checked');
+        }
+      });
+
+      updateProgress();
+    });
+  </script>
+</body>
+</html>

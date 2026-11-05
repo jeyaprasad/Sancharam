@@ -1,0 +1,1583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Sangam Age & Muvendhar Dynasties | Sancharam</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+  <link rel="stylesheet" href="../../assets/css/sancharam-theme.css">
+  <style>
+    /* ==========================================================================
+       SANCHARAM: THE SANGAM AGE & MUVENDHAR (CHOLAS, PANDYAS, CHERAS)
+       Prestigious Museum-Grade Heritage Showcase & Tamil Perumai (தமிழ் பெருமை)
+       ========================================================================== */
+
+    :root {
+      --chola-gold: #F59E0B;
+      --chola-crimson: #B91C1C;
+      --pandya-blue: #1D4ED8;
+      --pandya-gold: #FBBF24;
+      --chera-emerald: #059669;
+      --chera-gold: #34D399;
+    }
+
+    .heritage-hero {
+      padding: 120px 0 45px;
+      text-align: center;
+      background: radial-gradient(circle at 50% 20%, rgba(217, 119, 6, 0.1) 0%, rgba(248, 250, 252, 0) 70%);
+      position: relative;
+    }
+    .heritage-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 20px;
+      background: #FEF3C7;
+      color: #92400E;
+      border: 1px solid #FDE68A;
+      border-radius: 9999px;
+      font-size: 1.25rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+      box-shadow: 0 2px 10px rgba(217, 119, 6, 0.1);
+    }
+    .heritage-hero h1 {
+      font-size: 4.2rem;
+      font-weight: 800;
+      color: #0F172A;
+      margin-bottom: 14px;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+    }
+    .heritage-hero h1 span {
+      background: linear-gradient(135deg, #D97706 0%, #DC2626 50%, #991B1B 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .heritage-hero p {
+      font-size: 1.65rem;
+      color: #475569;
+      max-width: 840px;
+      margin: 0 auto 24px;
+      line-height: 1.6;
+    }
+
+    /* Muvendhar Emblem Trio Bar with REAL Flag Images */
+    .crests-trio-bar {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+    .crest-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: #FFFFFF;
+      border: 1.5px solid #E2E8F0;
+      padding: 10px 22px;
+      border-radius: 9999px;
+      box-shadow: 0 4px 16px rgba(15, 23, 42, 0.05);
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: #0F172A;
+      transition: all 0.25s ease;
+      cursor: pointer;
+    }
+    .crest-pill:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+    }
+    .crest-flag-thumb {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 1.5px solid #E2E8F0;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    /* Main Container */
+    .heritage-section {
+      padding: 10px 0 80px;
+    }
+    .heritage-container {
+      max-width: 1140px;
+      margin: 0 auto;
+    }
+
+    /* Dynasty Filter Tabs */
+    .dynasty-nav-bar {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 35px;
+      border-bottom: 1.5px solid #E2E8F0;
+      padding-bottom: 12px;
+      overflow-x: auto;
+    }
+    .tab-btn-dynasty {
+      padding: 11px 24px;
+      border-radius: 12px;
+      font-size: 1.4rem;
+      font-weight: 700;
+      border: none;
+      background: transparent;
+      color: #64748B;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      white-space: nowrap;
+      transition: all 0.2s ease;
+    }
+    .tab-btn-dynasty:hover {
+      background: #F1F5F9;
+      color: #0F172A;
+    }
+    .tab-btn-dynasty.active {
+      background: #0F172A;
+      color: #FCD34D;
+      box-shadow: 0 6px 16px rgba(15, 23, 42, 0.2);
+    }
+
+    /* ================= DYNASTY BANNER CARD ================= */
+    .dynasty-banner-card {
+      background: #FFFFFF;
+      border-radius: 24px;
+      border: 1px solid #E2E8F0;
+      padding: 36px;
+      box-shadow: 0 8px 30px rgba(15, 23, 42, 0.04);
+      margin-bottom: 45px;
+      position: relative;
+      overflow: hidden;
+    }
+    .dynasty-banner-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 8px;
+      height: 100%;
+    }
+    .card-chola::before  { background: linear-gradient(180deg, #F97316 0%, #DC2626 100%); }
+    .card-pandya::before { background: linear-gradient(180deg, #3B82F6 0%, #1D4ED8 100%); }
+    .card-chera::before  { background: linear-gradient(180deg, #10B981 0%, #047857 100%); }
+    .card-eelam::before  { background: linear-gradient(180deg, #DC2626 0%, #D97706 50%, #B91C1C 100%); }
+    .eelam-hero-bg-banner {
+      position: relative;
+      border-radius: 20px;
+      padding: 36px 30px;
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.88) 0%, rgba(30, 41, 59, 0.92) 100%), url('../../assets/images/heritage/eelam-heritage.jpg') center/cover no-repeat;
+      color: #FFFFFF;
+      border: 1.5px solid rgba(251, 191, 36, 0.35);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+      margin-bottom: 28px;
+    }
+    .eelam-timeline-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-top: 24px;
+    }
+    .timeline-era-card {
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 14px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .timeline-era-card:hover {
+      background: rgba(255, 255, 255, 0.14);
+      border-color: #FCD34D;
+    }
+    .era-tag {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: #FCD34D;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .era-title {
+      font-size: 1.45rem;
+      font-weight: 800;
+      color: #FFFFFF;
+    }
+    .era-desc {
+      font-size: 1.2rem;
+      color: #CBD5E1;
+      line-height: 1.45;
+    }
+    @media (max-width: 900px) {
+      .eelam-timeline-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 600px) {
+      .eelam-timeline-grid { grid-template-columns: 1fr; }
+    }
+
+
+    /* Dynasty Header with Real Emblem */
+    .dynasty-header-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+      gap: 18px;
+    }
+    .dynasty-title-group {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+    .dynasty-emblem-wrap {
+      width: 76px;
+      height: 76px;
+      border-radius: 18px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #FAFBFD;
+      border: 2px solid #E2E8F0;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+      flex-shrink: 0;
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .dynasty-emblem-wrap:hover {
+      transform: scale(1.08) rotate(2deg);
+    }
+    .dynasty-emblem-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+
+    .dynasty-names h2 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: #0F172A;
+      line-height: 1.15;
+      margin-bottom: 4px;
+    }
+    .dynasty-names span {
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: #B45309;
+      display: block;
+    }
+
+    .dynasty-meta-pills {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .meta-tag {
+      font-size: 1.25rem;
+      font-weight: 700;
+      padding: 6px 14px;
+      border-radius: 10px;
+      background: #F8FAFC;
+      border: 1px solid #CBD5E1;
+      color: #334155;
+    }
+
+    .dynasty-overview-text {
+      font-size: 1.5rem;
+      color: #475569;
+      line-height: 1.7;
+      margin-bottom: 28px;
+    }
+
+    /* ================= KING INTERACTIVE SPOTLIGHT ================= */
+    .king-spotlight-wrap {
+      background: linear-gradient(135deg, #FAFAF9 0%, #FFFFFF 100%);
+      border: 2px solid #E2E8F0;
+      border-radius: 22px;
+      padding: 26px;
+      margin-bottom: 30px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      position: relative;
+    }
+    .king-spotlight-wrap:hover {
+      border-color: #D97706;
+      box-shadow: 0 16px 40px rgba(217, 119, 6, 0.12);
+      transform: translateY(-3px);
+    }
+    .king-spotlight-grid {
+      display: grid;
+      grid-template-columns: 240px 1fr auto;
+      gap: 26px;
+      align-items: center;
+    }
+
+    /* King Real Portrait Frame */
+    .king-portrait-frame {
+      width: 100%;
+      height: 220px;
+      border-radius: 18px;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+      border: 3px solid #FFFFFF;
+      background: #0F172A;
+    }
+    .king-portrait-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+    .king-spotlight-wrap:hover .king-portrait-img {
+      transform: scale(1.06);
+    }
+    .king-badge-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(180deg, transparent 0%, rgba(15, 23, 42, 0.95) 100%);
+      padding: 25px 12px 10px;
+      text-align: center;
+      color: #FFFFFF;
+    }
+    .king-badge-tamil-name {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: #FCD34D;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.6);
+    }
+    .king-badge-reign {
+      font-size: 1.15rem;
+      color: #E2E8F0;
+      font-weight: 600;
+    }
+
+    .king-details h3 {
+      font-size: 2.1rem;
+      font-weight: 800;
+      color: #0F172A;
+      margin-bottom: 4px;
+    }
+    .king-epithet {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #EA580C;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .king-bio {
+      font-size: 1.4rem;
+      color: #475569;
+      line-height: 1.65;
+      margin-bottom: 16px;
+    }
+
+    /* Tamil Perumai Pill */
+    .king-perumai-banner {
+      background: linear-gradient(135deg, #FEF3C7 0%, #FFFBEB 100%);
+      border: 1.5px solid #FDE68A;
+      border-left: 5px solid #D97706;
+      padding: 10px 16px;
+      border-radius: 0 12px 12px 0;
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: #92400E;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.2s;
+    }
+    .king-spotlight-wrap:hover .king-perumai-banner {
+      background: #FEF3C7;
+      border-color: #D97706;
+    }
+
+    .king-action-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-perumai-trigger {
+      padding: 14px 22px;
+      background: linear-gradient(135deg, #D97706 0%, #B91C1C 100%);
+      color: #FFFFFF;
+      border: none;
+      border-radius: 14px;
+      font-size: 1.35rem;
+      font-weight: 800;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.25s;
+      box-shadow: 0 6px 16px rgba(217, 119, 6, 0.3);
+      white-space: nowrap;
+    }
+    .btn-perumai-trigger:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 24px rgba(217, 119, 6, 0.45);
+    }
+    .perumai-hint {
+      font-size: 1.15rem;
+      color: #94A3B8;
+      font-weight: 600;
+    }
+
+    /* ================= ARCHITECTURAL MARVELS WITH REAL IMAGES ================= */
+    .marvel-section-title {
+      font-size: 1.65rem;
+      font-weight: 800;
+      color: #0F172A;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .marvel-section-title i { color: #D97706; }
+
+    .marvels-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .marvel-card {
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(15, 23, 42, 0.03);
+      transition: all 0.25s ease;
+      display: flex;
+      flex-direction: column;
+    }
+    .marvel-card:hover {
+      border-color: #CBD5E1;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
+    }
+    .marvel-thumb-wrap {
+      width: 100%;
+      height: 160px;
+      overflow: hidden;
+      position: relative;
+      background: #0F172A;
+    }
+    .marvel-thumb-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+    .marvel-card:hover .marvel-thumb-img {
+      transform: scale(1.08);
+    }
+    .marvel-tag-pill {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(4px);
+      color: #FCD34D;
+      font-size: 1.1rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 6px;
+    }
+    .marvel-content {
+      padding: 16px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .marvel-content h4 {
+      font-size: 1.45rem;
+      font-weight: 800;
+      color: #0F172A;
+      margin-bottom: 6px;
+    }
+    .marvel-desc {
+      font-size: 1.25rem;
+      color: #64748B;
+      line-height: 1.5;
+    }
+
+    /* ================= SANGAM 5 LANDSCAPES (ஐந்திணை) ================= */
+    .thinai-section {
+      background: #FFFFFF;
+      border-radius: 24px;
+      border: 1px solid #E2E8F0;
+      padding: 36px;
+      box-shadow: 0 8px 30px rgba(15, 23, 42, 0.04);
+      margin-bottom: 45px;
+    }
+    .thinai-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 16px;
+      margin-top: 22px;
+    }
+    .thinai-card {
+      background: #F8FAFC;
+      border: 1.5px solid #E2E8F0;
+      border-radius: 18px;
+      overflow: hidden;
+      text-align: center;
+      transition: all 0.25s ease;
+      display: flex;
+      flex-direction: column;
+    }
+    .thinai-card:hover {
+      border-color: #D97706;
+      background: #FFFBEB;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(217, 119, 6, 0.1);
+    }
+    .thinai-img-wrap {
+      width: 100%;
+      height: 155px;
+      overflow: hidden;
+      background: #0F172A;
+      position: relative;
+    }
+    .thinai-tag-badge {
+      position: absolute;
+      bottom: 8px;
+      left: 8px;
+      right: 8px;
+      background: rgba(15, 23, 42, 0.78);
+      backdrop-filter: blur(4px);
+      color: #FCD34D;
+      font-size: 1.05rem;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 6px;
+      text-align: center;
+      letter-spacing: 0.02em;
+    }
+    .thinai-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s;
+    }
+    .thinai-card:hover .thinai-img {
+      transform: scale(1.08);
+    }
+    .thinai-body {
+      padding: 14px;
+    }
+    .thinai-name {
+      font-size: 1.55rem;
+      font-weight: 800;
+      color: #0F172A;
+    }
+    .thinai-tamil {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #B45309;
+      margin-bottom: 6px;
+    }
+    .thinai-trait {
+      font-size: 1.15rem;
+      color: #64748B;
+      line-height: 1.4;
+    }
+
+    /* ================= PERUMAI MODAL POPUP ================= */
+    .perumai-modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(15, 23, 42, 0.75);
+      backdrop-filter: blur(8px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      padding: 20px;
+    }
+    .perumai-modal-box {
+      background: #FFFFFF;
+      border-radius: 24px;
+      max-width: 720px;
+      width: 100%;
+      padding: 38px;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3);
+      position: relative;
+      animation: modalSlide 0.3s ease forwards;
+    }
+    @keyframes modalSlide {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    .modal-close-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: #F1F5F9;
+      border: none;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      font-size: 1.5rem;
+      color: #64748B;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+    .modal-close-btn:hover {
+      background: #FEE2E2;
+      color: #DC2626;
+    }
+    .modal-header-dynasty {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: #B45309;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 6px;
+    }
+    .modal-king-title {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: #0F172A;
+      margin-bottom: 18px;
+    }
+    .modal-quote-wrap {
+      background: linear-gradient(135deg, #FFFBEB 0%, #FEF3C7 100%);
+      border: 2px solid #FDE68A;
+      border-radius: 18px;
+      padding: 24px;
+      margin-bottom: 22px;
+    }
+    .quote-tamil-text {
+      font-size: 1.75rem;
+      font-weight: 800;
+      color: #92400E;
+      line-height: 1.6;
+      margin-bottom: 12px;
+      font-family: inherit;
+    }
+    .quote-english-trans {
+      font-size: 1.4rem;
+      color: #78350F;
+      line-height: 1.5;
+      font-style: italic;
+    }
+    .modal-audio-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px dashed rgba(217, 119, 6, 0.3);
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .btn-speak-tamil {
+      background: #D97706;
+      color: #FFFFFF;
+      border: none;
+      padding: 11px 20px;
+      border-radius: 12px;
+      font-size: 1.35rem;
+      font-weight: 800;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: background 0.2s;
+    }
+    .btn-speak-tamil:hover {
+      background: #B45309;
+    }
+    .speech-status {
+      font-size: 1.25rem;
+      color: #92400E;
+      font-weight: 700;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .king-spotlight-grid { grid-template-columns: 1fr; }
+      .marvels-grid { grid-template-columns: 1fr; }
+      .thinai-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 600px) {
+      .heritage-hero h1 { font-size: 2.8rem; }
+      .thinai-grid { grid-template-columns: 1fr; }
+      .perumai-modal-box { padding: 24px; }
+      .quote-tamil-text { font-size: 1.45rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ================= NAVBAR ================= -->
+  <nav class="navbar" id="main-nav">
+    <div class="container nav-wrapper">
+        <a href="../../home.html" class="brand" title="Sancharam">
+            <img src="../../assets/logos/logo-transparent.png" alt="Sancharam Logo" class="brand-logo" onerror="this.src='../../assets/logos/logo.png'">
+        </a>
+
+        <ul class="nav-links">
+            <li><a href="../../home.html" class="nav-link">Home</a></li>
+            <li><a href="../explore.html" class="nav-link">Explore</a></li>
+            <li><a href="../bookings.html" class="nav-link">Bookings</a></li>
+            <li><a href="../features.html" class="nav-link active">Features</a></li>
+            <li><a href="../profile.html" class="nav-link">Profile</a></li>
+        </ul>
+
+        <div class="nav-actions">
+            <a href="AI itinenary.html" class="btn-nav-ai">
+                <i class="fas fa-wand-magic-sparkles"></i>
+                <span>Plan with AI</span>
+            </a>
+        </div>
+
+        <button class="mobile-toggle" aria-label="Toggle navigation">
+            <i class="fas fa-bars"></i>
+        </button>
+    </div>
+  </nav>
+
+  <!-- ================= HERO ================= -->
+  <header class="heritage-hero">
+    <div class="container">
+      <div class="heritage-eyebrow">
+        <i class="fas fa-crown"></i> Classical Tamil History & Sangam Era
+      </div>
+      <h1>The Sangam Age & <span>Muvendhar Dynasties</span></h1>
+      <p>Journey through the golden age of Tamil civilization: The Imperial Cholas, the Ancient Pandyas, and the Mountain Cheras. Explore royal crests, legendary monarchs, ancient sea ports, and timeless Tamil Perumai (தமிழ் பெருமை).</p>
+      
+      <!-- Crest Trio Bar with Real Downloaded Flag Emblems -->
+      <div class="crests-trio-bar">
+        <div class="crest-pill" onclick="filterDynasty('chola')">
+          <img src="../../assets/images/heritage/chola-emblem.png" alt="Chola Tiger Flag" class="crest-flag-thumb">
+          <span>Cholas: Tiger Emblem (புலி)</span>
+        </div>
+        <div class="crest-pill" onclick="filterDynasty('pandya')">
+          <img src="../../assets/images/heritage/pandya-emblem.svg" alt="Pandya Twin Fish Flag" class="crest-flag-thumb">
+          <span>Pandyas: Twin Carp (மீன்)</span>
+        </div>
+        <div class="crest-pill" onclick="filterDynasty('chera')">
+          <img src="../../assets/images/heritage/chera-emblem.svg" alt="Chera Bow Flag" class="crest-flag-thumb">
+          <span>Cheras: Bow & Arrow (வில்)</span>
+        </div>
+        <div class="crest-pill" onclick="filterDynasty('eelam')">
+          <img src="../../assets/images/heritage/eelam-heritage.jpg" alt="Eelam Tamil Heritage" class="crest-flag-thumb">
+          <span>ஈழம்: Sangam to 2009 (வெல்லும் தமிழ்)</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= MAIN SECTION ================= -->
+  <main class="heritage-section">
+    <div class="container heritage-container">
+
+      <!-- Navigation Tabs -->
+      <div class="dynasty-nav-bar">
+        <button class="tab-btn-dynasty active" id="tabAll" onclick="filterDynasty('all')">
+          <i class="fas fa-globe"></i> All Dynasties (முழு வரலாறு)
+        </button>
+        <button class="tab-btn-dynasty" id="tabChola" onclick="filterDynasty('chola')">
+          <img src="../../assets/images/heritage/chola-emblem.png" style="width:20px; height:20px; border-radius:50%; object-fit:cover;"> சோழர்கள் (The Cholas)
+        </button>
+        <button class="tab-btn-dynasty" id="tabPandya" onclick="filterDynasty('pandya')">
+          <img src="../../assets/images/heritage/pandya-emblem.svg" style="width:20px; height:20px; border-radius:50%; object-fit:cover;"> பாண்டியர்கள் (The Pandyas)
+        </button>
+        <button class="tab-btn-dynasty" id="tabChera" onclick="filterDynasty('chera')">
+          <img src="../../assets/images/heritage/chera-emblem.svg" style="width:20px; height:20px; border-radius:50%; object-fit:cover;"> சேரர்கள் (The Cheras)
+        </button>
+        <button class="tab-btn-dynasty" id="tabEelam" onclick="filterDynasty('eelam')">
+          <img src="../../assets/images/heritage/eelam-heritage.jpg" style="width:20px; height:20px; border-radius:50%; object-fit:cover;"> ஈழத் தமிழ் வரலாறு (Eelam History)
+        </button>
+        <button class="tab-btn-dynasty" id="tabThinai" onclick="filterDynasty('thinai')">
+          <i class="fas fa-mountain-sun"></i> ஐந்திணை (5 Landscapes)
+        </button>
+      </div>
+
+      <!-- ================= 1. CHOLAS SECTION ================= -->
+      <div class="dynasty-banner-card card-chola" id="sectionChola">
+        <div class="dynasty-header-row">
+          <div class="dynasty-title-group">
+            <div class="dynasty-emblem-wrap">
+              <img src="../../assets/images/heritage/chola-emblem.png" alt="Chola Tiger Crest" class="dynasty-emblem-img">
+            </div>
+            <div class="dynasty-names">
+              <h2>சோழர் பேரரசு — The Imperial Cholas</h2>
+              <span>Emblem: The Roaring Tiger (புலி கொடி) &bull; River Kaveri (பொன்னி)</span>
+            </div>
+          </div>
+          <div class="dynasty-meta-pills">
+            <span class="meta-tag">Capital: Thanjavur / Uraiyur</span>
+            <span class="meta-tag">Port: Kaveripoompattinam (Poompuhar)</span>
+            <span class="meta-tag">Naval Superiority</span>
+          </div>
+        </div>
+
+        <p class="dynasty-overview-text">
+          The Cholas ruled the Kaveri basin from antiquity into a formidable maritime empire. Renowned for constructing monumental living granite temples, building the world's oldest functional water-diversion dam (Kallanai), and sailing across the Bay of Bengal to Kadaram (Malaysia) and Sriwijaya (Indonesia).
+        </p>
+
+        <!-- King Spotlight: Raja Raja Chola I with REAL PORTRAIT -->
+        <div class="king-spotlight-wrap" onclick="openPerumaiModal('chola')">
+          <div class="king-spotlight-grid">
+            <div class="king-portrait-frame">
+              <img src="../../assets/images/heritage/rajaraja-cholan.jpg" alt="Raja Raja Cholan 11th Century Mural" class="king-portrait-img">
+              <div class="king-badge-overlay">
+                <div class="king-badge-tamil-name">முதலாம் இராஜராஜ சோழன்</div>
+                <div class="king-badge-reign">Reign: 985 – 1014 CE</div>
+              </div>
+            </div>
+
+            <div class="king-details">
+              <h3>Raja Raja Chola I &bull; முதலாம் இராஜராஜ சோழன்</h3>
+              <div class="king-epithet">
+                <i class="fas fa-award"></i> "சிவபாதசேகரன்" &bull; Architect of the Golden Chola Empire
+              </div>
+              <p class="king-bio">
+                Visionary emperor who commissioned the magnificent Brihadisvara Temple (Peruvudaiyar Kovil) in Thanjavur, established land survey revenue registers, and launched victorious naval expeditions across Lakshadweep and Sri Lanka.
+              </p>
+              <div class="king-perumai-banner">
+                <i class="fas fa-quote-left"></i> Click or hover to reveal Raja Raja Chola's Tamil Perumai (தமிழ் பெருமை)
+              </div>
+            </div>
+
+            <div class="king-action-col">
+              <button class="btn-perumai-trigger">
+                <i class="fas fa-volume-high"></i> தமிழ் பெருமை
+              </button>
+              <span class="perumai-hint">Audio & Quote</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Chola Architectural Marvels with REAL IMAGES -->
+        <div class="marvel-section-title">
+          <i class="fas fa-landmark-dome"></i> Chola Civil Engineering & Architectural Marvels
+        </div>
+        <div class="marvels-grid">
+          <div class="marvel-card">
+            <div class="marvel-thumb-wrap">
+              <img src="../../assets/images/heritage/thanjavur-temple.jpg" alt="Thanjavur Brihadisvara Temple" class="marvel-thumb-img">
+              <span class="marvel-tag-pill">UNESCO 1010 CE</span>
+            </div>
+            <div class="marvel-content">
+              <h4>Thanjavur Big Temple</h4>
+              <div class="marvel-desc">Built entirely of interlocking granite, crowned by an 80-tonne monolithic Kumbam carved with flawless Dravidian symmetry.</div>
+            </div>
+          </div>
+
+          <div class="marvel-card">
+            <div class="marvel-thumb-wrap">
+              <img src="../../assets/images/heritage/kallanai-dam.jpg" alt="Kallanai Grand Anicut Dam" class="marvel-thumb-img">
+              <span class="marvel-tag-pill">2nd Century CE</span>
+            </div>
+            <div class="marvel-content">
+              <h4>Kallanai (Grand Anicut)</h4>
+              <div class="marvel-desc">Constructed by Karikala Cholan across the Kaveri, it stands as the world's oldest functional water-diversion dam in continuous use.</div>
+            </div>
+          </div>
+
+          <div class="marvel-card">
+            <div class="marvel-thumb-wrap">
+              <img src="../../assets/images/heritage/gangaikonda-cholapuram.jpg" alt="Gangaikonda Cholapuram Temple" class="marvel-thumb-img">
+              <span class="marvel-tag-pill">Rajendra Chola</span>
+            </div>
+            <div class="marvel-content">
+              <h4>Gangaikonda Cholapuram</h4>
+              <div class="marvel-desc">Erected by Rajendra Chola I to commemorate his northern victory up to the Ganges, creating the great Chola ocean reservoir.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= 2. PANDYAS SECTION ================= -->
+      <div class="dynasty-banner-card card-pandya" id="sectionPandya">
+        <div class="dynasty-header-row">
+          <div class="dynasty-title-group">
+            <div class="dynasty-emblem-wrap" style="background: #EFF6FF; border-color: #BFDBFE;">
+              <img src="../../assets/images/heritage/pandya-emblem.svg" alt="Pandya Twin Fish Flag" class="dynasty-emblem-img">
+            </div>
+            <div class="dynasty-names">
+              <h2>பாண்டியர் அரசு — The Ancient Pandyas</h2>
+              <span>Emblem: The Twin Fish (இரட்டை மீன் கொடி) &bull; River Vaigai</span>
+            </div>
+          </div>
+          <div class="dynasty-meta-pills">
+            <span class="meta-tag">Capital: Madurai (The Sangam City)</span>
+            <span class="meta-tag">Port: Korkai (Pearl Capital)</span>
+            <span class="meta-tag">Patrons of Tamil</span>
+          </div>
+        </div>
+
+        <p class="dynasty-overview-text">
+          Mentioned by Megasthenes and ancient Roman historians, the Pandyas are celebrated as the supreme patrons of the Three Tamil Sangams (முச்சங்கம்). Governing from Madurai on the fertile banks of the Vaigai, their deep-sea natural pearls from Korkai were treasured by Roman emperors and Mediterranean traders.
+        </p>
+
+        <!-- King Spotlight: Pandya Nedunchezhiyan with REAL PORTRAIT -->
+        <div class="king-spotlight-wrap" onclick="openPerumaiModal('pandya')">
+          <div class="king-spotlight-grid">
+            <div class="king-portrait-frame" style="border-color: #BFDBFE;">
+              <img src="../../assets/images/heritage/pandya-king.jpg" alt="Pandyan Royal Sculpture" class="king-portrait-img">
+              <div class="king-badge-overlay">
+                <div class="king-badge-tamil-name">பாண்டியன் நெடுஞ்செழியன்</div>
+                <div class="king-badge-reign">Sangam Era &bull; Silapathikaram</div>
+              </div>
+            </div>
+
+            <div class="king-details">
+              <h3>Pandya Nedunchezhiyan &bull; தலையாலங்கானத்து நெடுஞ்செழியன்</h3>
+              <div class="king-epithet" style="color: #2563EB;">
+                <i class="fas fa-scale-balanced"></i> King of Madurai &bull; Pillar of Righteous Tamil Justice
+              </div>
+              <p class="king-bio">
+                Celebrated warrior king who vanquished seven combined confederacies at Talaiyalanganam while still a youth. Immortalized in Ilango Adigal's Silapathikaram for placing truth and moral duty (அறநெறி) higher than the royal throne.
+              </p>
+              <div class="king-perumai-banner" style="background: #EFF6FF; border-color: #2563EB; color: #1E40AF;">
+                <i class="fas fa-quote-left"></i> Click or hover to reveal Pandya Nedunchezhiyan's Tamil Perumai
+              </div>
+            </div>
+
+            <div class="king-action-col">
+              <button class="btn-perumai-trigger" style="background: linear-gradient(135deg, #2563EB 0%, #1E40AF 100%);">
+                <i class="fas fa-volume-high"></i> தமிழ் பெருமை
+              </button>
+              <span class="perumai-hint">Audio & Quote</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pandya Marvels with REAL IMAGES -->
+        <div class="marvel-section-title">
+          <i class="fas fa-monument"></i> Pandyan Heritage, Literature & Sacred Architecture
+        </div>
+        <div class="marvels-grid">
+          <div class="marvel-card">
+            <div class="marvel-thumb-wrap">
+              <img src="../../assets/images/heritage/madurai-meenakshi.jpg" alt="Madurai Meenakshi Amman Temple" class="marvel-thumb-img">
+              <span class="marvel-tag-pill">City of Nectar</span>
+            </div>
+            <div class="marvel-content">
+              <h4>Madurai Meenakshi Temple</h4>
+              <div class="marvel-desc">The historic epicenter of Pandyan culture, featuring towering sculptural gopurams and the Golden Lotus Tank where Tamil poets convened.</div>
+            </div>
+          </div>
+
+          <div class="marvel-card">
+            <div class="marvel-thumb-wrap">
+              <img src="../../assets/images/heritage/thiruvalluvar.jpg" alt="Thiruvalluvar Statue Kanyakumari" class="marvel-thumb-img">
+              <span class="marvel-tag-pill">Universal Wisdom</span>
+            </div>
+            <div class="marvel-content">
+              <h4>The Three Tamil Sangams</h4>
+              <div class="marvel-desc">Convened scholars in Madurai to compile classical Ettuthogai, Pathupattu, and grammar masterpieces celebrated under the Pandyan umbrella.</div>
+            </div>
+          </div>
+
+          <div class="marvel-card">
+            <div class="marvel-thumb-wrap">
+              <img src="../../assets/images/heritage/pandya-emblem.svg" alt="Pandya Twin Fish Emblem" class="marvel-thumb-img" style="background:#0F172A; object-fit:contain; padding:20px;">
+              <span class="marvel-tag-pill">Global Pearl Trade</span>
+            </div>
+            <div class="marvel-content">
+              <h4>Korkai Pearl Fisheries</h4>
+              <div class="marvel-desc">Ancient global hub for natural South Indian pearls exported to Rome, Greece, Ptolemaic Egypt, and Mesopotamian dynasties.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= 3. CHERAS SECTION ================= -->
+      <div class="dynasty-banner-card card-chera" id="sectionChera">
+        <div class="dynasty-header-row">
+          <div class="dynasty-title-group">
+            <div class="dynasty-emblem-wrap" style="background: #ECFDF5; border-color: #A7F3D0;">
+              <img src="../../assets/images/heritage/chera-emblem.svg" alt="Chera Bow Emblem" class="dynasty-emblem-img">
+            </div>
+            <div class="dynasty-names">
+              <h2>சேரர் அரசு — The Valiant Cheras</h2>
+              <span>Emblem: The Bow and Arrow (வில் கொடி) &bull; Western Ghats & Malabar Coast</span>
+            </div>
+          </div>
+          <div class="dynasty-meta-pills">
+            <span class="meta-tag">Capital: Vanji / Karur</span>
+            <span class="meta-tag">Port: Muziris (Spice Emporium)</span>
+            <span class="meta-tag">Mountain & Spice Lords</span>
+          </div>
+        </div>
+
+        <p class="dynasty-overview-text">
+          Ruling the Western Ghats mountain passes and southwest coastal shores, the Cheras dominated the lucrative international pepper trade with the Roman Empire. Through their premier port Muziris, they exchanged Malabar spices for Roman gold and established the enduring cultural institution of Kannagi (Pattini).
+        </p>
+
+        <!-- King Spotlight: Cheran Senguttuvan with REAL PORTRAIT -->
+        <div class="king-spotlight-wrap" onclick="openPerumaiModal('chera')">
+          <div class="king-spotlight-grid">
+            <div class="king-portrait-frame" style="border-color: #A7F3D0;">
+              <img src="../../assets/images/heritage/chera-monarch.jpg" alt="Chera Monarch Historic Depiction" class="king-portrait-img">
+              <div class="king-badge-overlay">
+                <div class="king-badge-tamil-name">சேரன் செங்குட்டுவன்</div>
+                <div class="king-badge-reign">2nd Century CE &bull; Sangam Epic</div>
+              </div>
+            </div>
+
+            <div class="king-details">
+              <h3>Cheran Senguttuvan &bull; கடல்பிறக்கோட்டிய செங்குட்டுவன்</h3>
+              <div class="king-epithet" style="color: #059669;">
+                <i class="fas fa-bullseye"></i> The Red Chera &bull; Master of the Western Seas & Himalayas
+              </div>
+              <p class="king-bio">
+                Heroic monarch who vanquished sea pirates, established maritime peace across the Arabian Sea, and undertook the historic northern expedition to the Himalayas to quarry granite for the temple of Kannagi, honoring chaste womanhood.
+              </p>
+              <div class="king-perumai-banner" style="background: #ECFDF5; border-color: #059669; color: #065F46;">
+                <i class="fas fa-quote-left"></i> Click or hover to reveal Cheran Senguttuvan's Tamil Perumai
+              </div>
+            </div>
+
+            <div class="king-action-col">
+              <button class="btn-perumai-trigger" style="background: linear-gradient(135deg, #059669 0%, #047857 100%);">
+                <i class="fas fa-volume-high"></i> தமிழ் பெருமை
+              </button>
+              <span class="perumai-hint">Audio & Quote</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Chera Marvels with REAL IMAGES -->
+        <div class="marvel-section-title">
+          <i class="fas fa-scroll"></i> Cheran Maritime Expeditions & Classical Epics
+        </div>
+        <div class="marvels-grid">
+          <div class="marvel-card">
+            <div class="marvel-thumb-wrap">
+              <img src="../../assets/images/heritage/kannagi-statue.jpg" alt="Kannagi Memorial Statue" class="marvel-thumb-img">
+              <span class="marvel-tag-pill">Silapathikaram</span>
+            </div>
+            <div class="marvel-content">
+              <h4>Kannagi Memorial & Pattini Cult</h4>
+              <div class="marvel-desc">Cheran Senguttuvan carried the Himalayan stone washed in the holy Ganges to enshrine Kannagi, celebrated by prince-poet Ilango Adigal.</div>
+            </div>
+          </div>
+
+          <div class="marvel-card">
+            <div class="marvel-thumb-wrap">
+              <img src="../../assets/images/heritage/chera-emblem.svg" alt="Chera Emblem" class="marvel-thumb-img" style="background:#0F172A; object-fit:contain; padding:20px;">
+              <span class="marvel-tag-pill">Black Gold Trade</span>
+            </div>
+            <div class="marvel-content">
+              <h4>Muziris Roman Emporium</h4>
+              <div class="marvel-desc">Documented in the Roman Periplus of the Erythraean Sea as India's premier international port laden with black gold pepper and Roman coins.</div>
+            </div>
+          </div>
+
+          <div class="marvel-card">
+            <div class="marvel-thumb-wrap">
+              <img src="../../assets/images/heritage/karikala-cholan.jpg" alt="Sangam Warrior Statue" class="marvel-thumb-img">
+              <span class="marvel-tag-pill">Maritime Shield</span>
+            </div>
+            <div class="marvel-content">
+              <h4>Naval Sea Defenses</h4>
+              <div class="marvel-desc">Commemorated in Pathitrupathu for subduing naval adversaries and guarding the spice trade routes across the Arabian Sea.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= 4. EELAM TAMIL HISTORY SECTION ================= -->
+      <div class="dynasty-banner-card card-eelam" id="sectionEelam">
+        
+        <!-- Background Banner with User's Uploaded Image -->
+        <div class="eelam-hero-bg-banner">
+          <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px; margin-bottom: 14px;">
+            <div style="display: flex; align-items: center; gap: 14px;">
+              <img src="../../assets/images/heritage/eelam-heritage.jpg" alt="Eelam Heritage Medallion" style="width:68px; height:68px; border-radius:18px; border:2px solid #FCD34D; object-fit:cover; box-shadow:0 6px 16px rgba(0,0,0,0.4);">
+              <div>
+                <h2 style="font-size: 2.6rem; font-weight: 800; color: #FFFFFF; line-height: 1.15; margin-bottom: 4px;">ஈழத் தமிழ் வரலாறு — History of Eelam Tamils</h2>
+                <span style="font-size: 1.45rem; font-weight: 700; color: #FCD34D;">From Sangam Antiquity & Jaffna Kingdom to Modern Struggles (1983–2009)</span>
+              </div>
+            </div>
+            <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+              <span class="meta-tag" style="background: rgba(0,0,0,0.4); color: #FCD34D; border-color: rgba(251,191,36,0.3);">Sangam Poet: பூதந்தேவனார்</span>
+              <span class="meta-tag" style="background: rgba(0,0,0,0.4); color: #FFFFFF; border-color: rgba(255,255,255,0.2);">யாழ்ப்பாண அரசு (Nallur)</span>
+              <span class="meta-tag" style="background: rgba(0,0,0,0.4); color: #F87171; border-color: rgba(239,68,68,0.3);">Civil War (1983–2009)</span>
+            </div>
+          </div>
+
+          <p style="font-size: 1.5rem; color: #E2E8F0; line-height: 1.7; max-width: 980px;">
+            The history of Eelam Tamils spans over two millennia, from the Sangam era poet <em>Eelathu Poothanthevanar</em> whose verses grace the Akananuru, through the sovereign medieval <strong>Jaffna Kingdom (யாழ்ப்பாண அரசு)</strong> under the Aryacakravartis with their royal Nandi emblem, to the modern peaceful Satyagraha movements, the 1981 burning of the Jaffna Public Library, 26 years of armed civil war (1983–2009), and the global diaspora's enduring cultural resilience.
+          </p>
+
+          <!-- 4 Era Chronological Timeline Grid -->
+          <div class="eelam-timeline-grid">
+            <div class="timeline-era-card">
+              <span class="era-tag">Era 1 &bull; 3rd BCE – 3rd CE</span>
+              <div class="era-title">சங்க காலம் (Sangam Roots)</div>
+              <div class="era-desc">Eelathu Poothanthevanar in Sangam anthologies; ancient port of Manthai (மாதோட்டம்) linking Tamil sea trade with Rome and Persia.</div>
+            </div>
+
+            <div class="timeline-era-card">
+              <span class="era-tag">Era 2 &bull; 13th – 17th Century</span>
+              <div class="era-title">யாழ்ப்பாண அரசு (Jaffna Kingdom)</div>
+              <div class="era-desc">Aryacakravarti dynasty rule from Nallur with Sacred Nandi banner (சேது); golden era of Tamil literature and Saiva institutions.</div>
+            </div>
+
+            <div class="timeline-era-card">
+              <span class="era-tag">Era 3 &bull; 1948 – 1983</span>
+              <div class="era-title">அறப்போராட்டம் & முரண்பாடு</div>
+              <div class="era-desc">1956 Sinhala Only Act, Thanthai Chelva's peaceful Satyagraha, 1976 Vaddukoddai Resolution, and 1981 burning of the Jaffna Library.</div>
+            </div>
+
+            <div class="timeline-era-card">
+              <span class="era-tag">Era 4 &bull; 1983 – 2009+</span>
+              <div class="era-title">உள்நாட்டுப் போர் & புலம்பெயர் தமிழர்</div>
+              <div class="era-desc">Black July 1983, 26 years of armed civil war ending at Mullivaikkal (May 2009), and over 1 million global diaspora preserving heritage.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Spotlight Card: Eelam Heritage & Tamil Identity -->
+        <div class="king-spotlight-wrap" onclick="openPerumaiModal('eelam')">
+          <div class="king-spotlight-grid">
+            <div class="king-portrait-frame" style="border-color: #F59E0B;">
+              <img src="../../assets/images/heritage/eelam-heritage.jpg" alt="Eelam Heritage Medallion" class="king-portrait-img">
+              <div class="king-badge-overlay">
+                <div class="king-badge-tamil-name">ஈழத் தமிழ் அடையாளம்</div>
+                <div class="king-badge-reign">Sangam Era &bull; Modern History</div>
+              </div>
+            </div>
+
+            <div class="king-details">
+              <h3>Eelam Heritage &bull; ஈழத் தமிழரின் தொன்மையும் அடையாளமும்</h3>
+              <div class="king-epithet" style="color: #DC2626;">
+                <i class="fas fa-fire"></i> Literature, Resilience & Cultural Survival
+              </div>
+              <p class="king-bio">
+                From the verses of Eelathu Poothanthevanar praising love and landscape in the Sangam canon, to the royal patronage of the Nallur kings and the modern literary preservation following the tragic burning of the Jaffna Library — Eelam Tamil history reflects an unwavering commitment to language, dignity, and cultural memory.
+              </p>
+              <div class="king-perumai-banner" style="background: #FEF2F2; border-color: #DC2626; color: #991B1B;">
+                <i class="fas fa-quote-left"></i> Click or hover to reveal Eelam Tamil Perumai (ஈழத் தமிழ் பெருமை)
+              </div>
+            </div>
+
+            <div class="king-action-col">
+              <button class="btn-perumai-trigger" style="background: linear-gradient(135deg, #DC2626 0%, #991B1B 100%);">
+                <i class="fas fa-volume-high"></i> தமிழ் பெருமை
+              </button>
+              <span class="perumai-hint">Audio & Quote</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Eelam Historic Marvels with REAL IMAGES -->
+        <div class="marvel-section-title">
+          <i class="fas fa-landmark"></i> Historical Centers, Shrines & Cultural Monuments of Eelam
+        </div>
+        <div class="marvels-grid">
+          <div class="marvel-card">
+            <div class="marvel-thumb-wrap">
+              <img src="../../assets/images/heritage/jaffna-library.jpg" alt="Jaffna Public Library" class="marvel-thumb-img">
+              <span class="marvel-tag-pill" style="background:#DC2626; color:#FFFFFF;">Repository of Wisdom</span>
+            </div>
+            <div class="marvel-content">
+              <h4>Jaffna Public Library (யாழ்ப்பாண நூலகம்)</h4>
+              <div class="marvel-desc">Built in grand Dravidian style, housing over 97,000 historic Tamil palm-leaf manuscripts and rare texts. Rebuilt as a living beacon of Tamil scholarship.</div>
+            </div>
+          </div>
+
+          <div class="marvel-card">
+            <div class="marvel-thumb-wrap">
+              <img src="../../assets/images/heritage/nallur-temple.jpg" alt="Nallur Kandaswamy Kovil" class="marvel-thumb-img">
+              <span class="marvel-tag-pill">Capital of Aryacakravartis</span>
+            </div>
+            <div class="marvel-content">
+              <h4>Nallur Kandaswamy Kovil (நல்லூர்)</h4>
+              <div class="marvel-desc">The historic royal temple of the Jaffna Kingdom, famed for its towering golden gopurams, strict Agamic rituals, and annual 25-day Ther festival.</div>
+            </div>
+          </div>
+
+          <div class="marvel-card">
+            <div class="marvel-thumb-wrap">
+              <img src="../../assets/images/heritage/koneswaram-temple.jpg" alt="Koneswaram Temple Trincomalee" class="marvel-thumb-img">
+              <span class="marvel-tag-pill">Dakshina Kailasam</span>
+            </div>
+            <div class="marvel-content">
+              <h4>Koneswaram Temple (திருக்கோணேச்சரம்)</h4>
+              <div class="marvel-desc">Ancient cliff temple perched high above the Indian Ocean on Swami Rock in Trincomalee, celebrated in 7th century Thevaram hymns by Saint Sambandar.</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ================= 5. SANGAM LANDSCAPES (ஐந்திணை) WITH REAL PHOTO ================= -->
+      <div class="thinai-section" id="sectionThinai">
+        <div class="marvel-section-title" style="font-size: 2rem;">
+          <i class="fas fa-mountain-sun"></i> சங்க இலக்கிய ஐந்திணைகள் — The Five Sangam Landscapes
+        </div>
+        <p style="font-size: 1.45rem; color: #64748B;">
+          The Sangam poets uniquely classified Tamilakam into five distinct eco-poetic landscapes (Ainthinai), each reflecting a natural terrain, deity, floral emblem, and human emotion.
+        </p>
+
+        <div class="thinai-grid">
+          <!-- 1. Kurinji (Mountains) -->
+          <div class="thinai-card">
+            <div class="thinai-img-wrap">
+              <img src="../../assets/images/heritage/thinai-kurinji.jpg" alt="Kurinji Western Ghats Mountains" class="thinai-img">
+              <span class="thinai-tag-badge">மலையும் மலை சார்ந்த இடமும்</span>
+            </div>
+            <div class="thinai-body">
+              <div class="thinai-name">Kurinji</div>
+              <div class="thinai-tamil">குறிஞ்சி நிலம்</div>
+              <div class="thinai-trait"><strong>Terrain:</strong> Western Ghats Misty Mountains &bull; <strong>Deity:</strong> சேயோன் (Murugan) &bull; <strong>Theme:</strong> புணர்தல் (Union of Lovers) &bull; Kurinji Blooms</div>
+            </div>
+          </div>
+
+          <!-- 2. Mullai (Pastoral Forests) -->
+          <div class="thinai-card">
+            <div class="thinai-img-wrap">
+              <img src="../../assets/images/heritage/thinai-mullai.jpg" alt="Mullai Forest Woodlands Mudumalai" class="thinai-img">
+              <span class="thinai-tag-badge">காடும் காடு சார்ந்த இடமும்</span>
+            </div>
+            <div class="thinai-body">
+              <div class="thinai-name">Mullai</div>
+              <div class="thinai-tamil">முல்லை நிலம்</div>
+              <div class="thinai-trait"><strong>Terrain:</strong> Pastoral Forests & Woodlands &bull; <strong>Deity:</strong> மாயோன் (Mayon / Vishnu) &bull; <strong>Theme:</strong> இருத்தல் (Patient Hopeful Waiting) &bull; Wild Jasmine</div>
+            </div>
+          </div>
+
+          <!-- 3. Marutham (Agricultural Plains) -->
+          <div class="thinai-card">
+            <div class="thinai-img-wrap">
+              <img src="../../assets/images/heritage/thinai-marutham.jpg" alt="Marutham Lush Paddy Fields" class="thinai-img">
+              <span class="thinai-tag-badge">வயலும் வயல் சார்ந்த இடமும்</span>
+            </div>
+            <div class="thinai-body">
+              <div class="thinai-name">Marutham</div>
+              <div class="thinai-tamil">மருதம் நிலம்</div>
+              <div class="thinai-trait"><strong>Terrain:</strong> Kaveri Basin Emerald Paddy Fields &bull; <strong>Deity:</strong> வேந்தன் (Vendan / Indra) &bull; <strong>Theme:</strong> ஊடல் (Domestic Harmony) &bull; Red Lotus</div>
+            </div>
+          </div>
+
+          <!-- 4. Neidhal (Ocean & Seacoast) -->
+          <div class="thinai-card">
+            <div class="thinai-img-wrap">
+              <img src="../../assets/images/heritage/thinai-neidhal.jpg" alt="Neidhal Coastal Seashore Ocean Waves" class="thinai-img">
+              <span class="thinai-tag-badge">கடலும் கடல் சார்ந்த இடமும்</span>
+            </div>
+            <div class="thinai-body">
+              <div class="thinai-name">Neidhal</div>
+              <div class="thinai-tamil">நெய்தல் நிலம்</div>
+              <div class="thinai-trait"><strong>Terrain:</strong> Coromandel Seacoast & Waves &bull; <strong>Deity:</strong> வருணன் (Varuna) &bull; <strong>Theme:</strong> இரங்கல் (Anxious Sea Longing) &bull; White Water Lily</div>
+            </div>
+          </div>
+
+          <!-- 5. Paalai (Arid Wasteland) -->
+          <div class="thinai-card">
+            <div class="thinai-img-wrap">
+              <img src="../../assets/images/heritage/thinai-paalai.jpg" alt="Paalai Arid Desert Cracked Earth" class="thinai-img">
+              <span class="thinai-tag-badge">வறண்ட மணலும் சுடுமணலும்</span>
+            </div>
+            <div class="thinai-body">
+              <div class="thinai-name">Paalai</div>
+              <div class="thinai-tamil">பாலை நிலம்</div>
+              <div class="thinai-trait"><strong>Terrain:</strong> Parched Wasteland & Sun-baked Soil &bull; <strong>Deity:</strong> கொற்றவை (Kotravai) &bull; <strong>Theme:</strong> பிரிதல் (Dangerous Desert Journey) &bull; Paalai Tree</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ================= PERUMAI MODAL POPUP ================= -->
+  <div class="perumai-modal-overlay" id="perumaiModal" onclick="closePerumaiModal(event)">
+    <div class="perumai-modal-box" onclick="event.stopPropagation()">
+      <button class="modal-close-btn" onclick="closePerumaiModal()">&times;</button>
+      
+      <div class="modal-header-dynasty" id="modalDynastyName">சோழர் பெருமை &bull; Chola Pride</div>
+      <div class="modal-king-title" id="modalKingName">முதலாம் இராஜராஜ சோழன்</div>
+
+      <div class="modal-quote-wrap">
+        <div class="quote-tamil-text" id="modalQuoteTamil">
+          "வானோங்கி நிற்கும் தஞ்சைப் பெரிய கோவில் சோழர் குலத்தின் நிகரற்ற கட்டடக்கலை சாட்சி! பொன்னி நதி பாயும் சோழ நாடு சோறுடைத்து!"
+        </div>
+        <div class="quote-english-trans" id="modalQuoteEnglish">
+          "The towering Brihadisvara Temple stands as eternal proof of Chola architectural majesty! The Kaveri-blessed Chola realm is the granary of prosperity!"
+        </div>
+
+        <div class="modal-audio-bar">
+          <button class="btn-speak-tamil" onclick="playCurrentPerumaiAudio()">
+            <i class="fas fa-volume-high"></i> Listen to Tamil Perumai (குரல்)
+          </button>
+          <span class="speech-status" id="speechStatus">Click to play narration</span>
+        </div>
+      </div>
+
+      <div id="modalAchievementList" style="font-size: 1.35rem; color: #475569; line-height: 1.65;">
+        <!-- Dynamic bullet points -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="site-footer">
+    <div class="container">
+        <div class="footer-top">
+            <div class="footer-brand">
+                <img src="../../assets/logos/logo-transparent.png" alt="Sancharam Logo" class="brand-logo" onerror="this.src='../../assets/logos/logo.png'">
+                <p>Sancharam is your smart travel companion dedicated to celebrating the living heritage, natural wonders, and vibrant spirit of Tamil Nadu.</p>
+                <div class="social-links">
+                    <a href="#" class="social-btn" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-btn" title="Twitter"><i class="fab fa-x-twitter"></i></a>
+                    <a href="#" class="social-btn" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-btn" title="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>Smart Features</h4>
+                <ul class="footer-links">
+                    <li><a href="AI itinenary.html">AI Itinerary Planner</a></li>
+                    <li><a href="routing.html">Scenic Routes & Safety</a></li>
+                    <li><a href="heritage.html">Sangam Dynasties & Perumai</a></li>
+                    <li><a href="expenses.html">Expense Calculator</a></li>
+                    <li><a href="checklist.html">Travel Checklist</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Cultural Pride</h4>
+                <p style="font-size: 1.4rem; color: #FCD34D; font-weight: 700; margin-bottom: 0.8rem;">வாழ்க தமிழ் வளர்க தமிழ் பண்பாடு</p>
+                <p style="font-size: 1.3rem; color: rgba(255,255,255,0.7); line-height: 1.6;">Dedicated to travelers who cherish art, architecture, literature, and warm Tamil hospitality.</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 Sancharam. All Rights Reserved. Crafted with love for தமிழ்நாடு.</p>
+            <div class="footer-bottom-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="../contact.html">Support</a>
+            </div>
+        </div>
+    </div>
+  </footer>
+
+  <script src="../../assets/js/sancharam-theme.js"></script>
+
+  <script>
+    /* ==========================================================================
+       HERITAGE DATA & TAMIL PERUMAI AUDIO SPEECH
+       ========================================================================== */
+
+    const PERUMAI_DATA = {
+      chola: {
+        dynasty: 'சோழர் பெருமை &bull; Chola Majesty',
+        king: 'முதலாம் இராஜராஜ சோழன் & கரிகாலன்',
+        tamilQuote: 'வானோங்கி நிற்கும் தஞ்சைப் பெரிய கோவில் தமிழரின் நிகரற்ற கட்டடக்கலை சாட்சி! கரிகாலன் கட்டிய கல்லணை இரண்டாயிரம் ஆண்டுகள் கடந்து பாயும் தமிழரின் பொறியியல் பெருமை!',
+        englishQuote: '"The sky-reaching Brihadisvara Temple stands as eternal proof of Tamil architectural supremacy! Karikala Cholan\'s Kallanai endures past two millennia as unmatched hydraulic engineering pride!"',
+        points: [
+          '• Monolithic 80-tonne granite dome lifted atop the 216-foot vimanam without modern cranes in 1010 CE.',
+          '• Kallanai (Grand Anicut) built in the 2nd century CE remains the world\'s oldest working dam.',
+          '• Pioneered maritime silk routes, dispatching trade missions to China and establishing naval dominance over Kadaram.'
+        ]
+      },
+      pandya: {
+        dynasty: 'பாண்டியர் பெருமை &bull; Pandya Pride of Righteousness',
+        king: 'பாண்டியன் நெடுஞ்செழியன்',
+        tamilQuote: '"யானோ அரசன்? யானே கள்வன்! மன்பதை காக்கும் தென்புலங் காவல் என்முதற் பிழைத்தது! கெடுகவென் ஆயுள்!" — செங்கோல் வழுவாது நீதி காத்த தமிழரின் அறப் பெருமை!',
+        englishQuote: '"Am I a king? I am the wrongdoer! The righteous sceptre of the southern realm has failed in my hands! Let my life end this moment!" — The eternal Tamil glory of sacrificing life for pure justice.',
+        points: [
+          '• Convened the Three Classical Tamil Sangams (முச்சங்கம்) in ancient Madurai where immortal literature was born.',
+          '• Celebrated worldwide for Korkai\'s natural deep-sea pearls, mentioned in ancient Greco-Roman records.',
+          '• Established the inviolable moral authority of the royal Sengol (செங்கோல்) as an emblem of truth.'
+        ]
+      },
+      chera: {
+        dynasty: 'சேரர் பெருமை &bull; Chera Valor & Himalayan Triumph',
+        king: 'சேரன் செங்குட்டுவன் (கடல்பிறக்கோட்டிய செங்குட்டுவன்)',
+        tamilQuote: 'இமய வரம்பன் சேரன் செங்குட்டுவன் — வடதிசை இமயமலையில் கல்வெட்டி வந்து தமிழ்க் கற்பரசி கண்ணகிக்குக் கோவில் சமைத்த மாவீரன்! தமிழரின் வீரம் இமயம் தொட்ட பெருமை!',
+        englishQuote: '"Cheran Senguttuvan carried the banner of Tamil bravery to the snow-capped Himalayas, bringing sacred stone to enshrine Kannagi — proving that Tamil valor reached the very heights of the world!"',
+        points: [
+          '• Vanquished pirate flotillas in the western seas, earning the glorious title "Kadal Pirakkottiya".',
+          '• Built Muziris, India\'s foremost spice capital where Roman merchants traded gold for Malabar pepper.',
+          '• Immortalized by poet Paranar and Prince Ilango Adigal in Pathitrupathu and Silapathikaram.'
+        ]
+      },
+      eelam: {
+        dynasty: 'ஈழத் தமிழ் பெருமை &bull; Eelam Heritage & Resilience',
+        king: 'சங்கப் புலவர் பூதந்தேவனார் முதல் யாழ்ப்பாண அரசு வரை',
+        tamilQuote: 'சங்க இலக்கியத்தில் பாடல் யாத்த ஈழத்துப் பூதந்தேவனார் முதல் யாழ்ப்பாணத்து நாவலர் பெருமான் வரை — கடல்தாண்டி நின்றாலும் தமிழ் மொழியையும், பண்பாட்டையும், அறத்தையும் தன் உயிரினும் மேலாகப் போற்றி நின்ற ஈழத் தமிழரின் வரலாறு தமிழ் தேசியத்தின் அழியாத பெருமை!',
+        englishQuote: '"From Sangam poet Eelathu Poothanthevanar whose verses grace classical anthologies, to the scholars of the Jaffna Kingdom and the global diaspora — the heritage of Eelam Tamils stands as an immortal testament to literature, resilience, and unyielding love for the Tamil tongue."',
+        points: [
+          '• Eelathu Poothanthevanar contributed immortal verses to the Sangam Akananuru, Kurunthokai, and Natrinai.',
+          '• The Jaffna Kingdom (யாழ்ப்பாண அரசு) governed from Nallur with the Sacred Nandi emblem, patronizing Tamil academies and medicine.',
+          '• Historic preservation of Tamil literature through the Jaffna Library, Arumuka Navalar translations, and global diaspora identity.'
+        ]
+      }
+    };
+
+    let activeDynasty = 'chola';
+
+    function openPerumaiModal(dynastyKey) {
+      activeDynasty = dynastyKey;
+      const data = PERUMAI_DATA[dynastyKey];
+      if (!data) return;
+
+      document.getElementById('modalDynastyName').innerHTML = data.dynasty;
+      document.getElementById('modalKingName').textContent = data.king;
+      document.getElementById('modalQuoteTamil').textContent = data.tamilQuote;
+      document.getElementById('modalQuoteEnglish').textContent = data.englishQuote;
+
+      const listEl = document.getElementById('modalAchievementList');
+      listEl.innerHTML = data.points.map(p => `<div style="margin-bottom: 6px;">${p}</div>`).join('');
+
+      document.getElementById('speechStatus').textContent = 'Click to listen to Tamil Perumai';
+      document.getElementById('perumaiModal').style.display = 'flex';
+    }
+
+    function closePerumaiModal(e) {
+      if (window.speechSynthesis) window.speechSynthesis.cancel();
+      document.getElementById('perumaiModal').style.display = 'none';
+    }
+
+    function playCurrentPerumaiAudio() {
+      if (!('speechSynthesis' in window)) {
+        alert('Text-to-speech is not supported in this browser.');
+        return;
+      }
+
+      window.speechSynthesis.cancel();
+      const data = PERUMAI_DATA[activeDynasty];
+      if (!data) return;
+
+      const statusEl = document.getElementById('speechStatus');
+      statusEl.textContent = 'Speaking Tamil Perumai...';
+
+      const utterance = new SpeechSynthesisUtterance(data.tamilQuote);
+      utterance.rate = 0.88;
+      utterance.pitch = 1.0;
+
+      const voices = window.speechSynthesis.getVoices();
+      const tamilVoice = voices.find(v => v.lang.includes('ta') || v.lang.includes('Tamil'));
+      if (tamilVoice) {
+        utterance.voice = tamilVoice;
+      } else {
+        const inVoice = voices.find(v => v.lang.includes('en-IN') || v.lang.includes('en_IN'));
+        if (inVoice) utterance.voice = inVoice;
+      }
+
+      utterance.onend = () => {
+        statusEl.textContent = 'Narration completed ✨';
+      };
+
+      utterance.onerror = () => {
+        statusEl.textContent = 'Voice playback finished';
+      };
+
+      window.speechSynthesis.speak(utterance);
+    }
+
+    function filterDynasty(filter) {
+      document.querySelectorAll('.tab-btn-dynasty').forEach(b => b.classList.remove('active'));
+
+      const sChola = document.getElementById('sectionChola');
+      const sPandya = document.getElementById('sectionPandya');
+      const sChera = document.getElementById('sectionChera');
+      const sEelam = document.getElementById('sectionEelam');
+      const sThinai = document.getElementById('sectionThinai');
+
+      if (filter === 'all') {
+        document.getElementById('tabAll').classList.add('active');
+        sChola.style.display = 'block';
+        sPandya.style.display = 'block';
+        sChera.style.display = 'block';
+        if (sEelam) sEelam.style.display = 'block';
+        sThinai.style.display = 'block';
+      } else if (filter === 'chola') {
+        document.getElementById('tabChola').classList.add('active');
+        sChola.style.display = 'block';
+        sPandya.style.display = 'none';
+        sChera.style.display = 'none';
+        if (sEelam) sEelam.style.display = 'none';
+        sThinai.style.display = 'none';
+      } else if (filter === 'pandya') {
+        document.getElementById('tabPandya').classList.add('active');
+        sChola.style.display = 'none';
+        sPandya.style.display = 'block';
+        sChera.style.display = 'none';
+        if (sEelam) sEelam.style.display = 'none';
+        sThinai.style.display = 'none';
+      } else if (filter === 'chera') {
+        document.getElementById('tabChera').classList.add('active');
+        sChola.style.display = 'none';
+        sPandya.style.display = 'none';
+        sChera.style.display = 'block';
+        if (sEelam) sEelam.style.display = 'none';
+        sThinai.style.display = 'none';
+      } else if (filter === 'eelam') {
+        document.getElementById('tabEelam').classList.add('active');
+        sChola.style.display = 'none';
+        sPandya.style.display = 'none';
+        sChera.style.display = 'none';
+        if (sEelam) sEelam.style.display = 'block';
+        sThinai.style.display = 'none';
+      } else if (filter === 'thinai') {
+        document.getElementById('tabThinai').classList.add('active');
+        sChola.style.display = 'none';
+        sPandya.style.display = 'none';
+        sChera.style.display = 'none';
+        if (sEelam) sEelam.style.display = 'none';
+        sThinai.style.display = 'block';
+      }
+    }
+
+    if ('speechSynthesis' in window) {
+      window.speechSynthesis.onvoiceschanged = () => {
+        window.speechSynthesis.getVoices();
+      };
+    }
+
+    // Auto-select tab if URL parameter or hash is present
+    function initTabSelection() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const tabParam = urlParams.get('tab');
+      if (tabParam) {
+        filterDynasty(tabParam);
+      } else if (window.location.hash) {
+        const hash = window.location.hash.replace('#', '').toLowerCase();
+        if (hash === 'thinai' || hash === 'sectionthinai') filterDynasty('thinai');
+        else if (hash === 'eelam' || hash === 'sectioneelam') filterDynasty('eelam');
+        else if (hash === 'chola' || hash === 'sectionchola') filterDynasty('chola');
+        else if (hash === 'pandya' || hash === 'sectionpandya') filterDynasty('pandya');
+        else if (hash === 'chera' || hash === 'sectionchera') filterDynasty('chera');
+      }
+    }
+    if (document.readyState === 'loading') {
+      window.addEventListener('DOMContentLoaded', initTabSelection);
+    } else {
+      initTabSelection();
+    }
+  </script>
+</body>
+</html>

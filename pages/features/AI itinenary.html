@@ -73,51 +73,91 @@ footer {
 }
 </style>
 
-<script src="https://kit.fontawesome.com/7f257b9379.js" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="../../assets/css/style.css">
 
-<!-- Global Nav/Footer CSS injected -->
-<style id="global-nav-footer">
-    .navbar { font-family: 'Montserrat', sans-serif; }
-    .navbar .container { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 0 1rem; }
-    .navbar.bg-dark { background-color: #000000; }
-    .navbar .logo { float: left; padding-top: 6px; }
-    .navbar .nav-items { list-style: none; margin: 0; padding: 0; display: flex; align-items: center; }
-    .navbar .nav-item { display: inline-block; padding: 1.5rem; text-transform: uppercase; }
-    .navbar a { color: aliceblue; text-decoration: none; font-size: 1.6rem; font-weight: bold; }
-    .navbar a:hover { border-bottom: 1px solid #FFF; }
-    .navbar::after { content: ''; display: block; clear: both; }
-    .footer { font-size: 1rem; padding: 1rem; background: #263238; color: #f4f4f4; margin-top: auto; text-align: center; width: 100%; font-family: 'Montserrat', sans-serif; }
-    .footer .social-media-links i { padding: 1.5rem; margin-bottom: 1rem; font-size: 4rem; color: #f4f4f4; }
-    @media (max-width: 768px) {
-        .navbar .container { flex-direction: column; }
-        .navbar .nav-items { flex-direction: column; width: 100%; text-align: center; }
-    }
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="../../assets/css/sancharam-theme.css">
+<style>
+body { padding-top: 85px !important; }
 </style>
-<script src="https://kit.fontawesome.com/7f257b9379.js" crossorigin="anonymous"></script>
-
 </head>
 
 <body>
-<nav class="navbar bg-dark">
-    <div class="container">
-        <img src="../../assets/logos/logo.png" alt="Sancharam Logo" class="logo" style="width: 300px; height: 80px;">
-        <ul class="nav-items">
-            <li class="nav-item"><a href="../../home.html">Home</a></li>
-            <li class="nav-item"><a href="../../pages/about.html">About</a></li>
-            <li class="nav-item"><a href="../../pages/explore.html">Explore</a></li>
-            <li class="nav-item"><a href="../../pages/bookings.html">Bookings</a></li>
-            <li class="nav-item"><a href="../../pages/features.html">Features</a></li>
-            <li class="nav-item"><a href="../../pages/profile.html">Profile</a></li>
+  <!-- ================= NAVBAR ================= -->
+  <nav class="navbar" id="main-nav">
+    <div class="container nav-wrapper">
+        <a href="../../home.html" class="brand" title="Sancharam">
+            <img src="../../assets/logos/logo-transparent.png" alt="Sancharam Logo" class="brand-logo" onerror="this.src='../../assets/logos/logo.png'">
+        </a>
+
+        <ul class="nav-links">
+            <li><a href="../../home.html" class="nav-link">Home</a></li>
+            <li><a href="../explore.html" class="nav-link">Explore</a></li>
+            <li><a href="../bookings.html" class="nav-link">Bookings</a></li>
+            <li><a href="../features.html" class="nav-link active">Features</a></li>
+            <li><a href="../profile.html" class="nav-link">Profile</a></li>
         </ul>
+
+        <div class="nav-actions">
+            <a href="AI itinenary.html" class="btn-nav-ai">
+                <i class="fas fa-wand-magic-sparkles"></i>
+                <span>Plan with AI</span>
+            </a>
+        </div>
+
+        <button class="mobile-toggle" aria-label="Toggle navigation">
+            <i class="fas fa-bars"></i>
+        </button>
     </div>
-</nav>
+  </nav>
+
+  <!-- ================= PAGE HERO (Exact Replica of Home Hero Format) ================= -->
+  <header class="page-hero">
+    <div class="container hero-content">
+      <div class="hero-tag">
+        <i class="fas fa-wand-magic-sparkles"></i>
+        <span>AI Travel Intelligence</span>
+      </div>
+
+      <h1 class="hero-title">
+        AI Itinerary <span class="highlight-gold">Planner</span>
+      </h1>
+
+      <p class="hero-desc">
+        Generate personalized, optimized day-by-day travel routes across Tamil Nadu based on your pace, interests, and budget.
+      </p>
+
+      <div class="hero-cta-group">
+        <a href="#feature-tool" class="btn-primary">
+          <span>Build Itinerary</span>
+          <i class="fas fa-arrow-down"></i>
+        </a>
+        <a href="../features.html" class="btn-secondary-glass">
+          <i class="fas fa-th-large"></i>
+          <span>All Features</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= CULTURAL RIBBON ================= -->
+  <section class="cultural-ribbon">
+    <div class="container ribbon-content">
+        <i class="fas fa-dharmachakra ribbon-motif"></i>
+        <div class="ribbon-text-group">
+            <h2 class="ribbon-tamil">வாழ்க தமிழ், வளர்க தமிழ்</h2>
+            <p class="ribbon-english">Honoring the timeless heritage, eternal language, and warm hospitality of Tamil Land</p>
+        </div>
+        <i class="fas fa-dharmachakra ribbon-motif"></i>
+    </div>
+  </section>
+
+<div id="feature-tool"></div>
 
 
-<header>
-<h1>🤖 Sancharam AI Tamil Nadu Planner</h1>
-<p>Smart Personalized Travel Planning</p>
-</header>
+
+
 
 <div class="feature-container">
 
@@ -145,14 +185,50 @@ footer {
 
 </div>
 
-<footer class="footer">
-        <div class="social-media-links">
-            <i class="fab fa-facebook fa-4x"></i>
-            <i class="fab fa-twitter fa-4x"></i>
-            <i class="fab fa-instagram fa-4x"></i>
+  <!-- ================= FOOTER ================= -->
+  <footer class="site-footer">
+    <div class="container">
+        <div class="footer-top">
+            <div class="footer-brand">
+                <img src="../../assets/logos/logo-transparent.png" alt="Sancharam Logo" class="brand-logo" onerror="this.src='../../assets/logos/logo.png'">
+                <p>Sancharam is your smart travel companion dedicated to celebrating the living heritage, natural wonders, and vibrant spirit of Tamil Nadu.</p>
+                <div class="social-links">
+                    <a href="#" class="social-btn" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-btn" title="Twitter"><i class="fab fa-x-twitter"></i></a>
+                    <a href="#" class="social-btn" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-btn" title="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>Smart Features</h4>
+                <ul class="footer-links">
+                    <li><a href="AI itinenary.html">AI Itinerary Planner</a></li>
+                    <li><a href="routing.html">Scenic Routes</a></li>
+                    <li><a href="sos.html">Safety & SOS Helpline</a></li>
+                    <li><a href="expenses.html">Expense Calculator</a></li>
+                    <li><a href="pages/features/checklist.html">Travel Checklist</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Cultural Pride</h4>
+                <p style="font-size: 1.4rem; color: #FCD34D; font-weight: 700; margin-bottom: 0.8rem;">வாழ்க தமிழ் வளர்க தமிழ்</p>
+                <p style="font-size: 1.3rem; color: rgba(255,255,255,0.7); line-height: 1.6;">Dedicated to travelers who cherish art, architecture, literature, and warm Tamil hospitality.</p>
+            </div>
         </div>
-        <p>Sancharam &copy; 2025, All Rights Reserved</p>
-    </footer>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 Sancharam. All Rights Reserved. Crafted with love for தமிழ்நாடு.</p>
+            <div class="footer-bottom-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="../contact.html">Support</a>
+            </div>
+        </div>
+    </div>
+  </footer>
+  <script src="../../assets/js/sancharam-theme.js"></script>
 
 <script>
 

@@ -3,214 +3,1211 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Bookings</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
-
+  <title>Pre-Bookings & Destination Passes | Sancharam</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+  <link rel="stylesheet" href="../assets/css/sancharam-theme.css">
   <style>
-    /* Basic Reset & Font */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    body{
-    font-family: 'Montserrat';
-    line-height: 1.7;
-    }
+    /* ==========================================================================
+       SANCHARAM PRE-BOOKINGS - SEAMLESS EXPLORE INTEGRATION
+       Clean, Centered, Distraction-Free Reservation Flow
+       ========================================================================== */
 
-    /* Nav */
-    nav {
-      background-color: black;
-      height: 80px; /* Adjusted height to match the image */
-      padding: 0 60px;
-      display: flex;
-      justify-content: space-between; /* Aligns logo left, nav items right */
+    .booking-hero {
+      padding: 120px 0 30px;
+      text-align: center;
+      background: radial-gradient(circle at 50% 20%, rgba(230, 57, 70, 0.05) 0%, rgba(248, 250, 252, 0) 70%);
+    }
+    .booking-eyebrow {
+      display: inline-flex;
       align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      background: #FFE3E3;
+      color: #E63946;
+      border-radius: 9999px;
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
     }
-    nav img {
-      height: 70px; /* Adjusted height to match the logo in the image */
-      width: 300px; /* Adjusted width to match the logo in the image */
+    .booking-hero h1 {
+      font-size: 3.8rem;
+      font-weight: 800;
+      color: #0F172A;
+      margin-bottom: 10px;
+      line-height: 1.2;
     }
-    nav ul {
-      list-style: none;
+    .booking-hero h1 span {
+      background: linear-gradient(135deg, #E63946 0%, #B91C1C 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .booking-hero p {
+      font-size: 1.65rem;
+      color: #475569;
+      max-width: 720px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* Main Container & Centered Form */
+    .booking-section {
+      padding: 15px 0 80px;
+    }
+    .booking-wrapper {
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    /* Connected Destination Banner (Clean, Horizontal Explore Connection) */
+    .connected-dest-bar {
       display: flex;
-      gap: 40px;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 16px 24px;
+      background: #FFFFFF;
+      border-radius: 18px;
+      border: 1.5px solid #FEE2E2;
+      box-shadow: 0 4px 16px rgba(230, 57, 70, 0.06);
+      margin-bottom: 24px;
+      transition: all 0.3s ease;
     }
-    nav ul li a {
-      color: white;
+    .connected-dest-left {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .connected-dest-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #E63946 0%, #B91C1C 100%);
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      flex-shrink: 0;
+      box-shadow: 0 4px 10px rgba(230, 57, 70, 0.25);
+    }
+    .connected-dest-info h4 {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: #0F172A;
+      margin-bottom: 3px;
+    }
+    .connected-dest-info p {
+      font-size: 1.3rem;
+      color: #64748B;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .connected-dest-info p span.badge-cat {
+      background: #F1F5F9;
+      color: #334155;
+      padding: 2px 8px;
+      border-radius: 6px;
+      font-size: 1.15rem;
+      font-weight: 600;
+    }
+    .connected-dest-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: #E63946;
+      font-size: 1.35rem;
+      font-weight: 700;
       text-decoration: none;
-      font-weight: 600;
-      font-size: 16px;
+      padding: 8px 16px;
+      border-radius: 10px;
+      background: #FFF1F2;
+      transition: all 0.25s ease;
+      white-space: nowrap;
     }
-    nav ul li a:hover {
-      color: #ff5c70; /* Added hover effect for consistency */
-    }
-
-
-    /* Heading */
-    .subheading {
-      text-align: left;
-      font-size: 32px;
-      font-weight: 600;
-      margin: 30px 60px 10px;
-    }
-    .underline {
-      height: 5px;
-      width: 90%;
-      background-color: #ee4b5c;
-      margin: 0 auto 20px;
+    .connected-dest-link:hover {
+      background: #FFE4E6;
+      transform: translateX(3px);
     }
 
-    /* Booking Form */
-    .container {
-      max-width: 1000px;
-      margin: 0 auto 40px;
-      background: white;
-      border-radius: 15px;
-      padding: 30px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    /* Booking Card */
+    .booking-form-card {
+      background: #FFFFFF;
+      border-radius: 22px;
+      padding: 40px 44px;
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+      border: 1px solid #E2E8F0;
     }
-    h2 {
-      color: #ee0979;
+
+    .form-step-header {
+      font-size: 1.75rem;
+      font-weight: 800;
+      color: #0F172A;
+      margin: 28px 0 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #F1F5F9;
     }
-    form {
+    .form-step-header:first-of-type {
+      margin-top: 0;
+    }
+    .form-step-header i {
+      color: #E63946;
+      font-size: 1.6rem;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-bottom: 18px;
+    }
+    .form-row.three-col {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+    .form-group {
       display: flex;
       flex-direction: column;
+      gap: 6px;
+      margin-bottom: 18px;
+    }
+    .form-group.no-mb {
+      margin-bottom: 0;
     }
     label {
-      margin-top: 15px;
-      font-weight: 600;
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #1E293B;
+      display: flex;
+      align-items: center;
+      gap: 6px;
     }
-    input, select {
-      padding: 12px;
-      margin-top: 5px;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-      font-size: 16px;
+    label i {
+      color: #64748B;
+      font-size: 1.2rem;
     }
-    button {
-      margin-top: 25px;
-      padding: 14px;
-      background: #ee4758;
-      color: white;
-      font-size: 18px;
-      border: none;
-      border-radius: 10px;
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="date"],
+    input[type="number"],
+    select,
+    textarea {
+      padding: 13px 16px;
+      border-radius: 12px;
+      border: 1.5px solid #CBD5E1;
+      font-size: 1.45rem;
+      font-family: inherit;
+      color: #0F172A;
+      background: #F8FAFC;
+      transition: all 0.25s ease;
+      width: 100%;
+      outline: none;
+    }
+    input:focus, select:focus, textarea:focus {
+      background: #FFFFFF;
+      border-color: #E63946;
+      box-shadow: 0 0 0 4px rgba(230, 57, 70, 0.12);
+    }
+    select {
       cursor: pointer;
-      transition: 0.3s;
     }
-    button:hover {
-      background: #ee4758;
+    textarea {
+      resize: vertical;
+      min-height: 85px;
     }
 
-    
-    
-    .social-icons i {
-      font-size: 40px;
-      color: white;
-      transition: transform 0.3s ease;
+    /* Add-on Options */
+    .addon-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 14px;
+      margin: 12px 0 24px;
     }
-    .social-icons i:hover {
-      transform: scale(1.2);
-      color: #ee0979;
+    .addon-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 14px 16px;
+      border-radius: 14px;
+      background: #F8FAFC;
+      border: 1.5px solid #E2E8F0;
+      cursor: pointer;
+      transition: all 0.2s ease;
     }
-  
-  /* Uniform Footer CSS */
-  
-  .footer .social-media-links { text-align: center; margin: 0; padding: 0; }
-  
-  .footer p { margin: 0; padding-bottom: 10px; font-size: 14px; }
-</style>
+    .addon-card:hover {
+      border-color: #E63946;
+      background: #FFFBFB;
+    }
+    .addon-card input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      accent-color: #E63946;
+      margin-top: 3px;
+      cursor: pointer;
+    }
+    .addon-text strong {
+      display: block;
+      font-size: 1.35rem;
+      color: #0F172A;
+      margin-bottom: 2px;
+    }
+    .addon-text span {
+      font-size: 1.15rem;
+      color: #64748B;
+      line-height: 1.3;
+      display: block;
+    }
 
-<!-- Global Nav/Footer CSS injected -->
-<style id="global-nav-footer">
-    .navbar { font-family: 'Montserrat', sans-serif; }
-    .navbar .container { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 0 1rem; }
-    .navbar.bg-dark { background-color: #000000; }
-    .navbar .logo { float: left; padding-top: 6px; }
-    .navbar .nav-items { list-style: none; margin: 0; padding: 0; display: flex; align-items: center; }
-    .navbar .nav-item { display: inline-block; padding: 1.5rem; text-transform: uppercase; }
-    .navbar a { color: aliceblue; text-decoration: none; font-size: 1.6rem; font-weight: bold; }
-    .navbar a:hover { border-bottom: 1px solid #FFF; }
-    .navbar::after { content: ''; display: block; clear: both; }
-    
-    
+    /* Live Summary Strip (Inline, Sleek, Above Submit) */
+    .live-summary-bar {
+      background: #F8FAFC;
+      border: 1.5px solid #E2E8F0;
+      border-radius: 14px;
+      padding: 16px 20px;
+      display: grid;
+      grid-template-columns: 1.3fr 1fr 0.9fr 0.8fr;
+      gap: 14px;
+      margin: 24px 0 20px;
+    }
+    .live-sum-item {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+    .live-sum-label {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #64748B;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .live-sum-val {
+      font-size: 1.45rem;
+      font-weight: 800;
+      color: #0F172A;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .live-sum-val.highlight {
+      color: #E63946;
+    }
+
+    /* Trust Highlights */
+    .trust-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 18px;
+      background: #F1F5F9;
+      border-radius: 12px;
+      margin-bottom: 24px;
+    }
+    .trust-pill {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #475569;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .trust-pill i {
+      color: #16A34A;
+      font-size: 1.4rem;
+    }
+
+    /* Submit Button */
+    .btn-submit-booking {
+      width: 100%;
+      padding: 16px 28px;
+      background: linear-gradient(135deg, #E63946 0%, #C5221F 100%);
+      color: #FFFFFF;
+      border: none;
+      border-radius: 14px;
+      font-size: 1.65rem;
+      font-weight: 800;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      box-shadow: 0 10px 24px rgba(230, 57, 70, 0.28);
+      transition: all 0.25s ease;
+    }
+    .btn-submit-booking:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 28px rgba(230, 57, 70, 0.35);
+      background: linear-gradient(135deg, #EF4444 0%, #B91C1C 100%);
+    }
+
+    /* Pass Modal */
+    .pass-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(15, 23, 42, 0.7);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      padding: 20px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .pass-modal.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .pass-card {
+      background: #FFFFFF;
+      border-radius: 24px;
+      max-width: 580px;
+      width: 100%;
+      overflow: hidden;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.3);
+      border: 1px solid #E2E8F0;
+      position: relative;
+      animation: modalSlideUp 0.35s ease forwards;
+    }
+    @keyframes modalSlideUp {
+      from { transform: translateY(30px) scale(0.97); opacity: 0; }
+      to { transform: translateY(0) scale(1); opacity: 1; }
+    }
+    .pass-header {
+      background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+      color: #FFFFFF;
+      padding: 30px;
+      text-align: center;
+      position: relative;
+    }
+    .pass-close-btn {
+      position: absolute;
+      top: 18px;
+      right: 20px;
+      background: rgba(255, 255, 255, 0.12);
+      border: none;
+      color: #FFFFFF;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      font-size: 1.8rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+    .pass-close-btn:hover {
+      background: rgba(255, 255, 255, 0.25);
+    }
+    .pass-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #16A34A;
+      color: #FFFFFF;
+      padding: 4px 14px;
+      border-radius: 9999px;
+      font-size: 1.15rem;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      margin-bottom: 12px;
+    }
+    .pass-header h2 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+    .pass-ref-code {
+      font-family: monospace;
+      font-size: 1.45rem;
+      letter-spacing: 0.15em;
+      color: #F87171;
+      font-weight: 700;
+    }
+
+    .pass-body {
+      padding: 28px 32px;
+    }
+    .pass-details-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 24px;
+    }
+    .pass-details-table tr {
+      border-bottom: 1px solid #F1F5F9;
+    }
+    .pass-details-table td {
+      padding: 10px 0;
+      font-size: 1.4rem;
+    }
+    .pass-details-table td.label {
+      color: #64748B;
+      font-weight: 600;
+      width: 38%;
+    }
+    .pass-details-table td.value {
+      color: #0F172A;
+      font-weight: 700;
+      text-align: right;
+    }
+
+    .pass-qr-box {
+      background: #F8FAFC;
+      border-radius: 14px;
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      border: 1px dashed #CBD5E1;
+      margin-bottom: 24px;
+    }
+    .pass-qr-box i.fa-qrcode {
+      font-size: 4.8rem;
+      color: #0F172A;
+    }
+    .pass-qr-text h5 {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: #0F172A;
+      margin-bottom: 4px;
+    }
+    .pass-qr-text p {
+      font-size: 1.2rem;
+      color: #64748B;
+      line-height: 1.4;
+    }
+
+    .pass-actions {
+      display: flex;
+      gap: 12px;
+    }
+    .btn-pass-action {
+      flex: 1;
+      padding: 12px 18px;
+      border-radius: 10px;
+      font-size: 1.4rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+      text-decoration: none;
+    }
+    .btn-pass-primary {
+      background: #E63946;
+      color: #FFFFFF;
+      border: none;
+    }
+    .btn-pass-primary:hover {
+      background: #C5221F;
+    }
+    .btn-pass-outline {
+      background: #F8FAFC;
+      color: #334155;
+      border: 1px solid #CBD5E1;
+    }
+    .btn-pass-outline:hover {
+      background: #EDF2F7;
+    }
+
     @media (max-width: 768px) {
-        .navbar .container { flex-direction: column; }
-        .navbar .nav-items { flex-direction: column; width: 100%; text-align: center; }
+      .booking-hero h1 { font-size: 2.8rem; }
+      .booking-form-card { padding: 24px 20px; }
+      .form-row, .form-row.three-col { grid-template-columns: 1fr; gap: 14px; }
+      .addon-grid { grid-template-columns: 1fr; }
+      .live-summary-bar { grid-template-columns: 1fr 1fr; }
+      .connected-dest-bar { flex-direction: column; align-items: flex-start; }
+      .trust-row { flex-direction: column; align-items: flex-start; gap: 8px; }
     }
-</style>
-<script src="https://kit.fontawesome.com/7f257b9379.js" crossorigin="anonymous"></script>
-
+  </style>
 </head>
 <body>
 
-  <nav class="navbar bg-dark">
-    <div class="container">
-        <img src="../assets/logos/logo.png" alt="Sancharam Logo" class="logo" style="width: 300px; height: 80px;">
-        <ul class="nav-items">
-            <li class="nav-item"><a href="../home.html">Home</a></li>
-            <li class="nav-item"><a href="../pages/about.html">About</a></li>
-            <li class="nav-item"><a href="../pages/explore.html">Explore</a></li>
-            <li class="nav-item"><a href="../pages/bookings.html">Bookings</a></li>
-            <li class="nav-item"><a href="../pages/features.html">Features</a></li>
-            <li class="nav-item"><a href="../pages/profile.html">Profile</a></li>
+  <!-- ================= NAVBAR ================= -->
+  <nav class="navbar" id="main-nav">
+    <div class="container nav-wrapper">
+        <a href="../home.html" class="brand" title="Sancharam">
+            <img src="../assets/logos/logo-transparent.png" alt="Sancharam Logo" class="brand-logo" onerror="this.src='../assets/logos/logo.png'">
+        </a>
+
+        <ul class="nav-links">
+            <li><a href="../home.html" class="nav-link">Home</a></li>
+            <li><a href="explore.html" class="nav-link">Explore</a></li>
+            <li><a href="bookings.html" class="nav-link active">Bookings</a></li>
+            <li><a href="features.html" class="nav-link">Features</a></li>
+            <li><a href="profile.html" class="nav-link">Profile</a></li>
         </ul>
+
+        <div class="nav-actions">
+            <a href="features/AI itinenary.html" class="btn-nav-ai">
+                <i class="fas fa-wand-magic-sparkles"></i>
+                <span>Plan with AI</span>
+            </a>
+        </div>
+
+        <button class="mobile-toggle" aria-label="Toggle navigation">
+            <i class="fas fa-bars"></i>
+        </button>
     </div>
-</nav>
+  </nav>
 
-  <div class="subheading">Pre-Bookings</div>
-  <div class="underline"></div>
+  <!-- ================= HERO SECTION ================= -->
+  <section class="booking-hero">
+    <div class="container">
+      <div class="booking-eyebrow">
+        <i class="fas fa-ticket-alt"></i> Sancharam Verified Reservations
+      </div>
+      <h1>Pre-Bookings & <span>Destination Passes</span></h1>
+      <p>Reserve your visit, verified darshan, scenic guide, and priority entry pass directly connected to Explore destinations across all 38 districts of Tamil Nadu.</p>
+    </div>
+  </section>
 
-  <div class="container">
-    <form onsubmit="return confirmBooking(event)">
-      <label for="name">Full Name</label>
-      <input type="text" id="name" required />
+  <!-- ================= CENTERED BOOKING SECTION ================= -->
+  <section class="booking-section">
+    <div class="container">
+      <div class="booking-wrapper">
+        
+        <!-- Connected Explore Ribbon Banner -->
+        <div class="connected-dest-bar" id="connectedDestBar">
+          <div class="connected-dest-left">
+            <div class="connected-dest-icon">
+              <i class="fas fa-map-location-dot"></i>
+            </div>
+            <div class="connected-dest-info">
+              <h4 id="barDestTitle">Shore Temple Mahabalipuram</h4>
+              <p>
+                <span id="barDestDistrict"><i class="fas fa-map-marker-alt"></i> Chengalpattu District</span>
+                <span class="badge-cat" id="barDestCat">UNESCO Heritage</span>
+              </p>
+            </div>
+          </div>
+          <a href="explore.html" class="connected-dest-link">
+            <i class="fas fa-compass"></i> Explore All Destinations &rarr;
+          </a>
+        </div>
 
-      <label for="email">Email</label>
-      <input type="email" id="email" required />
+        <!-- The Booking Form Card -->
+        <div class="booking-form-card">
+          <form id="bookingForm" onsubmit="return handleBookingSubmit(event)">
+            
+            <!-- Step 1: Destination Selection -->
+            <div class="form-step-header">
+              <i class="fas fa-compass"></i> 1. Destination & District
+            </div>
 
-      <label for="place">Place</label>
-      <select id="place" required>
-        <option value="">-- Choose Place --</option>
-        <option>Hotels</option>
-        <option>Restaurants</option>
-        <option>Events(Beta)</option>
-        <option>Game Center</option>
-        <option>Turf</option>
-      </select>
+            <div class="form-row">
+              <div class="form-group no-mb">
+                <label for="destinationSelect"><i class="fas fa-location-dot"></i> Select Destination Landmark</label>
+                <select id="destinationSelect" onchange="onDestinationChanged()" required>
+                  <option value="mahabalipuram">Shore Temple Mahabalipuram (Chengalpattu)</option>
+                  <option value="chennai">San Thome Basilica & Marina (Chennai)</option>
+                  <option value="rameshwaram">Ramanathaswamy Temple (Rameswaram)</option>
+                  <option value="madurai">Meenakshi Sundareswarar Temple (Madurai)</option>
+                  <option value="nilgiris">Ooty & Nilgiri Mountain Toy Train (Nilgiris)</option>
+                  <option value="kanyakumari">Thiruvalluvar Statue & Triveni Sangam (Kanyakumari)</option>
+                  <option value="sivaganga">Chettinad Palatial Mansions (Karaikudi)</option>
+                  <option value="dharmapuri">Hogenakkal River Waterfalls & Coracle (Dharmapuri)</option>
+                  <option value="dhanushkodi">Dhanushkodi Land's End & Pamban Island</option>
+                  <option value="nagapattinam">Velankanni Marian Basilica (Nagapattinam)</option>
+                  <option value="thanjavur">Brihadeeswarar Periya Kovil (Thanjavur)</option>
+                  <option value="thiruchendur">Thiruchendur Murugan Kovil (Thoothukudi)</option>
+                  <option value="custom">Other Landmark in Tamil Nadu (Custom Tour)</option>
+                </select>
+              </div>
 
-      <label for="district">Select District</label>
-      <select id="district" required>
-        <option value="">-- Choose District --</option>
-        <option>Chennai</option>
-        <option>Chengalpattu</option>
-        <option>Madurai</option>
-        <option>Ooty</option>
-        <option>Kanyakumari</option>
-        <option>Thanjavur</option>
-        <option>Coimbatore(Beta)</option>
-      </select>
+              <div class="form-group no-mb">
+                <label for="districtSelect"><i class="fas fa-map"></i> Verified District of Tamil Nadu (38 Districts)</label>
+                <select id="districtSelect" onchange="onDistrictChanged()" required>
+                  <optgroup label="🌟 Featured Travel Districts">
+                    <option value="chengalpattu" selected>Chengalpattu District</option>
+                    <option value="chennai">Chennai District</option>
+                    <option value="thanjavur">Thanjavur District</option>
+                    <option value="madurai">Madurai District</option>
+                    <option value="nilgiris">Nilgiris District</option>
+                    <option value="kanyakumari">Kanyakumari District</option>
+                    <option value="sivaganga">Sivaganga District</option>
+                    <option value="dharmapuri">Dharmapuri District</option>
+                    <option value="ramanathapuram">Ramanathapuram District</option>
+                    <option value="nagapattinam">Nagapattinam District</option>
+                    <option value="thoothukudi">Thoothukudi District</option>
+                  </optgroup>
+                  <optgroup label="🏛️ All Other Tamil Nadu Districts (Official)">
+                    <option value="ariyalur">Ariyalur District</option>
+                    <option value="coimbatore">Coimbatore District</option>
+                    <option value="cuddalore">Cuddalore District</option>
+                    <option value="dindigul">Dindigul District</option>
+                    <option value="erode">Erode District</option>
+                    <option value="kallakurichi">Kallakurichi District</option>
+                    <option value="kanchipuram">Kanchipuram District</option>
+                    <option value="karur">Karur District</option>
+                    <option value="krishnagiri">Krishnagiri District</option>
+                    <option value="mayiladuthurai">Mayiladuthurai District</option>
+                    <option value="namakkal">Namakkal District</option>
+                    <option value="perambalur">Perambalur District</option>
+                    <option value="pudukkottai">Pudukkottai District</option>
+                    <option value="ranipet">Ranipet District</option>
+                    <option value="salem">Salem District</option>
+                    <option value="tenkasi">Tenkasi District</option>
+                    <option value="theni">Theni District</option>
+                    <option value="tiruchirappalli">Tiruchirappalli District</option>
+                    <option value="tirunelveli">Tirunelveli District</option>
+                    <option value="tirupattur">Tirupattur District</option>
+                    <option value="tiruppur">Tiruppur District</option>
+                    <option value="tiruvallur">Tiruvallur District</option>
+                    <option value="tiruvannamalai">Tiruvannamalai District</option>
+                    <option value="tiruvarur">Tiruvarur District</option>
+                    <option value="vellore">Vellore District</option>
+                    <option value="viluppuram">Viluppuram District</option>
+                    <option value="virudhunagar">Virudhunagar District</option>
+                  </optgroup>
+                </select>
+              </div>
+            </div>
 
-      <label for="checkin">Date</label>
-      <input type="date" id="checkin" required />
+            <!-- Step 2: Traveler Details -->
+            <div class="form-step-header">
+              <i class="fas fa-user"></i> 2. Lead Traveler Information
+            </div>
 
-      <label for="guests">Number of Peoples</label>
-      <input type="number" id="guests" min="1" max="10" required />
+            <div class="form-row three-col">
+              <div class="form-group no-mb">
+                <label for="name"><i class="fas fa-id-badge"></i> Full Name</label>
+                <input type="text" id="name" placeholder="e.g. Ananya Sundaram" required>
+              </div>
+              <div class="form-group no-mb">
+                <label for="email"><i class="fas fa-envelope"></i> Email Address</label>
+                <input type="email" id="email" placeholder="name@example.com" required>
+              </div>
+              <div class="form-group no-mb">
+                <label for="phone"><i class="fas fa-phone"></i> Mobile Number</label>
+                <input type="tel" id="phone" placeholder="+91 98765 43210" required>
+              </div>
+            </div>
 
-      <button type="submit">Book</button>
-    </form>
+            <!-- Step 3: Schedule & Experience -->
+            <div class="form-step-header">
+              <i class="fas fa-calendar-check"></i> 3. Visit Schedule & Experience
+            </div>
+
+            <div class="form-row three-col">
+              <div class="form-group no-mb">
+                <label for="checkin"><i class="fas fa-calendar-day"></i> Preferred Visit Date</label>
+                <input type="date" id="checkin" onchange="updateSummary()" required>
+              </div>
+              <div class="form-group no-mb">
+                <label for="timeSlot"><i class="fas fa-clock"></i> Preferred Time Slot</label>
+                <select id="timeSlot" onchange="updateSummary()">
+                  <option value="Morning Darshan (6:00 AM - 10:00 AM)">Morning Darshan / Sunrise (6 AM - 10 AM)</option>
+                  <option value="Mid-Day Tour (10:00 AM - 2:00 PM)">Mid-Day Explorer (10 AM - 2 PM)</option>
+                  <option value="Sunset & Evening (4:00 PM - 8:00 PM)" selected>Sunset & Evening (4 PM - 8 PM)</option>
+                  <option value="Full-Day Guided Tour">Full-Day Guided Experience</option>
+                </select>
+              </div>
+              <div class="form-group no-mb">
+                <label for="guests"><i class="fas fa-users"></i> Number of Travelers</label>
+                <input type="number" id="guests" min="1" max="25" value="2" onchange="updateSummary()" oninput="updateSummary()" required>
+              </div>
+            </div>
+
+            <div class="form-group" style="margin-top: 18px;">
+              <label for="experienceType"><i class="fas fa-route"></i> Curated Experience Package</label>
+              <select id="experienceType" onchange="updateSummary()">
+                <option value="Guided Heritage & Temple Darshan" selected>Guided Heritage & Temple Darshan (Historical Architecture & Rituals)</option>
+                <option value="Coastal Heritage & Beach Trail">Coastal Heritage & Beach Trail (Ocean Monuments & Marine Walk)</option>
+                <option value="Hill Station Mountain Escape">Hill Station Mountain Escape (Tea Slopes, Nature & Toy Train)</option>
+                <option value="Waterfalls & Coracle River Adventure">Waterfalls & Coracle River Adventure (River Canyons & Baths)</option>
+                <option value="Palace Architecture & Food Trail">Palace Architecture & Food Trail (Athangudi Mansions & Cuisine)</option>
+                <option value="Self-Guided Digital Entry Pass">Self-Guided Digital Entry Pass (Independent Exploration)</option>
+              </select>
+            </div>
+
+            <!-- Step 4: Optional Add-on Privileges -->
+            <div class="form-step-header">
+              <i class="fas fa-sparkles"></i> 4. Complimentary Tour Privileges
+            </div>
+
+            <div class="addon-grid">
+              <label class="addon-card">
+                <input type="checkbox" id="addonGuide" checked>
+                <div class="addon-text">
+                  <strong>Certified Guide</strong>
+                  <span>State-certified Tamil & English local historian</span>
+                </div>
+              </label>
+
+              <label class="addon-card">
+                <input type="checkbox" id="addonFastTrack" checked>
+                <div class="addon-text">
+                  <strong>Priority Entry Token</strong>
+                  <span>Expedited entrance at sanctums and monument gates</span>
+                </div>
+              </label>
+
+              <label class="addon-card">
+                <input type="checkbox" id="addonTransport">
+                <div class="addon-text">
+                  <strong>Local Transit Assist</strong>
+                  <span>Verified taxi or auto dispatch coordination</span>
+                </div>
+              </label>
+            </div>
+
+            <!-- Step 5: Special Requirements -->
+            <div class="form-group">
+              <label for="specialReq"><i class="fas fa-comment-dots"></i> Special Requests or Accessibility Needs (Optional)</label>
+              <textarea id="specialReq" placeholder="e.g., Senior citizen battery cart request, wheelchair assistance, language preference, dietary needs..."></textarea>
+            </div>
+
+            <!-- Live Summary Bar (Sleek Horizontal Strip) -->
+            <div class="live-summary-bar">
+              <div class="live-sum-item">
+                <span class="live-sum-label">Destination</span>
+                <span class="live-sum-val" id="sumDest">Shore Temple</span>
+              </div>
+              <div class="live-sum-item">
+                <span class="live-sum-label">District</span>
+                <span class="live-sum-val" id="sumDistrict">Chengalpattu</span>
+              </div>
+              <div class="live-sum-item">
+                <span class="live-sum-label">Visit Date</span>
+                <span class="live-sum-val" id="sumDate">Select date</span>
+              </div>
+              <div class="live-sum-item">
+                <span class="live-sum-label">Pass Amount</span>
+                <span class="live-sum-val highlight" id="sumFare">₹ 1,050.00</span>
+              </div>
+            </div>
+
+            <!-- Trust Row -->
+            <div class="trust-row">
+              <div class="trust-pill"><i class="fas fa-check-circle"></i> Instant Digital Pass & QR</div>
+              <div class="trust-pill"><i class="fas fa-shield-alt"></i> 100% Free Cancellation</div>
+              <div class="trust-pill"><i class="fas fa-headset"></i> 24/7 Sancharam Helpline</div>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="btn-submit-booking">
+              <i class="fas fa-credit-card"></i> Proceed to Secure Payment & Booking &rarr;
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= DIGITAL TRAVEL PASS CONFIRMATION MODAL ================= -->
+  <div class="pass-modal" id="passModal" onclick="closePassModal(event)">
+    <div class="pass-card" onclick="event.stopPropagation()">
+      <div class="pass-header">
+        <button class="pass-close-btn" onclick="closePassModal()" title="Close">&times;</button>
+        <div class="pass-badge"><i class="fas fa-check"></i> RESERVATION CONFIRMED</div>
+        <h2>Sancharam Digital Travel Pass</h2>
+        <div class="pass-ref-code" id="passRefCode">PASS ID: SNCH-TN-84920</div>
+      </div>
+      <div class="pass-body">
+        <table class="pass-details-table">
+          <tr>
+            <td class="label">Lead Traveler:</td>
+            <td class="value" id="passName">Arjun Ravi</td>
+          </tr>
+          <tr>
+            <td class="label">Destination:</td>
+            <td class="value" id="passDestination">Shore Temple Mahabalipuram</td>
+          </tr>
+          <tr>
+            <td class="label">District:</td>
+            <td class="value" id="passDistrict">Chengalpattu District</td>
+          </tr>
+          <tr>
+            <td class="label">Visit Date:</td>
+            <td class="value" id="passDate">Tomorrow</td>
+          </tr>
+          <tr>
+            <td class="label">Party Size:</td>
+            <td class="value" id="passGuests">2 Guests</td>
+          </tr>
+          <tr>
+            <td class="label">Experience:</td>
+            <td class="value" id="passExp">Guided Heritage Tour</td>
+          </tr>
+          <tr>
+            <td class="label">Pass Status:</td>
+            <td class="value" style="color:#16A34A;"><i class="fas fa-circle-check"></i> Verified Active</td>
+          </tr>
+        </table>
+
+        <div class="pass-qr-box">
+          <i class="fas fa-qrcode"></i>
+          <div class="pass-qr-text">
+            <h5>Digital Entry QR Code</h5>
+            <p>Show this pass at the temple/site checkpoint or to your certified guide for immediate contactless check-in.</p>
+          </div>
+        </div>
+
+        <div class="pass-actions">
+          <button class="btn-pass-action btn-pass-primary" onclick="window.print()">
+            <i class="fas fa-print"></i> Print / Save Pass
+          </button>
+          <button class="btn-pass-action btn-pass-outline" onclick="closePassModal()">
+            <i class="fas fa-check"></i> Done
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
 
-    <!-- Footer -->
-  <footer class="footer">
-      <div class="social-media-links">
-          <i class="fab fa-facebook"></i>
-          <i class="fab fa-twitter"></i>
-          <i class="fab fa-instagram"></i>
-      </div>
-      <p>Sancharam &copy; 2025, All Rights Reserved</p>
+  <!-- ================= FOOTER ================= -->
+    <!-- ================= FOOTER ================= -->
+  <footer class="site-footer">
+    <div class="container">
+        <div class="footer-top">
+            <div class="footer-brand">
+                <img src="../assets/logos/logo-transparent.png" alt="Sancharam Logo" class="brand-logo" onerror="this.src='../assets/logos/logo.png'">
+                <p>Sancharam is your smart travel companion dedicated to celebrating the living heritage, natural wonders, and vibrant spirit of Tamil Nadu.</p>
+                <div class="social-links">
+                    <a href="#" class="social-btn" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-btn" title="Twitter"><i class="fab fa-x-twitter"></i></a>
+                    <a href="#" class="social-btn" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-btn" title="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>Smart Features</h4>
+                <ul class="footer-links">
+                    <li><a href="features/AI itinenary.html">AI Itinerary Planner</a></li>
+                    <li><a href="features/routing.html">Scenic Routes</a></li>
+                    <li><a href="features/sos.html">Safety & SOS Helpline</a></li>
+                    <li><a href="features/expenses.html">Expense Calculator</a></li>
+                    <li><a href="features/checklist.html">Travel Checklist</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Cultural Pride</h4>
+                <p style="font-size: 1.4rem; color: #FCD34D; font-weight: 700; margin-bottom: 0.8rem;">வாழ்க தமிழ் வளர்க தமிழ் பண்பாடு</p>
+                <p style="font-size: 1.3rem; color: rgba(255,255,255,0.7); line-height: 1.6;">Dedicated to travelers who cherish art, architecture, literature, and warm Tamil hospitality.</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 Sancharam. All Rights Reserved. Crafted with love for தமிழ்நாடு.</p>
+            <div class="footer-bottom-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Security</a>
+            </div>
+        </div>
+    </div>
   </footer>
+
+  <script src="../assets/js/sancharam-theme.js"></script>
+  <script>
+    // ==========================================================================
+    // SANCHARAM CONNECTED PRE-BOOKINGS LOGIC
+    // Seamless Integration with Explore Page Destinations & All 38 Districts
+    // ==========================================================================
+
+    const destinationMeta = {
+      'mahabalipuram': {
+        title: 'Shore Temple Mahabalipuram',
+        district: 'chengalpattu',
+        districtName: 'Chengalpattu District',
+        cat: 'UNESCO Heritage'
+      },
+      'chennai': {
+        title: 'San Thome Basilica & Marina',
+        district: 'chennai',
+        districtName: 'Chennai District',
+        cat: 'Apostolic Shrine & Coast'
+      },
+      'rameshwaram': {
+        title: 'Ramanathaswamy Temple Rameswaram',
+        district: 'ramanathapuram',
+        districtName: 'Ramanathapuram District',
+        cat: 'Char Dham & Jyotirlinga'
+      },
+      'madurai': {
+        title: 'Meenakshi Sundareswarar Temple',
+        district: 'madurai',
+        districtName: 'Madurai District',
+        cat: 'Historic Temple City'
+      },
+      'nilgiris': {
+        title: 'Ooty & Nilgiri Mountain Toy Train',
+        district: 'nilgiris',
+        districtName: 'Nilgiris District',
+        cat: 'Queen of Hill Stations'
+      },
+      'kanyakumari': {
+        title: 'Thiruvalluvar Statue & Memorial',
+        district: 'kanyakumari',
+        districtName: 'Kanyakumari District',
+        cat: 'Ocean Confluence'
+      },
+      'sivaganga': {
+        title: 'Chettinad Palatial Mansions',
+        district: 'sivaganga',
+        districtName: 'Sivaganga District',
+        cat: 'Palaces & Culinary Arts'
+      },
+      'dharmapuri': {
+        title: 'Hogenakkal River Waterfalls',
+        district: 'dharmapuri',
+        districtName: 'Dharmapuri District',
+        cat: 'Niagara of Kaveri'
+      },
+      'dhanushkodi': {
+        title: 'Dhanushkodi Land’s End & Pamban',
+        district: 'ramanathapuram',
+        districtName: 'Ramanathapuram District',
+        cat: 'Lands End & Ghost Town'
+      },
+      'nagapattinam': {
+        title: 'Velankanni Marian Basilica',
+        district: 'nagapattinam',
+        districtName: 'Nagapattinam District',
+        cat: 'Lourdes of the East'
+      },
+      'thanjavur': {
+        title: 'Brihadeeswarar Periya Kovil',
+        district: 'thanjavur',
+        districtName: 'Thanjavur District',
+        cat: 'Great Living Chola Temple'
+      },
+      'thiruchendur': {
+        title: 'Thiruchendur Murugan Kovil',
+        district: 'thoothukudi',
+        districtName: 'Thoothukudi District',
+        cat: 'Seashore Temple'
+      },
+      'custom': {
+        title: 'Custom Tamil Nadu Landmark Tour',
+        district: 'chennai',
+        districtName: 'All 38 Districts',
+        cat: 'Tailored Experience'
+      }
+    };
+
+    // DOM Elements
+    const destSelect = document.getElementById('destinationSelect');
+    const distSelect = document.getElementById('districtSelect');
+    const expSelect = document.getElementById('experienceType');
+    const checkinInput = document.getElementById('checkin');
+    const guestsInput = document.getElementById('guests');
+
+    const barDestTitle = document.getElementById('barDestTitle');
+    const barDestDistrict = document.getElementById('barDestDistrict');
+    const barDestCat = document.getElementById('barDestCat');
+
+    const sumDest = document.getElementById('sumDest');
+    const sumDistrict = document.getElementById('sumDistrict');
+    const sumDate = document.getElementById('sumDate');
+
+    // Add-on checkboxes change listeners
+    document.getElementById('addonGuide')?.addEventListener('change', updateSummary);
+    document.getElementById('addonFastTrack')?.addEventListener('change', updateSummary);
+    document.getElementById('addonTransport')?.addEventListener('change', updateSummary);
+
+    // Default Date to Tomorrow
+    const tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    checkinInput.min = tomorrow.toISOString().split('T')[0];
+    checkinInput.value = tomorrow.toISOString().split('T')[0];
+
+    // Destination Change Event
+    function onDestinationChanged() {
+      const destKey = destSelect.value;
+      const meta = destinationMeta[destKey];
+      if (meta) {
+        // Auto-select matched district
+        if (meta.district) {
+          distSelect.value = meta.district;
+        }
+
+        // Update Top Ribbon Bar
+        barDestTitle.innerText = meta.title;
+        barDestDistrict.innerHTML = `<i class="fas fa-map-marker-alt"></i> ${meta.districtName}`;
+        barDestCat.innerText = meta.cat;
+      }
+      updateSummary();
+    }
+
+    // District Change Event
+    function onDistrictChanged() {
+      const distVal = distSelect.value;
+      // If destination doesn't match, check if any featured destination belongs to this district
+      for (const [key, meta] of Object.entries(destinationMeta)) {
+        if (meta.district === distVal) {
+          destSelect.value = key;
+          onDestinationChanged();
+          return;
+        }
+      }
+      
+      // If non-featured district
+      const distName = distSelect.options[distSelect.selectedIndex].text;
+      barDestTitle.innerText = `Tour in ${distName}`;
+      barDestDistrict.innerHTML = `<i class="fas fa-map-marker-alt"></i> ${distName}`;
+      barDestCat.innerText = 'Custom District Visit';
+      updateSummary();
+    }
+
+    // Update Real-Time Summary Breakdown
+    function updateSummary() {
+      const destKey = destSelect.value;
+      const meta = destinationMeta[destKey] || { title: destSelect.options[destSelect.selectedIndex].text };
+      const distName = distSelect.options[distSelect.selectedIndex].text;
+      const dateVal = checkinInput.value;
+      const guests = parseInt(guestsInput.value || 1);
+      const hasGuide = document.getElementById('addonGuide')?.checked;
+      const hasPriority = document.getElementById('addonFastTrack')?.checked;
+      const hasTransport = document.getElementById('addonTransport')?.checked;
+
+      sumDest.innerText = meta.title.length > 22 ? meta.title.substring(0, 20) + '...' : meta.title;
+      sumDistrict.innerText = distName.replace(' District', '');
+      sumDate.innerText = dateVal ? new Date(dateVal).toLocaleDateString('en-IN', { month: 'short', day: 'numeric' }) : 'Select Date';
+
+      // Dynamic Fare calculation
+      const base = guests * 500;
+      let addon = 0;
+      if (hasGuide) addon += 350;
+      if (hasPriority) addon += (guests * 100);
+      if (hasTransport) addon += 400;
+      const total = Math.round((base + addon) * 1.05);
+
+      const sumFareElem = document.getElementById('sumFare');
+      if (sumFareElem) {
+        sumFareElem.innerText = `₹ ${total.toLocaleString('en-IN')}.00`;
+      }
+    }
+
+    // Form Submission & Pass Generation
+    function handleBookingSubmit(event) {
+      event.preventDefault();
+
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const phone = document.getElementById('phone').value;
+      const destKey = destSelect.value;
+      const meta = destinationMeta[destKey];
+      const distVal = distSelect.value;
+      const distText = distSelect.options[distSelect.selectedIndex].text;
+      const dateVal = checkinInput.value;
+      const timeSlot = document.getElementById('timeSlot').value;
+      const guests = guestsInput.value;
+      const expVal = expSelect.value;
+      const guide = document.getElementById('addonGuide')?.checked;
+      const priority = document.getElementById('addonFastTrack')?.checked;
+      const transport = document.getElementById('addonTransport')?.checked;
+      const specialReq = document.getElementById('specialReq')?.value;
+
+      const bookingData = {
+        name,
+        email,
+        phone,
+        dest: destKey,
+        destTitle: meta ? meta.title : 'Custom Landmark',
+        district: distVal,
+        districtName: distText,
+        date: dateVal,
+        time: timeSlot,
+        guests,
+        exp: expVal,
+        guide,
+        priority,
+        transport,
+        specialReq
+      };
+
+      try {
+        sessionStorage.setItem('sancharam_active_booking', JSON.stringify(bookingData));
+
+        // Save to sancharam_user_bookings for Profile display
+        const randPass = Math.floor(10000 + Math.random() * 90000);
+        const newTrip = {
+          id: `SNCH-TN-${randPass}`,
+          destTitle: meta ? meta.title : 'Custom Landmark',
+          distName: distText,
+          date: dateVal,
+          time: timeSlot,
+          guests: guests,
+          exp: expVal,
+          status: 'Active Pass',
+          bookedAt: new Date().toISOString()
+        };
+        const allTrips = JSON.parse(localStorage.getItem('sancharam_user_bookings') || '[]');
+        allTrips.unshift(newTrip);
+        localStorage.setItem('sancharam_user_bookings', JSON.stringify(allTrips));
+      } catch(e) {}
+
+      const params = new URLSearchParams({
+        name,
+        email,
+        phone,
+        dest: destKey,
+        district: distVal,
+        date: dateVal,
+        time: timeSlot,
+        guests,
+        exp: expVal,
+        guide: guide ? '1' : '0',
+        priority: priority ? '1' : '0',
+        transport: transport ? '1' : '0'
+      });
+
+      const submitBtn = document.querySelector('.btn-submit-booking');
+      if (submitBtn) {
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Connecting to Secure Payment...';
+        submitBtn.disabled = true;
+      }
+
+      setTimeout(() => {
+        window.location.href = `features/payment.html?${params.toString()}`;
+      }, 350);
+
+      return false;
+    }
+
+    function closePassModal(e) {
+      if (!e || e.target === document.getElementById('passModal')) {
+        document.getElementById('passModal').classList.remove('active');
+      }
+    }
+
+    // ==========================================
+    // URL Parameter Auto-Connection from Explore Page
+    // e.g. bookings.html?dest=thiruchendur&district=thoothukudi
+    // ==========================================
+    window.addEventListener('DOMContentLoaded', () => {
+      const params = new URLSearchParams(window.location.search);
+      const destParam = params.get('dest') || params.get('destination');
+      const distParam = params.get('district');
+
+      if (destParam && destinationMeta[destParam.toLowerCase()]) {
+        destSelect.value = destParam.toLowerCase();
+      }
+      if (distParam) {
+        distSelect.value = distParam.toLowerCase();
+      }
+
+      onDestinationChanged();
+    });
+  </script>
 </body>
 </html>
