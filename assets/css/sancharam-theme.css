@@ -91,7 +91,7 @@ img {
 }
 
 /* ==========================================================================
-   GLOBAL FROSTED WHITE NAVBAR (Identical Size & Spacing as Home Page)
+   GLOBAL CINEMATIC DARK GLASS NAVBAR (Matching Home Page Aesthetic)
    ========================================================================== */
 .navbar {
     position: fixed !important;
@@ -100,11 +100,11 @@ img {
     right: 0 !important;
     width: 100% !important;
     z-index: 1000 !important;
-    background: rgba(255, 255, 255, 0.95) !important;
-    backdrop-filter: blur(16px) !important;
-    -webkit-backdrop-filter: blur(16px) !important;
-    border-bottom: 1px solid var(--border-glass) !important;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06) !important;
+    background: rgba(11, 19, 43, 0.94) !important;
+    backdrop-filter: blur(20px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.35) !important;
     transition: var(--transition) !important;
     padding: 1.1rem 0 !important;
     box-sizing: border-box !important;
@@ -112,9 +112,10 @@ img {
 }
 
 .navbar.scrolled {
-    background: rgba(255, 255, 255, 0.98) !important;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1) !important;
+    background: rgba(11, 19, 43, 0.98) !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5) !important;
     padding: 0.8rem 0 !important;
+    border-bottom: 1px solid rgba(230, 57, 70, 0.25) !important;
 }
 
 .navbar .nav-wrapper,
@@ -145,7 +146,7 @@ img {
     width: auto !important;
     object-fit: contain !important;
     transition: var(--transition) !important;
-    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.08)) !important;
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.5)) !important;
     position: static !important;
     left: auto !important;
     right: auto !important;
@@ -175,32 +176,34 @@ img {
 .navbar .nav-item a,
 .navbar .nav-item {
     display: inline-block !important;
+    font-family: 'Montserrat', sans-serif !important;
     font-size: 1.45rem !important;
     font-weight: 600 !important;
-    color: #1E293B !important;
+    color: #E2E8F0 !important;
     text-decoration: none !important;
     padding: 0.8rem 1.6rem !important;
-    border-radius: var(--radius-pill) !important;
-    letter-spacing: 0.04em !important;
+    border-radius: 8px !important;
+    letter-spacing: 0.08em !important;
     position: relative !important;
     transition: var(--transition) !important;
-    text-transform: capitalize !important;
+    text-transform: uppercase !important;
     border: 1px solid transparent !important;
 }
 
 .navbar .nav-link:hover,
 .navbar .nav-item a:hover {
-    color: #E63946 !important;
-    background: rgba(230, 57, 70, 0.08) !important;
-    border-bottom: 1px solid transparent !important;
+    color: #FFFFFF !important;
+    background: rgba(255, 255, 255, 0.08) !important;
+    border-color: rgba(255, 255, 255, 0.15) !important;
 }
 
 .navbar .nav-link.active,
 .navbar .nav-item a.active,
 .navbar .nav-item.active a {
-    color: #E63946 !important;
-    background: rgba(230, 57, 70, 0.12) !important;
-    border: 1px solid rgba(230, 57, 70, 0.28) !important;
+    color: #FFFFFF !important;
+    background: linear-gradient(135deg, rgba(230, 57, 70, 0.25) 0%, rgba(230, 57, 70, 0.15) 100%) !important;
+    border: 1px solid rgba(230, 57, 70, 0.45) !important;
+    box-shadow: 0 0 16px rgba(230, 57, 70, 0.2) !important;
 }
 
 .navbar .nav-actions {
@@ -214,29 +217,33 @@ img {
     align-items: center !important;
     gap: 0.8rem !important;
     padding: 0.85rem 1.8rem !important;
-    font-size: 1.35rem !important;
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 1.3rem !important;
     font-weight: 700 !important;
     color: #FFFFFF !important;
-    background: linear-gradient(135deg, #E63946 0%, #FF6B6B 100%) !important;
+    background: linear-gradient(135deg, #E63946 0%, #D62828 100%) !important;
     border-radius: var(--radius-pill) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
     box-shadow: 0 4px 15px rgba(230, 57, 70, 0.4) !important;
     transition: var(--transition) !important;
-    letter-spacing: 0.03em !important;
+    letter-spacing: 0.06em !important;
     text-decoration: none !important;
     white-space: nowrap !important;
+    text-transform: uppercase !important;
 }
 
 .btn-nav-ai:hover {
     transform: translateY(-2px) !important;
-    box-shadow: 0 6px 20px rgba(230, 57, 70, 0.6) !important;
+    box-shadow: 0 6px 22px rgba(230, 57, 70, 0.6) !important;
     color: #FFFFFF !important;
+    border-color: rgba(255, 255, 255, 0.4) !important;
 }
 
 .mobile-toggle {
     display: none !important;
     background: transparent !important;
     border: none !important;
-    color: #1E293B !important;
+    color: #FFFFFF !important;
     font-size: 2.2rem !important;
     cursor: pointer !important;
     padding: 0.5rem !important;
@@ -533,6 +540,7 @@ footer.footer .footer-bottom {
 @media (max-width: 860px) {
     .mobile-toggle {
         display: block !important;
+        color: #FFFFFF !important;
     }
     .navbar .nav-links,
     .navbar .nav-items {
@@ -541,11 +549,12 @@ footer.footer .footer-bottom {
         right: -100% !important;
         width: 280px !important;
         height: 100vh !important;
-        background: #FFFFFF !important;
+        background: #0B132B !important;
+        border-left: 1px solid rgba(255, 255, 255, 0.1) !important;
         flex-direction: column !important;
         align-items: flex-start !important;
         padding: 9rem 2.4rem 3rem !important;
-        box-shadow: -10px 0 30px rgba(0,0,0,0.15) !important;
+        box-shadow: -10px 0 30px rgba(0,0,0,0.5) !important;
         transition: right 0.35s ease !important;
         z-index: 1000 !important;
         gap: 1.4rem !important;
@@ -557,8 +566,9 @@ footer.footer .footer-bottom {
     .navbar .nav-link,
     .navbar .nav-item a,
     .navbar .nav-item {
-        font-size: 1.7rem !important;
+        font-size: 1.6rem !important;
         width: 100% !important;
+        color: #F1F5F9 !important;
     }
     .navbar .nav-actions {
         display: none !important;

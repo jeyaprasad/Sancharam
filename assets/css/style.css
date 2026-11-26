@@ -602,7 +602,7 @@ button {
 /* Revamped Square Grid Explore Cards */
 .explore-cards {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     align-items: stretch;
     gap: 2.2rem;
     max-width: 1350px;
