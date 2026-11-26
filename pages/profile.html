@@ -781,7 +781,7 @@
           
           <div class="profile-avatar-row">
             <div class="profile-avatar-wrap">
-              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80" alt="Traveler Avatar" class="profile-avatar" id="dispAvatar">
+              <img src="../assets/images/user1.jpg" alt="Traveler Avatar" class="profile-avatar" id="dispAvatar">
               <span class="avatar-badge" title="Verified Sancharam Traveler"><i class="fas fa-check"></i></span>
             </div>
 
@@ -1212,7 +1212,7 @@
       native: "Chennai, Tamil Nadu",
       languages: "Tamil, English, Hindi",
       interests: "Cultural Tours, Temple Architecture, Street Food, Hill Station Trekking",
-      avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80"
+      avatar: "../assets/images/user1.jpg"
     };
 
     const INITIAL_DEMO_TRIPS = [
@@ -1249,7 +1249,14 @@
     function getCurrentUser() {
       try {
         const u = localStorage.getItem('sancharam_active_user');
-        if (u) return JSON.parse(u);
+        if (u) {
+          const parsed = JSON.parse(u);
+          if (parsed && (typeof parsed.avatar !== 'string' || parsed.avatar.includes('unsplash.com') || !parsed.avatar)) {
+            parsed.avatar = '../assets/images/user1.jpg';
+            localStorage.setItem('sancharam_active_user', JSON.stringify(parsed));
+          }
+          return parsed;
+        }
       } catch(e) {}
       // Initialize with default demo
       localStorage.setItem('sancharam_active_user', JSON.stringify(DEFAULT_DEMO_USER));
