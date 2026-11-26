@@ -602,10 +602,10 @@ button {
 /* Revamped Square Grid Explore Cards */
 .explore-cards {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    align-items: start;
-    gap: 3rem;
-    max-width: 1200px;
+    grid-template-columns: repeat(4, 1fr);
+    align-items: stretch;
+    gap: 2.2rem;
+    max-width: 1350px;
     margin: 0 auto;
     padding: 0 1rem;
 }
@@ -617,7 +617,7 @@ button {
     flex-direction: column;
     border-radius: 12px;
     overflow: hidden;
-    
+    height: 100%;
 }
 
 .explore-card .img-box {
@@ -663,7 +663,7 @@ button {
     padding: 1rem 3rem;
 }
 
-@media(max-width: 900px) {
+@media(max-width: 1100px) {
     .explore-cards {
         grid-template-columns: repeat(2, 1fr);
     }
@@ -875,7 +875,8 @@ button {
     border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
     display: flex !important;
     align-items: center !important;
-    justify-content: space-between !important;
+    justify-content: center !important;
+    text-align: center !important;
     flex-wrap: wrap !important;
     gap: 1.2rem !important;
     font-size: 1.25rem !important;
@@ -883,7 +884,8 @@ button {
 }
 
 .site-footer .footer-bottom p {
-    margin: 0 !important;
+    margin: 0 auto !important;
+    text-align: center !important;
     font-size: 1.25rem !important;
     color: rgba(255, 255, 255, 0.45) !important;
 }

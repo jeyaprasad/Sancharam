@@ -498,7 +498,8 @@ footer.footer .footer-bottom {
     border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
     display: flex !important;
     align-items: center !important;
-    justify-content: space-between !important;
+    justify-content: center !important;
+    text-align: center !important;
     flex-wrap: wrap !important;
     gap: 1.2rem !important;
     font-size: 1.25rem !important;
@@ -506,7 +507,8 @@ footer.footer .footer-bottom {
 }
 
 .site-footer .footer-bottom p {
-    margin: 0 !important;
+    margin: 0 auto !important;
+    text-align: center !important;
     font-size: 1.25rem !important;
     color: rgba(255, 255, 255, 0.45) !important;
 }
