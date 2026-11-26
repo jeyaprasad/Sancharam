@@ -4,6 +4,15 @@
 // ==========================================================================
 
 document.addEventListener('DOMContentLoaded', () => {
+    // Nostalgic Mobile Toggle
+    const nostalgicToggle = document.getElementById('nostalgicMobileToggle');
+    const nostalgicNav = document.getElementById('nostalgicNavItems');
+    if (nostalgicToggle && nostalgicNav) {
+        nostalgicToggle.addEventListener('click', () => {
+            nostalgicNav.classList.toggle('open');
+        });
+    }
+
     // 1. Sticky / Scrolled Navbar
     const navbar = document.querySelector('.navbar');
     if (navbar) {

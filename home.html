@@ -12,136 +12,236 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
 
     <!-- Universal Theme & Enhanced Stylesheet -->
-    <link rel="stylesheet" href="assets/css/sancharam-theme.css">
+    <link rel="stylesheet" href="assets/css/sancharam-theme.css?v=1.1">
+
+    <!-- Nostalgic Hero Scoped Styles -->
+    <style id="nostalgic-hero-style">
+        .nostalgic-header {
+            position: relative;
+            width: 100%;
+            min-height: 95vh;
+            height: 95vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7)), url("assets/images/background.png");
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nostalgic-navbar {
+            width: 100%;
+            background: transparent !important;
+            border: none !important;
+            box-shadow: none !important;
+            padding: 1.5rem 3rem 0 !important;
+            z-index: 100;
+            box-sizing: border-box;
+        }
+
+        .nostalgic-nav-container {
+            max-width: 1350px;
+            width: 96%;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nostalgic-brand {
+            display: block;
+            text-decoration: none;
+        }
+
+        .nostalgic-logo {
+            width: 280px;
+            height: auto;
+            max-height: 70px;
+            object-fit: contain;
+            display: block;
+        }
+
+        .nostalgic-nav-items {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 2.8rem;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nostalgic-nav-item {
+            list-style: none;
+        }
+
+        .nostalgic-nav-item a {
+            color: #f4f4f4 !important;
+            text-decoration: none;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            padding: 0.6rem 0.2rem;
+            transition: all 0.25s ease;
+            border-bottom: 2px solid transparent;
+            display: inline-block;
+        }
+
+        .nostalgic-nav-item a:hover {
+            color: #FFFFFF !important;
+            border-bottom: 2px solid #FFFFFF;
+        }
+
+        .nostalgic-mobile-toggle {
+            display: none;
+            background: transparent;
+            border: none;
+            color: #ffffff;
+            font-size: 2.2rem;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .nostalgic-header-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            width: 92%;
+            max-width: 1050px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 10;
+        }
+
+        .nostalgic-main-heading {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(3.2rem, 5.2vw, 5.2rem);
+            font-weight: 900;
+            color: #000000 !important;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            line-height: 1.15;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.4);
+        }
+
+        .nostalgic-site-desc {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(1.2rem, 1.4vw, 1.5rem);
+            font-weight: 500;
+            color: #FFFFFF !important;
+            text-transform: uppercase;
+            word-spacing: 0.25rem;
+            letter-spacing: 0.08em;
+            line-height: 1.6;
+            max-width: 1150px;
+            width: 95%;
+            margin: 0 auto 3.2rem;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .btn-nostalgia-explore {
+            padding: 1.3rem 4.4rem;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.45rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            color: #000000 !important;
+            background-color: #FFFFFF !important;
+            border: none;
+            border-radius: 9999px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+            transition: all 0.3s ease;
+            outline: none;
+        }
+
+        .btn-nostalgia-explore:hover {
+            background-color: #e63946 !important;
+            color: #FFFFFF !important;
+            transform: translateY(-4px);
+            box-shadow: 0px 10px 22px rgba(0, 0, 0, 0.4);
+        }
+
+        .btn-nostalgia-explore:active {
+            transform: translateY(-1px);
+        }
+
+        @media (max-width: 900px) {
+            .nostalgic-nav-items {
+                gap: 1.8rem;
+            }
+            .nostalgic-nav-item a {
+                font-size: 1.3rem;
+            }
+            .nostalgic-logo {
+                width: 220px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nostalgic-mobile-toggle {
+                display: block;
+            }
+            .nostalgic-nav-items {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(15, 23, 42, 0.95);
+                backdrop-filter: blur(12px);
+                flex-direction: column;
+                padding: 2rem 0;
+                gap: 1.5rem;
+            }
+            .nostalgic-nav-items.open {
+                display: flex;
+            }
+        }
+    </style>
     </head>
 <body>
 
-    <!-- ================= NAVBAR ================= -->
-    <nav class="navbar" id="main-nav">
-        <div class="container nav-wrapper">
-            <a href="home.html" class="brand" title="Sancharam">
-                <img src="assets/logos/logo-transparent.png" alt="Sancharam Logo" class="brand-logo" onerror="this.src='assets/logos/logo.png'">
-            </a>
-
-            <ul class="nav-links">
-                <li><a href="home.html" class="nav-link active">Home</a></li>
-                <li><a href="pages/explore.html" class="nav-link">Explore</a></li>
-                <li><a href="pages/bookings.html" class="nav-link">Bookings</a></li>
-                <li><a href="pages/features.html" class="nav-link">Features</a></li>
-                <li><a href="pages/profile.html" class="nav-link">Profile</a></li>
-            </ul>
-
-            <div class="nav-actions">
-                <a href="pages/features/AI itinenary.html" class="btn-nav-ai">
-                    <i class="fas fa-wand-magic-sparkles"></i>
-                    <span>Plan with AI</span>
+    <!-- ================= NOSTALGIC HEADER & HERO ================= -->
+    <header class="nostalgic-header">
+        <nav class="nostalgic-navbar">
+            <div class="nostalgic-nav-container">
+                <a href="home.html" class="nostalgic-brand" title="Sancharam">
+                    <img src="assets/logos/logo.png" alt="Sancharam Logo" class="nostalgic-logo">
                 </a>
-            </div>
 
-            <button class="mobile-toggle" aria-label="Toggle navigation">
-                <i class="fas fa-bars"></i>
-            </button>
-        </div>
-    </nav>
+                <ul class="nostalgic-nav-items" id="nostalgicNavItems">
+                    <li class="nostalgic-nav-item"><a href="home.html">HOME</a></li>
+                    <li class="nostalgic-nav-item"><a href="#about">ABOUT</a></li>
+                    <li class="nostalgic-nav-item"><a href="pages/explore.html">EXPLORE</a></li>
+                    <li class="nostalgic-nav-item"><a href="pages/bookings.html">BOOKINGS</a></li>
+                    <li class="nostalgic-nav-item"><a href="pages/features.html">FEATURES</a></li>
+                    <li class="nostalgic-nav-item"><a href="pages/profile.html">PROFILE</a></li>
+                </ul>
 
-    <!-- ================= HERO SECTION ================= -->
-    <header class="hero">
-        <div class="container hero-content">
-            <div class="hero-tag">
-                <i class="fas fa-compass"></i>
-                <span>Discover the Soul of Tamil Nadu</span>
-            </div>
-
-            <h1 class="hero-title">
-                Real Stories, <span class="highlight-gold">Real Journeys!</span>
-            </h1>
-
-            <p class="hero-desc">
-                Travel tales of Tamil land — Experience the timeless greatness of monumental temples, mist-covered mountain valleys, sacred sanctuaries, and golden shores.
-            </p>
-
-            <div class="hero-cta-group">
-                <a href="#Explore" class="btn-primary">
-                    <span>Explore Destinations</span>
-                    <i class="fas fa-arrow-down"></i>
-                </a>
-                <a href="pages/features/AI itinenary.html" class="btn-secondary-glass">
-                    <i class="fas fa-wand-magic-sparkles"></i>
-                    <span>Generate AI Itinerary</span>
-                </a>
-            </div>
-
-            <!-- Interactive Trip Finder Widget -->
-            <form class="hero-search-box" id="hero-search-form">
-                <div class="search-field">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <div class="search-field-content">
-                        <label for="search-dest">Destination</label>
-                        <select id="search-dest">
-                            <option value="all">All Locations</option>
-                            <option value="kanyakumari">Kanyakumari</option>
-                            <option value="mahabalipuram">Mahabalipuram</option>
-                            <option value="chennai">Chennai</option>
-                            <option value="ooty">Ooty (Nilgiris)</option>
-                            <option value="chettinad">Chettinad</option>
-                            <option value="hogenakkal">Hogenakkal</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="search-field">
-                    <i class="fas fa-mountain-sun"></i>
-                    <div class="search-field-content">
-                        <label for="search-category">Experience</label>
-                        <select id="search-category">
-                            <option value="all">All Experiences</option>
-                            <option value="heritage">Heritage & Temples</option>
-                            <option value="nature">Hills & Nature</option>
-                            <option value="coastal">Coastal & Spiritual</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="search-field">
-                    <i class="fas fa-calendar-days"></i>
-                    <div class="search-field-content">
-                        <label for="search-duration">Duration</label>
-                        <select id="search-duration">
-                            <option value="weekend">Weekend Trip (2 Days)</option>
-                            <option value="short">3 - 5 Days</option>
-                            <option value="grand">Grand Tour (1 Week+)</option>
-                        </select>
-                    </div>
-                </div>
-
-                <button type="submit" class="btn-search">
-                    <i class="fas fa-magnifying-glass"></i>
-                    <span>Find Trips</span>
+                <button class="nostalgic-mobile-toggle" id="nostalgicMobileToggle" aria-label="Toggle navigation">
+                    <i class="fas fa-bars"></i>
                 </button>
-            </form>
-
-            <!-- Quick Metrics -->
-            <div class="hero-stats">
-                <div class="stat-item">
-                    <span class="stat-number">50+</span>
-                    <span class="stat-label">Heritage Sites</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number">38</span>
-                    <span class="stat-label">Districts Covered</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number">100+</span>
-                    <span class="stat-label">Curated Itineraries</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number">4.9 ★</span>
-                    <span class="stat-label">Traveler Rating</span>
-                </div>
             </div>
+        </nav>
+
+        <div class="nostalgic-header-content">
+            <h1 class="nostalgic-main-heading">REAL STORIES, REAL JOURNEYS!</h1>
+            <p class="nostalgic-site-desc">TRAVEL TALES OF TAMIL LAND, EXPERIENCE THE GREATNESS, IT'S THE BEST GIFT GIVEN BY NATURE</p>
+            <button onclick="window.location.href='pages/explore.html'" class="btn-nostalgia-explore">EXPLORE</button>
         </div>
     </header>
 
