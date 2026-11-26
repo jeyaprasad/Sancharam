@@ -598,12 +598,18 @@
     /* 5. Cultural CTA Box */
     .atlas-cta-box {
       margin-top: 50px;
-      background: linear-gradient(135deg, #0B132B 0%, #1C2541 100%);
+      position: relative;
+      background: linear-gradient(rgba(11, 19, 43, 0.72), rgba(11, 19, 43, 0.82)), url('../assets/images/contact.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
       border-radius: 22px;
-      padding: 50px 35px;
+      padding: 55px 35px;
       color: #FFFFFF;
       text-align: center;
-      box-shadow: 0 15px 40px rgba(11, 19, 43, 0.2);
+      box-shadow: 0 15px 40px rgba(11, 19, 43, 0.25);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      overflow: hidden;
     }
     .atlas-cta-box h2 {
       font-size: 3rem;
